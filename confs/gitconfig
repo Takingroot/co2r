@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "heroku"]
+	url = git@heroku.com:frozen-bayou-9064.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+[remote "staging"]
+	url = git@heroku.com:pacific-wave-1838.git
+	fetch = +refs/heads/*:refs/remotes/staging/*
+[remote "pierre"]
+	url = git@github.com:pdr/co2r.git
+	fetch = +refs/heads/*:refs/remotes/pierre/*
