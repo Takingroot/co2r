@@ -1,5 +1,5 @@
 import os
-PROJECT_PATH = os.path.abspath(os.path.join(__file__, os.path.pardir, os.path.pardir))
+PROJECT_PATH = os.path.abspath(os.path.join(__file__, os.path.pardir))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -53,7 +53,7 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://s3.amazonaws.com/co2r-staging/'
 
 
 # Additional locations of static files
@@ -76,9 +76,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME') #co2r
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # co2r
 
-print AWS_ACCESS_KEY_ID
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '6cs3^_oje@nq79g!bfpm*brq5$$swzs4dh=vypha#z!j=_$erc'
 
