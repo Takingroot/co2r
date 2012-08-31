@@ -1,1 +1,5 @@
+static/*
 *.pyc
+.DS_Store
+._*
+!.gitignore
