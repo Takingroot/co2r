@@ -53,7 +53,7 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://s3.amazonaws.com/co2r-staging/'
+STATIC_URL = 'http://co2r-staging.s3.amazonaws.com/'
 
 
 # Additional locations of static files
