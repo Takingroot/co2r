@@ -52,9 +52,7 @@ MEDIA_URL = '/media'
 STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 # URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://co2r-staging.s3.amazonaws.com/'
-
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -68,15 +66,16 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # co2r
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+#AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
+#AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
+#AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # co2r
 
 
 # Make this unique, and don't share it with anybody.

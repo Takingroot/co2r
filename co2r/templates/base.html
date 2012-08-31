@@ -1,15 +1,17 @@
-{% load static %}
-
+{% load static from staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" href="{% static '/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <header>
 </header>
 
 <body>
+
 {% block content %}
+
+
 {% endblock %}
 </body>
 
