@@ -4,10 +4,10 @@ PROJECT_ROOT = os.path.abspath(os.path.join(__file__, os.path.pardir,\
      os.path.pardir))
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Pierre Drescher', 'pierre.drescher@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -72,14 +72,12 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-#AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
-#AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
-#AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # co2r
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
+AWS_STORAGE_BUCKET_NAME = 'co2r-development'
 
 
 # Make this unique, and don't share it with anybody.
