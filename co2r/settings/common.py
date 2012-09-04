@@ -1,7 +1,7 @@
 import os
-PROJECT_PATH = os.path.abspath(os.path.join(__file__, os.path.pardir))
+PROJECT_PATH = os.path.abspath(os.path.join(__file__, os.path.pardir, os.path.pardir))
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, os.path.pardir,\
-     os.path.pardir))
+     os.path.pardir, os.path.pardir))
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -75,8 +75,8 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # 17G1RTSV6WEE5A58EE82
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL
+AWS_ACCESS_KEY_ID = '17G1RTSV6WEE5A58EE82'
+AWS_SECRET_ACCESS_KEY = 'y0luW4SiBSC5Wtl5c2nSEGxwrrIl3WaMr1fmUlrL'
 AWS_STORAGE_BUCKET_NAME = 'co2r-development'
 
 
