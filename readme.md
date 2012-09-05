@@ -17,4 +17,3 @@ mkdir .virtualenvs
 Heroku
 ------
 Install Heroku build tools
-

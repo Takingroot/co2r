@@ -1,17 +1,20 @@
 {% load static from staticfiles %}
-<html>
+<html id="app" ng-app="co2r" ng-controller="controllers.co2r">
+
 <head>
-<link rel="stylesheet" href="{% static 'css/sample.css' %}">
+  <script>window.app_settings = {static_url:"{% static '' %}"};</script>
+  <link rel="stylesheet" href="{% static '' %}styles/main.css">
+  <title ng-bind="app_title + ' - ' + page_title"></title>
 </head>
 
-<header>
-</header>
-
 <body>
-{% block content %}
-<h1>co2r</h1>
-{% endblock %}
+  <header></header>
+  <a ng-href="/directory">Directory</a>
+  <a ng-href="/about">About</a>
+  <div id="app-content" ng-view></div>
+  <footer></footer>
+  <script src="{% static '' %}source/main.js"></script>
 </body>
 
-<footer>
-</footer>
+
+</html>
