@@ -1,6 +1,6 @@
-path_client        = ./client
+path_client        = ./public/client
 path_public        = ./public
-path_local_bin     = ./node_modules/.bin
+path_local_bin     = /usr/local/bin
 dir_name_styles		 = styles
 dir_name_templates = templates
 dir_name_source    = source
@@ -29,3 +29,6 @@ jsugly: js
 
 js:
 	${path_local_bin}/browserify --entry  ${path_client}/${dir_name_source}/main.coffee --outfile ${path_public}/${dir_name_source}/main.js
+
+server:
+	mrt
