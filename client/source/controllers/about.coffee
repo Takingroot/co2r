@@ -1,2 +1,1 @@
-window.controllers ?= {}
-controllers.about = ()->
+controller_about = ()->

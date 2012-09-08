@@ -1,14 +1,3 @@
-//-
-  html(id="app", ng-app="co2r", ng-controller="controllers.co2r")
-
-  head
-    script
-      window.app_settings = {static_url:"/"};
-    link(rel="stylesheet", href="styles/main.css")
-    title(ng-bind="app_title + ' - ' + page_title")
-
-header
 a(ng-href="/directory") Directory
 a(ng-href="/about") About
 #app-content(ng-view)
-footer

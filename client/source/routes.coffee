@@ -1,12 +1,6 @@
-do_routes = ->
-  console.log 'doing routes'
-  #
-  # Depends on:
-  # - CO2R global
-  # - vendor/angular
-  #
+config_routes = ->
   CO2R.config(['$routeProvider', ($routeProvider)->
-    $routeProvider.when('/directory',  {templateUrl: "directory.html",  controller: controllers.directory})
-    $routeProvider.when('/about',      {templateUrl: "about.html",      controller: controllers.about})
+    $routeProvider.when('/directory',  {templateUrl: "partials/directory.html",  controller: controllers.directory})
+    $routeProvider.when('/about',      {templateUrl: "partials/about.html",      controller: controllers.about})
     $routeProvider.otherwise({redirectTo: '/directory'})
   ])
