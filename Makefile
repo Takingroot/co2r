@@ -17,12 +17,12 @@ css_watch:
 	${stylus_command} --watch
 
 html:
-	${path_local_bin}/jade ${path_client}/${dir_name_templates}            --out ${path_public}/${dir_name_templates}
-	#${path_local_bin}/jade ${path_client}/${dir_name_templates}/index.jade --out ${path_public}
+	${path_local_bin}/jade ${path_client}/${dir_name_templates}     --out ${path_public}/${dir_name_templates}
+	${path_local_bin}/jade ${path_client}/angular.jade								--out ${path_public}
 
 html_watch:
 	${path_local_bin}/jade ${path_client}/${dir_name_templates}   --out ${path_public}/${dir_name_templates} --watch
-	#${path_local_bin}/jade ${path_client}/${dir_name_templates}/index.jade --out ${path_public} --watch
+	${path_local_bin}/jade ${path_client}/angular.jade						  --out ${path_public} --watch
 
 jsugly: js
 	${path_local_bin}/uglifyjs --overwrite --no-copyright --no-mangle --verbose ${path_public}/${dir_name_source}/main.js

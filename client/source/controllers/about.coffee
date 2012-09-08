@@ -1,1 +1,2 @@
+window.controllers ?= {}
 controllers.about = ()->
