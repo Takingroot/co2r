@@ -4,6 +4,9 @@ path_public        = ./public
 # littering project root with node_modules, package.json, etc.
 path_local_bin     = /usr/local/bin
 dir_name_templates = templates
+all:
+	make server& make html
+
 
 html_once:
 	${path_local_bin}/jade ${path_client}/${dir_name_templates}/partials       --out ${path_public}/partials
