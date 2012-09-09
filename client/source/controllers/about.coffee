@@ -1,1 +1,2 @@
-controller_about = ()->
+controller_about = ($rootScope)->
+  $rootScope.page_title = "About"
