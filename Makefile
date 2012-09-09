@@ -13,7 +13,7 @@ html_once:
 	${path_local_bin}/jade ${path_client}/${dir_name_templates}/angular.jade	 --out ${path_public}
 
 html:
-	watchdir --dir ${path_client}/${dir_name_templates} --command "make html_once"
+	watchdir --dir ${path_client}/${dir_name_templates} --command "make html_once"& watchdir --dir ${path_client}/${dir_name_templates}/partials --command "make html_once"
 
 server:
 	mrt

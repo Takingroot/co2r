@@ -1,0 +1,19 @@
+font_size = 20px
+
+gd(grid_units)
+  font_size * grid_units
+
+queue()
+  > *
+    display inline-block
+    vertical-align top
+
+number_to_class_name(num)
+  if num is 0.25
+    "025"
+  else if num is 0.5
+    "05"
+  else if num is 0.75
+    "075"
+  else
+    "0"

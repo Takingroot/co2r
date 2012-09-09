@@ -1,15 +1,16 @@
+@import "../../lib/client/styles"
 
 dark = hsl(0,0,18%)
 grey = hsl(0,0,90%)
 
-*
-  box-sizing border-box
+#app-content
+  padding 0 gd(2)
 
 .artifact-card
-  margin-bottom gd(1)
+  width gd(16)
 
-.artifact-card .container
-  height 140px
+  > *
+    square(gd(8))
 
 .artifact-card-info
   padding 0 gd(.5)
@@ -21,7 +22,7 @@ grey = hsl(0,0,90%)
   border 1px dashed grey
 
 .a-image-160
-  height 140px
+  height gd(8)
 
 .dark-theme
   background-color dark
