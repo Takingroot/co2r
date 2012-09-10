@@ -1,6 +1,6 @@
-article.introduction-container.a-container.queue(ng-show="settings.show_introduction.current")
+article.introduction-container.a-container.queue(ng-show="settings.get('show_introduction')")
   .vintage-box-models
-    button.btn.btn-warning.icon-remove(ng-click="update_setting('show_introduction', false)")
+    button.btn.btn-warning.icon-remove(ng-click="settings.set('show_introduction', false)")
   figure.introduction-figure.a-image.v-push-3
   .introduction.cols-8
     h1 CO2 Responsible

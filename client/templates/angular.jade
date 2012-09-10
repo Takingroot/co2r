@@ -1,5 +1,3 @@
-.vintage-box-models
-  button.btn.btn-primary.icon-undo(ng-click="restore_settings()")
 .navbar
   .navbar-inner
     a.brand(ng-href="/directory") CO2R
@@ -22,3 +20,8 @@ footer.app-footer.row.dark-theme
   .company.span4
     h3 Taking Root
     p lorem
+
+  .vintage-box-models
+    button.btn.btn-primary(ng-click="settings.restore_defaults()")
+      span.icon-undo
+      |  Restore defaults
