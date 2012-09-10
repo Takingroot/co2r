@@ -17,3 +17,8 @@ html:
 
 server:
 	mrt
+
+deploy: html_once
+	# we use debug because otherwise uglifyjs ruins our angular app
+	# https://github.com/lvbreda/Meteor_angularjs/issues/5
+	mrt deploy co2r --debug
