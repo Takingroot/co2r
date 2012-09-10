@@ -1,6 +1,14 @@
-h1 {{page_title}}
+article.introduction-container.a-container.queue(ng-show="settings.show_introduction.current")
+  .vintage-box-models
+    button.btn.btn-warning.icon-remove(ng-click="update_setting('show_introduction', false)")
+  figure.introduction-figure.a-image.v-push-3
+  .introduction.cols-8
+    h1 CO2 Responsible
+    p.sub-title We help companies be responsble about the carbon their products emit into the atmosphere. We achieve this by planting enough trees in Nicaragua to negate their emissions.
+    p Sed ut perspiciatis unde omnis iste natus error [Taking Root] sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+    a.btn.btn-success(href="/about") Learn More
 
-form.form-search.vintage-box-models
+form.form-search.vintage-box-models.align-center
   .input-prepend
     span.add-on: span.icon-search
     input.search-query.span5(type="text", placeholder="Search Co2 responsible products")

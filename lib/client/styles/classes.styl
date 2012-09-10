@@ -26,5 +26,20 @@ generate_gutter_classes(grid_units)
     margin-right  gd(grid_units)
     margin-bottom gd(grid_units)
 
+  .v-push-{grid_units_class_name}
+    margin-top gd(grid_units)
+
+
 generate_gutter_classes(i) for i in 0.25 0.5 0.75
 generate_gutter_classes(i) for i in 1..5
+
+grid_units_per_column = 3
+
+[class*="cols"]
+  margin-left gd(1)
+
+for i in 1..10
+  .cols-{i}
+    width gd(i*grid_units_per_column)
+
+

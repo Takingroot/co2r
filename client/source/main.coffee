@@ -7,4 +7,4 @@ CO2R.config(['$locationProvider', ($locationProvider)->
 ])
 
 CO2R.run ($rootScope)->
-  $rootScope.app_title = "CO2R"
+  window.$rootScope = $rootScope
