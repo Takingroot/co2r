@@ -10,3 +10,7 @@ CO2R.config(['$locationProvider', ($locationProvider)->
 
 CO2R.run ($rootScope)->
   window.$rootScope = $rootScope
+
+CO2R.factory 'preferencesStorage', ->
+  new PreferencesStorage
+    show_introduction: yes
