@@ -1,12 +1,62 @@
 @import helpers
 
+.table
+  display table
+
+.jar
+  @extends .table
+  position relative
+
+.frame
+  @extends .table
+  & > *
+    display table-cell
+    vertical-align top
+
+.row > *
+  display inline-block
+  vertical-align top
+
+.row > .jar
+.row > .frame
+  display inline-table
+
+
+
+
 //
 //  Layout
 //  ------------------------------------------------------------------
 
-.queue
-  queue()
+//
+//  Fluid
+//  ------------------------------------------------------------------
 
+//
+//  Alignment
+//  ------------------------------------------------------------------
+
+.aligns-center > *
+.align-center
+  margin-left auto
+  margin-right auto
+
+.aligns-right > *
+.align-right
+  margin-left auto!important
+
+.aligns-middle > *
+.align-middle
+  vertical-align middle
+
+
+//
+//  Positioning
+//  ------------------------------------------------------------------
+
+.stick-right
+  position absolute
+  right 0
 
 //
 //  .v-gutters
@@ -19,7 +69,7 @@ generate_gutter_classes(grid_units)
   .v-gutters-{grid_units_class_name} > *
     margin-bottom gd(grid_units)
 
-  .h-gutters-{grid_units_class_name} > *
+  .h-gutters-{grid_units_class_name} > *:not(:last-child)
     margin-right gd(grid_units)
 
   .gutters-{grid_units_class_name} > *
@@ -33,13 +83,24 @@ generate_gutter_classes(grid_units)
 generate_gutter_classes(i) for i in 0.25 0.5 0.75
 generate_gutter_classes(i) for i in 1..5
 
-grid_units_per_column = 3
 
-[class*="cols"]
-  margin-left gd(1)
+.frame > [class*="col"] + [class*="col"]
+  padding-left gd(1)
 
-for i in 1..10
-  .cols-{i}
-    width gd(i*grid_units_per_column)
+[class*="col"]
+  display inline-block
+  & + [class*="col"]
+    margin-left gd(1)
+
+
+.float-right
+  float right
+
+.span
+  width 100%
+for n in 1..14
+  .span-{n}
+  .col-{n}
+    width cols(n)
 
 

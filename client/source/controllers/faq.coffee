@@ -1,1 +1,2 @@
-controller_faq = ()->
+controller_faq = ($scope)->
+  $scope.faqs = faqs

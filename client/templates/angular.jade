@@ -1,15 +1,16 @@
-.navbar
-  .navbar-inner
-    a.brand(ng-href="/directory") CO2R
-    ul.nav
-      li: a(ng-href="/about") Our mission
-      li: a(ng-href="/faq") FAQ
-      li: a Give us feedback
-      li: a(ng-href="/register-your-product") Register your product
-      li: a(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
+ul.navbar.nav.frame.span.aligns-middle
+  div.row.h-gutters-1.aligns-middle
+    li: h3: a.brand(ng-href="/directory") CO2R
+    li: a(ng-href="/about") Our mission
+    li: a(ng-href="/faq") FAQ
+    li: a Give us feedback
+  div
+    .jar.row.h-gutters-1.align-right
+      li: a.btn(ng-href="/register-your-product") Register your product
+      li: a.btn(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
 #app-content(ng-view)
 footer.app-footer.row.dark-theme
-  ul.span4
+  ul.nav.span-4
     li: a Our mission
     li: a FAQ
     li: a Register your product
@@ -22,6 +23,6 @@ footer.app-footer.row.dark-theme
     p lorem
 
   .vintage-box-models
-    button.btn.btn-primary(ng-click="preferences.restore_defaults()")
+    button.btn(ng-click="preferences.restore_defaults()")
       span.icon-undo
       |  Restore defaults

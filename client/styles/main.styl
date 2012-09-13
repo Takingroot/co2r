@@ -1,34 +1,22 @@
 @import "../../lib/client/styles"
+@import "variables"
 
-dark = hsl(0,0,18%)
-grey = hsl(0,0,90%)
 
 #app-content
-  padding gd(2) 0
+  background-color white
+
+html
+  background-color dark
+
+.navbar
+  padding gd(.25) gd(1)
 
 .introduction-container
-  padding gd(2) 0
+  margin-top gd(2)
+  padding 0 gd(2)
 
 .introduction-figure
   rectangle(gd(20) gd(10))
-
-.artifact-cards
-  padding 0 gd(2)
-
-.artifact-card
-  width gd(16)
-
-  > *
-    square(gd(8))
-
-.artifact-card-info
-  padding 0 gd(.5)
-
-.a-container
-  border 1px solid grey
-
-[class*="a-image"]
-  border 1px dashed grey
 
 .a-image-160
   height gd(8)
@@ -36,15 +24,6 @@ grey = hsl(0,0,90%)
 .dark-theme
   background-color dark
 
-.app-footer
-  margin-top gd(1)
-
-
-.align-center
-  text-align center
-
-.align-left
-  text-align left
-
-.align-right
-  text-align right
+.form-search
+  margin-top gd(2)
+  margin-bottom gd(2)

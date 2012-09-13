@@ -1,4 +1,4 @@
-window.CO2R = angular.module('meteorapp', [])
+window.CO2R = angular.module('meteorapp', ['ngSanitize'])
 
 config_routes()
 
