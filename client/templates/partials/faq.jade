@@ -1,14 +1,10 @@
-.frame
-  aside.table-of-contents(style="background-color:#dceaf4;width:40%;")
-    ul.nav.jar.align-right(style="list-style:none;")
+.frame.span
+  aside.faq-table-of-contents
+    ul.nav.jar.align-right
       li(ng-repeat="faq in faqs"): a(href="#", ng-bind="faq.question")
   div
-    .faqs.span-8
+    .faqs.span-8.v-gutters-3
       article(ng-repeat="faq in faqs")
         header.question
           h1(ng-bind="faq.question")
         .answer(ng-bind-html="faq.answer")
-
-
-
-
