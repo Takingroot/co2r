@@ -1,8 +1,12 @@
 @import "../../lib/client/styles"
 @import "variables"
-[class*="span"]
+
+.frame
+.frame > *
 [class*="col"]
   border 1px solid grey
+  .dark-theme &
+    border 1px solid dark + 20
 
 [class*="a-image"]
   border 1px dashed grey

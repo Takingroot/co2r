@@ -11,18 +11,20 @@ body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-table-of-con
         li: a.btn(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
   #app-content(ng-view)
   footer.app-footer.dark-theme
-    .row
+    .frame.span
       ul.nav.span-4
         li: a Our mission
         li: a FAQ
         li: a Register your product
         li: a Other things you can do to help
-      .sponsors.span4
-        h3 Caisse d'economie solidaire
-        p lorem
-      .company.span4
-        h3 Taking Root
-        p lorem
+      div
+        .jar.row.h-gutters-2.align-right
+          .sponsors.span4
+            h3 Caisse d'economie solidaire
+            p lorem
+          .company.span4
+            h3 Taking Root
+            p lorem
 
     br
     br
