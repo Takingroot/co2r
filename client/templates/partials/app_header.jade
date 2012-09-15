@@ -1,0 +1,13 @@
+ul.app-navbar.frame.span.aligns-middle
+  div.row.h-gutters-1.aligns-middle
+    li: h3: a(ng-href="/directory") CO2R
+    li: a(ng-href="/about") Our mission
+    li: a(ng-href="/faq", popover="{title:'test',content:'moo',trigger:'hover'}") FAQ
+    li: a Give us feedback
+  div
+    .jar.row.h-gutters-1.align-right
+      li: a.btn(ng-href="/register-your-product") Register your product
+      li: a.btn(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
+      li
+        button.btn(ng-click="preferences.restore_defaults()", tooltip="{title:'Restore preferences',placement:'left'}")
+          span.icon-undo

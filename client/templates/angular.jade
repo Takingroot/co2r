@@ -1,35 +1,4 @@
 body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-table-of-contents")
-  ul.app-navbar.frame.span.aligns-middle
-    div.row.h-gutters-1.aligns-middle
-      li: h3: a(ng-href="/directory") CO2R
-      li: a(ng-href="/about") Our mission
-      li: a(ng-href="/faq") FAQ
-      li: a Give us feedback
-    div
-      .jar.row.h-gutters-1.align-right
-        li: a.btn(ng-href="/register-your-product") Register your product
-        li: a.btn(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
+  ng-include(src="'/partials/app_header.html'")
   #app-content(ng-view)
-  footer.app-footer.dark-theme
-    .frame.span
-      ul.nav.span-4
-        li: a Our mission
-        li: a FAQ
-        li: a Register your product
-        li: a Other things you can do to help
-      div
-        .jar.row.h-gutters-2.align-right
-          .sponsors.span4
-            h3 Caisse d'economie solidaire
-            p lorem
-          .company.span4
-            h3 Taking Root
-            p lorem
-
-    br
-    br
-    br
-    .vintage-box-models
-      button.btn(ng-click="preferences.restore_defaults()")
-        span.icon-undo
-        |  Restore defaults
+  ng-include(src="'/partials/app_footer.html'")
