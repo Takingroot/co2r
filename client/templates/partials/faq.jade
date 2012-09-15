@@ -1,10 +1,11 @@
 .frame.span
   aside.faq-table-of-contents
-    ul.nav.jar.align-right
-      li(ng-repeat="faq in faqs"): a(href="#", ng-bind="faq.question")
+    ul.nav.nav-pills.nav-stacked.align-right(ui-scrollfix="62")
+      li(ng-repeat="faq in faqs")
+        a(ng-href="#\{{faq.question | inflector:'underscore'}}", ng-bind="faq.question", smooth-scroll)
   div
     .faqs.span-8.v-gutters-3
-      article(ng-repeat="faq in faqs")
+      article(id="{{faq.question | inflector:'underscore'}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
           h1(ng-bind="faq.question")
         .answer(ng-bind-html="faq.answer")
