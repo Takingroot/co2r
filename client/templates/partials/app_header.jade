@@ -3,7 +3,7 @@ ul.app-navbar.frame.span.aligns-middle
     li: h3: a(ng-href="/directory") CO2R
     li: a(ng-href="/about") Our mission
     li: a(ng-href="/faq") FAQ
-    li: a Give us feedback
+    li: a(popover="{content_src:'/partials/form_feedback.html', placement:'bottom'}") Give us feedback
   div
     .jar.row.h-gutters-1.align-right
       li: a.btn(ng-href="/register-your-product") Register your product
