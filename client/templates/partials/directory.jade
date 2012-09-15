@@ -19,7 +19,7 @@ form.form-search.vintage-box-models.jar.align-center
 
 .artifact-cards.row.gutters-05
 
-  .artifact-card.frame(ng-repeat="artifact in artifacts | filter:{name:(artifact_name||'')}")
+  a.artifact-card.frame(href="{{artifact.name | inflector:'underscore'}}", ng-repeat="artifact in artifacts | filter:{name:(artifact_name||'')}")
     .artifact-card-image.span-2.a-image-160
     .artifact-card-info.span-2
       h4
