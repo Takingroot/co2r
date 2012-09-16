@@ -1,15 +1,31 @@
-section.gallery
-section.about
-  header
-    h1 Santrapool Coffee
-    h4 Offset since 2008
-  .story
-    p A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+.span-10.align-center.v-push-3
+  section.gallery.a-image.span-10(style="height:200px;")
+  section.about.v-push-2
+    header
+      h1 {{artifact.name}}
+      h4 Offset since {{artifact.offset_since}}
+    .row.v-push-1
+      .description.span-6
+        .story(ng-bind-html="artifact.description")
+        small: a.aligns-middle(href="/about")
+          i.icon-pushpin
+          span Learn more about the CO2R platform
 
-  .business-card
+      .business-card.h-push-2
+        .avatar
+        h4.company-namy {{artifact.owner.name}}
+        p Get in touch:
+        ul.row: li(ng-repeat="contact_link in artifact.owner.contact_links")
+          //- TODO mailto fails without handling special case of email links
+          h3: a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
 
-section.reports
-  header
-    h1 Footprint summary
 
 
+  section.reports.v-push-5
+    header(style="text-align:center;")
+      h1 Footprint Summary
+br
+br
+br
+br
+br
