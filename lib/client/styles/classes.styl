@@ -7,11 +7,20 @@
   @extends .table
   position relative
 
+.table-cell
+  display table-cell
+  vertical-align top
+
 .frame
   @extends .table
   & > *
-    display table-cell
-    vertical-align top
+    @extends .table-cell
+
+  // table with multiple rows
+  & > .table-row
+    display table-row
+    & > *
+      @extends .table-cell
 
 .row > *
   display inline-block
@@ -49,6 +58,11 @@
 .align-middle
   vertical-align middle
 
+.aligns-bottom > *
+.align-bottom
+  vertical-align bottom
+
+
 
 //
 //  Positioning
@@ -78,7 +92,7 @@ generate_gutter_classes(grid_units)
     margin-top gd(grid_units)
 
   .h-push-{grid_units_class_name}
-    margin-left cols(grid_units)
+    margin-left cols(grid_units)!important
 
 
 generate_gutter_classes(i) for i in 0.25 0.5 0.75
