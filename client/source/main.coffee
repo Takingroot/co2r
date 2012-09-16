@@ -14,6 +14,7 @@ CO2R.directive 'popover',       directive_popover
 CO2R.directive 'anchorable',    directive_anchorable
 CO2R.directive 'tooltip',       directive_tooltip
 CO2R.directive 'smoothScroll',  directive_smooth_scroll
+CO2R.directive 'tab',           directive_tab
 CO2R.factory 'preferencesStorage', service_preferences_storage
 
 #CO2R.run ($rootScope)->
