@@ -5,7 +5,7 @@
         a(ng-href="#\{{faq.question | inflector:'underscore'}}", ng-bind="faq.question", smooth-scroll)
   div
     .faqs.span-8.v-gutters-3
-      article(id="{{faq.question | inflector:'underscore'}}", ng-repeat="faq in faqs", spyscrollable)
+      article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
           h1(ng-bind="faq.question")
         .answer(ng-bind-html="faq.answer")
