@@ -1,23 +1,24 @@
-.span-10.align-center.v-push-3
+.jar.align-center.v-push-3
   section.gallery.a-image.span-10(style="height:200px;")
   section.about.v-push-2
     header
       h1 {{artifact.name}}
       h4 Offset since {{artifact.offset_since}}
-    .row.v-push-1
+    .row.v-push-1.clearfix
       .description.span-6
         .story(ng-bind-html="artifact.description")
         small: a.aligns-middle(href="/about")
           i.icon-pushpin
           span Learn more about the CO2R platform
 
-      .business-card.h-push-2
-        .avatar
-        h4.company-namy {{artifact.owner.name}}
-        p Get in touch:
-        ul.row: li(ng-repeat="contact_link in artifact.owner.contact_links")
-          //- TODO mailto fails without handling special case of email links
-          h3: a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
+      .business-card.row.h-gutters-1.float-right
+        .avatar.a-image(style="width:100px;height:100px;")
+        .jar
+          h4.company-namy.unspaced(style="min-height:45px;") {{artifact.owner.name}}
+          p Get in touch:
+          ul.row.unstyled: li(ng-repeat="contact_link in artifact.owner.contact_links")
+            //- TODO mailto fails without handling special case of email links
+            h3.unspaced: a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
 
 
 
