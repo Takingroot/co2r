@@ -52,8 +52,7 @@ artifacts = [
     offset_since: 2010
     owner:
       name: "North Bean"
-      contact_links:[
-        { type: "email", email: "contact@ndp.ca" }]
+      contact_links:[]
     annual_data:
       2012:
         co2_per_unit: 0.0017

@@ -1,11 +1,18 @@
-@import helpers
+@import "../helpers"
+
+//
+//  Layout
+//  ------------------------------------------------------------------
 
 .table
   display table
 
+.group
+  position relative
+
 .jar
   @extends .table
-  position relative
+  @extends .group
 
 .table-cell
   display table-cell
@@ -30,49 +37,9 @@
 .row > .frame
   display inline-table
 
-
-
-
-//
-//  Layout
-//  ------------------------------------------------------------------
-
 //
 //  Fluid
 //  ------------------------------------------------------------------
-
-//
-//  Alignment
-//  ------------------------------------------------------------------
-
-.aligns-center > *
-.align-center
-  margin-left auto
-  margin-right auto
-
-.aligns-right > *
-.align-right
-  margin-left auto!important
-
-.aligns-middle > *
-.align-middle
-  vertical-align middle
-
-.aligns-bottom > *
-.align-bottom
-  vertical-align bottom
-
-.text-aligns-center > *
-.text-align-center
-  text-align center
-
-//
-//  Positioning
-//  ------------------------------------------------------------------
-
-.stick-right
-  position absolute
-  right 0
 
 //
 //  .v-gutters
