@@ -1,0 +1,3 @@
+ul.unstyled
+  li(class="{{co2_comparison.type | slugify}}", ng-repeat="co2_comparison in data.co2_comparisons")
+    | {{co2_comparison.phrase}} {{(amount / co2_comparison.amount).floor(2)}} {{co2_comparison.unit}}

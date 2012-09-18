@@ -1,4 +1,4 @@
-directive_popover =  ($http, $compile)->
+directive_popover =  ($http, $compile, $interpolate)->
   (scope, el, attrs)->
     # setup
     attrs.$observe 'popover', ->
@@ -10,7 +10,8 @@ directive_popover =  ($http, $compile)->
           config.content = $compile(template_string)(scope)
           el.popover config
       else
-          el.popover config
+        config.content = $compile(config.content)(scope)
+        el.popover config
 
     # teardown
     # TODO this breaks partials e.g. outside ng-view that don't get reloaded on route changes

@@ -1,4 +1,5 @@
 AppController = ($scope, preferencesStorage, $rootScope, $location)->
+  $scope.$root.data = data
   $scope.$root.app_title   = "CO2R"
   $scope.$root.preferences = preferencesStorage
 
