@@ -1,6 +1,8 @@
 filter_unit = ->
   (input, type)->
     switch type
+      when 't'
+        return "#{input} t"
       when 'kg'
         return "#{input*1000} kg"
 

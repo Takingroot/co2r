@@ -3,7 +3,7 @@ artifacts = [
     name: "Santrapol Coffee"
     slug: "santrapol-coffee"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
-    unit_measure: "weight"
+    unit_measure: "kg"
     co2_per_unit_phrase: "1 kg coffee"
     offset_since: 2008
     owner:
@@ -31,7 +31,7 @@ artifacts = [
     name: "NDP Office"
     slug: "ndp-office"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
-    unit_measure: "time"
+    unit_measure: "day"
     co2_per_unit_phrase: "1 day"
     offset_since: 2001
     owner:
@@ -47,7 +47,7 @@ artifacts = [
     name: "North Bean Coffee"
     slug: "north-bean-coffee"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
-    unit_measure: "weight"
+    unit_measure: "kg"
     co2_per_unit_phrase: "1 kg coffee"
     offset_since: 2010
     owner:

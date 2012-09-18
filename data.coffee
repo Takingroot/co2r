@@ -1,4 +1,7 @@
 data =
+  defaults:
+    co2_per_unit_unit: 'kg'
+
   co2_comparisons: [
     {
       phrase: 'Driving'
