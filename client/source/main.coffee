@@ -15,6 +15,39 @@ CO2R.directive 'anchorable',    directive_anchorable
 CO2R.directive 'tooltip',       directive_tooltip
 CO2R.directive 'smoothScroll',  directive_smooth_scroll
 CO2R.directive 'tab',           directive_tab
+
+CO2R.directive 'carouselItem',  ->
+  restrict: "E"
+  require: "^carousel"
+  transclude: on
+  replace: on
+  template: """
+    <div class="item">
+      <img style="min-height:200px;" ng-src="{{src}}" >
+      <div class="carousel-caption", ui-if="caption", ng-bind-html="caption"></div>
+    </div>
+  """
+  link: (scope, el, attrs, carousel)->
+
+    attrs.$observe 'caption', -> scope.caption = attrs.caption
+    attrs.$observe 'src',     -> scope.src = attrs.src
+    carousel.register_slide el
+
+CO2R.directive 'carousel',      ->
+  restrict: "E"
+  transclude: on
+  replace: on
+  controller: ($element)->
+    slides = []
+    @register_slide = (new_slide)->
+      slides.push new_slide
+      $element.carousel()
+  template: """
+    <div class="carousel" ng-transclude>
+    </div>
+  """
+
+
 CO2R.directive 'co2Contrasted',           ($interpolate)->
   restrict: "E"
   transclude: on
