@@ -7,6 +7,7 @@ artifacts = [
     co2_per_unit_phrase: "1 kg coffee"
     offset_since: 2008
     images: []
+    thumbnail_src: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     owner:
       name: "Santrapol"
       logo_src: "http://co2r.com/santropol/images_santropol/santropol_logo.gif"
@@ -37,6 +38,7 @@ artifacts = [
     co2_per_unit_phrase: "1 day"
     offset_since: 2001
     images: []
+    thumbnail_src: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     owner:
       name: "NDP"
       logo_src: "http://co2r.com/boulerice/images_boulerice/boulerice_logo2.jpg"
@@ -54,6 +56,7 @@ artifacts = [
     unit_measure: "kg"
     co2_per_unit_phrase: "1 kg coffee"
     offset_since: 2010
+    thumbnail_src: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     images: []
     owner:
       name: "North Bean"
@@ -70,6 +73,7 @@ artifacts = [
     unit_measure: "kg"
     co2_per_unit_phrase: "1 day at the office"
     offset_since: 2010
+    thumbnail_src: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     images: [
       {
         src: "http://www.takingroot.org/wp-content/uploads/2010/11/Nica08_054.jpg"

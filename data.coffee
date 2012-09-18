@@ -2,6 +2,7 @@ data =
 
   srcs:
     logo: "http://co2r.com/images/co2_emblem_service.gif"
+    introduction_figure: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
 
   defaults:
     co2_per_unit_unit: 'kg'

@@ -8,7 +8,7 @@ CO2R.config(['$locationProvider', ($locationProvider)->
 
 CO2R.filter "unit", filter_unit
 CO2R.filter "to_icon_name", filter_to_icon_name
-CO2R.filter "slugify", filter_to_icon_name
+CO2R.filter "slugify", filter_slugify
 
 CO2R.directive 'spyscrollable', directive_spyscrollable
 CO2R.directive 'popover',       directive_popover
