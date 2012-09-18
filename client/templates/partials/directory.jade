@@ -25,5 +25,5 @@ form.form-search.vintage-box-models.jar.align-center
       h4
         | {{artifact.co2_per_unit_phrase}}
         br
-        | {{artifact.annual_data.2012.co2_per_unit | unit:"kg" }}
+        co2-contrasted(amount="{{artifact.annual_data.2012.co2_per_unit}}")
       p {{artifact.name}}
