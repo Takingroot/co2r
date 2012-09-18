@@ -1,7 +1,7 @@
 .jar.align-center.v-push-3
 
   .gallery.span-10.group(ui-if="artifact.images.length")
-    carousel.slide
+    carousel.slide(style="min-height:380px;")
       carousel-item.span-10(ng-repeat="image in artifact.images", src="{{image.src}}", caption="{{image.caption}}")
     .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
       h4.unspaced

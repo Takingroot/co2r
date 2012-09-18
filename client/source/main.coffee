@@ -9,67 +9,16 @@ CO2R.config(['$locationProvider', ($locationProvider)->
 CO2R.filter "unit", filter_unit
 CO2R.filter "to_icon_name", filter_to_icon_name
 CO2R.filter "slugify", filter_to_icon_name
+
 CO2R.directive 'spyscrollable', directive_spyscrollable
 CO2R.directive 'popover',       directive_popover
 CO2R.directive 'anchorable',    directive_anchorable
 CO2R.directive 'tooltip',       directive_tooltip
 CO2R.directive 'smoothScroll',  directive_smooth_scroll
 CO2R.directive 'tab',           directive_tab
-
-CO2R.directive 'carouselItem',  ->
-  restrict: "E"
-  require: "^carousel"
-  transclude: on
-  replace: on
-  template: """
-    <div class="item">
-      <img style="min-height:200px;" ng-src="{{src}}" >
-      <div class="carousel-caption", ui-if="caption", ng-bind-html="caption"></div>
-    </div>
-  """
-  link: (scope, el, attrs, carousel)->
-
-    attrs.$observe 'caption', -> scope.caption = attrs.caption
-    attrs.$observe 'src',     -> scope.src = attrs.src
-    carousel.register_slide el
-
-CO2R.directive 'carousel',      ->
-  restrict: "E"
-  transclude: on
-  replace: on
-  controller: ($element)->
-    slides = []
-    @register_slide = (new_slide)->
-      slides.push new_slide
-      $element.carousel()
-  template: """
-    <div class="carousel" ng-transclude>
-    </div>
-  """
-
-
-CO2R.directive 'co2Contrasted',           ($interpolate)->
-  restrict: "E"
-  transclude: on
-  replace: on
-  template: """
-    <span class="aligns-middle co2-contrasted" popover="{content_src: 'partials/list_co2_comparisons.html', trigger: 'hover'}">
-      {{amount | unit:amount_unit}}
-      <i class="icon-cloud"></i>
-    </span>
-  """
-  link: (scope, el, attrs)->
-    # @unit
-    if attrs.hasOwnProperty 'unit'
-      attrs.$observe 'unit', -> scope.amount_unit = attrs.unit
-    else
-      scope.amount_unit = data.defaults.co2_per_unit_unit
-
-    # @amount
-    attrs.$observe 'amount', ->
-      scope.amount = attrs.amount
-
-
+CO2R.directive 'carousel',      directive_carousel
+CO2R.directive 'carouselItem',  directive_carousel_item
+CO2R.directive 'co2Contrasted', directive_co2_contrasted
 
 CO2R.factory 'preferencesStorage', service_preferences_storage
 
