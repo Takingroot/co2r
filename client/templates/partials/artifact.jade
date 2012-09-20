@@ -37,15 +37,30 @@
 section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
     h1 Footprint Summary Reports
-    .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
-      a: i.icon-arrow-left.pull-left(ng-show="can_move_timeline('prev')", style="margin-left:20px;",    ng-click="timeline_move('prev')")
-      a: i.icon-arrow-right.pull-right(ng-show="can_move_timeline('next')", style="margin-right:20px;", ng-click="timeline_move('next')")
-  timeline(column-width="{{column_width}}", column-count="{{artifact.reports.length}}")
-    .years.row(style="white-space:nowrap;")
-      h5.a-image.year.text-align-center(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
-    .co2-per-unit-chart.row.text-align-center.v-push-2
-      div(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
-        h3: co2_contrasted(amount="{{report.co2_per_unit}}")
+
+  timeline-conductor(style="white-space:nowrap;", column-width="{{column_width}}", column-count="{{artifact.reports.length}}", ui-scrollfix="+0")
+
+      section.timeline-header.span.scrollfix-fixed(ui-scrollfix="+0")
+        .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
+          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(ng-show="can_move_timeline('prev')", style="margin-left:20px;",    ng-click="timeline_move('prev')")
+          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('next')", style="margin-right:20px;", ng-click="timeline_move('next')")
+        timeline-slider
+          .row: h5.unspaced.a-image.year.text-align-center(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
+
+      section.report-section
+        header: h2.text-align-center Co2 per 1 kg coffee
+
+      section.report-section
+        header: h2.text-align-center Co2 for all coffee bags produced - vs - Co2 offset
+        timeline-slider
+          .row.text-align-center: div(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+            h3: co2_contrasted(amount="{{report.co2_per_unit}}")
+
+      section.report-section
+        header: h2.text-align-center Co2 Sources
+
+      section.report-section
+        header: h2.text-align-center Supplementary Environmental actions
 br
 br
 br

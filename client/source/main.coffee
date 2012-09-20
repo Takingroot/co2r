@@ -19,18 +19,36 @@ CO2R.directive 'tab',           directive_tab
 CO2R.directive 'carousel',      directive_carousel
 CO2R.directive 'carouselItem',  directive_carousel_item
 CO2R.directive 'co2Contrasted', directive_co2_contrasted
-CO2R.directive 'timeline',      ($window)->
+CO2R.directive 'timelineSlider', ->
+  restrict:   "E"
+  require:    "^timelineConductor"
+  transclude: on
+  replace:    on
+  template: """
+    <div class="timeline-slider-window" style='overflow:hidden'>
+      <div class="timeline-slider jar align-center" ng-transclude></div>
+    </div>
+  """
+  link: (scope, el, attrs, timeline)->
+    timeline.register_slider el.children('.timeline-slider')
+
+
+CO2R.directive 'timelineConductor',      ->
   restrict: "E"
   replace: on
   transclude: on
-  template: "
-    <div class='timeline-window' style='overflow:hidden'>
-      <div class='timeline jar align-center' ng-transclude></div>
-    </div>
-  "
+  controller: ($scope)->
+    $scope.slider = $()
+
+    @register_slider = (new_slider)->
+      #console.log 'adding new slider', new_slider, 'into', $scope.slider
+      $scope.slider = $scope.slider.add(new_slider)
+
+  template: "<div class='timeline-conductor' ng-transclude></div>"
   link: (scope, el, attrs)->
 
-    tl = el.children('.timeline')
+    conductor = el
+    slider      = scope.slider
     ci = 1
 
     #
@@ -43,14 +61,14 @@ CO2R.directive 'timeline',      ($window)->
       if ci is 1
         return no
 
-      empty_width = el.width() - remaining_timline_width_in_tl_window()
+      empty_width = conductor.width() - remaining_timline_width_in_tl_window()
 
       # tell us anser to: enough empty width for 1 column?
       empty_width > attrs.columnWidth
 
     last_column_is_within_timeline_window = ->
-      is_last_column_within_window = remaining_timline_width_in_tl_window() < el.width()
-      #console.log('is last column within timeline-window?', 'remaining width is', remaining_timline_width_in_tl_window() , ' | tl-window width is', el.width(), 'therefore:', is_last_column_within_window)
+      is_last_column_within_window = remaining_timline_width_in_tl_window() < conductor.width()
+      #console.log('is last column within timeline-window?', 'remaining width is', remaining_timline_width_in_tl_window() , ' | tl-window width is', conductor.width(), 'therefore:', is_last_column_within_window)
       is_last_column_within_window
 
     remaining_timline_width_in_tl_window = ->
@@ -59,7 +77,7 @@ CO2R.directive 'timeline',      ($window)->
 
 
     current_timeline_x = ->
-      parseInt(tl.css('margin-left'))
+      parseInt(slider.css('margin-left'))
 
     #
     # high-level questions
@@ -72,8 +90,8 @@ CO2R.directive 'timeline',      ($window)->
 
     scope.can_move_timeline = (direction)->
 
-      #console.log 'timeline width is ', tl.width() ,'| timeline-window width is ', el.width(), 'therefore could the timeline move?', not (tl.width() < el.width())
-      if tl.width() < el.width()
+      #console.log 'timeline width is ', tl.width() ,'| timeline-window width is ', condutor.width(), 'therefore could the timeline move?', not (tl.width() < el.width())
+      if slider.width() < conductor.width()
         return no
 
       #console.log 'current index is ', ci, 'within a limit of ', parseInt(attrs.columnCount)
@@ -88,15 +106,17 @@ CO2R.directive 'timeline',      ($window)->
     # actions
     #
     scope.timeline_move = (direction)->
+      #console.log "checking if can move timeline in direction:", direction
+
       if direction is 'prev'
         new_x = current_timeline_x() + parseInt(attrs.columnWidth)
         #console.log 'go backward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
-        tl.css 'margin-left', new_x || ''
+        slider.css 'margin-left', new_x || ''
         ci -= 1
       else
         new_x = current_timeline_x() - parseInt(attrs.columnWidth)
         #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
-        tl.css 'margin-left', new_x
+        slider.css 'margin-left', new_x
         ci += 1
 
 

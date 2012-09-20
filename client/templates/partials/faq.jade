@@ -1,6 +1,6 @@
 .frame.span
   aside.faq-table-of-contents
-    ul.nav.nav-pills.nav-stacked.align-right(ui-scrollfix="62")
+    ul.nav.nav-pills.nav-stacked.align-right.scrollfix-fixed(ui-scrollfix="62")
       li(ng-repeat="faq in faqs")
         a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
   div
