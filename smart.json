@@ -1,5 +1,7 @@
 {
   "packages": {
-    "jasonkuhrt_angularjs": {"path":"/Users/jasonkuhrt/code/Meteor_angularjs"}
+    "jasonkuhrt_angularjs": {
+      "path": "/Users/jasonkuhrt/code/Meteor_angularjs"
+    }
   }
 }

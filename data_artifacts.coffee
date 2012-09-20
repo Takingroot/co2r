@@ -11,7 +11,7 @@ artifacts = [
     owner:
       name: "Santrapol"
       logo_src: "http://co2r.com/santropol/images_santropol/santropol_logo.gif"
-      contact_links:[
+      contact_methods:[
         {
           type: "email"
           link: "contact@santrapolcoffee.ca"
@@ -25,9 +25,7 @@ artifacts = [
           link: "contact@santrapolcoffee.ca"
         }]
 
-    annual_data:
-      2012:
-        co2_per_unit: 0.00152
+    reports: []
   }
 
   {
@@ -42,11 +40,34 @@ artifacts = [
     owner:
       name: "NDP"
       logo_src: "http://co2r.com/boulerice/images_boulerice/boulerice_logo2.jpg"
-      contact_links:[
+      contact_methods: [
         { type: "email", email: "contact@ndp.ca" }]
-    annual_data:
-      2012:
+    reports: [
+      {
+        year: '2012'
         co2_per_unit: 0.0305
+      }
+      {
+        year: '2011'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2010'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2009'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2008'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2007'
+        co2_per_unit: 0.0305
+      }
+    ]
   }
 
   {
@@ -61,10 +82,8 @@ artifacts = [
     owner:
       name: "North Bean"
       logo_src: "http://co2r.com/beannorth/images_bn/beannorth_logo.gif"
-      contact_links:[]
-    annual_data:
-      2012:
-        co2_per_unit: 0.0017
+      contact_methods:[]
+    reports: []
   }
   {
     name: "Taking Root"
@@ -91,9 +110,32 @@ artifacts = [
     owner:
       name: "Taking Root"
       logo_src: "http://www.takingroot.org/wp-content/themes/titan2011/images/tr_logo.gif"
-      contact_links: []
-    annual_data:
-      2012:
-        co2_per_unit: 0.04
+      contact_methods: []
+    reports: [
+      {
+        year: '2012'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2011'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2010'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2009'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2008'
+        co2_per_unit: 0.0305
+      }
+      {
+        year: '2007'
+        co2_per_unit: 0.0305
+      }
+    ]
   }
 ]

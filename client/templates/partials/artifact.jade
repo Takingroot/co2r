@@ -26,17 +26,26 @@
             img(src="{{artifact.owner.logo_src}}")
           .jar
             h4.company-namy.unspaced(style="min-height:45px;") {{artifact.owner.name}}
-            .contact(ui-if="artifact.owner.contact_links.length > 0")
+            .contact(ui-if="artifact.owner.contact_methods.length > 0")
               p Get in touch:
-              ul.row.unstyled: li(ng-repeat="contact_link in artifact.owner.contact_links")
+              ul.row.unstyled: li(ng-repeat="contact_link in artifact.owner.contact_methods")
                 //- TODO mailto fails without handling special case of email links
                 h3.unspaced(style="line-height:0;"): a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
 
 
 
-  section.reports.v-push-5
-    header(style="text-align:center;")
-      h1 Footprint Summary
+section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
+  header(style="text-align:center;")
+    h1 Footprint Summary Reports
+    .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
+      a: i.icon-arrow-left.pull-left(ng-show="can_move_timeline('prev')", style="margin-left:20px;",    ng-click="timeline_move('prev')")
+      a: i.icon-arrow-right.pull-right(ng-show="can_move_timeline('next')", style="margin-right:20px;", ng-click="timeline_move('next')")
+  timeline(column-width="{{column_width}}", column-count="{{artifact.reports.length}}")
+    .years.row(style="white-space:nowrap;")
+      h5.a-image.year.text-align-center(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
+    .co2-per-unit-chart.row.text-align-center.v-push-2
+      div(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+        h3: co2_contrasted(amount="{{report.co2_per_unit}}")
 br
 br
 br
