@@ -77,6 +77,7 @@ CO2R.directive 'timelineConductor',      ->
       #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
 
 
+    # TODO come up with a better function name
     window.auto_shift = ->
       scope.move_timeline("+#{enough_room_for_how_many_columns()}")
 
@@ -98,7 +99,9 @@ CO2R.directive 'timelineConductor',      ->
 
       available_width = conductor.width() - slider_width_on_left_side()
 
-      Math.floor available_width / attrs.columnWidth
+      enough_room_for_columns = if available_width > 0 then Math.floor(available_width / attrs.columnWidth) else 0
+      console.log 'enough room for', enough_room_for_columns, 'column(s)'
+      enough_room_for_columns
 
 
     last_index = ->
