@@ -114,28 +114,28 @@ artifacts = [
       contact_methods: []
     reports: [
       {
-        year: '2012'
+        year: 2012
         co2_per_unit: 0.0305
       }
       {
-        year: '2011'
-        co2_per_unit: 0.0305
+        year: 2011
+        co2_per_unit: 0.04
       }
       {
-        year: '2010'
-        co2_per_unit: 0.0305
+        year: 2010
+        co2_per_unit: 0.045
       }
       {
-        year: '2009'
-        co2_per_unit: 0.0305
+        year: 2009
+        co2_per_unit: 0.044
       }
       {
-        year: '2008'
-        co2_per_unit: 0.0305
+        year: 2008
+        co2_per_unit: 0.05
       }
       {
-        year: '2007'
-        co2_per_unit: 0.0305
+        year: 2007
+        co2_per_unit: 0.07
       }
     ]
   }
