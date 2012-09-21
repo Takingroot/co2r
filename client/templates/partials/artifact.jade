@@ -42,10 +42,11 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
 
       section.timeline-header.span.scrollfix-fixed(ui-scrollfix="+0")
         .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
-          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(ng-show="can_move_timeline('prev')", style="margin-left:20px;",    ng-click="timeline_move('prev')")
-          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('next')", style="margin-right:20px;", ng-click="timeline_move('next')")
+          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
+          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
         timeline-slider
-          .row: h5.unspaced.a-image.year.text-align-center(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
+          .row
+            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
 
       section.report-section
         header: h2.text-align-center Co2 per 1 kg coffee
@@ -53,8 +54,9 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
       section.report-section
         header: h2.text-align-center Co2 for all coffee bags produced - vs - Co2 offset
         timeline-slider
-          .row.text-align-center: div(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
-            h3: co2_contrasted(amount="{{report.co2_per_unit}}")
+          .row.text-align-center
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+              h3: co2_contrasted(amount="{{report.co2_per_unit}}")
 
       section.report-section
         header: h2.text-align-center Co2 Sources
