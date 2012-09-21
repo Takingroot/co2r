@@ -50,14 +50,10 @@ CO2R.directive 'timelineConductor',      ->
     conductor = el
     c_index   = 0
 
-
     attrs.$observe 'columnCount', ->
-      #console.log scope.can_move_timeline(2)
       c_index = 0
-      #console.log c_index
       scope.move_timeline(c_index)
       auto_shift()
-
 
     $(window).resize ->
       # we need to apply because window resizing could potentially change whether or not we need to show navigation arrows
@@ -65,62 +61,63 @@ CO2R.directive 'timelineConductor',      ->
       auto_shift()
 
 
+
+    #
+    # actions
+    #
+
+    window.move_timeline = scope.move_timeline = (to_index)->
+      new_index = restrict_index_to_bounds(normalize_index(to_index))
+      #console.log 'move to index:', new_index
+      c_index   = new_index
+      scope.slider.css 'margin-left', position_for_index(new_index) || ''
+
+      #console.log "checking if can move timeline in direction:", direction
+      #console.log 'go backward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
+      #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
+
+
     window.auto_shift = ->
-      if there_is_enough_room_for_another_column()
-        scope.move_timeline('+1')
-        auto_shift()
-        #console.log('empty width is', empty_width, ' and 1 column width is', attrs.columnWidth)
-    #
-    # measurement questions
-    #
-
-    window.there_is_enough_room_for_another_column = ->
-      # 'if' optimization
-      # if we are at the beginning of the timeline there simply are no columns to shift over
-      if at_timeline_end()
-        return no
-
-      slider_width_on_left_side = ->
-        (c_index+1) * attrs.columnWidth
-
-      available_width = conductor.width() - slider_width_on_left_side()
-
-      # tell us anser to: enough empty width for 1 column?
-      available_width > attrs.columnWidth
-
+      scope.move_timeline("+#{enough_room_for_how_many_columns()}")
 
 
     #
     # utilities
     #
 
-    ###
-    current_timeline_x = ->
-      columns_behind_c_index = attrs.columnCount - c_index
-      #console.log 'columns behind current index', columns_behind_c_index
-      current_x = columns_behind_c_index * attrs.columnWidth
-      current_x
-    ###
 
-    #last_column_is_viewable = ->
-      #position_for_index(0) >= 0
+    window.enough_room_for_how_many_columns = ->
+      # 'if' optimization
+      # if we are at the beginning of the timeline there simply are no columns to shift over
+      if at_timeline_end()
+        return no
 
-    #get_el_for_index = (for_index)->
-      #scope.slider.first().find(".timeline-item").eq((attrs.columnCount - 1) - for_index)
+      slider_width_on_left_side = ->
+        # we need to add 1 because we're interested in the _count_ of indexes up to and including current index in order to get the full width
+        (c_index+1) * attrs.columnWidth
+
+      available_width = conductor.width() - slider_width_on_left_side()
+
+      Math.floor available_width / attrs.columnWidth
+
 
     last_index = ->
       attrs.columnCount - 1
 
+
     at_timeline_start = ->
       c_index is 0
+
 
     window.position_for_index = (index)->
       pos_x = -1 * (last_index() - index) * attrs.columnWidth
       #console.log 'pos_x for index', index, 'is', pos_x
       pos_x
 
+
     at_timeline_end = ->
       c_index is last_index() #or last_column_is_viewable()
+
 
     window.can_move_timeline = scope.can_move_timeline = (to_index)->
 
@@ -136,11 +133,6 @@ CO2R.directive 'timelineConductor',      ->
       index_is_within_bounds
 
 
-
-    #
-    # actions
-    #
-
     restrict_index_to_bounds = (index)->
       if index < 0
         return 0
@@ -148,6 +140,7 @@ CO2R.directive 'timelineConductor',      ->
         return last_index()
       else
         return index
+
 
     normalize_index = (direction_)->
       if angular.isString direction_
@@ -166,16 +159,6 @@ CO2R.directive 'timelineConductor',      ->
         # passthrough because direction is absolute
         direction_
 
-
-    window.move_timeline = scope.move_timeline = (to_index)->
-      new_index = restrict_index_to_bounds(normalize_index(to_index))
-      #console.log 'move to index:', new_index
-      c_index   = new_index
-      scope.slider.css 'margin-left', position_for_index(new_index) || ''
-
-      #console.log "checking if can move timeline in direction:", direction
-      #console.log 'go backward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
-      #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
 
 
 
