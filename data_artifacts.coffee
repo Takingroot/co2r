@@ -24,8 +24,9 @@ artifacts = [
           type: "twitter"
           link: "contact@santrapolcoffee.ca"
         }]
-
-    reports: []
+    reports: [
+      {year:2012, co2_per_unit:0.5}
+    ]
   }
 
   {
