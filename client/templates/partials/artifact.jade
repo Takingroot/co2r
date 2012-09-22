@@ -49,7 +49,9 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
             h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
 
       section.report-section.report-section-co2-per-unit
-        report-header-basic Co2 per 1 kg coffee
+        report-header-basic
+          span.co2-keyword Co2
+          | per 1 kg coffee
         timeline-slider
           bar-chart(column-width="{{column_width}}", data="{{data_co2_per_unit}}")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -57,19 +59,23 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
               h4: co2_contrasted(amount="{{report.co2_per_unit}}")
 
       section.report-section
-        report-header-basic Co2 for all coffee bags produced - vs - Co2 offset
+        report-header-basic
+          span.co2-keyword Co2
+          | for all coffee bags produced - vs - Co2 offset
         timeline-slider
 
       section.report-section.report-section-co2-sources
-        report-header-basic Co2 Sources
+        report-header-basic
+          span.co2-keyword Co2
+          | Sources
 
       section.report-section
         report-header-basic Supplementary Environmental actions
 
       section.report-section.text-align-center
         button.btn.btn-inverse.v-push-4
-          h3.aligns-middle
-            i.icon-download.icon-large(style="margin-top:-4px;margin-right:10px;")
+          h3
+            i.icon-download
             |  Download the {{artifact.reports[0].year}} report
 br
 br

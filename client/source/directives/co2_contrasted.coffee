@@ -3,10 +3,7 @@ directive_co2_contrasted = ->
   transclude: on
   replace: on
   template: """
-    <span class="aligns-middle co2-contrasted" popover="{content_src: 'partials/list_co2_comparisons.html', trigger: 'hover'}">
-      {{amount | unit:amount_unit}}
-      <i class="icon-cloud"></i>
-    </span>
+    <span class="co2-keyword co2-contrasted" popover="{content_src: 'partials/list_co2_comparisons.html', trigger: 'hover'}">{{amount | unit:amount_unit}}</span>
   """
   link: (scope, el, attrs)->
     # @unit
