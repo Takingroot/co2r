@@ -18,7 +18,6 @@ directive_timeline_conductor = ->
     attrs.$observe 'columnCount', ->
       c_index = 0
       scope.move_timeline(c_index)
-      auto_shift()
 
     $(window).resize ->
       # we need to apply because window resizing could potentially change whether or not we need to show navigation arrows
@@ -32,7 +31,7 @@ directive_timeline_conductor = ->
     #
 
     window.move_timeline = scope.move_timeline = (to_index)->
-      new_index = restrict_index_to_bounds(normalize_index(to_index))
+      new_index = visually_restrict_index_to_conductor(restrict_index_to_bounds(normalize_index(to_index)))
       #console.log 'move to index:', new_index
       c_index   = new_index
       scope.slider.css 'margin-left', position_for_index(new_index) || ''
@@ -50,6 +49,33 @@ directive_timeline_conductor = ->
     #
     # utilities
     #
+
+    visually_restrict_index_to_conductor = (to_index)->
+      if not is_in_visual_bounds(to_index)
+        most_recent_index_that_can_be_seeked()
+      else
+        to_index
+
+
+    is_in_index_range = (to_index)->
+      console.log "trying to go to:", to_index, " which must be between or equal 0-", last_index()
+      last_index() >= to_index >= 0
+
+    is_in_visual_bounds = (to_index)->
+      # the limit is the columns that conductor can fit
+      # i.e. if 3, the index can never go below 3
+      console.log "trying to go to:", to_index, " which must be more than", most_recent_index_that_can_be_seeked()
+      to_index >= most_recent_index_that_can_be_seeked()
+
+
+    most_recent_index_that_can_be_seeked = ->
+      # how many columns can the conductor fit?
+      # - 1 because we are result value must be accurate in terms of array-addressable (0-based)
+      re = Math.floor(conductor.width() / attrs.columnWidth) - 1
+      #console.log("most_recent_index_that_can_be_seeked:", re)
+      re
+
+
 
 
     window.enough_room_for_how_many_columns = ->
@@ -87,7 +113,7 @@ directive_timeline_conductor = ->
       c_index is last_index() #or last_column_is_viewable()
 
 
-    window.can_move_timeline = scope.can_move_timeline = (to_index)->
+    window.can_move_timeline = scope.can_move_timeline = (to_index_)->
 
       slider_width    = scope.slider.width()
       conductor_width = conductor.width()
@@ -95,10 +121,9 @@ directive_timeline_conductor = ->
         #console.log 'cannot move because slider width (', slider_width ,') is less than containing width (', conductor_width,')  (thereofe has no need to move...everythig is visible)'
         return no
 
-      index                  = normalize_index(to_index)
-      index_is_within_bounds = last_index() >= index >= 0
+      to_index = normalize_index(to_index_)
       #console.log 'trying to go to', to_index, index, 'in state of: current index is ', c_index, 'within a limit of 0 -', attrs.columnCount-1
-      index_is_within_bounds
+      is_in_visual_bounds(to_index) and is_in_index_range(to_index)
 
 
     restrict_index_to_bounds = (index)->
