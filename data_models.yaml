@@ -1,0 +1,35 @@
+#js var app_datas =
+co2_per_unit_phrase: String
+unit_measure: String
+
+name: String
+slug: String
+offset_since: Number
+description: HTML
+thumbnail_url: URL
+report_url: URL
+
+images: [{}]
+  urls:
+    large: String URL
+    small: String URL
+  caption: String
+
+owner:
+  name: String
+  logo_url: String URL
+  contact_methods: [{}]
+    type: String
+    link: String Email
+
+reports: [{}]
+  year: Number
+  total_co2: Number
+  offset_co2: Number
+  co2_per_thing_made: Number
+  co2_sources: [{}]
+    label: String
+    percentage: Number
+  other_eco_actions: [{}]
+    type: String
+    label: String
