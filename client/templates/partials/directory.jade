@@ -2,7 +2,7 @@
   .vintage-box-models.pin-right
     button.btn.icon-remove(ng-click="preferences.set('show_introduction', false)")
   .a-image.col-6.v-push-3(style="height:200px;")
-    img(ng-src="{{data.srcs.introduction_figure}}", style="height:100%;")
+    img(ng-src="{{app_data.srcs.introduction_figure}}", style="height:100%;")
   .introduction-copy.col-6
     h1 CO2 Responsible
     p.lead
@@ -27,5 +27,5 @@ form.form-search.vintage-box-models.jar.align-center
       h4
         | {{artifact.co2_per_unit_phrase}}
         br
-        co2-contrasted(amount="{{artifact.reports[0].co2_per_unit}}")
+        co2-contrasted(amount="artifact.reports[0].co2_per_unit")
       p {{artifact.name}}

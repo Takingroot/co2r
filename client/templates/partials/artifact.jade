@@ -7,7 +7,7 @@
       h4.unspaced
         | {{artifact.co2_per_unit_phrase}}
         br
-        co2-contrasted(amount="{{artifact.reports[0].co2_per_unit}}")
+        co2-contrasted(amount="artifact.reports[0].co2_per_unit")
 
   section.about.v-push-2
     header
@@ -55,7 +55,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_unit")
           .row.text-align-center(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
-              h4: co2-contrasted(amount="{{report.co2_per_unit}}")
+              h4: co2-contrasted(amount="report.co2_per_unit")
 
       section.report-section.report-section-total-vs-offset
         report-header-basic

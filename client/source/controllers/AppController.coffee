@@ -1,6 +1,4 @@
 AppController = ($scope, preferencesStorage, $rootScope, $location)->
-  #TODO depricate .data version
-  $scope.$root.data        = app_data
   $scope.$root.app_data    = app_data
   $scope.$root.app_title   = "CO2R"
   $scope.$root.preferences = preferencesStorage

@@ -13,5 +13,4 @@ directive_co2_contrasted = ->
       scope.amount_unit = app_data.defaults.co2_per_unit_unit
 
     # @amount
-    attrs.$observe 'amount', ->
-      scope.amount = attrs.amount
+    scope.amount = scope.$eval attrs.amount

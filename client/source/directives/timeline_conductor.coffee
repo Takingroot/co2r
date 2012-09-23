@@ -14,6 +14,9 @@ directive_timeline_conductor = ->
 
     conductor = el
     c_index   = 0
+    # declare here to make available in scope
+    column_count = undefined
+    column_width = undefined
 
     attrs.$observe 'columnCount', ->
       column_count = scope.$eval attrs.columnCount
