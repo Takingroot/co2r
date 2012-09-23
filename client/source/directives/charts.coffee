@@ -6,17 +6,18 @@ directive_bar_chart = (app)->
     link: (scope, el, attrs)->
       attrs.$observe 'data', ->
 
+        box_width    = scope.$eval attrs.columnWidth
         data         = _.invoke(_.map(scope.$eval(attrs.data), (item)-> item*100), 'round', 2)
         chart_height = 200
         gutter       = 140
-        chart_width  = data.length * attrs.columnWidth
-        bar_width    = attrs.columnWidth - gutter
+        chart_width  = data.length * box_width
+        bar_width    = box_width - gutter
         y            = d3.scale.linear().domain([0, d3.max(data)]).range([0, chart_height])
 
         chart   = d3.select(el[0]).style('height', chart_height).style('width', chart_width).
         selectAll('rect').data(data).
           enter().append('rect').
-            attr("x", (d,i)-> (attrs.columnWidth*i) + (gutter/2)).
+            attr("x", (d,i)-> (box_width*i) + (gutter/2)).
             attr("y", (d,i)-> chart_height - y(d)  ).
             attr('height', y).
             attr('width', bar_width)
@@ -29,11 +30,12 @@ directive_bar_chart = (app)->
     link: (scope, el, attrs)->
       attrs.$observe 'data', ->
 
+        box_width    = scope.$eval attrs.columnWidth
         data         = scope.$eval(attrs.data)
         chart_height = 200
         gutter       = 200
-        chart_width  = data.total_co2.length * attrs.columnWidth
-        bar_width    = attrs.columnWidth - gutter
+        chart_width  = data.total_co2.length * box_width
+        bar_width    = box_width - gutter
         chart        = d3.select(el[0]).style('height', chart_height).style('width', chart_width)
 
         total_co2_y  = d3.scale.linear().
@@ -44,7 +46,7 @@ directive_bar_chart = (app)->
         chart.selectAll('.total-co2-bar').data(data.total_co2).
           enter().append('rect').
             classed('total-co2-bar', on).
-            attr("x", (d,i)-> (attrs.columnWidth*i) + (gutter/4.5)).
+            attr("x", (d,i)-> (box_width*i) + (gutter/4.5)).
             attr("y", (d,i)-> chart_height - total_co2_y(d)  ).
             attr('height', total_co2_y).
             attr('width', bar_width)
@@ -57,7 +59,7 @@ directive_bar_chart = (app)->
         chart.selectAll('.offset-co2-bar').data(data.offset_co2).
           enter().append('rect').
             classed('offset-co2-bar', on).
-            attr("x", (d,i)-> (attrs.columnWidth*i) + (gutter) - (gutter / 4.5) ).
+            attr("x", (d,i)-> (box_width*i) + (gutter) - (gutter / 4.5) ).
             attr("y", (d,i)-> 0 ).
             attr('height', offset_co2_y).
             attr('width', bar_width)
@@ -71,7 +73,7 @@ directive_bar_chart = (app)->
         vis_data   = scope.$eval attrs.data
 
         gutter     = 80
-        box_width  = attrs.columnWidth
+        box_width  = scope.$eval attrs.columnWidth
         box_height = box_width
 
         vis_width  = box_width - gutter

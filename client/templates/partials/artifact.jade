@@ -37,7 +37,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
     h1 Footprint Summary Reports
 
-  timeline-conductor(style="white-space:nowrap;", column-width="{{column_width}}", column-count="{{artifact.reports.length}}", ui-scrollfix="+0")
+  timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
       section.timeline-header.span.scrollfix-fixed(ui-scrollfix="+0")
         .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
@@ -52,7 +52,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           span.co2-keyword Co2
           | per 1 kg coffee
         timeline-slider
-          chart-co2-per-unit(column-width="{{column_width}}", data="{{data.co2_per_unit}}")
+          chart-co2-per-unit(column-width="column_width", data="data.co2_per_unit")
           .row.text-align-center(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
               h4: co2-contrasted(amount="{{report.co2_per_unit}}")
@@ -62,7 +62,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           span.co2-keyword Co2
           | for all coffee bags produced - vs - Co2 offset
         timeline-slider
-          chart-total-co2-vs-offset(column-width="{{column_width}}", data="{{data.total_co2_vs_offset}}")
+          chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row.rext-align-center
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
               h4: {{ calc_trees_planted(report.offset_co2, report.year) }}
@@ -74,7 +74,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
-              chart-co2-sources(column-width="{{column_width}}", data="{{co2_sources}}")
+              chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions
         report-header-basic Other Environmental actions

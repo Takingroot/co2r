@@ -16,6 +16,8 @@ directive_timeline_conductor = ->
     c_index   = 0
 
     attrs.$observe 'columnCount', ->
+      column_count = scope.$eval attrs.columnCount
+      column_width = scope.$eval attrs.columnWidth
       c_index = 0
       scope.move_timeline(c_index)
 
@@ -75,7 +77,7 @@ directive_timeline_conductor = ->
     most_recent_index_that_can_be_seeked = ->
       # how many columns can the conductor fit?
       # - 1 because we are result value must be accurate in terms of array-addressable (0-based)
-      re = Math.floor(conductor.width() / attrs.columnWidth) - 1
+      re = Math.floor(conductor.width() / column_width) - 1
       #console.log("most_recent_index_that_can_be_seeked:", re)
       re
 
@@ -85,17 +87,17 @@ directive_timeline_conductor = ->
     window.enough_room_for_how_many_columns = ->
       slider_width_on_left_side = ->
         # we need to add 1 because we're interested in the _count_ of indexes up to and including current index in order to get the full width
-        (c_index+1) * attrs.columnWidth
+        (c_index+1) * column_width
 
       available_width = conductor.width() - slider_width_on_left_side()
 
-      enough_room_for_columns = if available_width > 0 then Math.floor(available_width / attrs.columnWidth) else 0
+      enough_room_for_columns = if available_width > 0 then Math.floor(available_width / column_width) else 0
       #console.log 'enough room for', enough_room_for_columns, 'column(s)'
       enough_room_for_columns
 
 
     last_index = ->
-      attrs.columnCount - 1
+      column_count - 1
 
 
     at_timeline_start = ->
@@ -103,7 +105,7 @@ directive_timeline_conductor = ->
 
 
     window.position_for_index = (index)->
-      pos_x = -1 * (last_index() - index) * attrs.columnWidth
+      pos_x = -1 * (last_index() - index) * column_width
       #console.log 'pos_x for index', index, 'is', pos_x
       pos_x
 
@@ -121,7 +123,7 @@ directive_timeline_conductor = ->
         return no
 
       to_index = normalize_index(to_index_)
-      #console.log 'trying to go to', to_index, index, 'in state of: current index is ', c_index, 'within a limit of 0 -', attrs.columnCount-1
+      #console.log 'trying to go to', to_index, index, 'in state of: current index is ', c_index, 'within a limit of 0 -', column_count-1
       is_in_visual_bounds(to_index) and is_in_index_range(to_index)
 
 
