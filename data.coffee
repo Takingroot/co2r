@@ -1,4 +1,4 @@
-data =
+app_data = data =
 
   srcs:
     logo: "http://co2r.com/images/co2_emblem_service.gif"

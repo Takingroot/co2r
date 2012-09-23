@@ -116,26 +116,99 @@ artifacts = [
       {
         year: 2012
         co2_per_unit: 0.0305
+        offset_co2: 41
+        total_co2: 41
+        co2_sources: [
+          {label: "one",   percentage:40}
+          {label: "two",   percentage:60}
+          {label: "three", percentage:0}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
       }
       {
         year: 2011
         co2_per_unit: 0.04
+        offset_co2: 35
+        total_co2: 35
+        co2_sources: [
+          {label: "one",   percentage:50}
+          {label: "two",   percentage:25}
+          {label: "three", percentage:25}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
       }
       {
         year: 2010
         co2_per_unit: 0.045
+        offset_co2: 40
+        total_co2: 40
+        co2_sources: [
+          {label: "one",   percentage:55}
+          {label: "two",   percentage:20}
+          {label: "three", percentage:25}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
       }
       {
         year: 2009
         co2_per_unit: 0.044
+        offset_co2: 20
+        total_co2: 20
+        co2_sources: [
+          {label: "one",   percentage:70}
+          {label: "two",   percentage:5}
+          {label: "three", percentage:25}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
       }
       {
         year: 2008
         co2_per_unit: 0.05
+        offset_co2: 27
+        total_co2: 27
+        co2_sources: [
+          {label: "one",   percentage:90}
+          {label: "two",   percentage:5}
+          {label: "three", percentage:5}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
+
       }
       {
         year: 2007
         co2_per_unit: 0.07
+        offset_co2: 25
+        total_co2: 25
+        co2_sources: [
+          {label: "one",   percentage:50}
+          {label: "two",   percentage:25}
+          {label: "three", percentage:25}
+        ]
+        other_eco_actions: [
+          {type: "glass", label: "No plastic cups"}
+          {type: "beaker", label: "Composting kitchen waste"}
+          {type: "truck", label: "Car-pooling"}
+        ]
       }
     ]
   }

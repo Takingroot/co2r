@@ -1,6 +1,6 @@
 directive_timeline_conductor = ->
-  restrict: "E"
-  replace: on
+  restrict:   "E"
+  replace:    on
   transclude: on
   controller: ($scope)->
     $scope.slider = $()
@@ -43,7 +43,11 @@ directive_timeline_conductor = ->
 
     # TODO come up with a better function name
     window.auto_shift = ->
-      scope.move_timeline("+#{enough_room_for_how_many_columns()}")
+
+      # 'if' optimization
+      # if we are at the beginning of the timeline there simply are no columns to shift over
+      if not at_timeline_end()
+        scope.move_timeline("+#{enough_room_for_how_many_columns()}")
 
 
     #
@@ -58,13 +62,13 @@ directive_timeline_conductor = ->
 
 
     is_in_index_range = (to_index)->
-      console.log "trying to go to:", to_index, " which must be between or equal 0-", last_index()
+      #console.log "trying to go to:", to_index, " which must be between or equal 0-", last_index()
       last_index() >= to_index >= 0
 
     is_in_visual_bounds = (to_index)->
       # the limit is the columns that conductor can fit
       # i.e. if 3, the index can never go below 3
-      console.log "trying to go to:", to_index, " which must be more than", most_recent_index_that_can_be_seeked()
+      #console.log "trying to go to:", to_index, " which must be more than", most_recent_index_that_can_be_seeked()
       to_index >= most_recent_index_that_can_be_seeked()
 
 
@@ -79,11 +83,6 @@ directive_timeline_conductor = ->
 
 
     window.enough_room_for_how_many_columns = ->
-      # 'if' optimization
-      # if we are at the beginning of the timeline there simply are no columns to shift over
-      if at_timeline_end()
-        return no
-
       slider_width_on_left_side = ->
         # we need to add 1 because we're interested in the _count_ of indexes up to and including current index in order to get the full width
         (c_index+1) * attrs.columnWidth

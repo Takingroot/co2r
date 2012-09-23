@@ -33,7 +33,6 @@
                 h3.unspaced(style="line-height:0;"): a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
 
 
-
 section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
     h1 Footprint Summary Reports
@@ -53,24 +52,35 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           span.co2-keyword Co2
           | per 1 kg coffee
         timeline-slider
-          bar-chart(column-width="{{column_width}}", data="{{data_co2_per_unit}}")
+          chart-co2-per-unit(column-width="{{column_width}}", data="{{data.co2_per_unit}}")
           .row.text-align-center(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
-              h4: co2_contrasted(amount="{{report.co2_per_unit}}")
+              h4: co2-contrasted(amount="{{report.co2_per_unit}}")
 
-      section.report-section
+      section.report-section.report-section-total-vs-offset
         report-header-basic
           span.co2-keyword Co2
           | for all coffee bags produced - vs - Co2 offset
         timeline-slider
+          chart-total-co2-vs-offset(column-width="{{column_width}}", data="{{data.total_co2_vs_offset}}")
 
       section.report-section.report-section-co2-sources
         report-header-basic
           span.co2-keyword Co2
           | Sources
+        timeline-slider
+          .row
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
+              chart-co2-sources(data="{{co2_sources}}")
 
-      section.report-section
-        report-header-basic Supplementary Environmental actions
+      section.report-section.report-section-other-eco-actions
+        report-header-basic Other Environmental actions
+        timeline-slider
+          .row
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+              ul: li(class="action-type-{{action.type | slugify}}", ng-repeat="action in report.other_eco_actions")
+                i(class="icon-{{action.type | slugify}}")
+                span {{action.label}}
 
       section.report-section.text-align-center
         button.btn.btn-inverse.v-push-4
