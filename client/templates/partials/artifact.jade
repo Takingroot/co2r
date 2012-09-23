@@ -63,6 +63,9 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           | for all coffee bags produced - vs - Co2 offset
         timeline-slider
           chart-total-co2-vs-offset(column-width="{{column_width}}", data="{{data.total_co2_vs_offset}}")
+          .row.rext-align-center
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+              h4: {{ calc_trees_planted(report.offset_co2, report.year) }}
 
       section.report-section.report-section-co2-sources
         report-header-basic
