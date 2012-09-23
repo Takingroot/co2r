@@ -71,7 +71,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
-              chart-co2-sources(data="{{co2_sources}}")
+              chart-co2-sources(column-width="{{column_width}}", data="{{co2_sources}}")
 
       section.report-section.report-section-other-eco-actions
         report-header-basic Other Environmental actions

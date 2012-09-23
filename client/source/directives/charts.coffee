@@ -68,18 +68,24 @@ directive_bar_chart = (app)->
     template: "<svg style='display:block' class='pie-chart'></svg>"
     link: (scope, el, attrs)->
       attrs.$observe 'data', ->
-        chart_data     = scope.$eval attrs.data
-        w     = 200
-        h     = 200
-        r     = 100
+        vis_data   = scope.$eval attrs.data
+
+        gutter     = 80
+        box_width  = attrs.columnWidth
+        box_height = box_width
+
+        vis_width  = box_width - gutter
+        vis_height = box_height
+        vis_radius = vis_width/2
+
         color = d3.scale.category20c()
 
-        vis = d3.select(el[0]).data([chart_data]).
-          style('width', w).style('height',h).style('margin','0 auto').
+        vis = d3.select(el[0]).data([vis_data]).
+          style('width', box_width).style('height', box_height).style('margin','0 auto').
           append('g').
-            attr('transform',"translate(#{r},#{r})")
+            attr('transform',"translate(#{vis_radius + gutter/2},#{vis_radius})")
 
-        arc = d3.svg.arc().outerRadius(r)
+        arc = d3.svg.arc().outerRadius(vis_radius)
 
         pie = d3.layout.pie().value((d,i)-> d.percentage)
 
@@ -87,7 +93,7 @@ directive_bar_chart = (app)->
           enter().
             append('g').
             attr('class', 'slice').
-            attr('class', (d,i)-> "slice-for-data-#{_.str.slugify(chart_data[i].label)}")
+            attr('class', (d,i)-> "slice-for-data-#{_.str.slugify(vis_data[i].label)}")
 
         arcs.append('path').
           attr('fill', (d,i)-> color(i) ).
