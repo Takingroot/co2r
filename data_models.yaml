@@ -1,5 +1,3 @@
-report_url?: URL
-
 name: String
 slug: String
 offset_since: Number
