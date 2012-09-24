@@ -33,6 +33,10 @@
                 h3.unspaced(style="line-height:0;"): a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
 
 
+
+
+
+
 section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
     h1 Footprint Summary Reports
@@ -45,7 +49,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
         timeline-slider
           .row
-            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'", ng-bind="report.year")
+            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports", ng-bind="report.year")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
@@ -54,7 +58,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_unit")
           .row.text-align-center(style="border-top:1px solid lightgrey")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               h4: co2-contrasted(amount="report.co2_per_unit")
 
       section.report-section.report-section-total-vs-offset
@@ -63,9 +67,12 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           | for all coffee bags produced - vs - Co2 offset
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
-          .row.rext-align-center
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
-              h4: {{ calc_trees_planted(report.offset_co2, report.year) }}
+          .row(style="border-top:1px solid lightgrey")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+              .row(style="margin-left:45px;").text-aligns-center
+                h4(style="width:100px;"): co2-contrasted(amount="report.total_co2", unit="t")
+                h4(style="width:100px;margin-left:12px;"): co2-contrasted(amount="-1 * report.offset_co2", unit="t")
+              h6(style="margin-left:158px;width:100px;"): {{ calc_trees_planted(report) }} Trees planted
 
       section.report-section.report-section-co2-sources
         report-header-basic
@@ -80,7 +87,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
         report-header-basic Other Environmental actions
         timeline-slider
           .row
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports | orderBy:'year'")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports")
               ul: li(class="action-type-{{action.type | slugify}}", ng-repeat="action in report.other_eco_actions")
                 i(class="icon-{{action.type | slugify}}")
                 span {{action.label}}

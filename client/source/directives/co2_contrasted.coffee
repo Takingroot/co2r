@@ -1,7 +1,8 @@
 directive_co2_contrasted = ->
-  restrict: "E"
+  restrict:   "E"
   transclude: on
-  replace: on
+  replace:    on
+  scope:      on
   template: """
     <span class="co2-keyword co2-contrasted" popover="{content_src: 'partials/list_co2_comparisons.html', trigger: 'hover'}">{{amount | unit:amount_unit}}</span>
   """
