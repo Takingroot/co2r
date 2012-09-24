@@ -5,7 +5,6 @@ app_data =
     introduction_figure: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
 
   defaults:
-    co2_per_unit_unit: 'kg'
     co2_per_thing_made_unit: 'kg'
 
   offsets_per_co2_ton: 1

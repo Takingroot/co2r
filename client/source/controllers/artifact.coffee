@@ -9,7 +9,7 @@ controller_artifact = ($scope, $routeParams)->
 
   $scope.data =
     co2_sources:  _.pluck($scope.reports, "co2_sources")
-    co2_per_unit: _.sortBy(_.pluck($scope.reports, "co2_per_unit"), (item)-> -1*item)
+    co2_per_thing_made: _.sortBy(_.pluck($scope.reports, "co2_per_thing_made"), (item)-> -1*item)
     total_co2_vs_offset:
       total_co2: _.pluck($scope.reports, "total_co2")
       offset_co2: _.pluck($scope.reports, "offset_co2")

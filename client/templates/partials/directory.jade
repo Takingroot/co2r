@@ -22,10 +22,10 @@ form.form-search.vintage-box-models.jar.align-center
 
   a.artifact-card.frame(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:{name:(artifact_name||'')}")
     .artifact-card-image.span-2.a-image-160
-      img(ng-src="{{artifact.thumbnail_src}}")
+      img(ng-src="{{artifact.thumbnail_url}}")
     .artifact-card-info.span-2
       h4
-        | {{artifact.co2_per_unit_phrase}}
+        | {{artifact.co2_per_thing_made_phrase}}
         br
-        co2-contrasted(amount="artifact.reports[0].co2_per_unit")
+        co2-contrasted(amount="artifact.reports[0].co2_per_thing_made")
       p {{artifact.name}}

@@ -11,7 +11,7 @@ directive_co2_contrasted = ->
     if attrs.hasOwnProperty 'unit'
       attrs.$observe 'unit', -> scope.amount_unit = attrs.unit
     else
-      scope.amount_unit = app_data.defaults.co2_per_unit_unit
+      scope.amount_unit = app_data.defaults.co2_per_thing_made_unit
 
     # @amount
     scope.amount = scope.$eval attrs.amount

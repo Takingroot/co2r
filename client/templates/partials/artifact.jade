@@ -5,9 +5,9 @@
       carousel-item.span-10(ng-repeat="image in artifact.images", src="{{image.src}}", caption="{{image.caption}}")
     .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
       h4.unspaced
-        | {{artifact.co2_per_unit_phrase}}
+        | {{artifact.co2_per_thing_made_phrase}}
         br
-        co2-contrasted(amount="artifact.reports[0].co2_per_unit")
+        co2-contrasted(amount="artifact.reports[0].co2_per_thing_made")
 
   section.about.v-push-2
     header
@@ -23,7 +23,7 @@
       .col-4
         .business-card.row.h-gutters-1.float-right
           .avatar.a-image(style="width:100px;height:100px;")
-            img(src="{{artifact.owner.logo_src}}")
+            img(src="{{artifact.owner.logo_url}}")
           .jar
             h4.company-namy.unspaced(style="min-height:45px;") {{artifact.owner.name}}
             .contact(ui-if="artifact.owner.contact_methods.length > 0")
@@ -56,10 +56,10 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
           span.co2-keyword Co2
           | per 1 kg coffee
         timeline-slider
-          chart-co2-per-unit(column-width="column_width", data="data.co2_per_unit")
+          chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              h4: co2-contrasted(amount="report.co2_per_unit")
+              h4: co2-contrasted(amount="report.co2_per_thing_made")
 
       section.report-section.report-section-total-vs-offset
         report-header-basic

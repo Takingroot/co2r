@@ -1,18 +1,16 @@
-#js var app_datas =
-co2_per_unit_phrase: String
-unit_measure: String
+report_url?: URL
 
 name: String
 slug: String
 offset_since: Number
 description: HTML
 thumbnail_url: URL
-report_url: URL
+co2_per_thing_made_phrase: String
 
 images: [{}]
   urls:
-    large: String URL
-    small: String URL
+    large?: String URL
+    small?: String URL
   caption: String
 
 owner:
