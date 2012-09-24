@@ -1,7 +1,10 @@
+#
+# artifact
+#
 name: String
-slug: String
+slug: String (= slugified name)
 offset_since: Number
-description: HTML
+description: String HTML
 thumbnail_url: URL
 co2_per_thing_made_phrase: String
 
@@ -9,7 +12,7 @@ images: [{}]
   urls:
     large?: String URL
     small?: String URL
-  caption: String
+  caption: String HTML
 
 owner:
   name: String
@@ -28,4 +31,37 @@ reports: [{}]
     percentage: Number
   other_eco_actions: [{}]
     type: String
-    label: String
+    label: String HTML
+
+
+#
+# faq
+#
+question: String HTML
+slug: String (= slugified question)
+answer: String HTML
+
+
+#
+# app
+#
+urls:
+  logo: String URL
+  introduction_figure: String URL
+
+default_user_preferences:
+  show_introduction: Bool
+
+defaults:
+  co2_per_thing_made_unit: 'kg'
+
+calculation_variables:
+  offsets_per_co2_ton: Number
+  trees_per_offset: {}
+    <year>: Number
+
+co2_artifact_comparisons: [{}]
+  phrase: String
+  type: String
+  co2_amuont_unit: String
+  co2_amount: Number

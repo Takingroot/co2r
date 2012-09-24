@@ -4,7 +4,7 @@ controller_artifact = ($scope, $routeParams)->
   $scope.column_width   = 300
   $scope.timeline_width = $scope.column_width * $scope.artifact.reports.length
   $scope.calc_trees_planted = (report)->
-    Math.floor ($scope.count_offsets(report.offset_co2) * app_data.trees_per_offset[report.year])
+    Math.floor ($scope.count_offsets(report.offset_co2) * app_data.calculation_variables.trees_per_offset[report.year])
 
 
   $scope.data =
