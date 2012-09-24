@@ -7,4 +7,14 @@ AppController = ($scope, preferencesStorage, $rootScope, $location)->
     co2_amount / app_data.calculation_variables.offsets_per_co2_ton
 
   $scope.$root.$on "$routeChangeSuccess", (e, route, previous_route)->
-    $scope.$root.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify($location.path()).split(" ")
+
+    # resolve homepage edgecase wherein no class info can be inferred from url
+    console.log $location.path()
+    get_url = ->
+      path = $location.path()
+      if path is "/"
+        'directory'
+      else
+        path
+
+    $scope.$root.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify(get_url()).split(" ")
