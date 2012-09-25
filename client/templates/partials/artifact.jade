@@ -5,20 +5,20 @@
       carousel-item.span-10(ng-repeat="image in artifact.images", src="{{image.src}}", caption="{{image.caption}}")
     .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
       h4.unspaced
-        | {{artifact.co2_per_thing_made_phrase}}
+        | {{artifact.phrases.co2_per_thing_made}}
         br
         co2-contrasted(amount="artifact.reports[0].co2_per_thing_made")
 
   section.about.v-push-2
     header
-      h1 {{artifact.name}}
-      h4 Offset since {{artifact.offset_since}}
+      h1(ng-bind="artifact.name")
+      h4(ng-bind="'offset_since' | i18n:artifact.offset_since")
     .row.v-push-1
       .description.col-6
         .story(ng-bind-html="artifact.description")
         small: a.aligns-middle(href="/about")
           i.icon-pushpin
-          span Learn more about the CO2R platform
+          span  {{ 'learn_more_about_co2r' | i18n }}
 
       .col-4
         .business-card.row.h-gutters-1.float-right
@@ -27,7 +27,7 @@
           .jar
             h4.company-namy.unspaced(style="min-height:45px;") {{artifact.owner.name}}
             .contact(ui-if="artifact.owner.contact_methods.length > 0")
-              p Get in touch:
+              p(ng-bind="'artifact_page.business_card_contact_lead_in' | i18n")
               ul.row.unstyled: li(ng-repeat="contact_link in artifact.owner.contact_methods")
                 //- TODO mailto fails without handling special case of email links
                 h3.unspaced(style="line-height:0;"): a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
@@ -39,7 +39,7 @@
 
 section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
-    h1 Footprint Summary Reports
+    h1(ng-bind="'artifact_page.reports_section_title' | i18n")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
@@ -53,8 +53,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
-          span.co2-keyword Co2
-          | per 1 kg coffee
+          div(ng-bind-html="'artifact_page.report_section_titles.co2_per_thing_made' | i18n:e('co2'):artifact.phrases.co2_per_thing_made")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -62,9 +61,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
               h4: co2-contrasted(amount="report.co2_per_thing_made")
 
       section.report-section.report-section-total-vs-offset
-        report-header-basic
-          span.co2-keyword Co2
-          | for all coffee bags produced - vs - Co2 offset
+        report-header-basic: div(ng-bind-html="'artifact_page.report_section_titles.total_vs_offset' | i18n:e('co2'):artifact.phrases.for_total_made")
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")
@@ -72,19 +69,17 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
               .row(style="margin-left:45px;").text-aligns-center
                 h4(style="width:100px;"): co2-contrasted(amount="report.total_co2", unit="t")
                 h4(style="width:100px;margin-left:12px;"): co2-contrasted(amount="-1 * report.offset_co2", unit="t")
-              h6(style="margin-left:158px;width:100px;"): {{ calc_trees_planted(report) }} Trees planted
+              h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:calc_trees_planted(report) }}
 
       section.report-section.report-section-co2-sources
-        report-header-basic
-          span.co2-keyword Co2
-          | Sources
+        report-header-basic: div(ng-bind-html="'artifact_page.report_section_titles.co2_sources' | i18n:e('co2')")
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions
-        report-header-basic Other Environmental actions
+        report-header-basic {{'artifact_page.report_section_titles.other_eco_actions' | i18n}}
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports")
@@ -96,7 +91,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
         button.btn.btn-inverse.v-push-4
           h3
             i.icon-download
-            |  Download the {{artifact.reports[0].year}} report
+            |  {{ 'artifact_page.download_report' | i18n:artifact.reports[0].year }}
 br
 br
 br

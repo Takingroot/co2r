@@ -1,4 +1,16 @@
 #
+# organization
+#
+name: String
+logo_url: String URL
+bio: String HTML
+contact_methods: [{}]
+  type: String (email, twitter, facebook, other)
+  link: String Email || URL
+
+
+
+#
 # artifact
 #
 name: String
@@ -6,7 +18,10 @@ slug: String (= slugified name)
 offset_since: Number
 description: String HTML
 thumbnail_url: URL
-co2_per_thing_made_phrase: String
+
+phrases:
+  for_total_made: String HTML
+  co2_per_thing_made: String HTML
 
 images: [{}]
   urls:
@@ -14,12 +29,7 @@ images: [{}]
     small?: String URL
   caption: String HTML
 
-owner:
-  name: String
-  logo_url: String URL
-  contact_methods: [{}]
-    type: String
-    link: String Email
+organization: {organization}
 
 reports: [{}]
   year: Number
@@ -45,10 +55,6 @@ answer: String HTML
 #
 # app
 #
-urls:
-  logo: String URL
-  introduction_figure: String URL
-
 default_user_preferences:
   show_introduction: Bool
 

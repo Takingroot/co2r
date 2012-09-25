@@ -1,4 +1,4 @@
-AppController = ($scope, preferencesStorage, $rootScope, $location)->
+AppController = ($scope, preferencesStorage, $rootScope, $location, $locale)->
   $scope.$root.app_data    = app_data
   $scope.$root.app_title   = "CO2R"
   $scope.$root.preferences = preferencesStorage
@@ -9,7 +9,6 @@ AppController = ($scope, preferencesStorage, $rootScope, $location)->
   $scope.$root.$on "$routeChangeSuccess", (e, route, previous_route)->
 
     # resolve homepage edgecase wherein no class info can be inferred from url
-    console.log $location.path()
     get_url = ->
       path = $location.path()
       if path is "/"
@@ -18,3 +17,6 @@ AppController = ($scope, preferencesStorage, $rootScope, $location)->
         path
 
     $scope.$root.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify(get_url()).split(" ")
+
+  $scope.$root.e = (key)->
+    app_data.expansions[key]

@@ -23,6 +23,7 @@ CO2R.directive 'timelineSlider',directive_timeline_slider
 CO2R.directive 'timelineConductor',directive_timeline_conductor
 report_directives(CO2R)
 directive_bar_chart(CO2R)
+filter_i18n(CO2R)
 
 
 CO2R.factory 'preferencesStorage', service_preferences_storage

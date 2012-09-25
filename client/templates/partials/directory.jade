@@ -4,19 +4,15 @@
   .a-image.col-6.v-push-3(style="height:200px;")
     img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
   .introduction-copy.col-6
-    h1 CO2 Responsible
-    p.lead
-      | We help companies be responsble about the
-      a(popover="{title: 'What is carbon?', content: 'accusantium doloremque laudantium, totam rem aperiam'}")  carbon
-      |  their products emit into the atmosphere. We achieve this by planting enough trees in Nicaragua to negate their emissions.
-    p Sed ut perspiciatis unde omnis iste natus error [Taking Root] sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-    a.btn(href="/about") Learn More
+    h1(ng-bind-html="'introduction_title' | i18n")
+    .introduction-text(ng-bind-html="'introduction_text' | i18n")
+    a.btn(href="/about") {{ 'learn_more' | i18n }}
 
 
 form.form-search.vintage-box-models.jar.align-center
   .input-prepend
     span.add-on: span.icon-search
-    input.search-query.span5(type="text", ng-model="artifact_name", placeholder="Filter Co2 responsible products by name")
+    input.search-query.span5(type="text", ng-model="artifact_name", placeholder="{{'directory.filter_input_prompt' | i18n}}")
 
 .artifact-cards.row.gutters-05
 
@@ -25,7 +21,7 @@ form.form-search.vintage-box-models.jar.align-center
       img(ng-src="{{artifact.thumbnail_url}}")
     .artifact-card-info.span-2
       h4
-        | {{artifact.co2_per_thing_made_phrase}}
+        | {{artifact.phrases.co2_per_thing_made}}
         br
         co2-contrasted(amount="artifact.reports[0].co2_per_thing_made")
       p {{artifact.name}}

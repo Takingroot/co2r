@@ -1,4 +1,5 @@
 report_directives = (app)->
+
   app.directive 'reportSectionTitle', ->
     restrict: "E"
     replace: on
@@ -13,6 +14,6 @@ report_directives = (app)->
     transclude: on
     template: """
       <header class="report-header">
-        <h3 class="text-align-center" ><span class="report-title" ng-transclude></span></h3>
+        <h3 class="jar align-center report-title" ng-transclude></h3>
       </header>
     """

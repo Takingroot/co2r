@@ -3,7 +3,8 @@ artifacts = [
     name: "Santrapol Coffee"
     slug: "santrapol-coffee"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
-    co2_per_thing_made_phrase: "1 kg coffee"
+    phrases:
+      co2_per_thing_made: "1 kg coffee"
     offset_since: 2008
     images: []
     thumbnail_url: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
@@ -33,7 +34,8 @@ artifacts = [
     slug: "ndp-office"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
     unit_measure: "day"
-    co2_per_thing_made_phrase: "1 day"
+    phrases:
+      co2_per_thing_made: "1 day"
     offset_since: 2001
     images: []
     thumbnail_url: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
@@ -75,7 +77,8 @@ artifacts = [
     slug: "north-bean-coffee"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
     unit_measure: "kg"
-    co2_per_thing_made_phrase: "1 kg coffee"
+    phrases:
+      co2_per_thing_made: "1 kg coffee"
     offset_since: 2010
     thumbnail_url: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     images: []
@@ -92,7 +95,9 @@ artifacts = [
     slug: "taking-root"
     description: "<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>"
     unit_measure: "kg"
-    co2_per_thing_made_phrase: "1 day at the office"
+    phrases:
+      for_total_made: "year at office"
+      co2_per_thing_made: "1 day at the office"
     offset_since: 2010
     thumbnail_url: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
     images: [
