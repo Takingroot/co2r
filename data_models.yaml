@@ -1,16 +1,4 @@
 #
-# organization
-#
-name: String
-logo_url: String URL
-bio: String HTML
-contact_methods: [{}]
-  type: String (email, twitter, facebook, other)
-  link: String Email || URL
-
-
-
-#
 # artifact
 #
 name: String
@@ -28,7 +16,13 @@ images: [{}]
     large: String URL
   caption: String HTML
 
-organization: {organization}
+organization: {}
+  name: String
+  logo_url: String URL
+  bio: String HTML
+  contact_methods: [{}]
+    type: String (email, twitter, facebook, other)
+    link: String Email || URL
 
 reports: [{}]
   year: Number
@@ -52,20 +46,18 @@ answer: String HTML
 
 
 #
-# defined term
-#
-<term_name>String: {}
-  title: String HTML
-  cotnent: String HTML
-
-#
 # app
 #
 default_user_preferences:
   show_introduction: Bool
 
+defined_terms: [{}]
+  <term_name>: {}
+    title: String HTML
+    cotnent: String HTML
+
 defaults:
-  co2_per_thing_made_unit: 'kg'
+  co2_per_thing_made_unit: String
 
 calculation_variables:
   offsets_per_co2_ton: Number
