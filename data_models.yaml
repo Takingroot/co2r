@@ -25,8 +25,7 @@ phrases:
 
 images: [{}]
   urls:
-    large?: String URL
-    small?: String URL
+    large: String URL
   caption: String HTML
 
 organization: {organization}
@@ -40,8 +39,8 @@ reports: [{}]
     label: String
     percentage: Number
   other_eco_actions: [{}]
-    type: String
-    label: String HTML
+    type: String (cms= combobox of: existing types or add new type )
+    actions: [String HTML]
 
 
 #
@@ -51,6 +50,13 @@ question: String HTML
 slug: String (= slugified question)
 answer: String HTML
 
+
+#
+# defined term
+#
+<term_name>String: {}
+  title: String HTML
+  cotnent: String HTML
 
 #
 # app
