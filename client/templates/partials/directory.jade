@@ -5,7 +5,7 @@
     img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
   .introduction-copy.col-6
     h1(ng-bind-html="'introduction_title' | i18n")
-    .introduction-text(ng-bind-html="'introduction_text' | i18n")
+    .introduction-text(co2r-bind="'introduction_text' | i18n")
     a.btn(href="/about") {{ 'learn_more' | i18n }}
 
 

@@ -23,6 +23,8 @@ CO2R.directive 'timelineSlider',directive_timeline_slider
 CO2R.directive 'timelineConductor',directive_timeline_conductor
 report_directives(CO2R)
 directive_bar_chart(CO2R)
+directive_co2r_definition(CO2R)
+directive_co2r_bind(CO2R)
 filter_i18n(CO2R)
 
 
