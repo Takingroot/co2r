@@ -1,16 +1,17 @@
-footer.app-footer
-  .spread-the-word.span-4.dark-theme(style="margin-left:20px;padding:15px 20px;-webkit-user-select:none;border-radius:3px 3px 0 0;")
-    .handle(ng-click="is_open = !is_open", style="cursor:pointer;")
-      h5.icon-share.unspaced  Spread the word
-    form.v-push-2(ng-show="is_open", style="margin-bottom:0;")
-      .select-outlet.row.h-gutters-05(style="font-size:2em;")
-        i.icon-twitter
-        i.icon-facebook
-        i.icon-pinterest
-        i.icon-google-plus
-      textarea.span.v-push-1(placeholder="{{'your_message' | i18n }}", rows="4") Visit CO2R.com, a platform of co2 responsible products.
-      div: button.btn.span Spread CO2R Love
-  .app-footer-content.dark-theme.group
+footer.app-footer.group
+  .spread-the-word
+    .inner.span-4.dark-theme(style="margin-left:20px;padding:15px 20px;-webkit-user-select:none;border-radius:3px 3px 0 0;")
+      .handle(ng-click="is_open = !is_open", style="cursor:pointer;")
+        h5.icon-share.unspaced  Spread the word
+      form.v-push-2(ng-show="is_open", style="margin-bottom:0;")
+        .select-outlet.row.h-gutters-05(style="font-size:2em;")
+          i.icon-twitter
+          i.icon-facebook
+          i.icon-pinterest
+          i.icon-google-plus
+        textarea.span.v-push-1(placeholder="{{'your_message' | i18n }}", rows="4") Visit CO2R.com, a platform of co2 responsible products.
+        div: button.btn.span Spread CO2R Love
+  .app-footer-content.dark-theme.group(scroll-fix-bottom=".spread-the-word")
     .frame.span
       ul.nav.span-4
         li(ng-repeat="nav_item in navs.footer"): a(href="{{nav_item.url}}") {{ nav_item.label | i18n }}
