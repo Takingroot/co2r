@@ -125,9 +125,9 @@ artifacts = [
         offset_co2: 41
         total_co2: 41
         co2_sources: [
-          {label: "one",   percentage:40}
-          {label: "two",   percentage:60}
-          {label: "three", percentage:0}
+          {label: "Hydro",   percentage:40}
+          {label: "transportation",   percentage:60}
+          {label: "Eqipment", percentage:0}
         ]
         other_eco_actions: [
           {
@@ -159,9 +159,9 @@ artifacts = [
         offset_co2: 35
         total_co2: 35
         co2_sources: [
-          {label: "one",   percentage:50}
-          {label: "two",   percentage:25}
-          {label: "three", percentage:25}
+          {label: "Hydro",   percentage:50}
+          {label: "transportation",   percentage:25}
+          {label: "Eqipment", percentage:25}
         ]
         other_eco_actions: [
           {
@@ -193,9 +193,9 @@ artifacts = [
         offset_co2: 40
         total_co2: 40
         co2_sources: [
-          {label: "one",   percentage:55}
-          {label: "two",   percentage:20}
-          {label: "three", percentage:25}
+          {label: "Hydro",   percentage:55}
+          {label: "transportation",   percentage:20}
+          {label: "Eqipment", percentage:25}
         ]
         other_eco_actions: [
           {
@@ -227,9 +227,9 @@ artifacts = [
         offset_co2: 20
         total_co2: 20
         co2_sources: [
-          {label: "one",   percentage:70}
-          {label: "two",   percentage:5}
-          {label: "three", percentage:25}
+          {label: "Hydro",   percentage:70}
+          {label: "transportation",   percentage:5}
+          {label: "Eqipment", percentage:25}
         ]
         other_eco_actions: [
           {
@@ -261,9 +261,9 @@ artifacts = [
         offset_co2: 27
         total_co2: 27
         co2_sources: [
-          {label: "one",   percentage:90}
-          {label: "two",   percentage:5}
-          {label: "three", percentage:5}
+          {label: "Hydro",   percentage:90}
+          {label: "transportation",   percentage:5}
+          {label: "Eqipment", percentage:5}
         ]
         other_eco_actions: [
           {
@@ -296,9 +296,9 @@ artifacts = [
         offset_co2: 25
         total_co2: 25
         co2_sources: [
-          {label: "one",   percentage:50}
-          {label: "two",   percentage:25}
-          {label: "three", percentage:25}
+          {label: "Hydro",   percentage:50}
+          {label: "transportation",   percentage:25}
+          {label: "Eqipment", percentage:25}
         ]
         other_eco_actions: [
           {
