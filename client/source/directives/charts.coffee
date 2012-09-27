@@ -78,15 +78,19 @@ directive_bar_chart = (app)->
 
         vis.selectAll('.slice-label').data(pie).enter().
           append('div').
-            attr('class', (d,i)-> "slice-label row aligns-middle label-for-data-#{_.str.slugify(vis_data[i].label)}").
-          text( (d,i)-> vis_data[i].label ).
-          append('div').
-            classed('pull-left', on).
-            style('background-color', (d,i)-> color(i) ).
-            style('width', "20px").
-            style('height', "20px").
-            style('margin-right', "5px")
+            attr('class', (d,i)-> "slice-label label-for-data-#{_.str.slugify(vis_data[i].label)}").
+            text( (d,i)-> vis_data[i].label ).
+            style('text-transform','capitalize').
+            append('div').
+              classed('pull-left', on).
+              style('background-color', (d,i)-> color(i) ).
+              style('width', "10px").
+              style('height', "10px").
+              style('margin-right', "5px").
+              style('margin-top', "6px")
 
+  # Reference / thanks to
+  # https://gist.github.com/1203641
   app.directive 'chartCo2Sources', ->
     restrict: "E"
     replace:  on
