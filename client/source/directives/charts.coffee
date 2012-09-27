@@ -134,5 +134,6 @@ directive_bar_chart = (app)->
             "translate(#{arc.centroid(d)})"
           ).
           attr('text-anchor', 'middle').
-          text( (d,i)-> vis_data[i].percentage ).
+          # note: hide 0% values
+          text( (d,i)-> vis_data[i].percentage or '' ).
           style('fill', 'white')
