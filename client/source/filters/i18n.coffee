@@ -12,4 +12,7 @@ filter_i18n = (app)->
 
       localized_string = _.traverse(get_locale(), locale_key)
 
-      _.str.sprintf(localized_string, string_args... )
+      if string_args.length
+        _.str.sprintf(localized_string, string_args... )
+      else
+        localized_string

@@ -2,4 +2,9 @@ directive_co2r_bind = (app)->
 
   app.directive 'co2rBind', ($compile)->
     (scope, el, attrs)->
-      el.html $compile( scope.$eval(attrs.co2rBind), attrs.co2rBind )(scope)
+      evaled = scope.$eval(attrs.co2rBind)
+      if evaled[0] isnt '<'
+        # just some plaintext, no need to compile
+        el.html evaled
+      else
+        el.html $compile( evaled, attrs.co2rBind )(scope)

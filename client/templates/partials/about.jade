@@ -1,21 +1,15 @@
 .jar.align-center.v-push-3
   .a-image.col-6.v-push-3(style="height:200px;")
   .introduction-copy.col-6
-    h1 CO2 Responsible
-    p.lead
-      | We help companies be responsble about the
-      a(popover="{title: 'What is carbon?', content: 'accusantium doloremque laudantium, totam rem aperiam'}")  carbon
-      |  their products emit into the atmosphere. We achieve this by planting enough trees in Nicaragua to negate their emissions.
-    p Sed ut perspiciatis unde omnis iste natus error [Taking Root] sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+    h1(co2r-bind="'introduction_title' | i18n")
+    .introduction-text(co2r-bind="'introduction_text' | i18n")
 .jar.align-center.v-push-3
   .row
     section.col-6
-      h2.aligns-middle
-        i.icon-globe
-        |  The Limay Community Carbon Project
-      p The Limay Community Carbon Project is a community-based reforestation initiative that works with small-scale farming families in Nicaragua to restore ecosystems, improve livelihoods and tackle climate change.
-      p The project is developed according to the [Plan Vivo Standard], a system that offers incentives to farmers who agree to manage their land in a way that provides an ecological service, such as planting and maintaining trees to absorb carbon.
-      p The Limay Community Carbon Project is developed by [Taking Root], a non-profit organization, based in Montreal (Canada).
+      h2
+        i.icon-globe(style="position:absolute;left:-30px;")
+        .community-title(co2r-bind="'about.community_title' | i18n")
+      .community-text(co2r-bind="'about.community_text' | i18n")
     section.farmers-short.col-6
       .row.aligns-middle.h-gutters-05
         h2 Carbon farmers
@@ -25,10 +19,10 @@
     ul.nav.nav-tabs(style="margin-bottom:0;")
       li.active: a(href="#tab-1", tab)
         i.icon-map-marker
-        span Map
+        span(co2r-bind="'about.tab_label_map' | i18n")
       li: a(href="#tab-2", tab)
         i.icon-facetime-video
-        span Video
+        span(co2r-bind="'about.tab_label_video' | i18n")
     .tab-content
 
       .tab-pane.active#tab-1
@@ -38,35 +32,11 @@
         .a-image(style="height:400px;") TODO Video
 
     .row.v-push-2
-      .col-4
+      .col-4(ng-repeat="num in [1,2,3]")
         header
           .a-image(style="height:200px")
-          h3.text-align-center Ecosystems
-        .text.v-push-1
-          p.lead One of the three main aims of Taking Root's project is to protect and restore ecosystems through reforestation. Here are some of the ways this is done.
-          h5 Preserving ecosystems
-          p Forest preservation: In order to protect other forests from being cut down for farmland, Taking Root only reforests land that isn't being used. Also, specific trees are planted for the farmers to use as firewood and timber.
-          p Air quality: Trees improve air quality by retaining humidity, absorbing carbon and producing oxygen.
-          p Waterways: The trees help capture water in the dry season and minimize flooding and landslides in the rainy season. They also help regulate the water that flows into the nearby Estero Real, one of Central America's most important estuaries in terms of biodiversity.
-      .col-4
-        header
-          .a-image(style="height:200px")
-          h3.text-align-center Livlihoods
-        .text.v-push-1
-          p.lead A second core aim of the project is to improve the livelihoods of the participating community members through reforestation.
-          h5 Improving livelihoods
-          p With over 136 small-scale farmers in 21 communities as of 2012 working to reforest underutilized parts of their land, there are a lot of people involved in every step of the process. Among other things, participants help select the tree species, gather seeds, build nurseries, plant trees, and protect them as they grow.
-          p Incentives are put into place to encourage participation and help farmers at each step of the project.
-          p Interest-free loans: Taking Root provides interest-free loans to help farmers build fencing, clear shrubs and plant the seedlings. This in turn generates many jobs within the community.
-      .col-4
-        header
-          .a-image(style="height:200px")
-          h3.text-align-center Climate Change
-        .text.v-push-1
-          p.lead The third core aim of the project is to use social reforestation to tackle climate change, a serious global issue that must be addressed.
-          h5 Mitigating climate change
-          p Preventing emissions: Deforestation accounts for over 17% of global CO2 emissions - almost as much as all the cars, trucks, boats and planes on the planet combined! By working with communities to preserve forests and prevent further destruction, Taking Root is reducing the amount of CO2 released into the atmosphere.
-          p Effective carbon pumps: Since about half of a tree's dry weight is made of carbon, trees serves as pumps, pulling CO2 out of the air and storing it in their plant tissue. Closer to the equator, these trees can grow up to 10 times faster than in northern climates.
+          h3.text-align-center(co2r-bind="'about.topic_'+num+'.title' | i18n")
+        .text.v-push-1(co2r-bind="'about.topic_'+num+'.text' | i18n")
 br
 br
 br

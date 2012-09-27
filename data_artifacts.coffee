@@ -130,9 +130,27 @@ artifacts = [
           {label: "three", percentage:0}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
       }
       {
@@ -146,9 +164,27 @@ artifacts = [
           {label: "three", percentage:25}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
       }
       {
@@ -162,9 +198,27 @@ artifacts = [
           {label: "three", percentage:25}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
       }
       {
@@ -178,9 +232,27 @@ artifacts = [
           {label: "three", percentage:25}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
       }
       {
@@ -194,9 +266,27 @@ artifacts = [
           {label: "three", percentage:5}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
 
       }
@@ -211,9 +301,27 @@ artifacts = [
           {label: "three", percentage:25}
         ]
         other_eco_actions: [
-          {type: "glass", label: "No plastic cups"}
-          {type: "beaker", label: "Composting kitchen waste"}
-          {type: "truck", label: "Car-pooling"}
+          {
+            type: "glass",
+            actions: [
+              "Sharing excess coffee chaft and grinds with local farmers in the Yukon"
+              "Composting organic waste in our garden"
+            ]
+          }
+          {
+            type: "beaker"
+            actions: [
+              "Using seasonally grown foods from our own gardens in the café"
+              "Operating and processing according to its organic certification, thus ensuring that the coffee in its bags is organic from crop to cup"
+            ]
+          }
+          {
+            type: "truck"
+            actions: [
+              "Traveling by train and hybrid vehicles whenever possible"
+              "Limiting travel by combining business and personal travel"
+            ]
+          }
         ]
       }
     ]

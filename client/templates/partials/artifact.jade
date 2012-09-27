@@ -27,7 +27,7 @@
           .jar
             h4.company-namy.unspaced(style="min-height:45px;") {{artifact.owner.name}}
             .contact(ui-if="artifact.owner.contact_methods.length > 0")
-              p(ng-bind="'artifact_page.business_card_contact_lead_in' | i18n")
+              p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
               ul.row.unstyled: li(ng-repeat="contact_link in artifact.owner.contact_methods")
                 //- TODO mailto fails without handling special case of email links
                 h3.unspaced(style="line-height:0;"): a(href="{{contact_link.link}}", class="icon-{{contact_link.type | to_icon_name}}")
@@ -39,7 +39,7 @@
 
 section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
   header(style="text-align:center;")
-    h1(ng-bind="'artifact_page.reports_section_title' | i18n")
+    h1(ng-bind="'artifact.reports_section_title' | i18n")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
@@ -53,7 +53,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
-          div(ng-bind-html="'artifact_page.report_section_titles.co2_per_thing_made' | i18n:e('co2'):artifact.phrases.co2_per_thing_made")
+          div(ng-bind-html="'artifact.report_section_titles.co2_per_thing_made' | i18n:e('co2'):artifact.phrases.co2_per_thing_made")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -61,7 +61,7 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
               h4: co2-contrasted(amount="report.co2_per_thing_made")
 
       section.report-section.report-section-total-vs-offset
-        report-header-basic: div(ng-bind-html="'artifact_page.report_section_titles.total_vs_offset' | i18n:e('co2'):artifact.phrases.for_total_made")
+        report-header-basic: div(ng-bind-html="'artifact.report_section_titles.total_vs_offset' | i18n:e('co2'):artifact.phrases.for_total_made")
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")
@@ -72,26 +72,35 @@ section.reports.v-push-5.span.a-image(ui-if="artifact.reports.length")
               h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:calc_trees_planted(report) }}
 
       section.report-section.report-section-co2-sources
-        report-header-basic: div(ng-bind-html="'artifact_page.report_section_titles.co2_sources' | i18n:e('co2')")
+        header.report-header.jar.align-center
+          h3.report-title.text-align-center(ng-bind-html="'artifact.report_section_titles.co2_sources' | i18n:e('co2')")
+          chart-co2-sources-legend(data="data.co2_sources[0]")
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions
-        report-header-basic {{'artifact_page.report_section_titles.other_eco_actions' | i18n}}
+        report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
         timeline-slider
-          .row
+          .row(style="white-space:normal;")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in artifact.reports")
-              ul: li(class="action-type-{{action.type | slugify}}", ng-repeat="action in report.other_eco_actions")
-                i(class="icon-{{action.type | slugify}}")
-                span {{action.label}}
+              section(class="action-type-{{action.type | slugify}}", ng-repeat="action_category in report.other_eco_actions")
+                .row.aligns-middle
+                  i(class="icon-{{action_category.type | slugify}}")
+                  = ' '
+                  h5(style="text-transform:capitalize;")  {{ action_category.type }}
+                ul
+                  li(ng-repeat="action in action_category.actions"): span {{action}}
 
+        br
+        br
+        br
       section.report-section.text-align-center
         button.btn.btn-inverse.v-push-4
           h3
             i.icon-download
-            |  {{ 'artifact_page.download_report' | i18n:artifact.reports[0].year }}
+            |  {{ 'artifact.download_report' | i18n:artifact.reports[0].year }}
 br
 br
 br

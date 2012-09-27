@@ -1,16 +1,13 @@
 ul.unstyled.app-navbar.frame.span.aligns-middle
   .row.h-gutters-1.aligns-middle
-    li: h3
-      a(ng-href="/directory").aligns-middle
-        img(style="height:30px;", src="{{app_data.urls.logo}}")
-        |  CO2R
-    li: a(ng-href="/about") Our mission
-    li: a(ng-href="/faq") FAQ
-    li: a(popover="{content_src:'/partials/form_feedback.html', placement:'bottom'}") Give us feedback
+    li(class="{{nav_item.label | slugify}}", ng-repeat="nav_item in navs.primary")
+      a(ng-href="{{nav_item.url}}") {{ nav_item.label | i18n}}
+    li
+      a(popover="{content_src:'/partials/form_feedback.html', placement:'bottom'}") {{ 'give_us_feedback' | i18n}}
   div
-    .jar.row.h-gutters-1.align-right
-      li: a.btn(ng-href="/register-your-product") Register your product
-      li: a.btn(ng-href="/other-things-you-can-do-to-help") Other things you can do to help
+    .jar.row.h-gutters-1.align-right(style="white-space:nowrap;")
+      li(class="nav_item.label | slugify", ng-repeat=" nav_item in navs.callout ")
+        a.btn(ng-href="{{nav_item.url}}") {{ nav_item.label | i18n }}
       li
         button.btn(ng-click="preferences.restore_defaults()", tooltip="{title:'Restore preferences',placement:'left'}")
           span.icon-undo
