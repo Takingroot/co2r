@@ -1,1 +1,1 @@
-controller_other_things = ()->
+controller_other_things = ->
