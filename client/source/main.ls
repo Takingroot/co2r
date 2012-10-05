@@ -29,7 +29,6 @@ directive_co2r_definition(CO2R)
 directive_co2r_bind(CO2R)
 filter_i18n(CO2R)
 
-
 CO2R.factory 'preferencesStorage', service_preferences_storage
 
 
