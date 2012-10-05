@@ -48,10 +48,11 @@
           li Setup your toolkit
   div
     .faqs.span-8.v-gutters-3
-      article.span-6(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
-        header.question
-          h1(ng-bind="faq.question")
-        .answer(ng-bind-html="faq.answer")
+      //-
+        article.span-6(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
+          header.question
+            h1(ng-bind="faq.question")
+          .answer(ng-bind-html="faq.answer")
   br
   br
   br

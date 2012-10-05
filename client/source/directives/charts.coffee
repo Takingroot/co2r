@@ -74,12 +74,12 @@ directive_bar_chart = (app)->
         vis_data   = scope.$eval attrs.data
         color = d3.scale.category20c()
         vis = d3.select(el[0]).data([vis_data])
-        pie = d3.layout.pie().value((d,i)-> d.percentage)
+        pie = d3.layout.pie().value((d,i)-> d.percent)
 
         vis.selectAll('.slice-label').data(pie).enter().
           append('div').
-            attr('class', (d,i)-> "slice-label label-for-data-#{_.str.slugify(vis_data[i].label)}").
-            text( (d,i)-> vis_data[i].label ).
+            attr('class', (d,i)-> "slice-label label-for-data-#{_.str.slugify(vis_data[i].name)}").
+            text( (d,i)-> vis_data[i].name ).
             style('text-transform','capitalize').
             append('div').
               classed('pull-left', on).
@@ -116,13 +116,13 @@ directive_bar_chart = (app)->
 
         arc = d3.svg.arc().outerRadius(vis_radius)
 
-        pie = d3.layout.pie().value((d,i)-> d.percentage)
+        pie = d3.layout.pie().value((d,i)-> d.percent)
 
         arcs = vis.selectAll('.slice').data(pie).
           enter().
             append('g').
             attr('class', 'slice').
-            attr('class', (d,i)-> "slice-for-data-#{_.str.slugify(vis_data[i].label)}")
+            attr('class', (d,i)-> "slice-for-data-#{_.str.slugify(vis_data[i].name)}")
 
         arcs.append('path').
           attr('fill', (d,i)-> color(i) ).
@@ -135,5 +135,5 @@ directive_bar_chart = (app)->
           ).
           attr('text-anchor', 'middle').
           # note: hide 0% values
-          text( (d,i)-> vis_data[i].percentage or '' ).
+          text( (d,i)-> vis_data[i].percent or '' ).
           style('fill', 'white')
