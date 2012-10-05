@@ -1,0 +1,91 @@
+@import "../helpers"
+
+//
+//  Layout
+//  ------------------------------------------------------------------
+
+.table
+  display table
+
+.group
+  position relative
+
+.jar
+  @extends .table
+  @extends .group
+
+.table-cell
+  display table-cell
+  vertical-align top
+
+.frame
+  @extends .table
+  & > *
+    @extends .table-cell
+
+  // table with multiple rows
+  & > .table-row
+    display table-row
+    & > *
+      @extends .table-cell
+
+.row > *
+  display inline-block
+  vertical-align top
+
+.row > .jar
+.row > .frame
+  display inline-table
+
+//
+//  Fluid
+//  ------------------------------------------------------------------
+
+//
+//  .v-gutters
+//  ------------------------------------------------------------------
+
+generate_gutter_classes(grid_units)
+
+  grid_units_class_name = decimal_to_class_name(grid_units)
+
+  .gutters-{grid_units_class_name} > *
+  .v-gutters-{grid_units_class_name} > *
+    margin-bottom gd(grid_units)
+
+  .gutters-{grid_units_class_name} > *
+  .h-gutters-{grid_units_class_name} > *:not(:last-child)
+    margin-right gd(grid_units)
+
+  .v-push-{grid_units_class_name}
+    margin-top gd(grid_units)
+
+  .h-push-{grid_units_class_name}
+    margin-left cols(grid_units)!important
+
+
+generate_gutter_classes(i) for i in 0.25 0.5 0.75
+generate_gutter_classes(i) for i in 1..5
+
+
+.frame > [class*="col"] + [class*="col"]
+  padding-left gd(1)
+
+[class*="col"]
+  display inline-block
+  & + [class*="col"]
+    margin-left gd(1)
+    vertical-align top
+
+
+.float-right
+  float right
+
+.span
+  width 100%
+for n in 1..14
+  .span-{n}
+  .col-{n}
+    width cols(n)
+
+

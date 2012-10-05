@@ -1,0 +1,29 @@
+font_size = 20px
+grid_units_per_column = 3
+
+gd(grid_units)
+  font_size * grid_units
+
+cols(n)
+
+  columns_size = gd(n*grid_units_per_column)
+
+  // -1 because there is no gutter for the first/a single column
+  gutters_size = gd(n - 1)
+
+  columns_size + gutters_size
+
+decimal_to_class_name(num)
+  if num is 0.25
+    "025"
+  else if num is 0.5
+    "05"
+  else if num is 0.75
+    "075"
+  else
+    num
+
+uncascade(property, value, undo_value)
+  add-property(property, value)
+  & > *
+    add-property(property, undo_value)

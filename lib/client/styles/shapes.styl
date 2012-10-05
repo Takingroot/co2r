@@ -1,0 +1,10 @@
+rectangle(wh)
+  w = wh[0]
+  h = wh[1]
+  width  w if w isnt null
+  height h if h isnt null
+
+square(wh)
+  w = wh[0]
+  h = wh[1] is null ? wh[0] : wh[1]
+  rectangle(w h)

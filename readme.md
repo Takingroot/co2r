@@ -1,20 +1,12 @@
-# co2r Install Instructions
+# co2r
 
+### Quick start
 
-# Pip
-```
-sudo easy_install pip
-```
-
-# Virtualenv / Virtualenvwrapper
-```
-sudo pip install virtualenv
-sudo pip install virtualenvwrapper
-cd ~
-mkdir .virtualenvs
-```
-
-Heroku
-------
-Install Heroku build tools
-
+- Install nodejs
+  - `brew install node`
+- Install meteor
+  - `curl https://install.meteor.com | /bin/sh`
+- Install package manager for meteor
+  - `npm install meteorite`
+- Run the server (the command line will display what url to visit)
+  - `make server`

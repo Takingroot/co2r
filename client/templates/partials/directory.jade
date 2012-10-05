@@ -1,0 +1,28 @@
+.jar.align-center.aligns-top.v-push-2(ng-show="preferences.get('show_introduction')")
+  .vintage-box-models.pin-right
+    button.btn.icon-remove(ng-click="preferences.set('show_introduction', false)")
+  .a-image.col-6.v-push-3(style="height:200px;")
+    img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
+  .introduction-copy.col-6
+    h1(ng-bind-html="'introduction_title' | i18n")
+    .introduction-text(co2r-bind="'introduction_text' | i18n")
+    a.btn(href="/about") {{ 'learn_more' | i18n }}
+
+
+form.form-search.vintage-box-models.jar.align-center
+  .input-prepend
+    span.add-on: span.icon-search
+    input.search-query.span5(type="text", ng-model="artifact_name", placeholder="{{'directory.filter_input_prompt' | i18n}}")
+
+.artifact-cards.row.gutters-05
+
+  a.artifact-card.frame(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:{name:(artifact_name||'')}")
+    .artifact-card-image.span-2.a-image-160
+      img(ng-src="{{artifact.thumbnail_url}}")
+    .artifact-card-info.span-2
+      h4
+        | {{artifact.unit_quantity}}
+        | {{artifact.unit_verbose}}
+        br
+        co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
+      p {{artifact.name}}

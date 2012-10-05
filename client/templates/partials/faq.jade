@@ -1,0 +1,11 @@
+.frame.span
+  aside.faq-table-of-contents
+    ul.nav.nav-pills.nav-stacked.align-right.scrollfix-fixed(ui-scrollfix="62")
+      li(ng-repeat="faq in faqs")
+        a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
+  div
+    .faqs.span-8.v-gutters-3
+      article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
+        header.question
+          h1(ng-bind="faq.question")
+        .answer(ng-bind-html="faq.answer")

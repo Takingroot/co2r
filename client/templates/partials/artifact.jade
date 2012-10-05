@@ -1,0 +1,109 @@
+.jar.align-center.v-push-3
+
+  .gallery.span-10.group(ui-if="artifact.images.length")
+    carousel(style="min-height:380px;")
+      carousel-item.span-10(ng-repeat="image in artifact.images", src="{{image.image_url}}", caption="{{image.caption}}")
+    .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
+      h4.unspaced
+        | {{artifact.unit_quantity}}
+        | {{artifact.unit_verbose}}
+        br
+        co2-contrasted(amount="reports[0].co2_per_unit")
+
+  section.about.v-push-2
+    header
+      h1(ng-bind="artifact.name")
+      h4(ng-bind="'offset_since' | i18n:artifact.offset_since")
+    .row.v-push-1
+      .description.col-6
+        .story(ng-bind-html="artifact.description")
+        small: a.aligns-middle(href="/about")
+          i.icon-pushpin
+          span  {{ 'learn_more_about_co2r' | i18n }}
+
+      .col-4
+        .business-card.row.h-gutters-1.float-right
+          .avatar.a-image(style="width:100px;height:100px;")
+            img(src="{{artifact.organization.image_url}}")
+          .jar
+            a(href="{{ artifact.organization.website_url }}"): h4.company-namy.unspaced(style="min-height:45px;") {{artifact.organization.name}}
+            .contact(ui-if="artifact.organization.contact_infos.length > 0")
+              p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
+              ul.row.unstyled: li(ng-repeat="contact_method in artifact.organization.contact_infos")
+                //- TODO mailto fails without handling special case of email links
+                h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+
+
+
+
+
+
+section.reports.v-push-5.span.a-image(ui-if="reports.length")
+  header(style="text-align:center;")
+    h1(ng-bind="'artifact.reports_section_title' | i18n")
+
+  timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
+
+      section.timeline-header.span.scrollfix-fixed(ui-scrollfix="+0")
+        .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
+          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
+          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
+        timeline-slider
+          .row
+            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports", ng-bind="report.year")
+
+      section.report-section.report-section-co2-per-unit
+        report-header-basic
+          div(ng-bind-html="'artifact.report_section_titles.co2_per_thing_made' | i18n:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
+        timeline-slider
+          chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
+          .row.text-align-center(style="border-top:1px solid lightgrey")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+              h4: co2-contrasted(amount="report.co2_per_unit")
+
+      section.report-section.report-section-total-vs-offset
+        report-header-basic: div(ng-bind-html="'artifact.report_section_titles.total_vs_offset' | i18n:e('co2'):artifact.for_total_made")
+        timeline-slider
+          chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
+          .row(style="border-top:1px solid lightgrey")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+              .row(style="margin-left:45px;").text-aligns-center
+                h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="t")
+                h4(style="width:100px;margin-left:12px;"): co2-contrasted(amount="-1 * report.total_offset_tons", unit="t")
+              h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
+
+      section.report-section.report-section-co2-sources
+        header.report-header.jar.align-center
+          h3.report-title.text-align-center(ng-bind-html="'artifact.report_section_titles.co2_sources' | i18n:e('co2')")
+          chart-co2-sources-legend(data="data.co2_sources[0]")
+        timeline-slider
+          .row
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
+              chart-co2-sources(column-width="column_width", data="co2_sources")
+
+      section.report-section.report-section-other-eco-actions
+        report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
+        timeline-slider
+          .row(style="white-space:normal;")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+              section(class="action-type-{{action_category.name | slugify}}", ng-repeat="action_category in report.other_actions")
+                .row.aligns-middle
+                  i(class="icon-{{action_category.name | slugify}}")
+                  = ' '
+                  h5(style="text-transform:capitalize;")  {{ action_category.name }}
+                  ul(co2r-bind="action_category.description")
+                    //-li(ng-repeat="action in action_category.actions"): span {{action}}
+
+        br
+        br
+        br
+      section.report-section.text-align-center(ui-if="reports[0].annual_report_url")
+        button.btn.btn-inverse.v-push-4
+          a(href="{{reports[0].annual_report_url}}"): h3
+            i.icon-download
+            |  {{ 'artifact.download_report' | i18n:reports[0].year }}
+br
+br
+br
+br
+br
