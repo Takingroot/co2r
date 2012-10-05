@@ -22,18 +22,14 @@ AppController = ($scope, preferencesStorage, $rootScope, $location, $locale, $ht
     callout: do -> _.filter nav_items, (nav_item)-> _.contains(['register_your_product', 'other_things_you_can_do'], nav_item.label)
     footer: nav_items
 
-  # App data
-  $scope.$root.app_data      = app_data
-  $http.get('http://co2r-data-staging.herokuapp.com/api/app').success (adminable-app-data)->
-    $scope.app_data <<< adminable-app-data
-
   $scope.$root.app_title     = "CO2R"
   $scope.$root.preferences   = preferencesStorage
   $scope.$root.count_offsets = (co2_amount)->
     # assumes amount is given in tons
     co2_amount / app_data.calculation_variables.offsets_per_co2_ton
 
-
+  # App data
+  $scope.$root.app_data = app_data
   $scope.$root.$on "$routeChangeSuccess", (e, route, previous_route)->
 
     # resolve homepage edgecase wherein no class info can be inferred from url

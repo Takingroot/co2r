@@ -1,6 +1,7 @@
-CO2R = angular.module('meteorapp', ['ngSanitize', 'ui'])
 
-config_routes()
+CO2R = angular.module('co2r', ['ngSanitize', 'ui'])
+
+config-routes(CO2R)
 
 CO2R.config(['$locationProvider', ($locationProvider)->
   $locationProvider.html5Mode(true)
@@ -31,5 +32,10 @@ filter_i18n(CO2R)
 
 CO2R.factory 'preferencesStorage', service_preferences_storage
 
-#CO2R.run ($rootScope)->
-  #window.$rootScope = $rootScope
+
+
+<- $
+admined-app-data <- $.getJSON('http://co2r-data-staging.herokuapp.com/api/app').success
+
+app_data <<< admined-app-data
+angular.bootstrap document.document-element, ['co2r']
