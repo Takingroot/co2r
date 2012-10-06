@@ -9,5 +9,5 @@ ul.unstyled.app-navbar.frame.span.aligns-middle
       li(class="nav_item.label | slugify", ng-repeat=" nav_item in navs.callout ")
         a.btn(ng-href="{{nav_item.url}}") {{ nav_item.label | i18n }}
       li
-        button.btn(ng-click="preferences.restore_defaults()", tooltip="{title:'Restore preferences',placement:'left'}")
+        button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'left'}")
           span.icon-undo

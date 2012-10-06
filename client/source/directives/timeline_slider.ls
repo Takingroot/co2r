@@ -1,6 +1,6 @@
 directive_timeline_slider = ->
-  restrict:   "E"
-  require:    "^timelineConductor"
+  restrict:   \E
+  require:    \^timelineConductor
   transclude: on
   replace:    on
   template: """
@@ -9,4 +9,4 @@ directive_timeline_slider = ->
     </div>
   """
   link: (scope, el, attrs, timeline)->
-    timeline.register_slider el.children('.timeline-slider')
+    timeline.register_slider el.children \.timeline-slider
