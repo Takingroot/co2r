@@ -13,13 +13,9 @@ directive_tooltip = ->
         # attribute is just static text?
         title: attrs.tooltip
 
+    # save a reference for teardown, el
+    # isn't available after $destroy
+    tooltip = el.data \tooltip
+
     # teardown
-    scope.$on \$destroy, ~>
-      # angular $destroy event doesn't give much grainularity
-      # By the time this event occurs the el has already been corrupted such that, for instance
-      # el.data('popover') does not return the needed data to cleanly destroy the popover instance
-      # associated with this directive instance
-      #
-      # Our solution therefore is much more brutish: destroy all the popover doms
-      # The result is simular to the behaviour found in a traditional webpage
-      $(\.tooltip).remove!
+    scope.$on \$destroy, ~> tooltip.destroy!

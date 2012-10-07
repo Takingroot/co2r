@@ -11,13 +11,10 @@ directive_popover = ($http, $compile, $interpolate)->
       popover-config.content = $compile(popover-config.content)(scope)
       el.popover popover-config
 
+
+    # save a reference for teardown, el
+    # isn't available after $destroy
+    popover = el.data \popover
+
     # teardown
-    scope.$on \$destroy, ~>
-      # angular $destroy event doesn't give much grainularity
-      # By the time this event occurs the el has already been corrupted such that, for instance
-      # el.data('popover') does not return the needed data to cleanly destroy the popover instance
-      # associated with this directive instance
-      #
-      # Our solution therefore is much more brutish: destroy all the popover doms
-      # The result is simular to the behaviour found in a traditional webpage
-      $(\.popover).remove!
+    scope.$on \$destroy, ~> popover.destroy!
