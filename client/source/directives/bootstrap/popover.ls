@@ -15,8 +15,7 @@ directive_popover = ($http, $compile, $interpolate)->
     # save a reference for teardown, el
     # isn't available after $destroy
     popover = el.data \popover
-    console.log popover, el, el.data \popover
 
     # teardown
-    # on initial load popover is undefined?
+    # on initial load popover is undefined? therefore do a checked-invoke
     scope.$on \$destroy, ~> popover?destroy!
