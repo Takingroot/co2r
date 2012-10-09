@@ -85,7 +85,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
         report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
         timeline-slider
           .row(style="white-space:normal;")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports.revered()")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               section(class="action-type-{{action_category.name | slugify}}", ng-repeat="action_category in report.other_actions")
                 .row.aligns-middle
                   i(class="icon-{{action_category.name | slugify}}")

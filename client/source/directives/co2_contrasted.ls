@@ -1,7 +1,7 @@
 
 # scope: unit | amount
 
-directive_co2_contrasted = ->
+CO2R.directive 'co2Contrasted', ->
   restrict:   "E"
   transclude: on
   replace:    on

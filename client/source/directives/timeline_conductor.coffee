@@ -1,4 +1,4 @@
-directive_timeline_conductor = ->
+CO2R.directive 'timelineConductor', ->
   restrict:   "E"
   replace:    on
   transclude: on

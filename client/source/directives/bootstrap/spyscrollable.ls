@@ -1,4 +1,4 @@
-directive_spyscrollable = ($anchorScroll)->
+CO2R.directive 'spyscrollable', ($anchorScroll)->
   (scope, el, attrs)->
     attrs.$observe attrs.id, ->
       $anchorScroll!

@@ -1,4 +1,4 @@
-directive_tooltip = ->
+CO2R.directive 'tooltip', ->
   (scope, el, attrs)->
     el.tooltip do
       # try-catch allows us to support variables or direct text

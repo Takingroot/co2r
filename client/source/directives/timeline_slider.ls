@@ -1,4 +1,4 @@
-directive_timeline_slider = ->
+CO2R.directive 'timelineSlider', ->
   restrict:   \E
   require:    \^timelineConductor
   transclude: on

@@ -1,4 +1,4 @@
-directive_carousel = ->
+CO2R.directive \carousel, ->
   restrict:   \E
   transclude: on
   replace:    on
@@ -13,7 +13,7 @@ directive_carousel = ->
     </div>
     """
 
-directive_carousel_item = ->
+CO2R.directive \carouselItem, ->
   restrict:   \E
   require:    \^carousel
   transclude: on

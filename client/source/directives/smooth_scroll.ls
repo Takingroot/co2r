@@ -1,4 +1,4 @@
-directive_smooth_scroll = ($location)->
+CO2R.directive \smoothScroll, ($location)->
   (scope, el, attrs)->
     $body = $ document.body
     attrs.$observe \href, ->

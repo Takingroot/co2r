@@ -1,4 +1,4 @@
-directive_popover = ($http, $compile, $interpolate)->
+CO2R.directive 'popover', ($http, $compile, $interpolate)->
   (scope, el, attrs)->
     popover-config = scope.$eval attrs.popover
 
