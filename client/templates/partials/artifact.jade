@@ -62,7 +62,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               h4: co2-contrasted(amount="report.co2_per_unit")
 
       section.report-section.report-section-total-vs-offset
-        report-header-basic: div(ng-bind-html="'artifact.report_section_titles.total_vs_offset' | i18n:e('co2'):artifact.for_total_made")
+        report-header-basic: div(ng-bind-html="'artifact.report_section_titles.total_vs_offset' | i18n")
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")

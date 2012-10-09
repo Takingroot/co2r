@@ -58,7 +58,7 @@ app_locales.en =
     reports_section_title: "Footprint Summary Reports"
     report_section_titles:
       other_eco_actions: 'Other Environmental actions'
-      total_vs_offset: '%s for %s - vs - Co2 offset'
+      total_vs_offset: 'Total CO2 produced and total CO2 offset'
       co2_sources: '%s Sources'
       co2_per_thing_made: '%s for %s'
 
