@@ -21,7 +21,6 @@ filter_i18n = (app)->
   # return string prefixed with mailto if email flag is true
   app.filter \prefixMailto, ->
     (string, is-email)->
-      if not is-email then return string
-      else
-        'mailto:' + string
+      | is-email  => 'mailto:' + string
+      | otherwise => string
 

@@ -8,7 +8,7 @@
         | {{artifact.unit_quantity}}
         | {{artifact.unit_verbose}}
         br
-        co2-contrasted(amount="reports[0].co2_per_unit")
+        co2-contrasted(amount="latestReport.co2_per_unit")
 
   section.about.v-push-2
     header
@@ -50,7 +50,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
           a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
         timeline-slider
           .row
-            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports", ng-bind="report.year")
+            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
@@ -85,7 +85,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
         report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
         timeline-slider
           .row(style="white-space:normal;")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports.revered()")
               section(class="action-type-{{action_category.name | slugify}}", ng-repeat="action_category in report.other_actions")
                 .row.aligns-middle
                   i(class="icon-{{action_category.name | slugify}}")
@@ -97,11 +97,11 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
         br
         br
         br
-      section.report-section.text-align-center(ui-if="reports[0].annual_report_url")
+      section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
         button.btn.btn-inverse.v-push-4
-          a(href="{{reports[0].annual_report_url}}"): h3
+          a(href="{{latestReport.annual_report_url}}"): h3
             i.icon-download
-            |  {{ 'artifact.download_report' | i18n:reports[0].year }}
+            |  {{ 'artifact.download_report' | i18n:latestReport.year }}
 br
 br
 br

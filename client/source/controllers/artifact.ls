@@ -4,6 +4,7 @@ controller_artifact = ($scope, $routeParams, $http)->
 
   $scope.artifact       = data.artifact
   $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
+  $scope.latest-report  = $scope.reports[*-1]
   $scope.column_width   = 300
   $scope.timeline_width = $scope.column_width * $scope.reports.length
 
