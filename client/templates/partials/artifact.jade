@@ -31,7 +31,7 @@
               p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
               ul.row.unstyled: li(ng-repeat="contact_method in artifact.organization.contact_infos")
                 //- TODO mailto fails without handling special case of email links
-                h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+                h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
 
 
 
