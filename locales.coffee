@@ -49,7 +49,7 @@ app_locales.en =
     """
 
   directory:
-    filter_input_prompt: 'Filter CO<sub>2</sub> responsible products by name'
+    filter_input_prompt: 'Filter CO2 responsible products by name'
 
   artifact:
     download_report: "Download the %s report"
