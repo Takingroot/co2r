@@ -83,13 +83,13 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
         timeline-slider
           .row(style="white-space:normal;")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              section(class="action-type-{{action_category.name | slugify}}", ng-repeat="action_category in report.other_actions")
+              section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
                 .row.aligns-middle
-                  i(class="icon-{{action_category.name | slugify}}")
+                  i(class="icon-{{actionCategory.name | slugify}}")
                   = ' '
-                  h5(style="text-transform:capitalize;")  {{ action_category.name }}
-                  ul(co2r-bind="action_category.description")
-                    //-li(ng-repeat="action in action_category.actions"): span {{action}}
+                  h5(style="text-transform:capitalize;")  {{ actionCategory.name }}
+                  ul(co2r-bind="actionCategory.description_formatted")
+                    //-li(ng-repeat="action in actionCategory.actions"): span {{action}}
 
         br
         br
