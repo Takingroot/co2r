@@ -1,0 +1,48 @@
+
+//
+//  Alignment
+//  ------------------------------------------------------------------
+
+// to align something the container must wrap the contents
+// we can automate the wrapping by applying it
+// when trying to align
+//
+// we have to account for the case when used with .row
+// because then the display:table ruins .row's inline flow
+// and given rows aleady make children wrap so all that must be done
+// is :not() apply these rules in .row cases
+//
+.align-center
+.align-right
+.aligns-right:not(.row) > *
+.aligns-center:not(.row) > *
+  display table
+
+/*
+xxx
+.no-not-selector [class*="aligns-"].row > *
+  display inline-table
+*/
+
+
+
+.aligns-center > *
+.align-center
+  margin-left auto
+  margin-right auto
+
+.aligns-right > *
+.align-right
+  margin-left auto!important
+
+.aligns-middle > *
+.align-middle
+  vertical-align middle
+
+.aligns-bottom > *
+.align-bottom
+  vertical-align bottom!important
+
+.text-aligns-center > *
+.text-align-center
+  text-align center

@@ -1,5 +1,3 @@
-CO2R = angular.module('co2r', ['ngSanitize', 'ui'])
-
 CO2R.config(['$locationProvider', ($locationProvider)->
   $locationProvider.html5Mode(true)
 ])

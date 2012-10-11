@@ -65,11 +65,24 @@ html
 .artifact-cards
   padding-left gd(1)
   padding-right gd(1)
+  width 939px
+
+.artifact-card
+  &:hover
+    color white
+  .co2-keyword
+    margin-top 5px
+  .organization-name
+    margin-top 20px
 
 .artifact-card-info
   padding-left gd(.5)
+  width 160px
+  height 160px
 
 .artifact-card-image
+  border 1px solid lightgrey
+  border-right none
   background-color dark
   img
     width 100%
@@ -89,8 +102,12 @@ html
 
 .co2-contrasted
   cursor default
-  background-color #EEF2F3
-  padding 2px 6px 4px 4px
+  background-color hsl(192, 17%, 94%)
+  outline 3px solid hsl(192, 17%, 94%)
+  .dark-theme &
+    background-color hsla(192, 17%, 94%, 0.05)
+    outline 3px solid hsla(192, 17%, 94%, 0.05)
+  //padding 2px 6px 4px 4px
   display inline-block
   i
     margin-top -2px
@@ -120,3 +137,22 @@ html
   .inner
     position absolute
     bottom 0
+
+.register-table-of-contents
+.faq-table-of-contents
+.involvement-type
+  background-color hsl(207, 44%, 92%)
+
+.app-navbar
+  padding-top 20px
+  border-bottom 1px solid lightgrey
+
+.other-things-you-can-do-to-help
+  .involvement-type
+    border-right 1px solid lightgrey
+  section.can-do
+    border-bottom 1px solid lightgrey
+
+.register-your-product
+  header
+    border-bottom 1px solid lightgrey

@@ -1,4 +1,4 @@
-.jar.align-center.v-push-3
+.align-center.v-push-3
 
   .gallery.span-10.group(ui-if="artifact.images.length")
     carousel(style="min-height:380px;")
@@ -22,16 +22,13 @@
           span  {{ 'learn_more_about_co2r' | i18n }}
 
       .col-4
-        .business-card.row.h-gutters-1.float-right
-          .avatar.a-image(style="width:100px;height:100px;")
-            img(src="{{artifact.organization.image_url}}")
-          .jar
-            a(href="{{ artifact.organization.website_url }}"): h4.company-namy.unspaced(style="min-height:45px;") {{artifact.organization.name}}
-            .contact(ui-if="artifact.organization.contact_infos.length > 0")
-              p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
-              ul.row.unstyled: li(ng-repeat="contact_method in artifact.organization.contact_infos")
-                //- TODO mailto fails without handling special case of email links
-                h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+        .business-card.float-right
+          .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
+            a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
+          .contact(ui-if="artifact.organization.contact_infos.length > 0")
+            //-p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
+            ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
+              h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
 
 
 
@@ -73,7 +70,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
 
       section.report-section.report-section-co2-sources
-        header.report-header.jar.align-center
+        header.report-header.align-center
           h3.report-title.text-align-center(ng-bind-html="'artifact.report_section_titles.co2_sources' | i18n:e('co2')")
           chart-co2-sources-legend(data="data.co2_sources[0]")
         timeline-slider

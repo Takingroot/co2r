@@ -1,53 +1,56 @@
-.jar.row.align-center.v-push-3
-  .introduction.span-6
-    h1.aligns-middle
-      i.icon-file
-      span  {{ 'register_your_product' | i18n }}
-    p {{ 'register_introduction' | i18n}}
-  form.vintage-box-models
-    .row.h-gutters-1
-      textarea(rows="6", placeholder=" {{ 'your_message' | i18n }}")
-      div
-        .control-group
-          .input-prepend
-            label.add-on(for="name"): i.icon-user
-            input#name(type="text", placeholder="{{ 'name_or_organization' | i18n }}")
-        .control-group
-          .input-prepend
-            label.add-on(for="email"): i.icon-envelope
-            input#email(type="email", placeholder="{{'email' | i18n}}")
-        .control-group
-          .input-prepend
-            label.add-on(for="phone"): i.icon-phone
-            input#phone(type="text", placeholder="{{'phone' | i18n}}")
-        button.btn.span(style="box-sizing:border-box;") {{ 'inquire' | i18n }}
+header
+  .row.align-center.v-push-3
 
-.frame.span
-  aside.register-table-of-contents(style="width:40%;")
-    .jar.align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
-      section
-        h4 Benefits
-        ul
-          li Project differentiation
-          li Competitive advantage
-          li Engaging customers
-      section
-        h4 Your toolkit
-        ul
-          li Microsite
-          li Stickers
-          li Signage
-          li Use of emblem
-          li Language
-          li Supporting images
-      section
-        h4 What you need to do
-        ul
-          li Qualify
-          li Offset
-          li Setup your toolkit
-  div
-    .faqs.span-8.v-gutters-3
+    .introduction.span-6
+      h1.aligns-middle
+        i.icon-file
+        span  {{ 'register_your_product' | i18n }}
+      p {{ 'register_introduction' | i18n}}
+
+    form.vintage-box-models
+      .row.h-gutters-1
+        textarea(rows="6", placeholder=" {{ 'your_message' | i18n }}")
+        div
+          .control-group
+            .input-prepend
+              label.add-on(for="name"): i.icon-user
+              input#name(type="text", placeholder="{{ 'name_or_organization' | i18n }}")
+          .control-group
+            .input-prepend
+              label.add-on(for="email"): i.icon-envelope
+              input#email(type="email", placeholder="{{'email' | i18n}}")
+          .control-group
+            .input-prepend
+              label.add-on(for="phone"): i.icon-phone
+              input#phone(type="text", placeholder="{{'phone' | i18n}}")
+          button.btn.span(style="box-sizing:border-box;") {{ 'inquire' | i18n }}
+
+
+
+aside.row.register-table-of-contents(style="width:40%;")
+  .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
+    section
+      h4 Benefits
+      ul
+        li Project differentiation
+        li Competitive advantage
+        li Engaging customers
+    section
+      h4 Your toolkit
+      ul
+        li Microsite
+        li Stickers
+        li Signage
+        li Use of emblem
+        li Language
+        li Supporting images
+    section
+      h4 What you need to do
+      ul
+        li Qualify
+        li Offset
+        li Setup your toolkit
+  .faqs.span-8.v-gutters-3
       //-
         article.span-6(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
           header.question

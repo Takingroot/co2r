@@ -1,4 +1,5 @@
 footer.app-footer.group
+
   .spread-the-word
     .inner.span-4.dark-theme(style="margin-left:20px;padding:15px 20px;-webkit-user-select:none;border-radius:3px 3px 0 0;")
       .handle(ng-click="is_open = !is_open", style="cursor:pointer;")
@@ -11,31 +12,32 @@ footer.app-footer.group
           i.icon-google-plus
         textarea.span.v-push-1(placeholder="{{'your_message' | i18n }}", rows="4") Visit CO2R.com, a platform of co2 responsible products.
         div: button.btn.span Spread CO2R Love
-  .app-footer-content.dark-theme.group(scroll-fix-bottom=".spread-the-word")
-    .frame.span
-      ul.nav.span-4
-        li(ng-repeat="nav_item in navs.footer"): a(href="{{nav_item.url}}") {{ nav_item.label | i18n }}
-      div
-        .jar.row.h-gutters-2.align-right
-          .sponsors.span-4
-            a(href="{{ 'sponsor_link' | i18n }}", target="_blank")
-              h4.aligns-middle
-                i.icon-sign-blank
-                span {{ 'sponsor_name' | i18n }}
-            p  {{ 'sponsor_description' | i18n }}
-          .company.span-3
-            a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
-              i.icon-globe
-              span  {{ 'taking_root' | i18n }}
-            p {{'taking_root_description' | i18n }}
-            .row.h-gutters-05(style="font-size:1.5em;")
-              a.icon-envelope(href="mailto:info@takingroot.org", ui-jq="popover", title="test", data-content="moo")
-              a.icon-twitter(href="https://twitter.com/takingroot")
-              a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
+
+  .app-footer-content.dark-theme.row.group.span(scroll-fix-bottom=".spread-the-word")
+    nav-list.span-4(items="navs.footer")
+    .row.h-gutters-2.align-right
+      .sponsors.span-4
+        a(href="{{ 'sponsor_link' | i18n }}", target="_blank")
+          h4.aligns-middle
+            i.icon-sign-blank
+            span {{ 'sponsor_name' | i18n }}
+        p  {{ 'sponsor_description' | i18n }}
+      .company.span-3
+        a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
+          i.icon-globe
+          span  {{ 'taking_root' | i18n }}
+        p {{'taking_root_description' | i18n }}
+        .row.h-gutters-05(style="font-size:1.5em;")
+          a.icon-envelope(href="mailto:info@takingroot.org", ui-jq="popover", title="test", data-content="moo")
+          a.icon-twitter(href="https://twitter.com/takingroot")
+          a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
     br
     br
     br
     br
     br
-    p(ng-bind-html="'colofon' | i18n")
+    br
+    br
+
+    //-p.muted(ng-bind-html="'colofon' | i18n")

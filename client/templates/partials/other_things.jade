@@ -1,8 +1,8 @@
-.frame.span
-
-  .table-row(ng-repeat=" can_do in app_data.other_things_you_can_do ")
-    .involvement-type
-      .jar.align-right
-        h2 {{ can_do.label | i18n }}
-        .description(ng-bind-html="can_do.description | i18n")
-    ng-include(src="can_do.template")
+section.can-do.row.row-couple-heights(ng-repeat="can_do in app_data.other_things_you_can_do")
+  .involvement-type
+    .span-4.align-right
+      h2 {{ can_do.label | i18n }}
+      .description(ng-bind-html="can_do.description | i18n")
+    br
+    br
+  ng-include(src="can_do.template")

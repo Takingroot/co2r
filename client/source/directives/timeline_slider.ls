@@ -5,7 +5,7 @@ CO2R.directive 'timelineSlider', ->
   replace:    on
   template: """
     <div class="timeline-slider-window" style='overflow:hidden'>
-      <div class="timeline-slider jar align-center" ng-transclude></div>
+      <div class="timeline-slider align-center" ng-transclude></div>
     </div>
   """
   link: (scope, el, attrs, timeline)->

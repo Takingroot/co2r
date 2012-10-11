@@ -7,6 +7,14 @@
 .table
   display table
 
+.table-cell
+  display table-cell
+  vertical-align top
+
+.inline-block
+  display inline-block
+  vertical-align top
+
 .group
   position relative
 
@@ -14,28 +22,24 @@
   @extends .table
   @extends .group
 
-.table-cell
-  display table-cell
-  vertical-align top
 
-.frame
-  @extends .table
-  & > *
-    @extends .table-cell
 
-  // table with multiple rows
-  & > .table-row
-    display table-row
-    & > *
+
+
+.row
+  > *
+    @extends .inline-block
+  > .align-right
+    float right
+  // if we want equal column heights then each child
+  &.row-couple-heights
+    display table
+    // xxx does 100% cause problems?
+    width 100%
+    > *
+      // ...must be a cell
       @extends .table-cell
 
-.row > *
-  display inline-block
-  vertical-align top
-
-.row > .jar
-.row > .frame
-  display inline-table
 
 //
 //  Fluid
