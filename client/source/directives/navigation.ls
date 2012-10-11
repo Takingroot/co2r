@@ -17,40 +17,13 @@ CO2R.directive \navList, ->
 jQuery.fn.combinedWidth = ->
   _.reduce this, ((seed, el)-> seed + $(el).width!), 0
 
-CO2R.directive \isotope, ->
-
-
-  controller: ($element)->
-    @items = []
-    @reg = (item-el)->
-      @items.push item-el
-      /*
-      $element.isotope \addItems, item-el
-      console.log 'add item', item-el
-      $element.isotope \reLayout
-      */
-
-    exec = ->
-      $element.removeClass \hidden
-      $element.isotope do
-        layout-mode: \masonry
-      #$element.isotope(\addItems, @items)
-
-    setTimeout exec, 1500
-    #setTimeout $element.isotope(\reLayout), 1500
-
-  link: (scope, el)->
-
-    scope.isotopeFilterByName = (name='')->
-      #console.log \filter, name
-      #console.log el.children "[data-name*='#name']"
-
-      el.isotope filter: "[data-name*='#{name.toLowerCase!}']"
-
-
-
-
-CO2R.directive \isotopeItem, ->
-  require: \^isotope
-  link: (scope, el, attrs, container-el)->
-    container-el.reg el
+CO2R.directive \map, ->
+  (scope, el)->
+    do exec = ->
+      m = new google.maps.Map el[0],
+        center: new google.maps.LatLng 13.1667, -86.6167
+        zoom: 15
+        background-color: \#FFF
+        map-type-id: google.maps.MapTypeId.ROADMAP
+      console.log m
+      new google.maps.KmlLayer 'http://thievishfilms.s3.amazonaws.com/lccp-2012-en.kml', map: m
