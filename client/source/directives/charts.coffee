@@ -93,7 +93,7 @@ CO2R.directive 'chartCo2SourcesLegend', ->
 CO2R.directive 'chartCo2Sources', ->
   restrict: "E"
   replace:  on
-  template: "<svg style='display:block' class='pie-chart'></svg>"
+  template: "<svg style='display:block;' class='pie-chart'></svg>"
   link: (scope, el, attrs)->
     attrs.$observe 'data', ->
       vis_data   = scope.$eval attrs.data
@@ -109,7 +109,7 @@ CO2R.directive 'chartCo2Sources', ->
       color = d3.scale.category20c()
 
       vis = d3.select(el[0]).data([vis_data]).
-        style('width', box_width).style('height', box_height).style('margin','0 auto').
+        style('width', "#{box_width}px").style('height', "#{box_height}px").style('margin','0 auto').
         append('g').
           attr('transform',"translate(#{vis_radius + gutter/2},#{vis_radius})")
 
@@ -134,5 +134,5 @@ CO2R.directive 'chartCo2Sources', ->
         ).
         attr('text-anchor', 'middle').
         # note: hide 0% values
-        text( (d,i)-> vis_data[i].percent or '' ).
+        text( (d,i)-> vis_data[i].percent + '%' or '' ).
         style('fill', 'white')
