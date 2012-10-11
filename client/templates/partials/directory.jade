@@ -12,11 +12,16 @@
 form.form-search.vintage-box-models.align-center
   .input-prepend
     span.add-on: span.icon-search
-    input.search-query.span5(type="text", ng-model="artifact_name", placeholder="{{'directory.filter_input_prompt' | i18n}}")
+    input.search-query.span5(type="text", ng-model="artifact_name",
+      placeholder="{{'directory.filter_input_prompt' | i18n}}",
+      ng-change="isotopeFilterByName(artifact_name)"
+      )
 
-.artifact-cards.row.gutters-05.align-center
+.artifact-cards.gutters-05.row.hidden(isotope)
 
-  a.artifact-card.row.dark-theme(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:{name:(artifact_name||'')}")
+  a.artifact-card.row.dark-theme(isotope-item, href="{{artifact.slug}}",
+    ng-repeat="artifact in artifacts",
+    data-name="{{artifact.name.toLowerCase()}}")
     .artifact-card-image
       img(ng-src="{{artifact.thumbnail_url}}")
     .artifact-card-info
