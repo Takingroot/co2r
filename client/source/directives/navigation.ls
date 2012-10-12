@@ -25,5 +25,4 @@ CO2R.directive \map, ->
         zoom: 15
         background-color: \#FFF
         map-type-id: google.maps.MapTypeId.ROADMAP
-      console.log m
       new google.maps.KmlLayer 'http://thievishfilms.s3.amazonaws.com/lccp-2012-en.kml', map: m

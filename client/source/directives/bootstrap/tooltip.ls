@@ -1,21 +1,15 @@
 CO2R.directive 'tooltip', ->
   (scope, el, attrs)->
-    el.tooltip do
-      # try-catch allows us to support variables or direct text
-      # xxx is this initing hard-to-debug problems?
-      try
-        tooltip-config = scope.$eval attrs.tooltip
-        if typeof tooltip-config is 'string'
-          title: tooltip-config
-        else
-          tooltip-config
-      catch
-        # attribute is just static text?
-        title: attrs.tooltip
+    # support variables or direct text
+    config = maybe-eval attrs.tooltip
+    el.tooltip if typeof config is \string then title: config else config
 
-    # save a reference for teardown, el
-    # isn't available after $destroy
+    # save a reference for teardown
+    # el isn't available after $destroy
     tooltip = el.data \tooltip
 
     # teardown
     scope.$on \$destroy, ~> tooltip.destroy!
+
+    function maybe-eval (attr-val)
+      scope.$eval attr-val or attr-val
