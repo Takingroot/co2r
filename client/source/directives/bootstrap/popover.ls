@@ -7,15 +7,20 @@ CO2R.directive 'popover', ($http, $compile, $interpolate)->
       template-string <- $http.get(popover-config.content_src).success
       popover-config.content = $compile(template-string)(scope)
       el.popover popover-config
+      prepare-teardown!
     else
       popover-config.content = $compile(popover-config.content)(scope)
       el.popover popover-config
+      prepare-teardown!
 
 
-    # save a reference for teardown, el
-    # isn't available after $destroy
-    popover = el.data \popover
+    function prepare-teardown
+      # save a reference for teardown, el
+      # isn't available after $destroy
+      popover = el.data \popover
 
-    # teardown
-    # on initial load popover is undefined? therefore do a checked-invoke
-    scope.$on \$destroy, ~> popover?destroy!
+      # teardown
+      # on initial load popover is undefined? therefore do a checked-invoke
+      scope.$on \$destroy, ~>
+
+        popover?destroy!
