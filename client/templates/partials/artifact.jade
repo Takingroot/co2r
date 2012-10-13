@@ -85,11 +85,12 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
                 .row.aligns-middle
-                  i(class="icon-{{actionCategory.name | slugify}}")
+                  i(class="icon-{{actionCategory.name.icon_code | slugify}}")
                   = ' '
-                  h5(style="text-transform:capitalize;")  {{ actionCategory.name }}
-                  ul(co2r-bind="actionCategory.description_formatted")
-                    //-li(ng-repeat="action in actionCategory.actions"): span {{action}}
+                  //-| {{ actionCategory.description_list | json}}
+                  h5(style="text-transform:capitalize;")  {{ actionCategory.name.name }}
+                  ul
+                    li(ng-repeat="action in actionCategory.description_list"): span {{action}}
 
         br
         br
