@@ -155,3 +155,4 @@ CO2R.directive 'timelineConductor', ->
       else
         # passthrough because direction is absolute
         direction_
+

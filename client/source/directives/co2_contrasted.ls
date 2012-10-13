@@ -7,7 +7,7 @@ CO2R.directive 'co2Contrasted', ->
   replace:    on
   scope:      on
   template: """
-    <span class="co2-keyword co2-contrasted" popover="{content_src: 'partials/list_co2_comparisons.html', trigger: 'hover'}">{{amount | unit:amountUnit}}</span>
+    <span class="co2-keyword co2-contrasted" popover="{content_src: app_data.partial-path('list_co2_comparisons'), trigger: 'hover'}">{{amount | unit:amountUnit}}</span>
   """
   link: (scope, el, attrs)->
 

@@ -1,7 +1,7 @@
 {
   "packages": {
-    "jasonkuhrt_angularjs": {
-      "path": "/Users/jasonkuhrt/code/Meteor_angularjs"
+    "jade": {
+      "path": "/Users/jasonkuhrt/code/meteor-jade"
     },
     "livescript": {}
   }
