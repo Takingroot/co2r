@@ -16,13 +16,3 @@ CO2R.directive \navList, ->
 
 jQuery.fn.combinedWidth = ->
   _.reduce this, ((seed, el)-> seed + $(el).width!), 0
-
-CO2R.directive \map, ->
-  (scope, el)->
-    do exec = ->
-      m = new google.maps.Map el[0],
-        center: new google.maps.LatLng 13.1667, -86.6167
-        zoom: 15
-        background-color: \#FFF
-        map-type-id: google.maps.MapTypeId.ROADMAP
-      new google.maps.KmlLayer 'http://thievishfilms.s3.amazonaws.com/lccp-2012-en.kml', map: m

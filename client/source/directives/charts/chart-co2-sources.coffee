@@ -44,5 +44,7 @@ CO2R.directive 'chartCo2Sources', ->
         ).
         attr('text-anchor', 'middle').
         # note: hide 0% values
-        text( (d,i)-> vis_data[i].percent + '%' or '' ).
+        text( (d,i)->
+          if 0 isnt vis_data[i].percent then (100 * vis_data[i].percent).round(1) + '%' else ''
+        ).
         style('fill', 'white')

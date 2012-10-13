@@ -3,7 +3,6 @@ $ ->
   admined-app-data <- $.getJSON('http://co2r-data-staging.herokuapp.com/api/app').success
 
   app_data <<< admined-app-data
-  console.log app_data
 
   angular.bootstrap document.document-element, [\co2r]
 
