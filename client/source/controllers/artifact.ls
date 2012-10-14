@@ -22,8 +22,10 @@ controller_artifact = ($scope, $routeParams, $http)->
 
   # data collected across artifacts for comparison
   $scope.data =
-    co2_sources:  _.pluck $scope.reports, \carbon_sources_list
+    co2_sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
     co2_per_thing_made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> -1*it)
     total_co2_vs_offset:
       total_co2:  _.pluck $scope.reports, \total_tons_produced
       offset_co2: _.pluck $scope.reports, \total_offset_tons
+
+  $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0

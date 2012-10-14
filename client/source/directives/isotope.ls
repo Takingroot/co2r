@@ -1,4 +1,4 @@
-CO2R.directive \isotope, ->
+CO2R.directive \isotope, ($parse)->
 
 
   controller: ($element)->
@@ -20,13 +20,14 @@ CO2R.directive \isotope, ->
     setTimeout exec, 1500
     #setTimeout $element.isotope(\reLayout), 1500
 
-  link: (scope, el)->
+  link: (scope, el, attrs)->
 
     scope.isotopeFilterByName = (name='')->
       #console.log \filter, name
       #console.log el.children "[data-name*='#name']"
 
       el.isotope filter: "[data-name*='#{name.toLowerCase!}']"
+
 
 
 

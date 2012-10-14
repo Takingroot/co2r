@@ -69,7 +69,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
                 h4(style="width:100px;margin-left:12px;"): co2-contrasted(amount="-1 * report.total_offset_tons", unit="'t'")
               h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
 
-      section.report-section.report-section-co2-sources
+      section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
           h3.report-title.text-align-center(ng-bind-html="'artifact.report_section_titles.co2_sources' | i18n:e('co2')")
           chart-co2-sources-legend(data="data.co2_sources[0]")
@@ -78,7 +78,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
-      section.report-section.report-section-other-eco-actions
+      section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
         report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
         timeline-slider
           .row(style="white-space:normal;")
