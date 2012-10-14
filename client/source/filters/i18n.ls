@@ -19,7 +19,7 @@ CO2R.filter \i18n, ($locale, preferencesStorage)->
 
 # return string prefixed with mailto if email flag is true
 CO2R.filter \prefixMailto, ->
-  (string, is-email)->
-    | is-email  => 'mailto:' + string
+  (string, link-type)->
+    | link-type is \email => 'mailto:' + string
     | otherwise => string
 
