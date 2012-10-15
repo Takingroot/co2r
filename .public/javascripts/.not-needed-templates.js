@@ -37,7 +37,7 @@ window.require.define({"partials/artifact": function(exports, require, module) {
   };
 }});
 
-window.require.define({"partials/can_do_feedback": function(exports, require, module) {
+window.require.define({"partials/can-do-feedback": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -49,7 +49,7 @@ window.require.define({"partials/can_do_feedback": function(exports, require, mo
   };
 }});
 
-window.require.define({"partials/can_do_recruit_company": function(exports, require, module) {
+window.require.define({"partials/can-do-recruit-company": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -61,7 +61,7 @@ window.require.define({"partials/can_do_recruit_company": function(exports, requ
   };
 }});
 
-window.require.define({"partials/can_do_sponsor_co2r": function(exports, require, module) {
+window.require.define({"partials/can-do-sponsor-co2r": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -73,7 +73,7 @@ window.require.define({"partials/can_do_sponsor_co2r": function(exports, require
   };
 }});
 
-window.require.define({"partials/can_do_spread_word": function(exports, require, module) {
+window.require.define({"partials/can-do-spread-word": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -109,7 +109,7 @@ window.require.define({"partials/faq": function(exports, require, module) {
   };
 }});
 
-window.require.define({"partials/form_feedback": function(exports, require, module) {
+window.require.define({"partials/form-feedback": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -121,7 +121,7 @@ window.require.define({"partials/form_feedback": function(exports, require, modu
   };
 }});
 
-window.require.define({"partials/list_co2_comparisons": function(exports, require, module) {
+window.require.define({"partials/list-co2-comparisons": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
@@ -133,13 +133,13 @@ window.require.define({"partials/list_co2_comparisons": function(exports, requir
   };
 }});
 
-window.require.define({"partials/other_things": function(exports, require, module) {
+window.require.define({"partials/other-things": function(exports, require, module) {
   module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
   attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow || jade.rethrow; merge = merge || jade.merge;
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<section ng-repeat="can_do in app_data.other_things_you_can_do" class="can-do row row-couple-heights"><div class="involvement-type"><div class="span-4 align-right"><h2>{{ can_do.label | i18n }}</h2><div ng-bind-html="can_do.description | i18n" class="description"></div></div><br/><br/></div><ng-include src="can_do.template"></ng-include></section>');
+  buf.push('<section ng-repeat="can_do in app_data.other_things_you_can_do" class="can-do row row-couple-heights"><div class="involvement-type"><div class="span-4 align-right"><h2>{{ can_do.label | i18n }}</h2><div ng-bind-html="can_do.description | i18n" class="description"></div></div><br/><br/></div><ng-include src="partialPath(can_do.templateName)"></ng-include></section>');
   }
   return buf.join("");
   };

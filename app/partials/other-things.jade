@@ -5,4 +5,4 @@ section.can-do.row.row-couple-heights(ng-repeat="can_do in app_data.other_things
       .description(ng-bind-html="can_do.description | i18n")
     br
     br
-  ng-include(src="can_do.template")
+  ng-include(src="partialPath(can_do.templateName)")

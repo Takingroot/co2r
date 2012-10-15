@@ -19,7 +19,7 @@ CO2R.config([\$locationProvider, ($location-provider)->
 ])
 require './routes'
 
-CO2R.run ($root-scope, preferences-storage, $location, $locale, $http)->
+CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-path)->
 
   nav-items =
 
@@ -38,6 +38,7 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http)->
     * label: "other_things_you_can_do"
       url: "/other-things-you-can-do-to-help"
 
+  $root-scope.partial-path = partial-path
   $root-scope.navs =
     primary: do -> _.filter nav-items, -> _.contains([\co2r \our_mission \faq], it.label)
     callout: do -> _.filter nav-items, -> _.contains([\register_your_product \other_things_you_can_do], it.label)

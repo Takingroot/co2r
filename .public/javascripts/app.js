@@ -175,29 +175,26 @@ window.require.define({"locales": function(exports, require, module) {
 
 window.require.define({"scripts/app-data": function(exports, require, module) {
   window.app_data = {
-    partialsPath: "/partials",
-    partialPath: function(partialName){
-      return app_data.partialsPath + "/" + partialName + ".html";
-    }
+    partialsPath: "/partials"
   };
   app_data.other_things_you_can_do = [
     {
       label: "can_do.feedback.title",
       description: 'can_do.feedback.description',
-      template: app_data.partialPath('can_do_feedback')
+      templateName: 'can-do-feedback'
     }, {
       label: "can_do.sponsor_co2r.title",
       description: 'can_do.sponsor_co2r.description',
-      template: app_data.partialPath('can_do_sponsor_co2r')
+      templateName: 'can-do-sponsor_co2r'
     }, {
       label: "can_do.recruit_company.title",
       description: 'can_do.recruit_company.description',
-      template: app_data.partialPath('can_do_recruit_company')
+      templateName: 'can-do-recruit_company'
     }, {
       slug: "spread_word",
       label: "can_do.spread_word.title",
       description: 'can_do.spread_word.description',
-      template: app_data.partialPath('can_do_spread_word')
+      templateName: 'can-do-spread-word'
     }
   ];
   app_data.default_user_preferences = {
@@ -228,7 +225,7 @@ window.require.define({"scripts/app": function(exports, require, module) {
     }
   ]);
   require('./routes');
-  CO2R.run(function($rootScope, preferencesStorage, $location, $locale, $http){
+  CO2R.run(function($rootScope, preferencesStorage, $location, $locale, $http, partialPath){
     var navItems;
     navItems = [
       {
@@ -248,6 +245,7 @@ window.require.define({"scripts/app": function(exports, require, module) {
         url: "/other-things-you-can-do-to-help"
       }
     ];
+    $rootScope.partialPath = partialPath;
     $rootScope.navs = {
       primary: function(){
         return _.filter(navItems, function(it){
@@ -348,7 +346,7 @@ window.require.define({"scripts/controllers/directory": function(exports, requir
   module.exports = function($scope, $http){
     $scope.$root.page_title = 'Directory';
     return $http.get('http://co2r-data-staging.herokuapp.com/api/artifacts').success(function(data){
-      return console.log(data);
+      return $scope.artifacts = data.artifacts;
     });
   };
 }});
@@ -437,8 +435,8 @@ window.require.define({"scripts/directives/bootstrap/popover": function(exports,
       return function(scope, el, attrs){
         var popoverConfig;
         popoverConfig = scope.$eval(attrs.popover);
-        if ('content_src' in popoverConfig) {
-          $http.get(popoverConfig.content_src).success(function(templateString){
+        if ('contentSrc' in popoverConfig) {
+          $http.get(popoverConfig.contentSrc).success(function(templateString){
             popoverConfig.content = $compile(templateString)(scope);
             el.popover(popoverConfig);
             return prepareTeardown();
@@ -452,7 +450,7 @@ window.require.define({"scripts/directives/bootstrap/popover": function(exports,
           var popover, this$ = this;
           popover = el.data('popover');
           return scope.$on('$destroy', function(){
-            return popover != null ? popover.destroy() : void 8;
+            return popover.destroy();
           });
         }
         return prepareTeardown;
@@ -649,14 +647,15 @@ window.require.define({"scripts/directives/charts/chart-total-co2": function(exp
 }});
 
 window.require.define({"scripts/directives/co2-contrasted": function(exports, require, module) {
-  module.exports = function(){
+  module.exports = function(partialPath){
     return {
       restrict: "E",
       transclude: true,
       replace: true,
       scope: true,
-      template: "<span class=\"co2-keyword co2-contrasted\" popover=\"{content_src: app_data.partial-path('list_co2_comparisons'), trigger: 'hover'}\">{{amount | unit:amountUnit}}</span>",
+      template: "<span class=\"co2-keyword co2-contrasted\" popover=\"{contentSrc: popoverContentPartialName, trigger: 'hover'}\">\n  {{amount | unit:amountUnit}}\n</span>",
       link: function(scope, el, attrs){
+        scope.popoverContentPartialName = partialPath('list-co2-comparisons');
         scope.amountUnit = 'unit' in attrs
           ? scope.$eval(attrs.unit)
           : app_data.defaults.co2_per_thing_made_unit;
@@ -1001,46 +1000,50 @@ window.require.define({"scripts/filters/index": function(exports, require, modul
 }});
 
 window.require.define({"scripts/routes": function(exports, require, module) {
-  CO2R.config([
-    '$routeProvider', function($routeProvider){
-      $routeProvider.when('/', {
-        templateUrl: app_data.partialPath('directory'),
-        controller: 'directory'
-      });
-      $routeProvider.when('/directory', {
-        templateUrl: app_data.partialPath('directory'),
-        controller: 'directory'
-      });
-      $routeProvider.when('/about', {
-        templateUrl: app_data.partialPath('about'),
-        controller: 'about'
-      });
-      $routeProvider.when('/faq', {
-        templateUrl: app_data.partialPath('faq'),
-        controller: 'faq'
-      });
-      $routeProvider.when('/register-your-product', {
-        templateUrl: app_data.partialPath('register'),
-        controller: 'register'
-      });
-      $routeProvider.when('/other-things-you-can-do-to-help', {
-        templateUrl: app_data.partialPath('other_things'),
-        controller: 'other-things'
-      });
-      $routeProvider.when('/test', {
-        templateUrl: app_data.partialPath('test'),
-        controller: 'test'
-      });
-      return $routeProvider.when('/:artifact', {
-        templateUrl: app_data.partialPath('artifact'),
-        controller: 'artifact'
-      });
-    }
-  ]);
+  CO2R.config(function($routeProvider, partialPath){
+    $routeProvider.when('/', {
+      templateUrl: partialPath('directory'),
+      controller: 'directory'
+    });
+    $routeProvider.when('/directory', {
+      templateUrl: partialPath('directory'),
+      controller: 'directory'
+    });
+    $routeProvider.when('/about', {
+      templateUrl: partialPath('about'),
+      controller: 'about'
+    });
+    $routeProvider.when('/faq', {
+      templateUrl: partialPath('faq'),
+      controller: 'faq'
+    });
+    $routeProvider.when('/register-your-product', {
+      templateUrl: partialPath('register'),
+      controller: 'register'
+    });
+    $routeProvider.when('/other-things-you-can-do-to-help', {
+      templateUrl: partialPath('other-things'),
+      controller: 'other-things'
+    });
+    $routeProvider.when('/test', {
+      templateUrl: partialPath('test'),
+      controller: 'test'
+    });
+    return $routeProvider.when('/:artifact', {
+      templateUrl: partialPath('artifact'),
+      controller: 'artifact'
+    });
+  });
 }});
 
 window.require.define({"scripts/services/index": function(exports, require, module) {
-  angular.module('co2r.services', []).factory('preferencesStorage', require('./preferences-storage'));
+  angular.module('co2r.services', []).factory('preferencesStorage', require('./preferences-storage')).constant('partialPath', require('./partial-path'));
+}});
+
+window.require.define({"scripts/services/partial-path": function(exports, require, module) {
+  module.exports = function(partialName){
+    return "/partials/" + partialName + ".html";
+  };
 }});
 
 window.require.define({"scripts/services/preferences-storage": function(exports, require, module) {

@@ -1,6 +1,6 @@
 .app-navbar.row.aligns-middle
   nav-list.row.h-gutters-1.aligns-middle(items="navs.primary")
-    li: a(popover="{content_src: app_data.partialPath('form_feedback'), placement:'bottom'}") {{ 'give_us_feedback' | i18n}}
+    //-li: a(popover="{contentSrc: partialPath('form-feedback'), placement:'bottom'}") {{ 'give_us_feedback' | i18n}}
 
   nav-list.row.h-gutters-1.align-right(style="white-space:nowrap;", items="navs.callout")
     li: button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'left'}")

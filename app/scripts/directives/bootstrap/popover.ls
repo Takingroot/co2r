@@ -4,8 +4,8 @@ module.exports = (m)->
       popover-config = scope.$eval attrs.popover
 
       # popover-config option using template file for content
-      if \content_src of popover-config
-        template-string <- $http.get(popover-config.content_src).success
+      if \contentSrc of popover-config
+        template-string <- $http.get(popover-config.content-src).success
         popover-config.content = $compile(template-string)(scope)
         el.popover popover-config
         prepare-teardown!
@@ -21,7 +21,5 @@ module.exports = (m)->
         popover = el.data \popover
 
         # teardown
-        # on initial load popover is undefined? therefore do a checked-invoke
         scope.$on \$destroy, ~>
-
-          popover?destroy!
+          popover.destroy!
