@@ -1,0 +1,19 @@
+!!! 5
+html
+  head
+    script
+      window.brunch = window.brunch || {}
+      window.brunch['auto-reload'] = {enabled: true}
+
+    link(rel="stylesheet", href="/stylesheets/app.css")
+    script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
+    script(src="/javascripts/vendor.js")
+    script(src="/javascripts/app.js")
+    script
+      require('init')
+    title(ng-bind="app_title + ' - ' + page_title")
+
+  body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-table-of-contents")
+    include partials/_app-header
+    #app-content(ng-view="ng-view")
+    include partials/_app-footer

@@ -1,0 +1,171 @@
+@import 'lib/functions'
+@import 'variables'
+
+@import '_scaffolding'
+@import '_isotope'
+@import '_base'
+@import '_data-visualization'
+
+.co2r-definition
+  border-bottom 1px dashed hsl(0,0,75)
+  color inherit
+  &:hover
+    background-color hsl(0,0,98)
+    outline 3px solid hsl(0,0,98)
+
+html
+  background-color dark
+
+#app-content
+  background-color white
+
+.app-footer-content
+  padding gd(1)
+
+
+.app-navbar
+  padding-left gd(1)
+  padding-right  gd(1)
+  margin-bottom 0
+
+.introduction-container
+  margin-top gd(2)
+  padding 0 gd(2)
+
+.introduction-figure
+  rectangle(gd(20) gd(10))
+
+.a-image-160
+  height gd(8)
+
+.dark-theme
+  background-color dark
+
+.form-search
+  margin-top gd(2)
+  margin-bottom gd(2)
+
+
+.visually-hiden
+  visibility hidden
+
+.hidden
+  display none
+
+.directory
+  .app-footer
+    margin-top gd(4)
+
+.faq-table-of-contents
+  width 40%
+  padding gd(2)
+.faqs
+  padding gd(2)
+
+.faq-table-of-contents .ui-scrollfix
+  top 40px
+
+.ui-scrollfix.scrollfix-fixed
+  position fixed
+
+.dark-theme
+  color grey
+
+
+.artifact-cards
+  min-height 300px
+  margin 0 auto
+  margin-bottom 120px
+
+.artifact-card
+  &:hover
+    color white
+  .co2-keyword
+    margin-top 5px
+  .organization-name
+    margin-top 20px
+
+.artifact-card-info
+  padding-left gd(.5)
+  width 160px
+  height 160px
+
+.artifact-card-image
+  border 1px solid lightgrey
+  border-right none
+  background-color dark
+  img
+    width 100%
+
+
+
+.involvement-type
+  padding gd(1)
+  width 40%
+  .jar
+    width cols(6)
+
+.involvement-form
+  padding gd(1)
+  button
+    height gd(4)
+
+.co2-contrasted
+  cursor default
+  background-color hsl(192, 17%, 94%)
+  outline 3px solid hsl(192, 17%, 94%)
+  .dark-theme &
+    background-color hsla(192, 17%, 94%, 0.05)
+    outline 3px solid hsla(192, 17%, 94%, 0.05)
+  //padding 2px 6px 4px 4px
+  display inline-block
+  i
+    margin-top -2px
+
+.emissions-badge
+  padding 6px 10px 8px 10px
+  border-radius 4px
+  background white
+
+.co2-keyword:after
+  content: "\00a0 \f0c2 \00a0"
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  display: inline-block
+  text-decoration: inherit
+
+
+.spread-the-word
+  position fixed
+  bottom 0
+
+.spread-the-word.scrolled-to
+  position absolute
+  top 0
+  bottom auto
+  .inner
+    position absolute
+    bottom 0
+
+.register-table-of-contents
+.faq-table-of-contents
+.involvement-type
+  background-color hsl(207, 44%, 92%)
+
+.app-navbar
+  padding-top 20px
+  border-bottom 1px solid lightgrey
+
+.other-things-you-can-do-to-help
+  .involvement-type
+    border-right 1px solid lightgrey
+  section.can-do
+    border-bottom 1px solid lightgrey
+
+.register-your-product
+  header
+    border-bottom 1px solid lightgrey
+.carousel-caption
+  color white
+

@@ -1,7 +1,0 @@
-static/*
-*.pyc
-.DS_Store
-._*
-!.gitignore
-node_modules
-package.yaml

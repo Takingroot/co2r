@@ -1,0 +1,1 @@
+<section ng-repeat="can_do in app_data.other_things_you_can_do" class="can-do row row-couple-heights"><div class="involvement-type"><div class="span-4 align-right"><h2>{{ can_do.label | i18n }}</h2><div ng-bind-html="can_do.description | i18n" class="description"></div></div><br/><br/></div><ng-include src="can_do.template"></ng-include></section>
