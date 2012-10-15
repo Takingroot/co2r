@@ -1,4 +1,4 @@
-CO2R.directive \chartCo2SourcesLegend, ->
+module.exports = ->
   restrict: \E
   replace:  on
   template: "<div class='row h-gutters-2'></div>"

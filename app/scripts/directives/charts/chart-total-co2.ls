@@ -1,4 +1,4 @@
-CO2R.directive \chartTotalCo2VsOffset, ->
+module.exports = ->
   restrict: \E
   replace:  on
   template: "<svg style='display:block' class='bar-chart'></svg>"

@@ -508,7 +508,7 @@ window.require.define({"scripts/directives/bootstrap/tooltip": function(exports,
 }});
 
 window.require.define({"scripts/directives/charts/chart-co2-per-unit": function(exports, require, module) {
-  CO2R.directive('chartCo2PerUnit', function(){
+  module.exports = function(){
     return {
       restrict: 'E',
       replace: true,
@@ -535,11 +535,11 @@ window.require.define({"scripts/directives/charts/chart-co2-per-unit": function(
         });
       }
     };
-  });
+  };
 }});
 
 window.require.define({"scripts/directives/charts/chart-co2-sources-legend": function(exports, require, module) {
-  CO2R.directive('chartCo2SourcesLegend', function(){
+  module.exports = function(){
     return {
       restrict: 'E',
       replace: true,
@@ -563,12 +563,12 @@ window.require.define({"scripts/directives/charts/chart-co2-sources-legend": fun
         });
       }
     };
-  });
+  };
 }});
 
 window.require.define({"scripts/directives/charts/chart-co2-sources": function(exports, require, module) {
   
-  CO2R.directive('chartCo2Sources', function() {
+  module.exports = function() {
     return {
       restrict: "E",
       replace: true,
@@ -608,12 +608,12 @@ window.require.define({"scripts/directives/charts/chart-co2-sources": function(e
         });
       }
     };
-  });
+  };
   
 }});
 
 window.require.define({"scripts/directives/charts/chart-total-co2": function(exports, require, module) {
-  CO2R.directive('chartTotalCo2VsOffset', function(){
+  module.exports = function(){
     return {
       restrict: 'E',
       replace: true,
@@ -643,7 +643,16 @@ window.require.define({"scripts/directives/charts/chart-total-co2": function(exp
         });
       }
     };
-  });
+  };
+}});
+
+window.require.define({"scripts/directives/charts/index": function(exports, require, module) {
+  module.exports = function(m){
+    m.directive('chartCo2PerUnit', require('./chart-co2-per-unit'));
+    m.directive('chartTotalCo2VsOffset', require('./chart-total-co2'));
+    m.directive('chartCo2Sources', require('./chart-co2-sources'));
+    return m.directive('chartCo2SourcesLegend', require('./chart-co2-sources-legend'));
+  };
 }});
 
 window.require.define({"scripts/directives/co2-contrasted": function(exports, require, module) {
@@ -653,9 +662,9 @@ window.require.define({"scripts/directives/co2-contrasted": function(exports, re
       transclude: true,
       replace: true,
       scope: true,
-      template: "<span class=\"co2-keyword co2-contrasted\" popover=\"{contentSrc: popoverContentPartialName, trigger: 'hover'}\">\n  {{amount | unit:amountUnit}}\n</span>",
+      template: "<span class=\"co2-keyword co2-contrasted\" popover=\"{contentSrc: popoverContentPartialPath, trigger: 'hover'}\">\n  {{amount | unit:amountUnit}}\n</span>",
       link: function(scope, el, attrs){
-        scope.popoverContentPartialName = partialPath('list-co2-comparisons');
+        scope.popoverContentPartialPath = partialPath('list-co2-comparisons');
         scope.amountUnit = 'unit' in attrs
           ? scope.$eval(attrs.unit)
           : app_data.defaults.co2_per_thing_made_unit;
@@ -698,6 +707,8 @@ window.require.define({"scripts/directives/index": function(exports, require, mo
   var m;
   m = angular.module('co2r.directives', []).directive('anchorable', require('./anchorable')).directive('co2Contrasted', require('./co2-contrasted')).directive('co2rBind', require('./co2r-bind')).directive('co2rDefinition', require('./co2r-definition')).directive('isotope', require('./isotope')).directive('isotopeItem', require('./isotope-item')).directive('navList', require('./navigation')).directive('scrollFixBottom', require('./scroll-fix-bottom')).directive('smoothScroll', require('./smooth-scroll')).directive('timelineConductor', require('./timeline-conductor')).directive('timelineSlider', require('./timeline-slider')).directive('anchorable', require('./anchorable'));
   require('./bootstrap')(m);
+  require('./charts')(m);
+  require('./reports')(m);
 }});
 
 window.require.define({"scripts/directives/isotope-item": function(exports, require, module) {
@@ -751,6 +762,27 @@ window.require.define({"scripts/directives/navigation": function(exports, requir
       replace: true,
       template: "<ul class=\"nav\" ng-transclude>\n  <li class=\"{{navItem.label | slugify}}\" ng-repeat=\"navItem in items\">\n    <a href=\"{{navItem.url}}\">{{navItem.label | i18n}}</a>\n  </li>\n</ul>"
     };
+  };
+}});
+
+window.require.define({"scripts/directives/reports": function(exports, require, module) {
+  module.exports = function(m){
+    m.directive('reportSectionTitle', function(){
+      return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        template: "<h3 class=\"text-align-center\" ng-transclude></h3>"
+      };
+    });
+    return m.directive('reportHeaderBasic', function(){
+      return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        template: "<header class=\"report-header\">\n  <h3 class=\"jar align-center report-title\" ng-transclude></h3>\n</header>"
+      };
+    });
   };
 }});
 
