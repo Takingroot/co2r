@@ -25,9 +25,6 @@
     "type": "git",
     "url": "git://github.com/Takingroot/co2r.git"
   },
-  "scripts": {
-    "postinstall": "brunch build"
-  },
   "author": "jasonkuhrt@me.com",
   "license": "BSD",
   "readmeFilename": "readme.md"
