@@ -15,8 +15,7 @@
     "coffee-script-brunch": "~1.3.2",
     "javascript-brunch": "~1.3.0",
     "css-brunch": "~1.3.0",
-    "statik": "~1.2.5",
-    "brunch": "~1.4.4"
+    "statik": "~1.2.5"
   },
   "devDependencies": {
     "auto-reload-brunch": "~1.3.2"
