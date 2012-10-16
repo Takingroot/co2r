@@ -24,5 +24,5 @@ module.exports = ($parse)->
     scope.isotopeFilterByName = (name='')->
       #console.log \filter, name
       #console.log el.children "[data-name*='#name']"
-
-      el.isotope filter: "[data-name*='#{name.toLowerCase!}']"
+      selector = if name then "[data-name*='#{name.toLowerCase!}']" else \*
+      el.isotope filter: selector
