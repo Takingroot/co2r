@@ -10,11 +10,11 @@ app_data <<<
 
     * label: "can_do.sponsor_co2r.title"
       description: 'can_do.sponsor_co2r.description'
-      templateName: \can-do-sponsor_co2r
+      templateName: \can-do-sponsor-co2r
 
     * label: "can_do.recruit_company.title"
       description: 'can_do.recruit_company.description'
-      templateName: \can-do-recruit_company
+      templateName: \can-do-recruit-company
 
     * slug: "spread_word"
       label: "can_do.spread_word.title"
