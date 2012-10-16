@@ -66,8 +66,8 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               .row(style="margin-left:45px;").text-aligns-center
                 h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="'t'")
-                h4(style="width:100px;margin-left:12px;"): co2-contrasted(amount="-1 * report.total_offset_tons", unit="'t'")
-              h6(style="margin-left:158px;width:100px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
+                h6(style="width:100px;margin-left:12px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
+              //-h6(style="margin-left:158px;width:100px;"):
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center

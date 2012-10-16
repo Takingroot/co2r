@@ -27,5 +27,6 @@ module.exports = ($scope, $routeParams, $http)->
     total_co2_vs_offset:
       total_co2:  _.pluck $scope.reports, \total_tons_produced
       offset_co2: _.pluck $scope.reports, \total_offset_tons
+      trees-planted: _.pluck $scope.reports, \trees_planted
 
   $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
