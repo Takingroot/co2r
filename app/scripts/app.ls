@@ -52,6 +52,7 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
   # App data
   $root-scope.app_data = app_data
+  $root-scope.app-text = app-text
   $root-scope.$on "$routeChangeSuccess", (e, route, previous_route)->
 
     # resolve homepage edgecase wherein no class info can be inferred from url

@@ -30,21 +30,9 @@ angular.module \co2r.filters, []
     | link-type is \email => 'mailto:' + string
     | otherwise => string
 
-
-.filter \i18n, ($locale, preferencesStorage)->
-  (locale-key, ...interpolations)->
-
-    get-locales = ->
-      lang-code = $locale.id.substring 0, ($locale.id.indexOf \-)
-      if lang-code of app_locales
-        app_locales[lang-code]
-      else
-        # users locale is not supported, use default locale instead
-        app_locales[preferencesStorage.get \locale]
-
-    localized-string = _.traverse get-locales!, locale-key
-
+.filter \interpolate, ->
+  (string, ...interpolations)->
     if _.is-empty interpolations
-      localized-string
+      string
     else
-      _.str.sprintf localized-string, ...interpolations
+      _.str.sprintf string, ...interpolations

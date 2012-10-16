@@ -4,16 +4,16 @@
   .a-image.col-6.v-push-3(style="height:200px;")
     img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
   .introduction-copy.col-6
-    h1(ng-bind-html="'introduction_title' | i18n")
-    .introduction-text(co2r-bind="'introduction_text' | i18n")
-    a.btn(href="/about") {{ 'learn_more' | i18n }}
+    h1(ng-bind-html="appText.introduction_title")
+    .introduction-text(co2r-bind="appText.introduction_text")
+    a.btn(href="/about") {{ appText.learn_more }}
 
 
 form.form-search.vintage-box-models.align-center
   .input-prepend
     span.add-on: span.icon-search
     input.search-query.span5(type="text", ng-model="artifact_name",
-      placeholder="{{'directory.filter_input_prompt' | i18n}}",
+      placeholder="{{appText.directory_filter_input_prompt}}",
       ng-change="isotopeFilterByName(artifact_name)"
       )
 

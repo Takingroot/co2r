@@ -12,21 +12,21 @@
 
   section.about.v-push-2
     header
-      h1(ng-bind="artifact.name")
-      h4(ng-bind="'offset_since' | i18n:artifact.offset_since")
+      h1 {{artifact.name}}
+      h4 {{appText.artifact_offset_since | interpolate:artifact.offset_since}}
     .row.v-push-1
       .description.col-6
         .story(ng-bind-html="artifact.description")
         small: a.aligns-middle(href="/about")
           i.icon-pushpin
-          span  {{ 'learn_more_about_co2r' | i18n }}
+          span  {{ appText.learn_more_about_co2r }}
 
       .col-4
         .business-card.float-right
           .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
             a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
           .contact(ui-if="artifact.organization.contact_infos.length > 0")
-            //-p(ng-bind="'artifact.business_card_contact_lead_in' | i18n")
+            //-p(ng-bind="appText.artifact_business_card_contact_lead_in")
             ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
               h3.unspaced(style="line-height:0;"): a(href="{{contact_method.link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
 
@@ -37,7 +37,7 @@
 
 section.reports.v-push-5.span.a-image(ui-if="reports.length")
   header(style="text-align:center;")
-    h1(ng-bind="'artifact.reports_section_title' | i18n")
+    h1(ng-bind="appText.artifact_reports_section_title")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
@@ -51,7 +51,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
-          div(ng-bind-html="'artifact.report_section_titles.co2_per_thing_made' | i18n:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
+          div(ng-bind-html="appText.artifact_co2_per_thing_made | interpolate:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -59,19 +59,19 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               h4: co2-contrasted(amount="report.co2_per_unit")
 
       section.report-section.report-section-total-vs-offset
-        report-header-basic: div(ng-bind-html="'artifact.report_section_titles.total_vs_offset' | i18n")
+        report-header-basic: div(ng-bind-html="appText.artifact_total_vs_offset")
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               .row(style="margin-left:45px;").text-aligns-center
                 h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="'t'")
-                h6(style="width:100px;margin-left:12px;"): {{ 'trees_planted' | i18n:report.trees_planted }}
+                h6(style="width:100px;margin-left:12px;"): {{ appText.trees_planted | interpolate:report.trees_planted }}
               //-h6(style="margin-left:158px;width:100px;"):
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
-          h3.report-title.text-align-center(ng-bind-html="'artifact.report_section_titles.co2_sources' | i18n:e('co2')")
+          h3.report-title.text-align-center(ng-bind-html="appText.artifact_co2_sources | interpolate:e('co2')")
           chart-co2-sources-legend(data="data.co2_sources[0]")
         timeline-slider
           .row
@@ -79,7 +79,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
-        report-header-basic {{'artifact.report_section_titles.other_eco_actions' | i18n}}
+        report-header-basic {{appText.artifact_other_eco_actions}}
         timeline-slider
           .row(style="white-space:normal;")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
@@ -99,7 +99,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
         button.btn.btn-inverse.v-push-4
           a(href="{{latestReport.annual_report_url}}"): h3
             i.icon-download
-            |  {{ 'artifact.download_report' | i18n:latestReport.year }}
+            |  {{ appText.artifact_download_report | interpolate:latestReport.year }}
 br
 br
 br

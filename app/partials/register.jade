@@ -4,26 +4,26 @@ header
     .introduction.span-6
       h1.aligns-middle
         i.icon-file
-        span  {{ 'register_your_product' | i18n }}
-      p {{ 'register_introduction' | i18n}}
+        span  {{ appText.register_your_product }}
+      p {{ appText.register_introduction}}
 
     form.vintage-box-models
       .row.h-gutters-1
-        textarea(rows="6", placeholder=" {{ 'your_message' | i18n }}")
+        textarea(rows="6", placeholder=" {{ appText.your_message }}")
         div
           .control-group
             .input-prepend
               label.add-on(for="name"): i.icon-user
-              input#name(type="text", placeholder="{{ 'name_or_organization' | i18n }}")
+              input#name(type="text", placeholder="{{ appText.name_or_organization }}")
           .control-group
             .input-prepend
               label.add-on(for="email"): i.icon-envelope
-              input#email(type="email", placeholder="{{'email' | i18n}}")
+              input#email(type="email", placeholder="{{appText.email}}")
           .control-group
             .input-prepend
               label.add-on(for="phone"): i.icon-phone
-              input#phone(type="text", placeholder="{{'phone' | i18n}}")
-          button.btn.span(style="box-sizing:border-box;") {{ 'inquire' | i18n }}
+              input#phone(type="text", placeholder="{{appText.phone}}")
+          button.btn.span(style="box-sizing:border-box;") {{ appText.inquire }}
 
 
 
