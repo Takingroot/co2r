@@ -21,8 +21,8 @@ module.exports = ($parse)->
 
   link: (scope, el, attrs)->
 
-    scope.isotopeFilterByName = (name='')->
-      #console.log \filter, name
-      #console.log el.children "[data-name*='#name']"
-      selector = if name then "[data-name*='#{name.toLowerCase!}']" else \*
-      el.isotope filter: selector
+    scope.isotopeFilterByName = (filter-string)->
+      # filter artifacts on name
+      # if the filter input is empty then show all artifacts
+      css-selector = if filter-string then "[data-name*='#{filter-string.toLowerCase!}']" else \*
+      el.isotope filter: css-selector
