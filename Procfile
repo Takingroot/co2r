@@ -1,1 +1,1 @@
-web: node server
+web: node .launch-static-server
