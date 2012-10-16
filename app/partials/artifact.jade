@@ -13,7 +13,7 @@
   section.about.v-push-2
     header
       h1 {{artifact.name}}
-      h4 {{appText.artifact_offset_since | interpolate:artifact.offset_since}}
+      h4 {{appText.artifact_offset_since | interpolate:artifact.offsetSince}}
     .row.v-push-1
       .description.col-6
         .story(ng-bind-html="artifact.description")

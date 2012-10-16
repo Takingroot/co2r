@@ -4,6 +4,9 @@ module.exports = ($scope, $routeParams, $http)->
 
   $scope.artifact       = data.artifact
   $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
+
+  $scope.artifact.offset-since       = $scope.reports[*-1].year
+
   $scope.latest-report  = $scope.reports[*-1]
   $scope.column_width   = 300
   $scope.timeline_width = $scope.column_width * $scope.reports.length
