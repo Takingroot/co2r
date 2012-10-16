@@ -13,13 +13,12 @@
     "stylus-brunch": "~1.4.1",
     "coffee-script-brunch": "~1.3.2",
     "javascript-brunch": "~1.3.0",
+    "auto-reload-brunch": "~1.3.2",
     "css-brunch": "~1.3.0",
     "statik": "~1.2.5",
     "brunch": "1.4.x"
   },
-  "devDependencies": {
-    "auto-reload-brunch": "~1.3.2"
-  },
+  "devDependencies": {},
   "scripts":{
     "postinstall": "brunch build"
   },
