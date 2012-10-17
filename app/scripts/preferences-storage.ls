@@ -9,13 +9,21 @@ class Preferences-storage
 
   get-and-maybe-set: (name, new-value)->
     setting = _handle-booleans local-storage.getItem @storage-key-names-prefix + name
-    setting ? @set name, new-value and new-value
+    if setting?
+      setting
+    else
+      @set name, new-value
+      new-value
 
   # if this setting has never been set, save it using the default value
   # and return the default value
   get: (name)->
     setting = _handle-booleans local-storage.getItem @storage-key-names-prefix + name
-    setting ? @set name, @defaults[name] and @get name
+    if setting?
+      setting
+    else
+      @set name, @defaults[name]
+      @defaults[name]
 
   # restore all settings if not limited to specific ones
   restore-defaults: (names=_.keys(@defaults))->
