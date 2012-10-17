@@ -4,17 +4,17 @@ header
     .introduction.span-6
       h1.aligns-middle
         i.icon-file
-        span  {{ appText.register_your_product }}
-      p {{ appText.register_introduction}}
+        span(ng-bind-html="appText.register_your_product")
+      p(ng-bind-html="appText.register_introduction")
 
     form.vintage-box-models
       .row.h-gutters-1
-        textarea(rows="6", placeholder=" {{ appText.your_message }}")
+        textarea(rows="6", placeholder="{{appText.your_message}}")
         div
           .control-group
             .input-prepend
               label.add-on(for="name"): i.icon-user
-              input#name(type="text", placeholder="{{ appText.name_or_organization }}")
+              input#name(type="text", placeholder="{{appText.name_or_organization}}")
           .control-group
             .input-prepend
               label.add-on(for="email"): i.icon-envelope
@@ -29,7 +29,7 @@ header
 
 aside.row.register-table-of-contents(style="width:40%;")
   .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
-    section
+    section(todo)
       h4 Benefits
       ul
         li Project differentiation

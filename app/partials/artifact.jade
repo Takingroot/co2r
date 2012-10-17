@@ -12,21 +12,21 @@
 
   section.about.v-push-2
     header
-      h1 {{artifact.name}}
-      h4 {{appText.artifact_offset_since | interpolate:artifact.offsetSince}}
+      h1(ng-bind-html="artifact.name")
+      h4(ng-bind-html="appText.artifact_offset_since | interpolate:artifact.offsetSince")
     .row.v-push-1
       .description.col-6
         .story(ng-bind-html="artifact.description")
         small: a.aligns-middle(href="/about")
           i.icon-pushpin
-          span  {{ appText.learn_more_about_co2r }}
+          span(ng-bind-html="appText.learn_more_about_co2r")
 
       .col-4
         .business-card.float-right
           .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
             a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
           .contact(ui-if="artifact.organization.contact_infos.length > 0")
-            //-p(ng-bind="appText.artifact_business_card_contact_lead_in")
+            //-p(ng-bind-html="appText.artifact_business_card_contact_lead_in")
             ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
               h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
 
@@ -37,7 +37,7 @@
 
 section.reports.v-push-5.span.a-image(ui-if="reports.length")
   header(style="text-align:center;")
-    h1(ng-bind="appText.artifact_reports_section_title")
+    h1(ng-bind-html="appText.artifact_reports_section_title")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
@@ -66,7 +66,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               .row(style="margin-left:45px;").text-aligns-center
                 h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="'t'")
-                h6(style="width:100px;margin-left:12px;"): {{ appText.trees_planted | interpolate:report.trees_planted }}
+                h6(style="width:100px;margin-left:12px;", ng-bind-html="appText.trees_planted | interpolate:report.trees_planted")
               //-h6(style="margin-left:158px;width:100px;"):
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")

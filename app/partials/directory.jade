@@ -6,7 +6,7 @@
   .introduction-copy.col-6
     h1(ng-bind-html="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")
-    a.btn(href="/about") {{ appText.learn_more }}
+    a.btn(href="/about", ng-bind-html="appText.learn_more")
 
 
 form.form-search.vintage-box-models.align-center

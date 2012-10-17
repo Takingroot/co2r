@@ -9,5 +9,5 @@
     .faqs.span-8.v-gutters-3
       article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
-          h1 {{faq.question}}
+          h1(ng-bind-html="faq.question")
         .answer(ng-bind-html="faq.answer")
