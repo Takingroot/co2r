@@ -1,6 +1,6 @@
 module.exports = ($scope, $routeParams, $http)->
 
-  data <- $http.get("http://co2r-data-staging.herokuapp.com/api/artifact/#{$routeParams.artifact}").success
+  data <- $http.get("#{app_data.urls.api}/artifact/#{$routeParams.artifact}?language=#{app_data.user-language}").success
 
   $scope.artifact       = data.artifact
   $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)

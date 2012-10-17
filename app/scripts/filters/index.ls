@@ -36,3 +36,19 @@ angular.module \co2r.filters, []
       string
     else
       _.str.sprintf string, ...interpolations
+
+.filter \altLanguage, ->
+  ->
+    | it is \en => \fr
+    | it is \fr => \en
+
+.filter \languageName, ->
+  (language-code)->
+    language-names =
+      en:
+        en: \English
+        fr: \French
+      fr:
+        en: \Anglais
+        fr: \Francais
+    language-names[language-code][language-code]

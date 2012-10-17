@@ -1,5 +1,5 @@
 module.exports = ($scope, $http)->
   $scope.$root.page_title = \Directory
 
-  $http.get('http://co2r-data-staging.herokuapp.com/api/artifacts').success (data)->
+  $http.get("#{app_data.urls.api}/artifacts?language=#{app_data.user-language}").success (data)->
     $scope.artifacts = data.artifacts

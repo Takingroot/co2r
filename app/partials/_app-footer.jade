@@ -33,6 +33,10 @@ footer.app-footer.group
           a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
     br
+    //- TODO translation
+    | View website in
+    = ' '
+    a(ng-click="preferences.set('languageCode', otherLanguage); reloadPage()", ng-bind="otherLanguage | languageName")
     br
     br
     br

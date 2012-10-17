@@ -19,7 +19,8 @@ CO2R.config([\$locationProvider, ($location-provider)->
 ])
 require './routes'
 
-CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-path)->
+CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-path, $filter)->
+  $root-scope.other-language = $filter(\altLanguage)(app_data.user-language)
 
   nav-items =
 
@@ -64,4 +65,6 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
   $root-scope.e = (key)->
     app_data.expansions[key]
+
+  $root-scope.reloadPage = -> window.location.reload!
 
