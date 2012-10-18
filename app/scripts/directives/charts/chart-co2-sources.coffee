@@ -16,7 +16,7 @@ module.exports = ->
       vis_height = vis_width
       vis_radius = vis_width/2
 
-      color = d3.scale.category20c()
+      #color = d3.scale.category20c()
 
       vis = d3.select(el[0]).data([vis_data]).
         style('width', "#{box_width}px").style('height', "#{box_height}px").style('margin','0 auto').
@@ -34,10 +34,11 @@ module.exports = ->
           attr('class', (d,i)-> "slice-for-data-#{_.str.slugify(vis_data[i].name)}")
 
       arcs.append('path').
-        attr('fill', (d,i)-> color(i) ).
+        attr('fill', (d, i)-> scope.nameColors[d.data.name] ).
         attr('d', arc)
 
       arcs.append('text').
+        classed("pie-label", on).
         attr('transform',(d,i)->
           d.innerRadius = d.outerRadius = 0
           "translate(#{arc.centroid(d)})"
@@ -46,5 +47,5 @@ module.exports = ->
         # note: hide 0% values
         text( (d,i)->
           if 0 isnt vis_data[i].percent then (100 * vis_data[i].percent).round(1) + '%' else ''
-        ).
-        style('fill', 'white')
+        )
+        #style('fill', 'white')

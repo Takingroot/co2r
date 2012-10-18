@@ -17,7 +17,9 @@ module.exports = ($scope, $routeParams, $http)->
   $scope.column_width   = 300
   $scope.timeline_width = $scope.column_width * $scope.reports.length
 
-  # calculate the trees planted
+
+  # calculate and save the trees planted for each year
+  # --------------------------------------------------------------------------------------------------
   _.each $scope.reports, (report)->
     vars-for-year = _.first _.select app_data.offset_variables, -> it.year is report.year
 
@@ -29,7 +31,8 @@ module.exports = ($scope, $routeParams, $http)->
     report.trees_planted = trees-planted.floor!
 
 
-  # data collected across artifacts for comparison
+  # data collected across artifacts for comparison in charts
+  # --------------------------------------------------------------------------------------------------
   $scope.data =
     co2_sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
     co2_per_thing_made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> -1*it)
@@ -38,4 +41,23 @@ module.exports = ($scope, $routeParams, $http)->
       offset_co2: _.pluck $scope.reports, \total_offset_tons
       trees-planted: _.pluck $scope.reports, \trees_planted
 
+
+  # data for co2 source categories associated with colors
+  # --------------------------------------------------------------------------------------------------
+  names = _.uniq _.flatten _.map $scope.data.co2_sources, -> _.pluck it, \name
+  # colors.length MUST be longer than names.length
+  # colors based on https://files.podio.com/23920019
+  # first set of colors are less saturated
+  #colors = _.map <[DAE7B1 BED5EC AAA7D3 EBACA4 BDD5C0 FAC7A3 FBF5B6 9A8383]>, -> "##it"
+  colors = _.map <[C7DA84 99C0E1 817DBB E07F79 6BAB82 F6A975 F9EF8A 715353]>, -> "##it"
+  name-colors = {}
+  _.each names, (name, i)-> name-colors[name] = colors[i]
+
+  #console.log colors2, name-colors
+  $scope.name-colors = name-colors
+
+
+  # discover if the artifact *ever* did any other eco actions
+  # --------------------------------------------------------------------------------------------------
+  # with this information we can know if we need to render the other-eco-actions section
   $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0

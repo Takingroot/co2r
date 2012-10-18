@@ -6,7 +6,6 @@ module.exports = ->
 
     box-width    = scope.$eval attrs.column-width
     data         = scope.$eval attrs.data
-    console.log data
     chart-height = 200px
     gutter       = 200px
     chart-width  = data.total_co2.length * box-width
