@@ -16,10 +16,11 @@
     "auto-reload-brunch": "~1.3.2",
     "css-brunch": "~1.3.0",
     "statik": "~1.2.5",
-    "brunch": "1.4.x"
+    "brunch": "1.4.x",
+    "express": "~3.0.0rc5"
   },
   "devDependencies": {},
-  "scripts":{
+  "scripts": {
     "postinstall": "brunch build"
   },
   "repository": {

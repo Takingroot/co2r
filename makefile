@@ -13,5 +13,5 @@ compressed-build:
 demo:
 	git push demo master
 
-local-demo: compressed-build
-	node .launch-static-server
+local-demo:
+	node .launch-production-server
