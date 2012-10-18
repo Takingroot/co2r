@@ -1,5 +1,6 @@
 module.exports = ($scope, $routeParams, $http)->
 
+
   get-artifact-config =
     url: "#{app_data.urls.api}/artifact/#{$routeParams.artifact}"
     method: \GET
@@ -16,6 +17,9 @@ module.exports = ($scope, $routeParams, $http)->
   $scope.latest-report  = $scope.reports[*-1]
   $scope.column_width   = 300
   $scope.timeline_width = $scope.column_width * $scope.reports.length
+
+  # for the browser title
+  $scope.$root.page_title = $scope.artifact.name
 
 
   # calculate and save the trees planted for each year
@@ -61,3 +65,4 @@ module.exports = ($scope, $routeParams, $http)->
   # --------------------------------------------------------------------------------------------------
   # with this information we can know if we need to render the other-eco-actions section
   $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
+
