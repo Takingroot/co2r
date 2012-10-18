@@ -17,12 +17,20 @@ $ ->
 
   user-language = preferences-storage.get-and-maybe-set \languageCode, maybe-users-browser-language
 
-  admined-app-data <- $.getJSON("#{app_data.urls.api}/app?language=#user-language").success
-  app-text         <- $.getJSON("#{app_data.urls.api}/locale/#user-language").success
 
-  app_data <<< admined-app-data
-  app_data.user-language = user-language
-  app_data.urls.kml-data = "http://thievishfilms.s3.amazonaws.com/lccp-2012-#user-language.kml"
-  window.app-text = app-text.locale
 
-  angular.bootstrap document.document-element, [\co2r]
+  get-app-data = $.getJSON("#{app_data.urls.api}/app?language=#user-language")
+                  .then (admined-app-data)->
+                    app_data <<< admined-app-data
+
+  get-i18n-data = $.getJSON("#{app_data.urls.api}/locale/#user-language")
+                   .then (app-text)->
+                     app_data.user-language = user-language
+                     app_data.urls.kml-data = "http://thievishfilms.s3.amazonaws.com/lccp-2012-#user-language.kml"
+                     # make i18n data available to whole application
+                     # TODO Since app-text is sent to templates via scope
+                     # should we just make this into a service?
+                     window.app-text = app-text.locale
+
+  $.when get-app-data, get-i18n-data
+   .done -> angular.bootstrap document.document-element, [\co2r]
