@@ -1,13 +1,12 @@
 module.exports = ($scope, $http)->
   $scope.$root.page_title = \Directory
 
-  request-artifacts-config =
-    method: \GET
+  get-artifacts-config =
     url: app_data.urls.api + '/artifacts'
-    params:
-      language: app_data.user-language
+    method: \GET
+    params: language: app_data.user-language
     cache: yes
 
-  $http(request-artifacts-config)
+  $http get-artifacts-config
   .then (res)->
     $scope.artifacts = res.data.artifacts

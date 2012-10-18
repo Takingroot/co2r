@@ -1,8 +1,14 @@
 module.exports = ($scope, $routeParams, $http)->
 
-  data <- $http.get("#{app_data.urls.api}/artifact/#{$routeParams.artifact}?language=#{app_data.user-language}").success
+  get-artifact-config =
+    url: "#{app_data.urls.api}/artifact/#{$routeParams.artifact}"
+    method: \GET
+    params: language: app_data.user-language
+    cache: yes
 
-  $scope.artifact       = data.artifact
+  res <- $http(get-artifact-config).then
+
+  $scope.artifact       = res.data.artifact
   $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
 
   $scope.artifact.offset-since       = $scope.reports[*-1].year

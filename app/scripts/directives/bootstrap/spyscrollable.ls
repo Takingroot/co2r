@@ -3,4 +3,4 @@ module.exports = (m)->
     (scope, el, attrs)->
       attrs.$observe attrs.id, ->
         $anchorScroll!
-        $(document.body).scrollspy \refresh
+        $ document.body .scrollspy \refresh
