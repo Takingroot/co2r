@@ -14,4 +14,7 @@ demo:
 	git push demo master
 
 local-demo:
+	rm -R .public
+	rm -R node_modules
+	npm install
 	node .launch-production-server
