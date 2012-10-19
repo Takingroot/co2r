@@ -13,8 +13,11 @@ compressed-build:
 demo:
 	git push demo master
 
-local-demo:
+local-verbose-demo:
 	rm -R .public
 	rm -R node_modules
 	npm install
+	node .launch-production-server
+
+local-demo:
 	node .launch-production-server
