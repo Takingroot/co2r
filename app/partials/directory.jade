@@ -12,16 +12,13 @@
 form.form-search.vintage-box-models.align-center
   .input-prepend
     span.add-on: span.icon-search
-    input.search-query.span5(type="text", ng-model="artifact_name",
-      placeholder="{{appText.directory_filter_input_prompt}}",
-      ng-change="isotopeFilterByName(artifact_name)"
-      )
+    input.search-query.span5(type="text", ng-model="searchForArtifactName", autofocus,
+      placeholder="{{appText.directory_filter_input_prompt}}")
 
-.artifact-cards.gutters-05.row.hidden(isotope)
+.artifact-cards.gutters-05.row
 
-  a.artifact-card.row.dark-theme(isotope-item, href="{{artifact.slug}}",
-    ng-repeat="artifact in artifacts",
-    data-name="{{artifact.name.toLowerCase()}}")
+  a.artifact-card.row.dark-theme(href="{{artifact.slug}}",
+    ng-repeat="artifact in artifacts | filter:searchForArtifactName")
     .artifact-card-image
       img(ng-src="{{artifact.thumbnail_url}}")
     .artifact-card-info
@@ -30,4 +27,4 @@ form.form-search.vintage-box-models.align-center
         | {{artifact.unit_verbose}}
         br
         co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
-      .organization-name {{artifact.name}}
+      .organization-name(ng-bind-html="artifact.name | highlight:searchForArtifactName")

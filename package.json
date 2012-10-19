@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "LiveScript-brunch": "git://github.com/jasonkuhrt/LiveScript-brunch.git#patch-1",
+    "stylus-brunch": "git://github.com/jasonkuhrt/stylus-brunch.git#configerable",
     "jade-brunch": "~1.3.0",
     "static-jade-brunch": "~1.4.8",
-    "stylus-brunch": "~1.4.1",
     "coffee-script-brunch": "~1.3.2",
     "javascript-brunch": "~1.3.0",
     "auto-reload-brunch": "~1.3.2",

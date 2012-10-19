@@ -24,3 +24,7 @@ exports.config =
 
     templates:
       join-to: 'javascripts/.not-needed-templates.js'
+
+  plugins:
+    stylus: (stylus)->
+      stylus.import '/Users/jasonkuhrt/code/co2r/app/styles/prelude'

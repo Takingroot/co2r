@@ -1,0 +1,18 @@
+.cow-head
+  color green!important
+
+card-width   = 303px
+gutter-width = 10px
+
+
+//@media screen and (min-width: 0)
+.artifact-cards
+  width card-width + gutter-width
+
+@media screen and (min-width: 700px)
+  .artifact-cards
+    width card-width * 2   +   gutter-width * 2
+
+@media screen and (min-width: 1000px)
+  .artifact-cards
+    width card-width * 3   +   gutter-width * 3
