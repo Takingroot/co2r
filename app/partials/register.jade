@@ -27,37 +27,14 @@ header
 
 
 
-aside.row.register-table-of-contents(style="width:40%;")
-  .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
-    section(todo)
-      h4 Benefits
-      ul
-        li Project differentiation
-        li Competitive advantage
-        li Engaging customers
-    section
-      h4 Your toolkit
-      ul
-        li Microsite
-        li Stickers
-        li Signage
-        li Use of emblem
-        li Language
-        li Supporting images
-    section
-      h4 What you need to do
-      ul
-        li Qualify
-        li Offset
-        li Setup your toolkit
+.row.row-couple-heights
+  aside.row.register-table-of-contents(style="width:40%;")
+    .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
+      div(ng-bind-html="appText.register_artifact_left_column")
+    br
+    br
+    br
+    br
+    br
   .faqs.span-8.v-gutters-3
-      //-
-        article.span-6(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
-          header.question
-            h1(ng-bind="faq.question")
-          .answer(ng-bind-html="faq.answer")
-  br
-  br
-  br
-  br
-  br
+    div(ng-bind-html="appText.register_artifact_right_body")

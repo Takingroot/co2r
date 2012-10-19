@@ -10,8 +10,8 @@ footer.app-footer.group
           i.icon-facebook
           i.icon-pinterest
           i.icon-google-plus
-        textarea.span.v-push-1(placeholder="{{appText.your_message }}", rows="4", todo) Visit CO2R.com, a platform of co2 responsible products.
-        div: button.btn.span(todo) Spread CO2R Love
+        textarea.span.v-push-1(placeholder="{{appText.your_message}}", rows="4") {{appText.spread_the_word_default_message}}
+        div: button.btn.span {{appText.spread_the_word_button_label}}
 
   .app-footer-content.dark-theme.row.group.span(scroll-fix-bottom=".spread-the-word")
     nav-list.span-4(items="navs.footer", text-function="appText[item]")
@@ -33,8 +33,7 @@ footer.app-footer.group
           a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
     br
-    //- TODO translation
-    | View website in
+    {{appText.switch_language}}
     = ' '
     a(ng-click="preferences.set('languageCode', otherLanguage); reloadPage()", ng-bind="otherLanguage | languageName")
     br
