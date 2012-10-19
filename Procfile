@@ -1,1 +1,1 @@
-web: node .launch-static-server
+web: node .launch-production-server
