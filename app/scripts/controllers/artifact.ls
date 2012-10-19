@@ -1,4 +1,4 @@
-module.exports = ($scope, $routeParams, $http)->
+module.exports = ($scope, $routeParams, $http, tr-algorithms)->
 
 
   get-artifact-config =
@@ -25,14 +25,7 @@ module.exports = ($scope, $routeParams, $http)->
   # calculate and save the trees planted for each year
   # --------------------------------------------------------------------------------------------------
   _.each $scope.reports, (report)->
-    vars-for-year = _.first _.select app_data.offset_variables, -> it.year is report.year
-
-    if not vars-for-year then throw "There is no offset-variables data for #{report.year}"
-
-    offset-count  = report.total_offset_tons * vars-for-year.offsets_per_co2_ton
-    trees-planted = offset-count * vars-for-year.trees_per_offset
-
-    report.trees_planted = trees-planted.floor!
+    report.trees_planted = tr-algorithms.calc-trees-planted(report.total_offset_tons, report.year)
 
 
   # data collected across artifacts for comparison in charts
