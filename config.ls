@@ -2,7 +2,7 @@
 exports.config =
 
   paths:
-    public: './.public'
+    public: '.public'
 
   files:
     javascripts:
@@ -27,4 +27,4 @@ exports.config =
 
   plugins:
     stylus: (stylus)->
-      stylus.import '/Users/jasonkuhrt/code/co2r/app/styles/prelude'
+      stylus.import 'app/styles/prelude'
