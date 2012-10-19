@@ -12,6 +12,6 @@ module.exports = (partial-path)->
     </span>
   """
   link: (scope, el, attrs)->
-    scope.popover-content-partial-path = partial-path('list-co2-comparisons')
+    scope.popover-content-partial-path = partial-path \list-co2-comparisons
     scope.amount-unit = if \unit of attrs then scope.$eval attrs.unit else app_data.defaults.co2_per_thing_made_unit
     scope.amount      = scope.$eval attrs.amount

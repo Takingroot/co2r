@@ -15,7 +15,7 @@ footer.app-footer.group
 
   .app-footer-content.dark-theme.row.group.span(scroll-fix-bottom=".spread-the-word")
     nav-list.span-4(items="navs.footer", text-function="appText[item]")
-    .row.h-gutters-2.align-right
+    .row.h-gutters-3.align-right
       .sponsors.span-4
         a(href="{{ appText.sponsor_link }}", target="_blank")
           h4.aligns-middle
@@ -24,7 +24,7 @@ footer.app-footer.group
         p(ng-bind-html="appText.footer_sponsor_description")
       .company.span-3
         a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
-          i.icon-globe
+          svg-image.co2r-logo(src="/images/logo-white.svg")
           span(ng-bind-html="appText.footer_taking_root")
         p(ng-bind-html="appText.footer_taking_root_description")
         .row.h-gutters-05(style="font-size:1.5em;")

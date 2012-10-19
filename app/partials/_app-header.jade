@@ -1,4 +1,5 @@
 .app-navbar.row.aligns-middle
+  svg-image.co2r-logo(src="/images/logo.svg")
   nav-list.row.h-gutters-1.aligns-middle(items="navs.primary", text-function="appText[item]")
     li: a(popover="{contentSrc: partialPath('form-feedback'), placement:'bottom'}", ng-bind="appText.give_us_feedback")
 

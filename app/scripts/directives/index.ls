@@ -14,3 +14,4 @@ m = angular.module \co2r.directives, []
 require('./bootstrap')(m)
 require('./charts')(m)
 require('./reports')(m)
+require('./svg-embed')(m)
