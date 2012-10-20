@@ -1,4 +1,4 @@
-module.exports = ($scope, $routeParams, $http, tr-algorithms)->
+module.exports = ($scope, $routeParams, $http)->
 
 
   get-artifact-config =
@@ -20,13 +20,6 @@ module.exports = ($scope, $routeParams, $http, tr-algorithms)->
 
   # for the browser title
   $scope.$root.page_title = $scope.artifact.name
-
-
-  # calculate and save the trees planted for each year
-  # --------------------------------------------------------------------------------------------------
-  _.each $scope.reports, (report)->
-    report.trees_planted = tr-algorithms.calc-trees-planted(report.total_offset_tons, report.year)
-
 
   # data collected across artifacts for comparison in charts
   # --------------------------------------------------------------------------------------------------
