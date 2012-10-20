@@ -1,4 +1,4 @@
 form.involvement-form
   .row.aligns-bottom
     textarea.col-4(rows=8, placeholder="{{ appText.feedback_message_prompt }}")
-    button.btn.btn-inverse.col-4.h-push-1 {{ appText.shoot }}
+    button.btn.btn-inverse.col-4.h-push-1(ng-bind="appText.shoot")

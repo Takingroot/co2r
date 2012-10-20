@@ -4,9 +4,9 @@
   .a-image.col-6.v-push-3(style="height:200px;")
     img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
   .introduction-copy.col-6
-    h1(ng-bind-html="appText.introduction_title")
+    h1(co2r-bind="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")
-    a.btn(href="/about", ng-bind-html="appText.learn_more")
+    a.btn(href="/about", co2r-bind="appText.learn_more")
 
 
 form.form-search.vintage-box-models.align-center
@@ -23,8 +23,7 @@ form.form-search.vintage-box-models.align-center
       img(ng-src="{{artifact.thumbnail_url}}")
     .artifact-card-info
       h4
-        | {{artifact.unit_quantity}}
-        | {{artifact.unit_verbose}}
+        span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
         br
         co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
-      .organization-name(ng-bind-html="artifact.name | highlight:searchForArtifactName")
+      .organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")

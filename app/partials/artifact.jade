@@ -4,29 +4,27 @@
     carousel(style="min-height:380px;")
       carousel-item.span-10(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
     .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
-      h4.unspaced
-        | {{artifact.unit_quantity}}
-        | {{artifact.unit_verbose}}
+      h4.unspaced(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
         br
         co2-contrasted(amount="latestReport.co2_per_unit")
 
   section.about.v-push-2
     header
-      h1(ng-bind-html="artifact.name")
-      h4(ng-bind-html="appText.artifact_offset_since | interpolate:artifact.offsetSince")
+      h1(co2r-bind="artifact.name")
+      h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
     .row.v-push-1
       .description.col-6
-        .story(ng-bind-html="artifact.description")
+        .story(co2r-bind="artifact.description")
         small: a.aligns-middle(href="/about")
           i.icon-pushpin
-          span(ng-bind-html="appText.learn_more_about_co2r")
+          span(co2r-bind="appText.learn_more_about_co2r")
 
       .col-4
         .business-card.float-right
           .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
             a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
           .contact(ui-if="artifact.organization.contact_infos.length > 0")
-            //-p(ng-bind-html="appText.artifact_business_card_contact_lead_in")
+            p(co2r-bind="appText.artifact_business_card_contact_lead_in")
             ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
               h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
 
@@ -37,7 +35,7 @@
 
 section.reports.v-push-5.span.a-image(ui-if="reports.length")
   header(style="text-align:center;")
-    h1(ng-bind-html="appText.artifact_reports_section_title")
+    h1(co2r-bind="appText.artifact_report_section_title")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
@@ -51,7 +49,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
-          div(ng-bind-html="appText.artifact_co2_per_thing_made | interpolate:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
+          div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -59,19 +57,19 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               h4: co2-contrasted(amount="report.co2_per_unit")
 
       section.report-section.report-section-total-vs-offset
-        report-header-basic: div(ng-bind-html="appText.artifact_total_vs_offset")
+        report-header-basic: div(co2r-bind="appText.artifact_total_vs_offset")
         timeline-slider
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               .row(style="margin-left:45px;").text-aligns-center
                 h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="'t'")
-                h6(style="width:100px;margin-left:12px;", ng-bind-html="appText.trees_planted | interpolate:report.trees_planted")
+                h6(style="width:100px;margin-left:12px;", co2r-bind="appText.trees_planted | interpolate:report.trees_planted")
               //-h6(style="margin-left:158px;width:100px;"):
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
-          h3.report-title.text-align-center(ng-bind-html="appText.artifact_co2_sources | interpolate:e('co2')")
+          h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources | interpolate:e('co2')")
           ul.row.h-gutters-1: li.h-gutters-025(ng-repeat="(co2SourceName, color) in nameColors")
             span.color(style="background-color:{{color}};width:10px;height:10px")
             span.name(ng-bind="co2SourceName")
@@ -81,7 +79,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
-        report-header-basic {{appText.artifact_other_eco_actions}}
+        report-header-basic(ng-bind="appText.artifact_other_eco_actions")
         timeline-slider
           .row(style="white-space:normal;")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
@@ -89,10 +87,9 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
                 .row.aligns-middle
                   i(class="icon-{{actionCategory.name.icon_code | slugify}}")
                   = ' '
-                  //-| {{ actionCategory.description_list | json}}
-                  h5(style="text-transform:capitalize;")  {{ actionCategory.name.name }}
+                  h5(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
                   ul
-                    li(ng-repeat="action in actionCategory.description_list"): span {{action}}
+                    li(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
 
         br
         br
@@ -100,8 +97,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
       section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
         button.btn.btn-inverse.v-push-4
           a(href="{{latestReport.annual_report_url}}"): h3
-            i.icon-download
-            |  {{ appText.artifact_download_report | interpolate:latestReport.year }}
+            i.icon-download(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 br
 br
 br

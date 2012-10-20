@@ -4,8 +4,8 @@ header
     .introduction.span-6
       h1.aligns-middle
         i.icon-file
-        span(ng-bind-html="appText.register_your_product")
-      p(ng-bind-html="appText.register_introduction")
+        span(co2r-bind="appText.register_your_product")
+      p(co2r-bind="appText.register_introduction")
 
     form.vintage-box-models
       .row.h-gutters-1
@@ -23,18 +23,18 @@ header
             .input-prepend
               label.add-on(for="phone"): i.icon-phone
               input#phone(type="text", placeholder="{{appText.phone}}")
-          button.btn.span(style="box-sizing:border-box;") {{ appText.inquire }}
+          button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire")
 
 
 
 .row.row-couple-heights
   aside.row.register-table-of-contents(style="width:40%;")
     .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
-      div(ng-bind-html="appText.register_artifact_left_column")
+      div(co2r-bind="appText.register_artifact_left_column")
     br
     br
     br
     br
     br
   .faqs.span-8.v-gutters-3
-    div(ng-bind-html="appText.register_artifact_right_body")
+    div(co2r-bind="appText.register_artifact_right_body")
