@@ -51,4 +51,3 @@ module.exports = ($scope, $routeParams, $http)->
   # --------------------------------------------------------------------------------------------------
   # with this information we can know if we need to render the other-eco-actions section
   $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
-
