@@ -1,5 +1,11 @@
 module.exports = ($scope)->
 
+  $scope.addthis-share-config =
+    #todo translation
+    title: "CO2R, a catalog of carbon responsible products: http://co2r.com"
+    url: "http://co2r.com"
+    description: \test-description
+
   $scope.$root.page_title = "About"
 
   $scope.map-options =

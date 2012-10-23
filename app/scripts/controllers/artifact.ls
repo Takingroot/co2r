@@ -60,5 +60,4 @@ module.exports = ($scope, $routeParams, $http, $location)->
   # one config so that when $watch is triggered it receives the completed config
   $scope.addthis-share-config =
     title: "#{$scope.artifact.organization.name} offsets their co2. See their emissions report at: #{$location.abs-url!}"
-    url: $location.abs-url!
     description: \test-description
