@@ -3,7 +3,7 @@
 # what happens if we need other calls to refresh toolbox?
 module.exports = (m)->
 
-  m.directive \addthisButtonTwitter, ->
+  m.directive \addthisButtonTweet, ->
     restrict: \C
     scope:
       use-title: \@
