@@ -1,5 +1,7 @@
 .align-center.v-push-3
 
+
+
   .gallery.span-10.group(ui-if="artifact.images.length")
     carousel(style="min-height:380px;")
       carousel-item.span-10(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
@@ -27,6 +29,7 @@
             p(co2r-bind="appText.artifact_business_card_contact_lead_in")
             ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
               h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+
 
 
 
@@ -103,3 +106,11 @@ br
 br
 br
 br
+
+.row.share-artifact.h-gutters-1.aligns-middle(scroll-fix-bottom="{until:'.app-footer'}")
+  strong Tell your friends about {{artifact.name}}!
+  .addthis_toolbox.addthis_default_style.addthis_32x32_style.vintage-box-models
+    a.addthis_button_facebook
+    a.addthis_button_twitter(use-title="{{twitterDefaultMessage}}")
+    //-a.addthis_button_compact.vintage-box-models
+    //-a.addthis_counter.addthis_pill_style

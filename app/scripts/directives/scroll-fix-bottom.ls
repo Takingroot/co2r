@@ -1,9 +1,17 @@
 module.exports = ($timeout)->
   (scope, el, attrs)->
-    class-name = \scrolled-to
-    fix-el     = $ attrs.scrollFixBottom
+    config = scope.$eval attrs.scroll-fix-bottom
 
-    # We need to update fix-el's position on numerous occasions
+    until-el  = $ config.until
+
+    classes =
+      can-scrollfix: "can-scrollfix can-scrollfix-bottom"
+      is-scrollfixed: \is-scrollfixed
+
+
+    el.add-class classes.can-scrollfix
+
+    # We need to update until-el's position on numerous occasions
 
     # first time
     refresh-scrolled-to-state!
@@ -18,7 +26,9 @@ module.exports = ($timeout)->
 
 
     function refresh-scrolled-to-state
-      at-y     = $(window).height! + $(window).scrollTop!
-      target-y = el.offset!top
+      bumper-y = until-el.offset!top
+      window-y  = $(window).height! + $(window).scrollTop!
 
-      fix-el.toggleClass class-name, at-y >= target-y
+      to-state = window-y <= bumper-y
+
+      el.toggleClass classes.is-scrollfixed, to-state

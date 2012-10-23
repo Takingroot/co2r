@@ -1,4 +1,4 @@
-module.exports = ($scope, $routeParams, $http)->
+module.exports = ($scope, $routeParams, $http, $location)->
 
 
   get-artifact-config =
@@ -51,3 +51,11 @@ module.exports = ($scope, $routeParams, $http)->
   # --------------------------------------------------------------------------------------------------
   # with this information we can know if we need to render the other-eco-actions section
   $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
+
+
+
+  # Variable for default twitter message
+  # --------------------------------------------------------------------------------------------------
+  # Since we can only update addthis.toolbox once (!) we need to make sure any variables are glued into one
+  # so that when $watch is triggered it receives the completed string
+  $scope.twitter-default-message = "#{$scope.artifact.organization.name} offsets their co2. See their emissions report at: #{$location.abs-url!}"
