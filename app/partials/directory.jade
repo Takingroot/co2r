@@ -1,3 +1,4 @@
+
 .row.align-center.v-push-2.group(ng-show="preferences.get('showIntroduction')")
   .vintage-box-models.pin-right
     button.btn.icon-remove(ng-click="preferences.set('showIntroduction', false)")
@@ -6,7 +7,9 @@
   .introduction-copy.col-6
     h1(co2r-bind="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")
-    a.btn(href="/about", co2r-bind="appText.learn_more")
+    .row
+      a.btn(href="/about", co2r-bind="appText.learn_more")
+      ng-include.pull-right(src="partialPath('share-co2r')")
 
 
 form.form-search.vintage-box-models.align-center

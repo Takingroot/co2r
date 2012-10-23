@@ -4,6 +4,7 @@
   .introduction-copy.col-6
     h1(co2r-bind="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")
+    ng-include(src="partialPath('share-co2r')")
 
 .align-center.v-push-3
   .row
