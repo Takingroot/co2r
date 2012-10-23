@@ -1,19 +1,5 @@
 footer.app-footer.group
 
-  //-
-    .spread-the-word
-      .inner.span-4.dark-theme(style="margin-left:20px;padding:15px 20px;-webkit-user-select:none;border-radius:3px 3px 0 0;")
-        .handle(ng-click="is_open = !is_open", style="cursor:pointer;")
-          h5.icon-share.unspaced(todo)  Spread the word
-        form.v-push-2(ng-show="is_open", style="margin-bottom:0;")
-          .select-outlet.row.h-gutters-05(style="font-size:2em;")
-            i.icon-twitter
-            i.icon-facebook
-            i.icon-pinterest
-            i.icon-google-plus
-          textarea.span.v-push-1(placeholder="{{appText.your_message}}", rows="4", ng-bind="appText.spread_the_word_default_message")
-          div: button.btn.span(ng-bind="appText.spread_the_word_button_label")
-
   .app-footer-content.dark-theme.row.group.span
     nav-list.span-4(items="navs.footer", text-function="appText[item]")
     .row.h-gutters-3.align-right
