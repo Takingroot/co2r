@@ -1,21 +1,18 @@
-# TODO rather than refresh toolbox from this button
-# can we do it from a toolbox directive?
-# what happens if we need other calls to refresh toolbox?
 module.exports = (m)->
 
-  m.directive \addthisButtonTweet, ->
+  m.directive \artifactAddthisToolbox, ->
     restrict: \C
-    scope:
-      use-title: \@
+    replace: on
+    template: '
+      <div class="addthis_toolbox">
+        <a class="addthis_button_facebook_like" addthis:url="http://www.test423.com">
+        <a class="addthis_button_tweet" addthis:title="{{twitterDefaultMessage}}">
+      </div>
+    '
     link: (scope, el, attrs)->
-      #console.log scope, el.parent!, attrs
 
-      scope.$watch \useTitle, (new-title)->
-        if new-title
-
-          share-object =
-            title: new-title
-
+      scope.$watch \addthisShareConfig, (new-addthis-share-config)->
+        if new-addthis-share-config
           # Warning! multiple calls to toolbox are ignored
           # so we only have one chance to adjust the content?!
-          addthis.toolbox \.addthis_toolbox, {}, share-object
+          addthis.toolbox \.addthis_toolbox, {}, new-addthis-share-config
