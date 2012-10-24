@@ -1,10 +1,13 @@
+br
+br
+br
 
-.row.align-center.v-push-2.group(ng-show="preferences.get('showIntroduction')")
+.align-center.v-push-2.group(ng-show="preferences.get('showIntroduction')", ng-class="{'span-6':wMobile, 'row h-gutters-1':!wMobile}")
   .vintage-box-models.pin-right
     button.btn.icon-remove(ng-click="preferences.set('showIntroduction', false)")
-  .a-image.col-6.v-push-3(style="height:200px;")
+  .a-image.span-6.v-push-3(style="height:200px;")
     img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
-  .introduction-copy.col-6
+  .introduction-copy.span-6
     h1(co2r-bind="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")
     .row

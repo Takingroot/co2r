@@ -68,3 +68,21 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
   $root-scope.reloadPage = -> window.location.reload!
 
+
+
+
+
+
+  $root-scope.w-mobile = no
+
+  enquire.register "screen and (max-width:980px)",
+    match:   ->
+      #console.log \match
+      $root-scope.$apply -> $root-scope.w-mobile = yes
+    unmatch: ->
+      #console.log \unmatch
+      $root-scope.$apply -> $root-scope.w-mobile = no
+
+  # wait until first idle, i.e after angular gets one pass-through
+  # if we don't delay, the $apply above causes a bug (ng-view never loads, no error message)
+  _.delay (-> enquire.listen(50)), 0
