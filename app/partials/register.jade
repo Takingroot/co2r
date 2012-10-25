@@ -7,23 +7,23 @@ header
         span(co2r-bind="appText.register_your_product")
       p(co2r-bind="appText.register_introduction")
 
-    form.vintage-box-models(ng-submit="submit()", name="registerForm")
+    form.vintage-box-models(ng-submit="sendForm()", name="artifactRegistrationForm")
       .row.h-gutters-1
-        textarea(rows="6", placeholder="{{appText.your_message}}", ng-model="org.message", name="message")
+        textarea(rows="6", placeholder="{{appText.your_message}}", ng-model="org.message", required)
         div
           .control-group
             .input-prepend
               label.add-on(for="name"): i.icon-user
-              input#name(type="text", placeholder="{{appText.name_or_organization}}", ng-model="org.name", name="name")
+              input#name(type="text", placeholder="{{appText.name_or_organization}}", ng-model="org.name", required)
           .control-group
             .input-prepend
               label.add-on(for="email"): i.icon-envelope
-              input#email(type="email", placeholder="{{appText.email}}", ng-model="org.email", name="email")
+              input#email(type="email", placeholder="{{appText.email}}", ng-model="org.email", required)
           .control-group
             .input-prepend
               label.add-on(for="phone"): i.icon-phone
-              input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", name="phone")
-          button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire")
+              input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
+          button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
 
 
 
@@ -38,3 +38,16 @@ header
     br
   .faqs.span-8.v-gutters-3
     div(co2r-bind="appText.register_artifact_right_body")
+
+
+
+.post-artifact-registration-message.modal(style="display:none")
+  .modal-header
+    button.close(data-dismiss="modal") &times;
+    h1 Thank-you!
+  .modal-body
+    p
+      | Your registration request has been sent!
+      br
+      | This is the email that you sent:
+    pre(ng-bind-html="email.message")
