@@ -54,7 +54,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
 
       section.report-section.report-section-co2-per-unit
         report-header-basic
-          div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:e('co2'):(artifact.unit_quantity+' '+artifact.unit_verbose)")
+          div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:(artifact.unit_quantity+' '+artifact.unit_verbose)")
         timeline-slider
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -74,7 +74,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
-          h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources | interpolate:e('co2')")
+          h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
           ul.row.h-gutters-1: li.h-gutters-025(ng-repeat="(co2SourceName, color) in nameColors")
             span.color(style="background-color:{{color}};width:10px;height:10px")
             span.name(ng-bind="co2SourceName")

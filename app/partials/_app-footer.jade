@@ -24,6 +24,9 @@ footer.app-footer.group
     = ' '
     a(ng-click="preferences.set('languageCode', otherLanguage); reloadPage()", ng-bind="otherLanguage | languageName")
     br
+
+    button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'right'}")
+      span.icon-undo
     br
     br
     br

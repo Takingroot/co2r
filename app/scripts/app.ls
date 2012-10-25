@@ -63,9 +63,6 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
     $root-scope.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify(get_url()).split(" ")
 
-  $root-scope.e = (key)->
-    app_data.expansions[key]
-
   $root-scope.reloadPage = -> window.location.reload!
 
 
