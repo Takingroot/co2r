@@ -6,7 +6,8 @@
     carousel(style="min-height:380px;")
       carousel-item.span-10(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
     .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
-      h4.unspaced(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
+      h4.unspaced
+        span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
         br
         co2-contrasted(amount="latestReport.co2_per_unit")
 
@@ -83,7 +84,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
               chart-co2-sources(column-width="column_width", data="co2_sources")
 
       section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
-        report-header-basic(ng-bind="appText.artifact_other_eco_actions")
+        report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
         timeline-slider
           .row(style="white-space:normal;")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
