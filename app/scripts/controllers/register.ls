@@ -18,9 +18,3 @@ module.exports = ($scope, $http)->
     .then do
       (res)-> console.log \success!; console.dir res
       (res)-> console.log \error!; console.dir res
-    /*
-    .success (res)->
-      console.dir res
-    .error (res)->
-      console.log res
-      */
