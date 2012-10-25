@@ -71,6 +71,8 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
 
   $root-scope.w-mobile = no
+  $root-scope.log = (...args)->
+    console.log ...args
 
   enquire.register "screen and (max-width:980px)",
     match:   ->
