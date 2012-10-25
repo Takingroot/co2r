@@ -1,2 +1,4 @@
-textarea(placeholder="{{ appText.feedback_message_prompt}}", rows="5")
-button.btn.span(ng-bind="appText.shoot")
+form(ng-controller="formFeedbackController")
+  textarea(placeholder="{{ appText.feedback_message_prompt}}", ng-model="feedback", rows="5")
+  //-input.btn.span(ng-bind="appText.shoot", type="submit", id="submit", value="submit")
+  button.btn.span() go
