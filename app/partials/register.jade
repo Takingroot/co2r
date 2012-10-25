@@ -7,22 +7,22 @@ header
         span(co2r-bind="appText.register_your_product")
       p(co2r-bind="appText.register_introduction")
 
-    form.vintage-box-models
+    form.vintage-box-models(ng-submit="submit()", name="registerForm")
       .row.h-gutters-1
-        textarea(rows="6", placeholder="{{appText.your_message}}")
+        textarea(rows="6", placeholder="{{appText.your_message}}", ng-model="org.message", name="message")
         div
           .control-group
             .input-prepend
               label.add-on(for="name"): i.icon-user
-              input#name(type="text", placeholder="{{appText.name_or_organization}}")
+              input#name(type="text", placeholder="{{appText.name_or_organization}}", ng-model="org.name", name="name")
           .control-group
             .input-prepend
               label.add-on(for="email"): i.icon-envelope
-              input#email(type="email", placeholder="{{appText.email}}")
+              input#email(type="email", placeholder="{{appText.email}}", ng-model="org.email", name="email")
           .control-group
             .input-prepend
               label.add-on(for="phone"): i.icon-phone
-              input#phone(type="text", placeholder="{{appText.phone}}")
+              input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", name="phone")
           button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire")
 
 
