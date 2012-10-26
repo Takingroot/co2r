@@ -19,7 +19,8 @@ html
 
 
     .app-navbar.row.aligns-middle
-      svg-image.co2r-logo(src="/images/logo.svg")
+      //-svg-image.co2r-logo(src="/images/logo.svg")
+      img.co2r-logo(src="/images/logo.png")
       nav-list.row.h-gutters-1.aligns-middle(items="navs.primary", text-function="appText[item]")
 
       nav-list.row.h-gutters-1.align-right(style="white-space:nowrap;",
@@ -40,7 +41,7 @@ html
             p(co2r-bind="appText.footer_sponsor_description")
           .company.span-3
             a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
-              svg-image.co2r-logo(src="/images/logo-white.svg")
+              img.co2r-logo(src="/images/logo-white.png")
               span(co2r-bind="appText.footer_taking_root")
             p(co2r-bind="appText.footer_taking_root_description")
             .row.h-gutters-05(style="font-size:1.5em;")
