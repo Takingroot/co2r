@@ -1,3 +1,8 @@
+# Note:
+#
+# To use this directive the host scope must have a identifier called
+# addthisShareConfig pointing to an object
+#
 module.exports = (m)->
 
   m.directive \co2rAddthisToolbox, ($location)->
