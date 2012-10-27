@@ -6,7 +6,7 @@ br
   .vintage-box-models.pin-right
     button.btn.icon-remove(ng-click="preferences.set('showIntroduction', false)")
   .a-image.span-6.v-push-3(style="height:200px;")
-    img(ng-src="{{app_data.urls.introduction_figure}}", style="height:100%;")
+    img(ng-src="{{appVars.urls.introductionFigure}}", style="height:100%;")
   .introduction-copy.span-6
     h1(co2r-bind="appText.introduction_title")
     .introduction-text(co2r-bind="appText.introduction_text")

@@ -1,8 +1,9 @@
-require './scripts/app-data'
 require './scripts/app'
 user-language = require './scripts/lib/user-language'
 Preferences-storage = require './scripts/lib/preferences-storage'
 preferences-storage = new Preferences-storage
+
+window.app_data = {urls:{}}
 
 $ ->
   users-browser-language <- user-language
@@ -15,22 +16,17 @@ $ ->
   else
     maybe-users-browser-language = users-browser-language
 
-  user-language = preferences-storage.get-and-maybe-set \languageCode, maybe-users-browser-language
+  app_data.user-language = preferences-storage.get-and-maybe-set \languageCode, maybe-users-browser-language
+  app_data.urls.kml-data = "http://thievishfilms.s3.amazonaws.com/lccp-2012-#{app_data.user-language}.kml"
 
 
 
-  get-app-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/app?language=#user-language")
+  get-app-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/app?language=#{app_data.user-language}")
                   .then (admined-app-data)->
                     app_data <<< admined-app-data
 
-  get-i18n-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/locale/#user-language")
-                   .then (app-text)->
-                     app_data.user-language = user-language
-                     app_data.urls.kml-data = "http://thievishfilms.s3.amazonaws.com/lccp-2012-#user-language.kml"
-                     # make i18n data available to whole application
-                     # TODO Since app-text is sent to templates via scope
-                     # should we just make this into a service?
-                     window.app-text = app-text.locale
 
-  $.when get-app-data, get-i18n-data
-   .done -> angular.bootstrap document.document-element, [\co2r]
+  $.when get-app-data
+   .done ->
+    console.log \bootstrap
+    angular.bootstrap document.document-element, [\co2r]

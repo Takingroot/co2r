@@ -20,7 +20,8 @@ CO2R.config([\$locationProvider, ($location-provider)->
 
 require './routes'
 
-CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $filter)->
+CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $filter, app-vars, co2r-api)->
+  console.log \run
   $root-scope.other-language = $filter(\altLanguage)(app_data.user-language)
 
   nav-items =
@@ -51,7 +52,7 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $f
 
   # App data
   $root-scope.app_data = app_data
-  $root-scope.app-text = app-text
+  $root-scope.app-vars = app-vars
 
   $root-scope.$on "$routeChangeSuccess", (e, route, previous_route)->
 
@@ -82,3 +83,12 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $f
   # wait until first idle, i.e after angular gets one pass-through
   # if we don't delay, the $apply above causes a bug (ng-view never loads, no error message)
   _.delay (-> enquire.listen(50)), 0
+
+
+  # i18n text
+  $root-scope.app-text = {}
+
+  co2r-api.get "locale/#{app_data.user-language}"
+  .success (res-data)->
+    $root-scope.app-text = res-data.locale
+

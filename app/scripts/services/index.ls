@@ -4,6 +4,7 @@ m = angular.module \co2r.services, []
 
 # make this a constant so we can use it even in <module>.config blocks
 # it's a pure function so we don't need a factory version
-.constant \partialPath,       require './partial-path'
+.constant \partialPath,   require './partial-path'
+.constant \appVars,       require './app-vars'
 
 require("./co2r-api")(m)
