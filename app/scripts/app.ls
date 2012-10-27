@@ -20,7 +20,7 @@ CO2R.config([\$locationProvider, ($location-provider)->
 
 require './routes'
 
-CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-path, $filter)->
+CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $filter)->
   $root-scope.other-language = $filter(\altLanguage)(app_data.user-language)
 
   nav-items =
@@ -48,9 +48,6 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
   $root-scope.app_title     = "CO2R"
   $root-scope.preferences   = preferences-storage
-  $root-scope.count_offsets = (co2_amount)->
-    # assumes amount is given in tons
-    co2_amount / app_data.calculation_variables.offsets_per_co2_ton
 
   # App data
   $root-scope.app_data = app_data

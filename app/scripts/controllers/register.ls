@@ -1,4 +1,4 @@
-module.exports = ($scope, $http)->
+module.exports = ($scope, co2r-api)->
 
   # master this can be used to reset the form
   $scope.form-master = {}
@@ -22,7 +22,7 @@ module.exports = ($scope, $http)->
       """
 
     # send email
-    $http.post "#{app_data.urls.api}/email", $scope.email
+    co2r-api.post \email, {data: $scope.email}
     .then do
       (res)->
         $('.post-artifact-registration-message').modal!
