@@ -1,7 +1,7 @@
 require './scripts/app-data'
 require './scripts/app'
-user-language = require './scripts/user-language'
-Preferences-storage = require './scripts/preferences-storage'
+user-language = require './scripts/lib/user-language'
+Preferences-storage = require './scripts/lib/preferences-storage'
 preferences-storage = new Preferences-storage
 
 $ ->
@@ -19,11 +19,11 @@ $ ->
 
 
 
-  get-app-data = $.getJSON("#{app_data.urls.api}/app?language=#user-language")
+  get-app-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/app?language=#user-language")
                   .then (admined-app-data)->
                     app_data <<< admined-app-data
 
-  get-i18n-data = $.getJSON("#{app_data.urls.api}/locale/#user-language")
+  get-i18n-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/locale/#user-language")
                    .then (app-text)->
                      app_data.user-language = user-language
                      app_data.urls.kml-data = "http://thievishfilms.s3.amazonaws.com/lccp-2012-#user-language.kml"

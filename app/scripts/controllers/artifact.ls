@@ -1,12 +1,6 @@
-module.exports = ($scope, $routeParams, $http, $location)->
+module.exports = ($scope, $routeParams, co2r-api, $location)->
 
-  get-artifact-config =
-    url: "#{app_data.urls.api}/artifact/#{$routeParams.artifact}"
-    method: \GET
-    params: language: app_data.user-language
-    cache: yes
-
-  res <- $http(get-artifact-config).then
+  res <- co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}
 
   $scope.artifact       = res.data.artifact
   $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)

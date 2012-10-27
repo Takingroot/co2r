@@ -1,4 +1,4 @@
-Preferences-storage = require '../preferences-storage'
+Preferences-storage = require '../lib/preferences-storage'
 
 module.exports = ->
   new Preferences-storage app_data.default-user-preferences

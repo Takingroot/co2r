@@ -17,6 +17,7 @@ window.CO2R = angular.module \co2r, [
 CO2R.config([\$locationProvider, ($location-provider)->
   $location-provider.html5Mode on
 ])
+
 require './routes'
 
 CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-path, $filter)->
@@ -54,6 +55,7 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
   # App data
   $root-scope.app_data = app_data
   $root-scope.app-text = app-text
+
   $root-scope.$on "$routeChangeSuccess", (e, route, previous_route)->
 
     # resolve homepage edgecase wherein no class info can be inferred from url
@@ -63,7 +65,7 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
     $root-scope.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify(get_url()).split(" ")
 
-  $root-scope.reloadPage = -> window.location.reload!
+  $root-scope.reload-page = -> window.location.reload!
 
 
 
@@ -71,8 +73,6 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, $http, partial-p
 
 
   $root-scope.w-mobile = no
-  $root-scope.log = (...args)->
-    console.log ...args
 
   enquire.register "screen and (max-width:980px)",
     match:   ->

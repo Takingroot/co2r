@@ -1,11 +1,5 @@
-module.exports = ($scope, $http)->
+module.exports = ($scope, co2r-api)->
 
-  get-faqs-config =
-    url: app_data.urls.api + '/faqs'
-    method: \GET
-    params: language: app_data.user-language
-    cache: yes
-
-  $http get-faqs-config
+  co2r-api.get \faqs, {cache: on}
   .then (res)->
      $scope.faqs = res.data.faqs
