@@ -1,4 +1,4 @@
-module.exports = ($scope, $http, co2r-api)->
+module.exports = ($scope, co2r-api)->
   $scope.$root.page_title = \Directory
 
   $scope.addthis-share-config =
