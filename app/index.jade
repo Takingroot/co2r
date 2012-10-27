@@ -1,5 +1,5 @@
 !!! 5
-html
+html(ng-controller="appController")
   head
     script
       window.brunch = window.brunch || {}
@@ -19,7 +19,6 @@ html
 
 
     .app-navbar.row.aligns-middle
-      //-svg-image.co2r-logo(src="/images/logo.svg")
       img.co2r-logo(src="/images/logo.png")
       nav-list.row.h-gutters-1.aligns-middle(items="navs.primary", text-function="appText[item]")
 
@@ -54,13 +53,9 @@ html
         = ' '
         a(ng-click="preferences.set('languageCode', otherLanguage); reloadPage()", ng-bind="otherLanguage | languageName")
         br
-
-        button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'right'}")
-          span.icon-undo
         br
         br
         br
         br
         br
-
         p.muted(co2r-bind="appText.footer_colofon")

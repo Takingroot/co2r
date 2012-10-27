@@ -21,12 +21,7 @@ $ ->
 
 
 
-  get-app-data = $.getJSON("http://co2r-data-staging.herokuapp.com/api/app?language=#{app_data.user-language}")
-                  .then (admined-app-data)->
-                    app_data <<< admined-app-data
-
-
-  $.when get-app-data
-   .done ->
-    console.log \bootstrap
+  $.getJSON("http://co2r-data-staging.herokuapp.com/api/app?language=#{app_data.user-language}")
+  .then (admined-app-data)->
+    app_data <<< admined-app-data
     angular.bootstrap document.document-element, [\co2r]

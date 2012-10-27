@@ -13,47 +13,15 @@ window.CO2R = angular.module \co2r, [
   \co2r.directives
 ]
 
-
-CO2R.config([\$locationProvider, ($location-provider)->
-  $location-provider.html5Mode on
-])
-
 require './routes'
 
-CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $filter, app-vars, co2r-api)->
-  console.log \run
-  $root-scope.other-language = $filter(\altLanguage)(app_data.user-language)
-
-  nav-items =
-
-    * label: "co2r"
-      url: "directory"
-
-    * label: "our_mission"
-      url: "about"
-
-    * label: "faq"
-      url: "faq"
-
-    * label: "register_your_product"
-      url: "/register-your-product"
-
-    * label: "other_things_you_can_do"
-      url: "/other-things-you-can-do-to-help"
-
-  $root-scope.partial-path = partial-path
-  $root-scope.navs =
-    primary: do -> _.filter nav-items, -> _.contains([\co2r \our_mission \faq], it.label)
-    callout: do -> _.filter nav-items, -> _.contains([\register_your_product \other_things_you_can_do], it.label)
-    footer: nav-items
-
-  $root-scope.app_title     = "CO2R"
-  $root-scope.preferences   = preferences-storage
+CO2R.run ($root-scope, $location, $locale, $filter, app-vars)->
 
   # App data
   $root-scope.app_data = app_data
   $root-scope.app-vars = app-vars
 
+  # update app location css classes
   $root-scope.$on "$routeChangeSuccess", (e, route, previous_route)->
 
     # resolve homepage edgecase wherein no class info can be inferred from url
@@ -63,13 +31,12 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $f
 
     $root-scope.appCssClasses = _.union _.keys(route.pathParams), _.values(route.pathParams), _.str.cssClassify(get_url()).split(" ")
 
+  # this is to aid in the language switcher functionality
   $root-scope.reload-page = -> window.location.reload!
+  $root-scope.other-language = $filter(\altLanguage)(app_data.user-language)
 
 
-
-
-
-
+  # responsive design via conditional class application
   $root-scope.w-mobile = no
 
   enquire.register "screen and (max-width:980px)",
@@ -83,12 +50,3 @@ CO2R.run ($root-scope, preferences-storage, $location, $locale, partial-path, $f
   # wait until first idle, i.e after angular gets one pass-through
   # if we don't delay, the $apply above causes a bug (ng-view never loads, no error message)
   _.delay (-> enquire.listen(50)), 0
-
-
-  # i18n text
-  $root-scope.app-text = {}
-
-  co2r-api.get "locale/#{app_data.user-language}"
-  .success (res-data)->
-    $root-scope.app-text = res-data.locale
-

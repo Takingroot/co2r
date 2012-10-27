@@ -1,4 +1,7 @@
-module.exports = ($scope, co2r-api)->
+module.exports = ($scope, co2r-api, preferences-storage)->
+
+  $scope.preferences = preferences-storage
+
   $scope.$root.page_title = \Directory
 
   $scope.addthis-share-config =

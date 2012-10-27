@@ -7,3 +7,5 @@ angular.module \co2r.controllers, []
 .controller \other-things, require './other-things'
 .controller \register,     require './register'
 .controller \test,         require './test'
+
+window.app-controller = require './app'

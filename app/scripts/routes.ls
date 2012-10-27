@@ -7,3 +7,7 @@ CO2R.config ($routeProvider, partialPath)->
   $routeProvider.when '/other-things-you-can-do-to-help',   {templateUrl: partial-path(\other-things),   controller: \other-things}
   $routeProvider.when '/test',                              {templateUrl: partial-path(\test),           controller: \test}
   $routeProvider.when '/:artifact',                         {templateUrl: partial-path(\artifact),       controller: \artifact}
+
+CO2R.config [\$locationProvider, ($location-provider)->
+  $location-provider.html5Mode on
+]
