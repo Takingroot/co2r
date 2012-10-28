@@ -15,4 +15,4 @@ module.exports = ($scope)->
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   $scope.$watch \treeplantingMap, ->
-    new google.maps.KmlLayer app_data.urls.kml-data, map: $scope.treeplanting-map
+    new google.maps.KmlLayer "http://thievishfilms.s3.amazonaws.com/lccp-2012-#{$scope.locale-id}.kml", map: $scope.treeplanting-map

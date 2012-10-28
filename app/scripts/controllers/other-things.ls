@@ -14,7 +14,7 @@ module.exports = ($scope)->
 
 
 
-window.form-feedback-controller = ($scope, $http)->
+window.form-feedback-controller = ($scope, $http, co2r-api)->
   $scope.default-form-values = {}
 
   $scope.send-form = ->
@@ -23,12 +23,11 @@ window.form-feedback-controller = ($scope, $http)->
       subject: "CO2R Form - Feedback"
       message: $scope.feedback.message
 
-    $http.post app_data.urls.api + '/email', email
-    .then do
-      (res)->
-        #console.log \success!
-        $scope.feedback = angular.copy $scope.default-form-values
-        $('.message-to-user-after-send').modal!
-      (res)->
-        #console.log \failure!
+    co2r-api.post 'email', {data: email}
+    .success (res)->
+      #console.log \success!
+      $scope.feedback = angular.copy $scope.default-form-values
+      $('.message-to-user-after-send').modal!
+    .failure (res)->
+      #console.log \failure!
 

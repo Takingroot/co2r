@@ -1,5 +1,5 @@
 !!! 5
-html(ng-controller="appController")
+html(ng-app="co2r", ng-controller="appController")
   head
     script
       window.brunch = window.brunch || {}
@@ -11,7 +11,7 @@ html(ng-controller="appController")
     script(src="/javascripts/vendor.js")
     script(src="/javascripts/app.js")
     script
-      require('/init')
+      require('./scripts/app')
     title(ng-bind="app_title + ' - ' + page_title")
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-table-of-contents")
@@ -51,7 +51,7 @@ html(ng-controller="appController")
         br
         span(co2r-bind="appText.switch_language")
         = ' '
-        a(ng-click="preferences.set('languageCode', otherLanguage); reloadPage()", ng-bind="otherLanguage | languageName")
+        a(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
         br
         br
         br
