@@ -1,9 +1,10 @@
 .row.row-couple-heights
 
-  aside.faq-table-of-contents
-    ul.nav.nav-pills.nav-stacked.align-right.scrollfix-fixed.span-4(ui-scrollfix="62")
-      li(ng-repeat="faq in faqs")
-        a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
+  aside.faq-toc-container
+    .faq-toc.scrollfix-fixed.span-4(ui-scrollfix="62")
+      ul.nav.nav-pills.nav-stacked.align-right
+        li(ng-repeat="faq in faqs")
+          a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
 
   div
     .faqs.span-8.v-gutters-3
