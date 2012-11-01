@@ -55,7 +55,7 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
       url: "/other-things-you-can-do-to-help"
 
   $scope.navs =
-    primary: do -> _.filter nav-items, -> _.contains([\co2r \our_mission \faq], it.label)
+    primary: do -> _.filter nav-items, -> _.contains([\our_mission \faq], it.label)
     callout: do -> _.filter nav-items, -> _.contains([\register_your_product \other_things_you_can_do], it.label)
     footer: nav-items
 

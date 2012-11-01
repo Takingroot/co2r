@@ -15,10 +15,9 @@ module.exports = ($location)->
   replace:    on
   template: template
   link: (scope, el, attrs)->
-    #scope.$root.$on \$routeChangeSuccess, ->
-    scope.is-current-view = (test-url)->
-      console.log test-url, $location.path!, test-url is $location.path!
-      test-url is $location.path!
 
     # noop function if no custom action defined
     scope.textFunction ?= -> it.item
+    scope.is-current-view = (test-url)->
+      #console.log test-url, $location.path!, test-url is $location.path!
+      test-url is $location.path!

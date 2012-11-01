@@ -13,9 +13,13 @@ html body
 
 
   .nav-item
-    &.current-view
     &:hover
       background-color darken(app-nav-dark, 10%)
+      color lighten(app-nav-light, 10)
+    &.current-view
+      a
+        cursor default
+      background-color darken(app-nav-dark, 20%)
       color lighten(app-nav-light, 10)
 
 
@@ -35,8 +39,9 @@ html body
 .app-navbar
   background-color app-nav-dark
   .co2r-logo
-    margin-left 10px
+    margin -5px 5px 0 10px
     square(30px)
+    float left
 
 
   .nav-list
@@ -45,4 +50,4 @@ html body
     padding 0
 
   .nav-link
-    padding 20px 10px
+    padding 25px 10px
