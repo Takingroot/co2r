@@ -19,7 +19,7 @@ html(ng-app="co2r", ng-controller="appController")
 
 
     .app-navbar.row.aligns-middle
-      img.co2r-logo(src="/images/logo.png")
+      img.co2r-logo(src="/images/logo-white.png")
       nav-list.row.aligns-middle(items="navs.primary", text-function="appText[item]")
 
       nav-list.row.align-right(style="white-space:nowrap;",
@@ -49,13 +49,13 @@ html(ng-app="co2r", ng-controller="appController")
               a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
         br
+        br
+        br
+        br
+        br
+        br
         span(co2r-bind="appText.switch_language")
         = ' '
         a(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
-        br
-        br
-        br
-        br
-        br
         br
         p.muted(co2r-bind="appText.footer_colofon")

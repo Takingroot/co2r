@@ -1,12 +1,12 @@
 template =   """
     <ul class="nav nav-list" ng-transclude>
-      <li class="nav-item {{navItem.label | slugify}}" ng-repeat="navItem in items">
+      <li ng-class="{'current-view':isCurrentView(navItem.url)}" class="nav-item {{navItem.label | slugify}}" ng-repeat="navItem in items">
         <a class="nav-link" href="{{navItem.url}}">{{textFunction({item:navItem.label})}}</a>
       </li>
     </ul>
   """
 
-module.exports = ->
+module.exports = ($location)->
   scope:
     items: \=
     text-function: "&"
@@ -15,5 +15,10 @@ module.exports = ->
   replace:    on
   template: template
   link: (scope, el, attrs)->
-    # pass through if no custom action defined
+    #scope.$root.$on \$routeChangeSuccess, ->
+    scope.is-current-view = (test-url)->
+      console.log test-url, $location.path!, test-url is $location.path!
+      test-url is $location.path!
+
+    # noop function if no custom action defined
     scope.textFunction ?= -> it.item

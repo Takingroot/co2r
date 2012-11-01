@@ -10,7 +10,7 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
       introduction-figure: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
 
   # update app location css classes
-  $scope.$root.$on "$routeChangeSuccess", ->
+  $scope.$root.$on \$routeChangeSuccess, ->
     $scope.appCssClasses = route-css-classes.get-all-classes!
 
   # additional app-vars from server, admin-controlled
@@ -40,13 +40,13 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   # header/footer navigation
   nav-items =
     * label: "co2r"
-      url: "directory"
+      url: "/directory"
 
     * label: "our_mission"
-      url: "about"
+      url: "/about"
 
     * label: "faq"
-      url: "faq"
+      url: "/faq"
 
     * label: "register_your_product"
       url: "/register-your-product"

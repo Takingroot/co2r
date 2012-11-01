@@ -1,5 +1,43 @@
+app-nav-dark  = lighten(dark, 10)
+app-nav-light = saturate(lighten(light, 12),15)
+
+// TODO make themeing modular?
+// increase specificity to override bootstrap
+html body
+
+  .dark-theme .nav-item
+    &.current-view
+    &:hover
+      background-color darken(dark, 10%)
+      color lighten(light, 10)
+
+
+  .nav-item
+    &.current-view
+    &:hover
+      background-color darken(app-nav-dark, 10%)
+      color lighten(app-nav-light, 10)
+
+
+  .dark-theme .nav-link
+    color light
+
+  .nav-link
+    color app-nav-light
+    // undo bootstrap
+    margin 0!important
+    text-shadow none
+    &:hover
+      background none
+    // undo end
+
+
 .app-navbar
-  border-bottom 1px solid lightgrey
+  background-color app-nav-dark
+  .co2r-logo
+    margin-left 10px
+    square(30px)
+
 
   .nav-list
     margin-bottom 0
@@ -8,9 +46,3 @@
 
   .nav-link
     padding 20px 10px
-    // undo bootstrap
-    margin 0
-
-  .co2r-logo
-    margin-left 10px
-    square(30px)
