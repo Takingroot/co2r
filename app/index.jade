@@ -20,9 +20,9 @@ html(ng-app="co2r", ng-controller="appController")
 
     .app-navbar.row.aligns-middle
       img.co2r-logo(src="/images/logo.png")
-      nav-list.row.h-gutters-1.aligns-middle(items="navs.primary", text-function="appText[item]")
+      nav-list.row.aligns-middle(items="navs.primary", text-function="appText[item]")
 
-      nav-list.row.h-gutters-1.align-right(style="white-space:nowrap;",
+      nav-list.row.align-right(style="white-space:nowrap;",
       items="navs.callout", text-function="appText[item]")
 
     #app-content(ng-view="ng-view")

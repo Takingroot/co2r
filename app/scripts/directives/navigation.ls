@@ -1,7 +1,7 @@
 template =   """
-    <ul class="nav" ng-transclude>
-      <li class="{{navItem.label | slugify}}" ng-repeat="navItem in items">
-        <a href="{{navItem.url}}">{{textFunction({item:navItem.label})}}</a>
+    <ul class="nav nav-list" ng-transclude>
+      <li class="nav-item {{navItem.label | slugify}}" ng-repeat="navItem in items">
+        <a class="nav-link" href="{{navItem.url}}">{{textFunction({item:navItem.label})}}</a>
       </li>
     </ul>
   """
