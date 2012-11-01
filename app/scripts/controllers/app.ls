@@ -1,4 +1,4 @@
-module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, route-css-classes)->
+module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, route-css-classes, $location)->
 
   $scope.appCssClasses = ""
   $scope.app_title    = "CO2R"
@@ -25,8 +25,6 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   .success (res-data)->
     $scope.app-text = res-data.locale
 
-
-
   # this is to aid in the language switcher functionality
   $scope.other-language = ->
     $filter(\altLanguage)($scope.locale-id)
@@ -35,6 +33,14 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
     preferences-storage.set \languageCode, $scope.otherLanguage!
     window.location.reload!
 
+
+
+  # helper fn, is a given url equal to current url?
+  $scope.is-current-view = (test-url)->
+    if typeof test-url is \string
+      test-url is $location.path!
+    else
+      _.any test-url, -> it is $location.path!
 
 
   # header/footer navigation
