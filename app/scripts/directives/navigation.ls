@@ -16,10 +16,12 @@ module.exports = (m)->
     transclude: on
     replace:    on
     template: nl-template
+    controller: ($scope)->
+      $scope.is-current-view = (test-url)->
+        #console.log test-url, $location.path!, test-url is $location.path!
+        test-url is $location.path!
+
     link: (scope, el, attrs)->
 
       # noop function if no custom action defined
       scope.textFunction ?= -> it.item
-      scope.is-current-view = (test-url)->
-        #console.log test-url, $location.path!, test-url is $location.path!
-        test-url is $location.path!
