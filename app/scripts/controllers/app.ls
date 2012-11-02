@@ -13,6 +13,13 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   $scope.$root.$on \$routeChangeSuccess, ->
     $scope.appCssClasses = route-css-classes.get-all-classes!
 
+
+  $scope.get-page-title = ->
+    if $scope.page-title
+      " ‣ #{$scope.page-title}"
+    else
+      ''
+
   # additional app-vars from server, admin-controlled
   co2r-api.get \app
   .then (res)->
@@ -24,6 +31,7 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   co2r-api.get "locale/#{$scope.locale-id}"
   .success (res-data)->
     $scope.app-text = res-data.locale
+    console.log $scope.app-text
 
   # this is to aid in the language switcher functionality
   $scope.other-language = ->

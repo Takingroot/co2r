@@ -11,7 +11,8 @@ module.exports = ($scope)->
     url: "http://co2r.com"
     description: \test-description
 
-
+  $scope.$watch \appText.other_things_you_can_do, (nv)->
+    $scope.$root.page-title = nv
 
 
 window.form-feedback-controller = ($scope, $http, co2r-api)->

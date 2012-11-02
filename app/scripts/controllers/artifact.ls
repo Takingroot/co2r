@@ -26,8 +26,8 @@ module.exports = ($scope, $routeParams, co2r-api, $location)->
       $scope.column_width   = 300
       $scope.timeline_width = $scope.column_width * $scope.reports.length
 
-      # for the browser title
-      $scope.$root.page_title = $scope.artifact.name
+      # for the browser title bar
+      $scope.$root.page-title = $scope.artifact.name
 
       # data collected across artifacts for comparison in charts
       # --------------------------------------------------------------------------------------------------

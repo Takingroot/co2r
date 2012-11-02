@@ -12,7 +12,7 @@ html(ng-app="co2r", ng-controller="appController")
     script(src="/javascripts/app.js")
     script
       require('./scripts/app')
-    title(ng-bind="app_title + ' - ' + page_title")
+    title(ng-bind="app_title + getPageTitle()")
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
 

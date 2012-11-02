@@ -2,7 +2,7 @@ module.exports = ($scope, co2r-api, preferences-storage)->
 
   $scope.preferences = preferences-storage
 
-  $scope.$root.page_title = \Directory
+  $scope.$root.page-title = ''
 
   $scope.addthis-share-config =
     #todo translation

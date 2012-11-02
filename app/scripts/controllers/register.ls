@@ -1,5 +1,8 @@
 module.exports = ($scope, co2r-api)->
 
+  $scope.$watch \appText.register_your_product, (new-val)->
+    $scope.$root.page-title = new-val
+
   # master this can be used to reset the form
   $scope.form-master = {}
   $scope.email       = {}

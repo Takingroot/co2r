@@ -6,7 +6,8 @@ module.exports = ($scope)->
     url: "http://co2r.com"
     description: \test-description
 
-  $scope.$root.page_title = "About"
+  $scope.$watch \appText.our_mission, (new-val)->
+    $scope.$root.page-title = new-val
 
   $scope.map-options =
     # coordinates are limay in Nicaragua
