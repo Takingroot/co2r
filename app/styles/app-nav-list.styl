@@ -37,6 +37,18 @@ html body
 
 
 .app-navbar
+  .nav-item.co2r
+    space-left  = 20px
+    space-right = 10px
+    logo-size   = 30px
+
+    background-image url('/images/logo-white.png')
+    background-position space-left 50%
+    background-repeat no-repeat
+    background-size logo-size
+    .nav-link
+      padding-left space-left + space-right + logo-size
+
   background-color app-nav-dark
   .co2r-logo
     margin -5px 5px 0 10px

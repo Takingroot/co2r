@@ -19,14 +19,7 @@ html(ng-app="co2r", ng-controller="appController")
 
 
     .app-navbar.row.aligns-middle
-      ul.nav.nav-list
-        li.nav-item(ng-class="{'current-view':isCurrentView(['/directory','/'])}")
-          a.nav-link(href="/directory")
-            img.co2r-logo(src="/images/logo-white.png")
-            |  {{appText['co2r']}}
-
       nav-list.row.aligns-middle(items="navs.primary", text-function="appText[item]")
-
       nav-list.row.align-right(style="white-space:nowrap;",
       items="navs.callout", text-function="appText[item]")
 
