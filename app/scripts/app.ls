@@ -15,7 +15,7 @@ app = angular.module \co2r, [
 app.config ($route-provider, partialPath, $location-provider)->
   $location-provider.html5Mode on
 
-  $route-provider.when '/',                                  {template-url: partial-path(\directory),      controller: \directory}
+  $route-provider.when '/',                                  {redirect-to: '/directory'}
   $route-provider.when '/directory',                         {template-url: partial-path(\directory),      controller: \directory}
   $route-provider.when '/about',                             {template-url: partial-path(\about),          controller: \about}
   $route-provider.when '/faq',                               {template-url: partial-path(\faq),            controller: \faq, reload-on-search: no}

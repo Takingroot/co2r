@@ -34,15 +34,6 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
     window.location.reload!
 
 
-
-  # helper fn, is a given url equal to current url?
-  $scope.is-current-view = (test-url)->
-    if typeof test-url is \string
-      test-url is $location.path!
-    else
-      _.any test-url, -> it is $location.path!
-
-
   # header/footer navigation
   nav-items =
     * label: "co2r"
