@@ -31,7 +31,6 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   co2r-api.get "locale/#{$scope.locale-id}"
   .success (res-data)->
     $scope.app-text = res-data.locale
-    console.log $scope.app-text
 
   # this is to aid in the language switcher functionality
   $scope.other-language = ->

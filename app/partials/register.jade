@@ -1,13 +1,14 @@
 header
-  .row.align-center.v-push-3
+  .header-inner.row.align-center.v-push-3
 
     .introduction.span-6
       h1.aligns-middle
         i.icon-file
+        = ' '
         span(co2r-bind="appText.register_your_product")
       p(co2r-bind="appText.register_introduction")
 
-    form.vintage-box-models(ng-submit="sendForm()", name="artifactRegistrationForm")
+    form.vintage-box-models.h-push-1(ng-submit="sendForm()", name="artifactRegistrationForm")
       .row.h-gutters-1
         textarea(rows="6", placeholder="{{appText.your_message}}", ng-model="org.message", required)
         div
@@ -24,7 +25,9 @@ header
               label.add-on(for="phone"): i.icon-phone
               input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
           button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
-
+  br
+  br
+  br
 
 
 .row.row-couple-heights
