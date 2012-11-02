@@ -57,6 +57,10 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
     footer: nav-items
 
 
+  $scope.is-current-view = (test-url)->
+    #console.log test-url, $location.path!, test-url is $location.path!
+    test-url is $location.path!
+
 
   # responsive design via conditional class application
   $scope.w-mobile = no

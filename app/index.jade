@@ -20,8 +20,15 @@ html(ng-app="co2r", ng-controller="appController")
 
     .app-navbar.row.aligns-middle
       nav-list.row.aligns-middle(items="navs.primary", text-function="appText[item]")
-      nav-list.row.align-right(style="white-space:nowrap;",
-      items="navs.callout", text-function="appText[item]")
+      ul.nav.nav-list.align-right.row(style="font-size:1.8rem;")
+        li.nav-item.register-your-product(ng-class="{'current-view':isCurrentView('/register-your-product')}", tooltip="{placement:'left'}", tooltip-content="{{appText.register_your_product}}"): a.nav-link(href="/register-your-product")
+          i.icon-edit
+        li.nav-item.other-actions(ng-class="{'current-view':isCurrentView('/other-things-you-can-do-to-help')}", tooltip="{placement:'left'}", tooltip-content="{{appText.other_things_you_can_do}}"): a.nav-link(href="/other-things-you-can-do-to-help")
+          i.icon-heart
+      //-
+        nav-list.row.align-right(style="white-space:nowrap;",
+          items="navs.callout", text-function="appText[item]")
+
 
     #app-content(ng-view="ng-view")
 

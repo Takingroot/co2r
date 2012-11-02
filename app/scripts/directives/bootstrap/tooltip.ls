@@ -1,9 +1,17 @@
 module.exports = (m)->
   m.directive \tooltip, ->
     (scope, el, attrs)->
-      # support variables or direct text
-      config = maybe-eval attrs.tooltip
-      el.tooltip if typeof config is \string then title: config else config
+      config = {}
+
+      attrs.$observe \tooltipContent, ->
+        config.title = attrs.tooltip-content
+        el.tooltip \destroy
+        el.tooltip config
+
+      attrs.$observe \tooltip, ->
+        config <<< scope.$eval attrs.tooltip
+        el.tooltip \destroy
+        el.tooltip config
 
       # save a reference for teardown
       # el isn't available after $destroy
@@ -11,6 +19,3 @@ module.exports = (m)->
 
       # teardown
       scope.$on \$destroy, ~> tooltip.destroy!
-
-      function maybe-eval (attr-val)
-        scope.$eval attr-val or attr-val
