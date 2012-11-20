@@ -42,15 +42,10 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
 
 
   # header/footer navigation
-  nav-items =
-    * label: "co2r"
+  $scope.nav-items =
+
+    * label: "directory"
       url: "/directory"
-
-    * label: "our_mission"
-      url: "/about"
-
-    * label: "faq"
-      url: "/faq"
 
     * label: "register_your_product"
       url: "/register-your-product"
@@ -58,11 +53,11 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
     * label: "other_things_you_can_do"
       url: "/other-things-you-can-do-to-help"
 
-  $scope.navs =
-    primary: do -> _.filter nav-items, -> _.contains(<[co2r our_mission faq]>, it.label)
-    callout: do -> _.filter nav-items, -> _.contains(<[register_your_product other_things_you_can_do]>, it.label)
-    footer: nav-items
+    * label: "our_mission"
+      url: "/about"
 
+    * label: "faq"
+      url: "/faq"
 
   $scope.is-current-view = (test-url)->
     #console.log test-url, $location.path!, test-url is $location.path!

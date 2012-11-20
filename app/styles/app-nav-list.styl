@@ -2,60 +2,54 @@ app-nav-dark  = lighten(dark, 10)
 app-nav-light = saturate(lighten(light, 12),15)
 
 // TODO make themeing modular?
-// increase specificity to override bootstrap
-html body
-
-  .dark-theme .nav-item
-    &.current-view
-    &:hover
-      background-color darken(dark, 10%)
-      color lighten(light, 10)
 
 
-  .nav-item
-    &:hover
-      background-color darken(app-nav-dark, 10%)
-      color lighten(app-nav-light, 10)
-    &.current-view
-      a
-        cursor default
-      background-color darken(app-nav-dark, 20%)
-      color lighten(app-nav-light, 10)
+.app-header
+  background-color nlight
 
-
-  .dark-theme .nav-link
-    color light
-
-  .nav-link
-    color app-nav-light
-    // undo bootstrap
-    margin 0!important
-    text-shadow none
-    &:hover
-      background none
-    // undo end
-
+.app-brand-container
+  height gd(10)
 
 .app-navbar
-  .nav-item.co2r
-    space-left  = 20px
-    space-right = 10px
-    logo-size   = 30px
-
-    background-image url('/images/logo-white.png')
-    background-position space-left 50%
-    background-repeat no-repeat
-    background-size logo-size
-    .nav-link
-      padding-left space-left + space-right + logo-size
-
-  background-color app-nav-dark
+  padding-bottom gd(2)
+  padding-right gd(2)
 
   .nav-list
     margin-bottom 0
     //undo bootstrap
     padding 0
 
+  .nav-item + .nav-item
+    border-left 1px solid ndark-subtle
+
+  // sometimes we need to meld the nav item
+  // dividers into the highlight
+  .nav-item.current-view
+  .nav-item.current-view + .nav-item
+  .nav-item:hover
+  .nav-item:hover + .nav-item
+    border-left-color ndark
+
+  .nav-item
+    .nav-link
+      color ndark-text
+      font-size 18px
+      text-transform capitalize
+    &.current-view
+    &:hover
+      .nav-link
+        background-color ndark
+        color nlight-text
+    &.current-view
+      .nav-link
+        cursor default
+
   .nav-link
-    padding 25px 10px
-    height 70px
+    padding gd(.5) gd(1.25)
+
+    // undo bootstrap
+    margin 0!important
+    text-shadow none
+    &:hover
+      background none
+    // undo end
