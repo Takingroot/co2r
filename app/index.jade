@@ -23,6 +23,8 @@ html(ng-app="co2r", ng-controller="appController")
       .app-navbar.align-bottom
         nav-list.align-right.row.aligns-middle(items="navItems", text-function="appText[item] || item")
 
+      a.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
+
     #app-content(ng-view="ng-view")
 
     footer.app-footer.group
@@ -51,8 +53,5 @@ html(ng-app="co2r", ng-controller="appController")
         br
         br
         br
-        span(co2r-bind="appText.switch_language")
-        = ' '
-        a(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
         br
         p.muted(co2r-bind="appText.footer_colofon")
