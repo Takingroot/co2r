@@ -20,7 +20,7 @@ form.form-search.vintage-box-models.align-center
     input.search-query.span5(type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
-.artifact-cards.gutters-2.row
+.artifact-cards.gutters-1.row
 
   a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
     .artifact-card-header.group
