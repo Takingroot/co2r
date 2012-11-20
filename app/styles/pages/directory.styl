@@ -1,8 +1,44 @@
-.cow-head
-  color green!important
+card-width   = gd(14)
+gutter-width = gd(2)
 
-card-width   = 303px
-gutter-width = 10px
+.artifact-cards
+  min-height 300px
+  margin 0 auto
+  margin-bottom 120px
+
+.artifact-card
+  width card-width
+  .poster img
+    square card-width
+
+.artifact-card-meta-ribbon
+  margin-bottom 1px
+  .artifact-category
+    background-color ngrey
+    min-height gd(3)
+    width gd(3)
+  .co2-badge
+    padding gd(.25) gd(.5)
+    background-color nlight
+    color fade-out(ndark-text,0.15)
+    line-height 24px
+  .co2-keyword
+    font-size 1.2rem
+
+
+
+.artifact-card-body
+  background-color nyellow
+  min-height gd(5)
+  .organization-name
+    padding-top .65em
+    padding-left .85em
+    padding-bottom .75em
+    font-weight normal
+    font-size 1.6rem
+    line-height 1.25em
+    margin-top 0
+    color ndark-text-on-color
 
 
 //@media screen and (min-width: 0)
