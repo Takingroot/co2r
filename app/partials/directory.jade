@@ -14,27 +14,29 @@ br
       a.btn(href="/about", co2r-bind="appText.learn_more")
       .co2r-addthis-toolbox.pull-right
 
-form.form-search.vintage-box-models.align-center
-  .input-prepend
-    span.add-on: span.icon-search
-    input.search-query.span5(type="text", ng-model="searchForArtifactName", autofocus,
+.artifact-directory
+
+  form.form-search.span.group
+    .hang-left: .hang-inner
+      .add-on: span.icon-search
+    input.span(type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
-.artifact-cards.gutters-1.row
+  .artifact-cards.span.gutters-1.row
 
-  a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
-    .artifact-card-header.group
-      .poster
-        img(ng-src="{{artifact.thumbnail_url}}")
-      .artifact-card-meta-ribbon.pin-bottom.row.row-couple-heights
-        .artifact-category
-        div
-          .co2-badge.jar
-            span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
-            br
-            co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
-    .artifact-card-body
-      h1.organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")
+    a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
+      .artifact-card-header.group
+        .poster
+          img(ng-src="{{artifact.thumbnail_url}}")
+        .artifact-card-meta-ribbon.pin-bottom.row.row-couple-heights
+          .artifact-category
+          div
+            .co2-badge.jar
+              span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
+              br
+              co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
+      .artifact-card-body
+        h1.organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")
 
 button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'right'}")
   span.icon-undo

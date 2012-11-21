@@ -1,10 +1,50 @@
 card-width   = gd(14)
 gutter-width = gd(1)
 
+
+
+.form-search
+  input-height = 3.7rem
+  input
+    background-color transparent
+    border 1px solid nred
+    border-radius 0!important
+    padding .4em .5em
+    font-size 1.5rem
+    height input-height
+    color ndark-text
+    &:focus
+      box-shadow none
+      border-color nred
+      outline 10px solid fade-out(nred, 0.95)
+      color ndark
+  .add-on
+    display inline-block
+    text-align center
+    padding-top 19px
+    height input-height
+    width input-height
+    font-size 2.5rem
+    background-color nred
+    color nlight
+    // undo bootstrap
+    border-radius 0!important
+    border none
+
+
+.artifact-directory
+  .ui-match
+    highlight-color = fade-out(nlight, 0.65)
+    background highlight-color
+    box-shadow 0 0 0 3px highlight-color
+    color ndark
+
+
+
+
 .artifact-cards
-  min-height 300px
-  margin 0 auto
-  margin-bottom 120px
+  .inner
+    margin-left (gutter-width/2)
 
 .artifact-card
   width card-width
@@ -41,14 +81,37 @@ gutter-width = gd(1)
     color ndark-text-on-color
 
 
+.artifact-directory
+  min-height 300px
+  margin 0 auto
+  margin-bottom 120px
+
 //@media screen and (min-width: 0)
+.artifact-directory
+  width card-width
 .artifact-cards
   width card-width + gutter-width
 
 @media screen and (min-width: 700px)
+  .artifact-directory
+    width card-width * 2   +   gutter-width
   .artifact-cards
     width card-width * 2   +   gutter-width * 2
 
 @media screen and (min-width: 1000px)
+  .artifact-directory
+    width card-width * 3   +   gutter-width * 2
   .artifact-cards
     width card-width * 3   +   gutter-width * 3
+
+@media screen and (min-width: 1400px)
+  .artifact-directory
+    width card-width * 4   +   gutter-width * 3
+  .artifact-cards
+    width card-width * 4   +   gutter-width * 4
+
+@media screen and (min-width: 1800px)
+  .artifact-directory
+    width card-width * 5   +   gutter-width * 4
+  .artifact-cards
+    width card-width * 5   +   gutter-width * 5
