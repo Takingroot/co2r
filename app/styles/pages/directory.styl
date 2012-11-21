@@ -1,7 +1,38 @@
+hash-overlay()
+  position relative
+  &:before
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    content ""
+    z-index 10
+    background-image arguments
+
+.hash-overlay
+  hash-overlay url('/images/white-hash-20.png')
+
+body.directory .moodshot
+  background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
+  //background-repeat no-repeat
+  background-size cover
+  //background-position center
+  height gd(22)
+
+
 card-width   = gd(14)
 gutter-width = gd(1)
 
+.introduction
+  background-color nblue
+  min-height gd(26)
+  background-image url('/images/white-hash-20.png')
 
+.action-steps
+  background-color lighten(ngrey, 5)
+  min-height gd(13)
+  background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
 
 .form-search
   input-height = 3.7rem
@@ -48,10 +79,13 @@ gutter-width = gd(1)
 
 .artifact-card
   width card-width
+  .poster
+    hash-overlay url('/images/white-hash-30.png')
   .poster img
     square card-width
 
 .artifact-card-meta-ribbon
+  z-index 20
   margin-bottom 1px
   .artifact-category
     background-color ngrey
@@ -69,6 +103,7 @@ gutter-width = gd(1)
 
 .artifact-card-body
   background-color nyellow
+  background-image url('/images/white-hash-30.png')
   min-height gd(5)
   .organization-name
     padding-top .65em
