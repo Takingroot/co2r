@@ -1,8 +1,10 @@
 module.exports = ($scope, co2r-api, preferences-storage)->
 
-  $scope.preferences = preferences-storage
-
   $scope.$root.page-title = ''
+
+  $scope.introduction-state  = -> preferences-storage.get \showIntroduction
+  $scope.toggle-introduction = ->
+    preferences-storage.set \showIntroduction, !preferences-storage.get('showIntroduction')
 
   $scope.addthis-share-config =
     #todo translation

@@ -13,6 +13,16 @@ hash-overlay()
 .hash-overlay
   hash-overlay url('/images/white-hash-20.png')
 
+
+.home-introduction
+  &.closed
+    height 56px
+    overflow hidden
+
+.introduction-toggler
+  font-size 30px
+  padding .55em
+
 body.directory .moodshot
   background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
   //background-repeat no-repeat
@@ -117,8 +127,8 @@ gutter-width = gd(1)
 
 
 .artifact-directory
-  min-height 300px
-  margin 0 auto
+  margin-left auto
+  margin-right auto
   margin-bottom 120px
 
 //@media screen and (min-width: 0)

@@ -1,29 +1,25 @@
-.moodshot.hash-overlay
-section.introduction
-section.action-steps
-br
-br
-br
+.home-introduction.group(ng-class="{open:introductionState(), closed:!introductionState()}")
 
-.align-center.v-push-2.group(ng-show="preferences.get('showIntroduction')", ng-class="{'span-6':wMobile, 'row h-gutters-1':!wMobile}")
-  .vintage-box-models.pin-right
-    button.btn.icon-remove(ng-click="preferences.set('showIntroduction', false)")
-  .a-image.span-6.v-push-3(style="height:200px;")
-    img(ng-src="{{appVars.urls.introductionFigure}}", style="height:100%;")
-  .introduction-copy.span-6
-    h1(co2r-bind="appText.introduction_title")
-    .introduction-text(co2r-bind="appText.introduction_text")
-    .row
-      a.btn(href="/about", co2r-bind="appText.learn_more")
-      .co2r-addthis-toolbox.pull-right
+  button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()", tooltip="{title:'Restore preferences', placement:'right'}")
+    span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
+  .moodshot.hash-overlay
+  section.introduction
+    .introduction-copy.span-6
+      .stop-collapse
+      h1(co2r-bind="appText.introduction_title")
+      .introduction-text(co2r-bind="appText.introduction_text")
+  section.action-steps
 
-.artifact-directory
+
+
+.artifact-directory.v-push-5
 
   form.form-search.span.group
     .hang-left: .hang-inner
       label.add-on(for="search-artifacts"): span.icon-search
     input.span(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
+
 
   .artifact-cards.span.gutters-1.row
 
@@ -40,6 +36,3 @@ br
               co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
       .artifact-card-body
         h1.organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")
-
-//-button.btn(ng-click="preferences.restoreDefaults()", tooltip="{title:'Restore preferences', placement:'right'}")
-  //-span.icon-undo
