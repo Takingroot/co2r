@@ -4,8 +4,7 @@
     span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
   .moodshot.hash-overlay
   section.introduction
-    .introduction-copy.span-6
-      .stop-collapse
+    .introduction-copy.span-6.stop-collapse
       h1(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
   section.action-steps

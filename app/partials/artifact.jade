@@ -1,36 +1,36 @@
-.align-center.v-push-3
+
+.gallery.group(ui-if="artifact.images.length")
+  carousel
+    carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
 
 
+section.about
+  header.stop-collapse
+    h1(co2r-bind="artifact.name")
+    h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
+  .row.v-push-1
+    .description.col-6
+      .story(co2r-bind="artifact.description")
+      small: a.aligns-middle(href="/about")
+        i.icon-pushpin
+        span(co2r-bind="appText.learn_more_about_co2r")
 
-  .gallery.span-10.group(ui-if="artifact.images.length")
-    carousel(style="min-height:380px;")
-      carousel-item.span-10(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
-    .emissions-badge.pin-right.pin-top(style="margin:20px 20px; 0 0")
-      h4.unspaced
-        span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
-        br
-        co2-contrasted(amount="latestReport.co2_per_unit")
+    .col-4
 
-  section.about.v-push-2
-    header
-      h1(co2r-bind="artifact.name")
-      h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
-    .row.v-push-1
-      .description.col-6
-        .story(co2r-bind="artifact.description")
-        small: a.aligns-middle(href="/about")
-          i.icon-pushpin
-          span(co2r-bind="appText.learn_more_about_co2r")
+      .emissions-badge(style="margin:20px 20px; 0 0")
+        h4.unspaced
+          span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
+          br
+          co2-contrasted(amount="latestReport.co2_per_unit")
 
-      .col-4
-        .business-card.float-right
-          .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
-            a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
-          .contact(ui-if="artifact.organization.contact_infos.length > 0")
-            p(co2r-bind="appText.artifact_business_card_contact_lead_in")
-            ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
-              h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
-          div(ng-bind-html="artifact.twitter_feed_code")
+.business-card
+  .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
+    a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
+  .contact(ui-if="artifact.organization.contact_infos.length > 0")
+    p(co2r-bind="appText.artifact_business_card_contact_lead_in")
+    ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
+      h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+  div(ng-bind-html="artifact.twitter_feed_code")
 
 
 

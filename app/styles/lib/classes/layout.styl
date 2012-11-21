@@ -72,12 +72,12 @@ generate_gutter_classes(i) for i in 0.25 0.5 0.75
 generate_gutter_classes(i) for i in 1..5
 
 
-.frame > [class*="col"] + [class*="col"]
+.frame > [class*="col-"] + [class*="col-"]
   padding-left gd(1)
 
-[class*="col"]
+[class*="col-"]
   display inline-block
-  & + [class*="col"]
+  & + [class*="col-"]
     margin-left gd(1)
     vertical-align top
 

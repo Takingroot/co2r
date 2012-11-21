@@ -27,3 +27,16 @@ uncascade(property, value, undo_value)
   add-property(property, value)
   & > *
     add-property(property, undo_value)
+
+
+
+overlay(z-index-value=10)
+  position relative
+  &:before
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    content ""
+    z-index z-index-value

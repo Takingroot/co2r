@@ -1,17 +1,5 @@
-hash-overlay()
-  position relative
-  &:before
-    position absolute
-    top 0
-    left 0
-    right 0
-    bottom 0
-    content ""
-    z-index 10
-    background-image arguments
-
 .hash-overlay
-  hash-overlay url('/images/white-hash-20.png')
+  background-overlay url('/images/white-hash-20.png')
 
 
 .home-introduction
@@ -30,6 +18,9 @@ body.directory .moodshot
   //background-position center
   height gd(22)
 
+.directory
+  .app-footer
+    margin-top gd(4)
 
 card-width   = gd(14)
 gutter-width = gd(1)
@@ -90,7 +81,7 @@ gutter-width = gd(1)
 .artifact-card
   width card-width
   .poster
-    hash-overlay url('/images/white-hash-30.png')
+    background-overlay url('/images/white-hash-30.png')
   .poster img
     square card-width
 
