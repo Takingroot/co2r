@@ -2,6 +2,7 @@ angular.module \co2r.filters, []
 
 .filter \unit, ->
     (amount, requested-unit-type)->
+      return amount if typeof amount isnt \number
 
       unit-types =
         t:  -> "#it t"

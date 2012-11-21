@@ -32,6 +32,6 @@
             .co2-badge.jar
               span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
               br
-              co2-contrasted(amount="artifact.footprints[0].co2_per_unit")
+              span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artifact-card-body
         h1.organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")

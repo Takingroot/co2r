@@ -17,11 +17,10 @@ section.about
 
     .col-4
 
-      .emissions-badge(style="margin:20px 20px; 0 0")
+      .emissions-badge
         h4.unspaced
-          span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose")
-          br
-          co2-contrasted(amount="latestReport.co2_per_unit")
+          span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
+          span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
 
 .business-card
   .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
@@ -59,7 +58,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
           chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
           .row.text-align-center(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              h4: co2-contrasted(amount="report.co2_per_unit")
+              h4: span.co2-contrasted(amount="{{report.co2_per_unit}}")
 
       section.report-section.report-section-total-vs-offset
         report-header-basic: div(co2r-bind="appText.artifact_total_vs_offset")
@@ -68,7 +67,7 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
           .row(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
               .row(style="margin-left:45px;").text-aligns-center
-                h4(style="width:100px;"): co2-contrasted(amount="report.total_tons_produced", unit="'t'")
+                h4(style="width:100px;"): span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
                 h6(style="width:100px;margin-left:12px;", co2r-bind="appText.trees_planted | interpolate:report.trees_planted")
               //-h6(style="margin-left:158px;width:100px;"):
 
@@ -112,4 +111,4 @@ br
 
 .share-artifact(scroll-fix-bottom="{until:'.app-footer'}")
   strong Tell your friends about {{artifact.name}}!
-  .co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
+  //-.co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
