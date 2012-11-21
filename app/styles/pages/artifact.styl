@@ -38,6 +38,49 @@ carousel-height = gd(20)
     line-height 1.5
 
   section.about
+  section.organization
+    padding 5rem 6rem
+    padding 5rem 6rem
+
+  section.about
     background-image url('/images/white-hash-20.png')
     background-color nyellow
-    padding 5rem 6rem
+
+  section.organization
+    // color vars because of font-awesome selection limitations
+    background-color-value     = hsl(90.00, 7.69%, 94.90%)
+    contact-method-color       = fade-out(ndark, 0.75)
+    contact-method-color-hover = ndark
+
+    background-color background-color-value
+
+    .contact-methods
+      margin-top gd(1.5)
+
+    .contact-method
+      square(gd(2))
+      line-height gd(2)
+      text-align center
+      a
+        // undo fontawesome
+        width auto
+
+        font-size 3.25rem
+        color contact-method-color
+        &:hover
+          color contact-method-color-hover
+
+    // due to font-awesome not having an icon-email-sign etc.
+    .contact-method-website
+    .contact-method-email
+    .contact-method-other
+      background-color contact-method-color
+      padding-top 1px
+      border-radius 4px
+      &:hover
+        background-color contact-method-color-hover
+      a
+        font-size 1.5rem
+        color background-color-value
+        &:hover
+          color background-color-value

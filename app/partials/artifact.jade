@@ -22,14 +22,17 @@ section.about
           span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
           span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
 
-.business-card
-  .avatar.a-image(style="width:100px;height:100px;margin-bottom:10px;")
-    a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
-  .contact(ui-if="artifact.organization.contact_infos.length > 0")
-    p(co2r-bind="appText.artifact_business_card_contact_lead_in")
-    ul.row.h-gutters-025.unstyled.text-align-center(style="margin-left:-7px"): li(ng-repeat="contact_method in artifact.organization.contact_infos")
-      h3.unspaced(style="line-height:0;"): a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
-  div(ng-bind-html="artifact.twitter_feed_code")
+section.organization.row
+  .organization-about.col-6
+    .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
+      a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
+    h2.organization-name.v-push-2(co2r-bind="artifact.organization.name")
+    .organization-description(co2r-bind="artifact.organization.description")
+    .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
+      p(co2r-bind="appText.artifact_business_card_contact_lead_in")
+      ul.contact-methods.row.h-gutters-05.unstyled: li.contact-method(class="contact-method-{{contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
+        a(href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", class="icon-{{contact_method.contact_type | to_icon_name}}")
+  .organization-feed(ng-bind-html="artifact.twitter_feed_code")
 
 
 
@@ -43,13 +46,14 @@ section.reports.v-push-5.span.a-image(ui-if="reports.length")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
 
-      section.timeline-header.span.scrollfix-fixed(ui-scrollfix="+0")
-        .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
-          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
-          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
+      section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+0")
+        //-
+          .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
+            a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
+            a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
         timeline-slider
           .row
-            h5.unspaced.a-image.year.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
+            h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
 
       section.report-section.report-section-co2-per-unit
         report-header-basic

@@ -20,7 +20,14 @@ angular.module \co2r.filters, []
 
 
 .filter \to_icon_name, ->
-    (keyword)-> { email: \envelope }[keyword] ? keyword
+    (keyword)->
+      dict =
+        email: \envelope-alt
+        facebook: \facebook-sign
+        twitter: \twitter-sign
+        website: \home
+        other: \link
+      dict[keyword] ? keyword
 
 .filter \slugify, ->
     -> _.str.slugify it
