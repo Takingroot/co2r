@@ -1,7 +1,11 @@
 body.faq
 
+  .faqs
+    padding gd(2)
+
   .faq-toc-container
-    background-color pane-blue
+    background-color nwhite
+    border-right 1px solid ndark-subtle
     width 40%
     min-width 380px
     .nav
@@ -14,6 +18,12 @@ body.faq
     &.ui-scrollfix
       width 40%
       top 0px
+
+    li a
+      color lighten(ndark-text, 10)
+    li.active a
+      background-color hsla(57.14, 96.92%, 87.25%, 1)
+      color ndark
 
     .nav
       margin-right 40px
