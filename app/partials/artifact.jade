@@ -41,8 +41,8 @@ section.organization.row
 
 
 
-section.reports.v-push-5.span.a-image(ui-if="reports.length")
-  header(style="text-align:center;")
+section.reports.v-push-4.span.a-image(ui-if="reports.length")
+  header.reports-header
     h1(co2r-bind="appText.artifact_report_section_title")
 
   timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
