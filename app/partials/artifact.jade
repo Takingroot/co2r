@@ -71,10 +71,9 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
           chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
           .row(style="border-top:1px solid lightgrey")
             .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              .row(style="margin-left:45px;").text-aligns-center
-                h4(style="width:100px;"): span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
-                h6(style="width:100px;margin-left:12px;", co2r-bind="appText.trees_planted | interpolate:report.trees_planted")
-              //-h6(style="margin-left:158px;width:100px;"):
+              .bar-labels.row.text-aligns-center.aligns-middle
+                h4.bar-label.total-co2-label: span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
+                h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
 
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
