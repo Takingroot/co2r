@@ -46,7 +46,7 @@ module.exports = ($scope, $routeParams, co2r-api, $location)->
       # colors.length MUST be longer than names.length
       # colors based on https://files.podio.com/23920019
       # first set of colors are less saturated
-      #colors = _.map <[DAE7B1 BED5EC AAA7D3 EBACA4 BDD5C0 FAC7A3 FBF5B6 9A8383]>, -> "##it"
+      # TODO the upper-case color codes are not from the mockups, old and ugly
       colors = _.map <[92dde6 74b7c5 8eb375 ffd943 c7db7f F6A975 F9EF8A 715353]>, -> "##it"
       name-colors = {}
       _.each names, (name, i)-> name-colors[name] = colors[i]

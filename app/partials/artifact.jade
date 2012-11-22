@@ -79,9 +79,9 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
       section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
         header.report-header.align-center
           h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
-          ul.row.h-gutters-1: li.h-gutters-025(ng-repeat="(co2SourceName, color) in nameColors")
-            span.color(style="background-color:{{color}};width:10px;height:10px")
-            span.name(ng-bind="co2SourceName")
+          ul.legend-items.row.text-align-center
+            li.legend-item(style="border-color:{{color}};", ng-repeat="(co2SourceName, color) in nameColors")
+              span.legend-item-name(ng-bind="co2SourceName")
         timeline-slider
           .row
             .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
