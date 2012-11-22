@@ -18,9 +18,13 @@ html(ng-app="co2r", ng-controller="appController")
 
 
 
-    header.app-header
-      .app-brand-container
-      .app-navbar.align-bottom
+    header.app-header.row
+      .app-brand-container.span-5.row
+        .app-logo
+          img(src="/images/co2r-logo.png")
+        .app-brand-text
+          h1.app-title(co2r-bind="appText.co2r")
+      .app-navbar.align-right
         nav-list.align-right.row.aligns-middle(items="navItems", text-function="appText[item]")
 
       a.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
