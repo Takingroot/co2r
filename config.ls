@@ -15,9 +15,6 @@ exports.config =
           'vendor/angular.js'
           'vendor/underscore.js'
           'vendor/underscore.string.js'
-          'vendor/isotope.jquery.js'
-
-
     stylesheets:
       join-to:
         'stylesheets/app.css': /^(app|vendor)/

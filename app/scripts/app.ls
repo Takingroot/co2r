@@ -13,7 +13,7 @@ app = angular.module \co2r, [
 ]
 
 app.config ($route-provider, partialPath, $location-provider)->
-  $location-provider.html5Mode on
+  $location-provider.html5-mode on
 
   $route-provider.when '/',                                  {redirect-to: '/directory'}
   $route-provider.when '/directory',                         {template-url: partial-path(\directory),      controller: \directory}

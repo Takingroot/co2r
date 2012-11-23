@@ -7,7 +7,7 @@ html(ng-app="co2r", ng-controller="appController")
 
     link(rel="stylesheet", href="/stylesheets/app.css")
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
-    script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
+    //-script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
     script(src="/javascripts/vendor.js")
     script(src="/javascripts/app.js")
     script
@@ -33,7 +33,7 @@ html(ng-app="co2r", ng-controller="appController")
 
     footer.app-footer.group
 
-      .app-footer-content.dark-theme.row.group.span
+      .app-footer-content.row.group.span
         .row.h-gutters-3.align-right
           .sponsors.span-4
             a(href="{{ appText.sponsor_link }}", target="_blank")
@@ -59,6 +59,7 @@ html(ng-app="co2r", ng-controller="appController")
         br
         br
         p.muted(co2r-bind="appText.footer_colofon")
+      .stripe.span.pin-top
 
 //-
   .row
