@@ -20,7 +20,7 @@ module.exports = ($scope, $routeParams, co2r-api, $location)->
     # --------------------------------------------------------------------------------------------------
     if $scope.reports.length
 
-      $scope.artifact.offset-since       = $scope.reports[*-1].year
+      $scope.artifact.offset-since       = $scope.reports.0.year
 
       $scope.latest-report  = $scope.reports[*-1]
       $scope.column_width   = 300
