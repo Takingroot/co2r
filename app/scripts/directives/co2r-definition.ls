@@ -1,7 +1,8 @@
 module.exports = ->
   replace:    on
   transclude: on
-  template: """<a class="co2r-definition" popover="popoverConfig" ng-transclude></a>"""
+  template: '<a class="co2r-definition" popover="popoverConfig" ng-transclude></a>'
   link: (scope, el, attrs)->
-
-    scope.popover-config = _.find scope.app-vars.defined_terms, -> it.term_name is el.text!
+    scope.popoverConfig = {}
+    scope.$watch \app-vars.defined_terms, (new-defined-terms)->
+      scope.popover-config = _.find new-defined-terms, -> it.term_name is el.text!

@@ -1,5 +1,5 @@
 !!! 5
-html(ng-app="co2r", ng-controller="appController")
+html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb#")
   head
     script
       window.brunch = window.brunch || {}
@@ -7,7 +7,7 @@ html(ng-app="co2r", ng-controller="appController")
 
     link(rel="stylesheet", href="/stylesheets/app.css")
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
-    //-script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
+    script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
     script(src="/javascripts/vendor.js")
     script(src="/javascripts/app.js")
     script
@@ -31,7 +31,13 @@ html(ng-app="co2r", ng-controller="appController")
 
     #app-content(ng-view="ng-view")
 
+
     footer.app-footer.group
+
+      .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
+        .social-bar-inner.row.aligns-middle
+          div(href="/about", co2r-bind="appText.social_bar_text")
+          .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
 
       .app-footer-content.row.group.span
         .row.h-gutters-3.align-right
@@ -60,8 +66,3 @@ html(ng-app="co2r", ng-controller="appController")
         br
         p.muted(co2r-bind="appText.footer_colofon")
       .stripe.span.pin-top
-
-//-
-  .row
-    a.btn(href="/about", co2r-bind="appText.learn_more")
-    .co2r-addthis-toolbox.pull-right

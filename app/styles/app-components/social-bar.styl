@@ -1,0 +1,40 @@
+.social-bar
+  position absolute
+  z-index 100
+  width 100%
+  &.is-scrollfixed
+    .social-bar-inner
+      background-color ndark
+      color nlight-text
+
+.social-bar-inner
+  transition background-color 0.125s
+  position absolute
+  bottom 12px
+  background-color ngrey-subtle
+  display inline-block
+  padding gd(0.5) gd(1)
+
+  /* Try to alleviate an empty-space problem:
+   * 1. addthis appends an invisible element to the list
+   *   making it impossible to rely on last-child no-gutter styling
+   * 2. addthis twitter button has an overly-wide width
+   *
+   * The result is a large empty right-side space
+   */
+  padding-right 0
+
+.social-bar-buttons
+  margin-left gd(1)
+  line-height 0
+  .addthis_button_facebook_like iframe
+    height 20px!important
+
+
+
+// On an artifact page
+// ------------------------
+
+body.artifact
+  .social-bar-app
+    display none!important
