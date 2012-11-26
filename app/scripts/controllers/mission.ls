@@ -1,11 +1,5 @@
 co2r.controllers.controller \about, ($scope)->
 
-  $scope.addthis-share-config =
-    #todo translation
-    title: "CO2R, a catalog of carbon responsible products: http://co2r.com"
-    url: "http://co2r.com"
-    description: \test-description
-
   $scope.$watch \appText.our_mission, (new-val)->
     $scope.$root.page-title = new-val
 
