@@ -1,6 +1,6 @@
 # Reference / thanks to
 # https://gist.github.com/1203641
-module.exports = ->
+co2r.directives.directive "chartCo2Sources", ->
   restrict: "E"
   replace:  on
   template: "<svg style='display:block;' class='pie-chart'></svg>"

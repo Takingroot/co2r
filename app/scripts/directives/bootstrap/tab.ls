@@ -1,6 +1,7 @@
-module.exports = (m)->
-  m.directive \tab, ->
-    (scope, el, attrs)->
-      el.click (e)->
-        e.preventDefault!
-        $(this).tab \show
+co2r.directives
+
+.directive \tab, ->
+  (scope, el, attrs)->
+    el.click (e)->
+      e.preventDefault!
+      $(this).tab \show

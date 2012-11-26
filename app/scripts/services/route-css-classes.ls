@@ -1,4 +1,4 @@
-module.exports = ($location, $route-params)->
+co2r.services.service \routeCssClasses, ($location, $route-params)->
 
   # resolve homepage edgecase wherein no class info can be inferred from url
   get_url = ->

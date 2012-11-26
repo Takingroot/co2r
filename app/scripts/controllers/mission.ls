@@ -1,4 +1,4 @@
-module.exports = ($scope)->
+co2r.controllers.controller \about, ($scope)->
 
   $scope.addthis-share-config =
     #todo translation

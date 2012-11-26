@@ -1,13 +1,12 @@
-module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, route-css-classes, $location)->
+window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $filter, route-css-classes, $location)->
 
   $scope.appCssClasses = ""
-  $scope.app_title    = "CO2R"
+  $scope.app-title    = "CO2R"
   $scope.partial-path = partial-path
   $scope.locale-id    = preferences-storage.get-and-maybe-set \languageCode, \en
   $scope.app-text     = {}
   $scope.app-vars     =
-    urls:
-      introduction-figure: "http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif"
+    urls: {}
 
   # update app location css classes
   $scope.$root.$on \$routeChangeSuccess, ->
@@ -62,19 +61,3 @@ module.exports = ($scope, partial-path, co2r-api, preferences-storage, $filter, 
   $scope.is-current-view = (test-url)->
     #console.log test-url, $location.path!, test-url is $location.path!
     test-url is $location.path!
-
-
-  # responsive design via conditional class application
-  $scope.w-mobile = no
-
-  enquire.register "screen and (max-width:980px)",
-    match:   ->
-      #console.log \match
-      $scope.$apply -> $scope.w-mobile = yes
-    unmatch: ->
-      #console.log \unmatch
-      $scope.$apply -> $scope.w-mobile = no
-
-  # wait until first idle, i.e after angular gets one pass-through
-  # if we don't delay, the $apply above causes a bug (ng-view never loads, no error message)
-  _.delay (-> enquire.listen(50)), 0

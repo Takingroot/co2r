@@ -1,4 +1,4 @@
-module.exports = ($scope, co2r-api, preferences-storage)->
+co2r.controllers.controller \directory, ($scope, co2r-api, preferences-storage)->
 
   $scope.$root.page-title = ''
 

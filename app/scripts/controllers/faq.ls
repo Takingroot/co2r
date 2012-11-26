@@ -1,4 +1,4 @@
-module.exports = ($scope, co2r-api)->
+co2r.controllers.controller \faq, ($scope, co2r-api)->
 
   $scope.$watch \appText.faq, ->
     $scope.$root.page-title = $scope.app-text.faq

@@ -1,4 +1,4 @@
-angular.module \co2r.filters, []
+co2r.filters
 
 .filter \unit, ->
     (amount, requested-unit-type)->

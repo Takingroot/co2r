@@ -1,4 +1,4 @@
-module.exports = ->
+co2r.directives.directive \timelineSlider, ->
   restrict:   \E
   require:    \^timelineConductor
   transclude: on

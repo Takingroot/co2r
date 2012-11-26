@@ -1,5 +1,5 @@
 # wrap the $http service into a co2r api DSL
-module.exports = ($http, preferences-storage)->
+co2r.services.service \co2rApi, ($http, preferences-storage)->
 
   api-url  = "http://co2r-data-staging.herokuapp.com/api/"
 

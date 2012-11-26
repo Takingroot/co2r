@@ -10,9 +10,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
     script(src="/javascripts/vendor.js")
     script(src="/javascripts/app.js")
-    script
-      require('./scripts/app')
-    title(ng-bind="app_title + getPageTitle()")
+    title(ng-bind="appTitle + getPageTitle()")
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
 

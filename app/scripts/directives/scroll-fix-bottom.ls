@@ -1,4 +1,6 @@
-module.exports = ($timeout)->
+co2r.directives
+
+.directive \scrollFixBottom, ($timeout)->
   (scope, el, attrs)->
     config = scope.$eval attrs.scroll-fix-bottom
 

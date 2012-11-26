@@ -1,4 +1,4 @@
-module.exports = ($scope)->
+co2r.controllers.controller \other-things, ($scope)->
   $scope.other-things-you-can-do =
     \feedback
     \sponsor-co2r

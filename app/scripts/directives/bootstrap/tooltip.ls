@@ -1,21 +1,22 @@
-module.exports = (m)->
-  m.directive \tooltip, ->
-    (scope, el, attrs)->
-      config = {}
+co2r.directives
 
-      attrs.$observe \tooltipContent, ->
-        config.title = attrs.tooltip-content
-        el.tooltip \destroy
-        el.tooltip config
+.directive \tooltip, ->
+  (scope, el, attrs)->
+    config = {}
 
-      attrs.$observe \tooltip, ->
-        config <<< scope.$eval attrs.tooltip
-        el.tooltip \destroy
-        el.tooltip config
+    attrs.$observe \tooltipContent, ->
+      config.title = attrs.tooltip-content
+      el.tooltip \destroy
+      el.tooltip config
 
-      # save a reference for teardown
-      # el isn't available after $destroy
-      tooltip = el.data \tooltip
+    attrs.$observe \tooltip, ->
+      config <<< scope.$eval attrs.tooltip
+      el.tooltip \destroy
+      el.tooltip config
 
-      # teardown
-      scope.$on \$destroy, ~> tooltip.destroy!
+    # save a reference for teardown
+    # el isn't available after $destroy
+    tooltip = el.data \tooltip
+
+    # teardown
+    scope.$on \$destroy, ~> tooltip.destroy!

@@ -4,6 +4,10 @@ exports.config =
   paths:
     public: '.public'
 
+  modules:
+    wrapper: off
+    definition: off
+
   files:
     javascripts:
       join-to:
@@ -15,6 +19,7 @@ exports.config =
           'vendor/angular.js'
           'vendor/underscore.js'
           'vendor/underscore.string.js'
+          'scripts/co2r.ls'
     stylesheets:
       join-to:
         'stylesheets/app.css': /^(app|vendor)/

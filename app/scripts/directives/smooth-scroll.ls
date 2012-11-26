@@ -1,4 +1,6 @@
-module.exports = ($location)->
+co2r.directives
+
+.directive \smoothScroll, ($location)->
   (scope, el, attrs)->
 
     el.click ->

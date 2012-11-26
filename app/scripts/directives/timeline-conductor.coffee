@@ -1,4 +1,4 @@
-module.exports = ->
+co2r.directives.directive "timelineConductor", ->
   restrict:   "E"
   replace:    on
   transclude: on
