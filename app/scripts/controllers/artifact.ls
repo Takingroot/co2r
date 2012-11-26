@@ -1,4 +1,5 @@
 module.exports = ($scope, $routeParams, co2r-api, $location)->
+  $scope.$prepare-for-ready!
 
   co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}
   .then (res)->
@@ -61,3 +62,4 @@ module.exports = ($scope, $routeParams, co2r-api, $location)->
       $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
 
 
+    $scope.$on-ready!

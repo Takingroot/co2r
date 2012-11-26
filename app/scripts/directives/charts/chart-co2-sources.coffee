@@ -5,7 +5,7 @@ module.exports = ->
   replace:  on
   template: "<svg style='display:block;' class='pie-chart'></svg>"
   link: (scope, el, attrs)->
-    attrs.$observe 'data', ->
+    scope.$whenReady ->
       vis_data   = scope.$eval attrs.data
 
       gutter     = 80

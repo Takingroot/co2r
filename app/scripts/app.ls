@@ -6,6 +6,7 @@ require './directives'
 app = angular.module \co2r, [
   \ngSanitize
   \ui
+  \Scope.onReady
   \co2r.services
   \co2r.filters
   \co2r.controllers
