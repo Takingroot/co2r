@@ -61,3 +61,9 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
   $scope.is-current-view = (test-url)->
     #console.log test-url, $location.path!, test-url is $location.path!
     test-url is $location.path!
+
+  $scope.addthis-share-config =
+    #todo translation
+    title: "CO2R, a catalog of carbon responsible products: http://co2r.com"
+    url: "http://co2r.com"
+    description: \test-description
