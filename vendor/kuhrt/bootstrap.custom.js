@@ -881,6 +881,7 @@
         $tip
           .css(tp)
           .addClass(placement)
+          .addClass(this.options.classes)
           .addClass('in')
       }
     }

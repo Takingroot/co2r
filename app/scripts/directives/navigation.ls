@@ -1,6 +1,9 @@
 nl-template =   """
   <ul class="nav nav-list" ng-transclude>
-    <li ng-class="{'current-view':isCurrentView(navItem.url)}" class="nav-item {{navItem.label | slugify}}" ng-repeat="navItem in items">
+    <li ng-class="{'current-view':isCurrentView(navItem.url)}"
+    class="nav-item {{navItem.label | slugify}}"
+    tooltip="{title:'Discover products that offset their carbon footprint.', placement:'bottom', classes: 'nav-item'}"
+    ng-repeat="navItem in items">
       <a class="nav-link" href="{{navItem.url}}">{{textFunction({item:navItem.label})}}</a>
     </li>
   </ul>
