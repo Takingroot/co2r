@@ -1,5 +1,5 @@
 co2r.directives.directive \timelineSlider, ->
-  restrict:   \E
+  restrict:   \C
   require:    \^timelineConductor
   transclude: on
   replace:    on

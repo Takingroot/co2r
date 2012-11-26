@@ -1,5 +1,5 @@
 co2r.directives.directive \chartTotalCo2VsOffset, ->
-  restrict: \E
+  restrict: \C
   replace:  on
   template: "<svg style='display:block' class='bar-chart'></svg>"
   link: (scope, el, attrs)->

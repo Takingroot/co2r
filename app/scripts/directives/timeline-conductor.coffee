@@ -1,5 +1,5 @@
 co2r.directives.directive "timelineConductor", ->
-  restrict:   "E"
+  restrict:   "C"
   replace:    on
   transclude: on
   controller: ($scope)->

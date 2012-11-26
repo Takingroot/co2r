@@ -1,7 +1,7 @@
 # Reference / thanks to
 # https://gist.github.com/1203641
 co2r.directives.directive "chartCo2Sources", ->
-  restrict: "E"
+  restrict: "C"
   replace:  on
   template: "<svg style='display:block;' class='pie-chart'></svg>"
   link: (scope, el, attrs)->

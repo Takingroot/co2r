@@ -1,7 +1,7 @@
 co2r.directives
 
 .directive \reportSectionTitle, ->
-  restrict:   \E
+  restrict:   \C
   replace:    on
   transclude: on
   template: """
@@ -9,7 +9,7 @@ co2r.directives
   """
 
 .directive \reportHeaderBasic, ->
-  restrict:   \E
+  restrict:   \C
   replace:    on
   transclude: on
   template: """
