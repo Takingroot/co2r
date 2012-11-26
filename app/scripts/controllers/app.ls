@@ -50,10 +50,10 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
       url: "/register-your-product"
 
     * label: "other_things_you_can_do"
-      url: "/other-things-you-can-do-to-help"
+      url: "/participate"
 
     * label: "our_mission"
-      url: "/about"
+      url: "/mission"
 
     * label: "faq"
       url: "/faq"
