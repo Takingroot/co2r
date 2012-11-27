@@ -1,22 +1,16 @@
 co2r.directives
 
 .directive \carousel, ->
-  restrict:   \E
-  transclude: on
-  replace:    on
+  restrict:   \C
   controller: ($element)->
     @slides         = []
     @register-slide = (new-slide)->
       @slides.push new-slide
       # re-invoke carousel to include new slide
       $element.carousel!
-  template: """
-    <div class="carousel" ng-transclude>
-    </div>
-    """
 
 .directive \carouselItem, ->
-  restrict:   \E
+  restrict:   \C
   require:    \^carousel
   transclude: on
   replace:    on

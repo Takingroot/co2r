@@ -3,27 +3,46 @@ co2r.directives
 
 
 # scope: amountUnit | amount | popoverConfig
-.directive \co2Contrasted, (partial-path)->
-  restrict:   "C"
-  transclude: on
-  replace:    on
-  scope:      on
-  template: """
-    <span
-      class="co2-keyword"
-      popover="popoverConfig"
-      ng-bind="amount | unit:amountUnit">
-    </span>
-  """
-  link: (scope, el, attrs)->
-    scope.amount      = undefined
-    scope.amount-unit = if \unit of attrs then scope.$eval attrs.unit else \kg
-    scope.popover-config =
-      trigger: \hover
-      content-src: partial-path \list-co2-comparisons
+.directive \co2Contrasted, ($compile)->
 
-    attrs.$observe \amount, (new-amount)->
-      scope.amount = parseFloat new-amount
+  popover-template-string = '
+    <ul class="unstyled">
+      <li class="{{co2_comparison.type | slugify}}" ng-repeat="co2_comparison in appVars.co2_artifact_comparisons">
+        {{co2_comparison.phrase}} {{(amount / co2_comparison.co2_amount).floor(2)}} {{co2_comparison.co2_amount_unit}}
+      </li>
+    </ul>
+    '
+  return
+    restrict:   \C
+    transclude: on
+    replace:    on
+    scope:      on
+    template: """
+      <span class="co2-keyword" popover="{{popoverConfig}}">
+        {{amount | unit:amountUnit}}
+      </span>
+    """
+    link: (scope, el, attrs)->
+      scope.amount         = 0
+      scope.popover-config = {}
+      scope.amount-unit    = \kg
+
+      attrs.$observe \amountUnit, (amount-unit-string)->
+        amount-unit = scope.$eval amount-unit-string
+        if amount-unit
+          scope.amount-unit = amount-unit
+
+      attrs.$observe \amount, (amount-string)->
+        amount = scope.$eval amount-string
+        if amount
+          scope.amount = amount
+          scope.popover-config =
+            trigger: \hover
+            contentToCompile: popover-template-string
+            # Not using title
+            #title:
+
+
 
 
 

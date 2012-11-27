@@ -1,9 +1,10 @@
 !!! 5
 html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb#")
   head
-    script
-      window.brunch = window.brunch || {}
-      window.brunch['auto-reload'] = {enabled: true}
+    //-
+      script
+        window.brunch = window.brunch || {}
+        window.brunch['auto-reload'] = {enabled: true}
 
     link(rel="stylesheet", href="/stylesheets/app.css")
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
@@ -34,7 +35,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
 
       .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
         .social-bar-inner.row.aligns-middle
-          div(href="/about", co2r-bind="appText.social_bar_text")
+          div(co2r-bind="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
 
       .app-footer-content.row.group.span

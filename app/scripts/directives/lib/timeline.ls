@@ -1,24 +1,21 @@
-directive_timeline_conductor = ->
-  restrict:   \E
-  replace:    on
-  transclude: on
+co2r.directives.directive \timelineConductor, ->
+  restrict:   \C
   controller: ($scope)->
     $scope.slider = $!
 
-    @register_slider = (new-slider)->
+    @register-slider = (new-slider)->
       #console.log 'adding new slider', new-slider, 'into', $scope.slider
       $scope.slider = $scope.slider.add new-slider
 
-  template: "<div class='timeline-conductor' ng-transclude></div>"
   link: (scope, el, attrs)->
 
-    conductor = el
-    c-index   = 0
+    conductor    = el
+    c-index      = 0
     # declare here to make available in scope
-    column-count = undefined
-    column-width = undefined
+    column-count = null
+    column-width = null
 
-    attrs.$observe 'columnCount', ->
+    attrs.$observe \columnCount, ->
       column-count := scope.$eval attrs.columnCount
       column-width := scope.$eval attrs.columnWidth
       c-index      := 0
@@ -142,3 +139,16 @@ directive_timeline_conductor = ->
         when \- then return c-index - delta-index
         when \+ then return c-index + delta-index
         else         throw "The direction #direction is not allowed (must be '-' or '+')"
+
+co2r.directives.directive \timelineSliderWindow, ->
+  restrict:   \C
+  require:    \^timelineConductor
+  transclude: on
+  replace:    on
+  template: """
+    <div style='overflow:hidden'>
+      <div class="timeline-slider align-center" ng-transclude></div>
+    </div>
+  """
+  link: (scope, el, attrs, timeline)->
+    timeline.register-slider el.children \.timeline-slider

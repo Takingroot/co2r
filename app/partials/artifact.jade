@@ -1,7 +1,7 @@
 
 .gallery.group(ui-if="artifact.images.length")
-  carousel
-    carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
+  .carousel
+    .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
 
 
 section.about
@@ -11,7 +11,7 @@ section.about
   .row.v-push-1
     .description.col-6
       .story(co2r-bind="artifact.description")
-      small: a.aligns-middle(href="/about")
+      small: a.aligns-middle(href="/mission")
         i.icon-pushpin
         span(co2r-bind="appText.learn_more_about_co2r")
 
@@ -25,7 +25,7 @@ section.about
 section.organization.row
   .organization-about.col-6
     .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
-      a(href="{{ artifact.organization.website_url }}"): img(src="{{artifact.organization.image_url}}")
+      a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
     h2.organization-name.v-push-2(co2r-bind="artifact.organization.name")
     .organization-description(co2r-bind="artifact.organization.description")
     .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
@@ -46,71 +46,65 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
     h1(co2r-bind="appText.artifact_report_section_title")
 
   .timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
+    section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+0")
+      //-
+        .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
+          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
+          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
+    //-
+      .timeline-slider-window
+        .row
+          h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
+    section.report-section.report-section-co2-per-unit
+      .report-header-basic
+        div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:(artifact.unit_quantity+' '+artifact.unit_verbose)")
+    //-
+      .timeline-slider-window
+        .chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
+        .row.text-align-center(style="border-top:1px solid lightgrey")
+          .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+            h4: span.co2-contrasted(amount="{{report.co2_per_unit}}")
 
-      section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+0")
-        //-
-          .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
-            a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
-            a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
-        .timeline-slider
-          .row
-            h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
+    section.report-section.report-section-total-vs-offset
+      .report-header-basic
+        div(co2r-bind="appText.artifact_total_vs_offset")
+    //-
+      .timeline-slider-window
+        .chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
+        .row(style="border-top:1px solid lightgrey")
+          .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+            .bar-labels.row.text-aligns-center.aligns-middle
+              h4.bar-label.total-co2-label: span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
+              h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
+  //-
+    section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
+      header.report-header.align-center
+        h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
+        ul.legend-items.row.text-align-center
+          li.legend-item(style="border-color:{{color}};", ng-repeat="(co2SourceName, color) in nameColors")
+            span.legend-item-name(ng-bind="co2SourceName")
+      .timeline-slider-window
+        .row
+          .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
+            .chart-co2-sources(column-width="column_width", data="co2_sources")
 
-      section.report-section.report-section-co2-per-unit
-        .report-header-basic
-          div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:(artifact.unit_quantity+' '+artifact.unit_verbose)")
-        .timeline-slider
-          .chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
-          .row.text-align-center(style="border-top:1px solid lightgrey")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              h4: span.co2-contrasted(amount="{{report.co2_per_unit}}")
+    section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
+      .report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
+      .timeline-slider-window
+        .row(style="white-space:normal;")
+          .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+            section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
+              .row.aligns-middle
+                i(class="icon-{{actionCategory.name.icon_code | slugify}}")
+                = ' '
+                h5(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
+                ul
+                  li(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
 
-      section.report-section.report-section-total-vs-offset
-        .report-header-basic: div(co2r-bind="appText.artifact_total_vs_offset")
-        .timeline-slider
-          .chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
-          .row(style="border-top:1px solid lightgrey")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              .bar-labels.row.text-aligns-center.aligns-middle
-                h4.bar-label.total-co2-label: span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
-                h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
-
-      section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
-        header.report-header.align-center
-          h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
-          ul.legend-items.row.text-align-center
-            li.legend-item(style="border-color:{{color}};", ng-repeat="(co2SourceName, color) in nameColors")
-              span.legend-item-name(ng-bind="co2SourceName")
-        .timeline-slider
-          .row
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
-              .chart-co2-sources(column-width="column_width", data="co2_sources")
-
-      section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
-        .report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
-        .timeline-slider
-          .row(style="white-space:normal;")
-            .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-              section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
-                .row.aligns-middle
-                  i(class="icon-{{actionCategory.name.icon_code | slugify}}")
-                  = ' '
-                  h5(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
-                  ul
-                    li(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
-
-        br
-        br
-        br
-      section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
-        button.btn.btn-inverse.v-push-4
-          a(href="{{latestReport.annual_report_url}}"): h3
-            i.icon-download(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
-br
-br
-br
-br
-br
+    section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
+      button.btn.btn-inverse.v-push-4
+        a(href="{{latestReport.annual_report_url}}"): h3
+          i.icon-download(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
 .social-bar.social-bar-artifact(scroll-fix-bottom="{until:'.app-footer'}")
