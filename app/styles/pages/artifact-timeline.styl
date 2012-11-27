@@ -1,7 +1,14 @@
 .timeline-header
   height 43px
+  position absolute
+  top -60px
+  &.ui-scrollfix
+    top 0
+    z-index 10
 
 .timeline-navigation
+  -webkit-user-select none
+  user-select none
   a
     margin-top 2px
 
@@ -17,8 +24,14 @@
 .timeline-conductor
   white-space nowrap
 
+  //&.ui-scrollfix
+  //padding-top 72px
+
 .timeline-slider-window
   overflow hidden
+
+.timeline-slider
+  transition margin 250ms
 
 .timeline-item
   border-left 1px dashed ngrey-subtle
