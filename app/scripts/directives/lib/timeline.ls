@@ -1,154 +1,245 @@
-co2r.directives.directive \timelineConductor, ->
+co2r.directives.directive \timelineSliderWindow, ->
   restrict:   \C
-  controller: ($scope)->
-    $scope.slider = $!
+  require:    \^timelineConductor
+  transclude: on
+  replace:    on
+  scope:      on
+  template: '
+    <div>
+      <div class="timeline-slider" ng-transclude></div>
+    </div>
+  '
+  link: (scope, el, attrs, timeline)->
+    timeline.register-slider el.children \.timeline-slider
 
-    @register-slider = (new-slider)->
-      #console.log 'adding new slider', new-slider, 'into', $scope.slider
-      $scope.slider = $scope.slider.add new-slider
+
+
+co2r.directives.directive \timelineConductor, ($window)->
+  restrict:   \C
+  scope:      on
+  controller: ($scope, $element)->
+    $scope.slider = $!
+    #$scope.sliders = []
+
+    @register-slider = (new-slider-el)->
+      $scope.slider = $scope.slider.add new-slider-el
+      #console.log 'adding new slider', new-slider-el, 'into', $scope.slider
+      #$scope.sliders.push new-slider-el
 
   link: (scope, el, attrs)->
-
     conductor    = el
-    c-index      = 0
-    # declare here to make available in scope
+    # declare here to make available in function scope
+    c-index      = null
     column-count = null
     column-width = null
 
-    attrs.$observe \columnCount, ->
-      column-count := scope.$eval attrs.columnCount
-      column-width := scope.$eval attrs.columnWidth
-      c-index      := 0
-      scope.move-timeline c-index
+    # privately (for now) configurable settings
+    settings =
+      center-timeline: yes
 
-    $(window).resize ->
+    init = ->
+      column-count := scope.$eval attrs.column-count
+      column-width := scope.$eval attrs.column-width
+
+      el.find(\.timeline-slider).width(column-count*column-width)
+
+      scope.move-timeline column-count
+      fit-timeline-toward-first!
+
+    $($window).resize ->
       # we need to apply because window resizing could potentially change whether or not we need to show navigation arrows
       scope.$apply!
-      auto-shift!
+      #fit-timeline-toward-first!
+      refresh-timeline-position!
 
 
 
-    #
-    # actions
-    #
-
-    move-timeline = scope.move-timeline = (to-index)->
-      new_index = visually-restrict-index-to-conductor restrict-index-to-bounds relative-to-absolute to-index
-      #console.log 'move to index:', new_index
-      c-index   = new_index
-      scope.slider.css \margin-left, (position-for-index new_index or '')
+    scope.move-timeline = (to-column)->
+      new-index = keep-index-within-column-range  column-to-index  to-column
+      console.log 'move to index:', new-index
+      c-index   := new-index
+      refresh-timeline-position!
 
       #console.log "checking if can move timeline in direction:", direction
       #console.log 'go backward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
       #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
 
 
-    # TODO come up with a better function name
-    auto-shift = ->
+    /*
+     * Ask if timeline
+     * 1. can move at all
+     * 2. can move to argument x position
+    */
+    scope.can-move-timeline = (to-column)->
+      if not slider-fits-within-conductor!
+        if to-column?
+          # the slider might be able to move to the specified index
+          #console.log 'trying to go to', to-index, 'in state of: current index is ', c-index, 'within a limit of 0 -', column-count-1
+          to-index = column-to-index to-column
+          can-move-slider-to-index = (to-index isnt c-index) and index-is-within-column-range(to-index)
 
-      # 'if' optimization
-      # if we are at the beginning of the timeline there simply are no columns to shift over
-      if not at-timeline-end!
-        scope.move-timeline "+#{enough-room-for-how-many-columns!}"
+          #console.log 'slider can move to index', to-index, '?', can-move-slider-to-index
+          can-move-slider-to-index
+        else
+          # the slider can generally move
+          #console.log 'slider can generally move'
+          yes
+      else
+        # logically the slider does not have to move (and cannot move) if it fits the container
+        #console.log 'cannot move because slider width is less than conductor width'
+        no
+
+    scope.$when-ready init
 
 
-    #
-    # utilities
-    #
 
-    visually-restrict-index-to-conductor = (to-index)->
-      if is-within-visual-bounds to-index then to-index else most-recent-index-that-can-be-seeked!
+    function refresh-timeline-position
+      base-xpos   = if slider-fits-within-conductor! then 0 else index-to-xpos(c-index)
+      offset-xpos = if not settings.center-timeline  then 0 else calc-timeline-centering-offset!
+      final-xpos  = base-xpos + offset-xpos
+      scope.slider.css \margin-left, final-xpos
+
+    # move the timeline as far back toward first column as possible
+    # without making last column move beyond right
+
+    function calc-timeline-centering-offset
+      conductor-width = conductor.width!
+      slider-width    = calc-slider-width!
+      # center on whole slider OR column
+      # depending on if the whole slider is visible, or not
+      centering-offset = if slider-width < conductor-width then slider-width else column-width
+      (conductor-width - centering-offset) / 2
 
 
-    is-within-index-range = (to-index)->
-      #console.log "trying to go to:", to-index, " which must be between or equal 0-", last-index()
+    function fit-timeline-toward-first
+      empty-column-count = count-empty-columns!
+      if false and empty-column-count > 0
+        scope.move-timeline "-#{empty-column-count}"
+
+
+    /*
+     * introspect slider space dynamics
+    */
+
+    # NOTE: this can return a negative value! : TODO is that error-prone?
+    function calc-slider-width-beyond-screen-right(against-a-c-index-of=c-index)
+      items-right-width                = count-items-right(against-a-c-index-of) * column-width
+      slider-width-beyond-screen-right = items-right-width - conductor.width!
+      console.log 'against-a-c-index-of:', against-a-c-index-of, '| calc-slider-width-beyond-screen-right', slider-width-beyond-screen-right, ' | items-right-width', items-right-width, ' | conductor.width', conductor.width!
+      slider-width-beyond-screen-right
+
+    function visible-empty-space
+      empty-space = -1 * calc-slider-width-beyond-screen-right!
+      # negative space don't make sense, "empty space" is 0 or more
+      empty-space = 0 if empty-space < 0
+      console.log 'empty-space:', empty-space
+      empty-space
+
+
+
+    /*
+     * introspect column and item counts
+    */
+
+    function count-empty-columns
+      # how many items can visibly fit in the conductor at once
+      # take into account that centering on current column alters the available empty columns
+      sub-divide-conductor = if settings.center-timeline then 2 else 1
+      visible-columns = Math.floor((conductor.width! / sub-divide-conductor) / column-width)
+
+      # how many ore items could fit on the screen?
+      empty-columns = visible-columns - count-items-right!
+      # negative values don't make sense, "items that can fit" is 0 or more
+      empty-columns = 0 if empty-columns < 0
+      #console.log 'empty columns:', empty-columns, ' | visible-columns:', visible-columns, ' | items-right:', count-items-right!, ' | c-index: ', c-index, ' | column-count:', column-count
+      empty-columns
+
+    # how many items are on the screen's left edge (or "beyond" the screen, from its right-edge onward)
+    # @param against-a-c-index-of
+    #   - allows us to count items-right for an index other than current
+    function count-items-right(against-a-c-index-of=c-index)
+      # c-index represents how many items are @left of screen
+      items-left  = against-a-c-index-of
+      items-right = column-count - items-left
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function slider-fits-within-conductor
+      return no if not scope.slider.length
+      conductor-width = conductor.width!
+      #if not angular.isNumber slider-width then throw "slider-width is not a number, #{slider-width}"
+      #if not angular.isNumber conductor-width then throw "conductor-width is not a number, #{conductor-width}"
+      #console.log 'slider-width', slider-width, 'vs', conductor-width, 'conductor-width'
+      calc-slider-width! < conductor-width
+
+
+
+    /*
+     * logic for column bounds
+    */
+
+    function index-is-within-column-range(to-index)
+      #console.log "trying index:", to-index, " which must be within (or equal) 0-", last-index!
       last-index! >= to-index >= 0
 
-    # the limit is the columns that conductor can fit
-    # i.e. if 3, the index can never go below 3
-    #console.log "trying to go to:", to-index, " which must be more than", most-recent-index-that-can-be-seeked()
-    is-within-visual-bounds = (to-index)->
-      to-index >= most-recent-index-that-can-be-seeked!
-
-
-    # how many columns can the conductor fit?
-    most-recent-index-that-can-be-seeked = ->
-      # - 1 because we are result value must be accurate in terms of array-addressable (0-based)
-      Math.floor(conductor.width! / column-width) - 1
+    function keep-index-within-column-range(index)
+      if      index < 0           then 0
+      else if index > last-index! then last-index!
+      else                        then index
 
 
 
 
-    enough-room-for-how-many-columns = ->
-      slider-width-on-left-side = ->
-        # we need to add 1 because we're interested in the _count_ of indexes up to and including current index in order to get the full width
-        (c-index+1) * column-width
 
-      available-width = conductor.width! - slider-width-on-left-side!
+    /*
+     * index transformations
+    */
 
-      enough-room-for-coluns = if available-width > 0 then Math.floor(available-width / column-width) else 0
-      #console.log 'enough room for', enough-room-for-coluns, 'column(s)'
-      enough-room-for-coluns
+    function index-to-xpos(index)
+      xpos = -1 * (index * column-width)
+      #console.log "#index * #column-width = ", 'xpos', xpos
+      xpos
 
 
-    last-index = ->
+    function column-to-index(column)
+      if typeof column is \number
+        return column - 1
+      else
+        return relative-to-absolute column
+
+
+      function relative-to-absolute(relative-number)
+        # passthrough because direction is absolute (1,2,3,..etc) not relative '+1', '-2', etc
+        #return direction_ if typeof direction_ isnt \string
+
+        # + or -
+        direction = relative-number.0
+        number    = parseInt relative-number.substring 1
+        #console.log 'for', direction_, 'direction is', direction, 'delta-index is', delta-index
+
+        switch direction
+          when \- then return c-index - number
+          when \+ then return c-index + number
+          else         throw "The given direction #direction is not allowed (must be '-' or '+')"
+
+
+
+
+
+    function last-index
       column-count - 1
 
-
-    at-timeline-start = ->
-      c-index is 0
-
-
-    position-for-index = (index)->
-      -1 * (last-index! - index) * column-width
-
-
-    at-timeline-end = ->
-      c-index is last-index() #or last_column_is_viewable()
-
-
-    can_move-timeline = scope.can_move-timeline = (to-index_)->
-
-      slider_width    = scope.slider.width!
-      conductor_width = conductor.width!
-      if slider_width < conductor_width
-        #console.log 'cannot move because slider width (', slider_width ,') is less than containing width (', conductor_width,')  (thereofe has no need to move...everythig is visible)'
-        return no
-
-      to-index = relative-to-absolute to-index_
-      #console.log 'trying to go to', to-index, index, 'in state of: current index is ', c-index, 'within a limit of 0 -', column-count-1
-      to-index |> (is-within-visual-bounds and is-within-index-range)
-
-
-    restrict-index-to-bounds = (index)->
-      | index < 0           => 0
-      | index > last-index! => last-index!
-      | _                   => index
-
-
-    relative-to-absolute = (direction_)->
-      # passthrough because direction is absolute (1,2,3,..etc) not relative '+1', '-2', etc
-      return direction_ if typeof direction_ isnt \string
-
-      # + or -
-      direction   = direction_.0
-      delta-index = parseInt direction_.substring 1
-      #console.log 'for', direction_, 'direction is', direction, 'delta-index is', delta-index
-
-      switch direction
-        when \- then return c-index - delta-index
-        when \+ then return c-index + delta-index
-        else         throw "The direction #direction is not allowed (must be '-' or '+')"
-
-co2r.directives.directive \timelineSliderWindow, ->
-  restrict:   \C
-  require:    \^timelineConductor
-  transclude: on
-  replace:    on
-  template: """
-    <div style='overflow:hidden'>
-      <div class="timeline-slider align-center" ng-transclude></div>
-    </div>
-  """
-  link: (scope, el, attrs, timeline)->
-    timeline.register-slider el.children \.timeline-slider
+    function calc-slider-width
+      column-count * column-width

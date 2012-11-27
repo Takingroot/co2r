@@ -1,39 +1,40 @@
 
-.gallery.group(ui-if="artifact.images.length")
-  .carousel
-    .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
+//-
+  .gallery.group(ui-if="artifact.images.length")
+    .carousel
+      .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
 
 
-section.about
-  header.stop-collapse
-    h1(co2r-bind="artifact.name")
-    h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
-  .row.v-push-1
-    .description.col-6
-      .story(co2r-bind="artifact.description")
-      small: a.aligns-middle(href="/mission")
-        i.icon-pushpin
-        span(co2r-bind="appText.learn_more_about_co2r")
+  section.about
+    header.stop-collapse
+      h1(co2r-bind="artifact.name")
+      h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
+    .row.v-push-1
+      .description.col-6
+        .story(co2r-bind="artifact.description")
+        small: a.aligns-middle(href="/mission")
+          i.icon-pushpin
+          span(co2r-bind="appText.learn_more_about_co2r")
 
-    .col-4
+      .col-4
 
-      .emissions-badge
-        h4.unspaced
-          span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
-          span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
+        .emissions-badge
+          h4.unspaced
+            span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
+            span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
 
-section.organization.row
-  .organization-about.col-6
-    .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
-      a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
-    h2.organization-name.v-push-2(co2r-bind="artifact.organization.name")
-    .organization-description(co2r-bind="artifact.organization.description")
-    .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
-      p(co2r-bind="appText.artifact_business_card_contact_lead_in")
-      .contact-methods.row.h-gutters-05
-        a.contact-method(class="contact-method-{{contact_method.contact_type}}", href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
-          i(class="icon-{{contact_method.contact_type | to_icon_name}}")
-  .organization-feed(ng-bind-html="artifact.twitter_feed_code")
+  section.organization.row
+    .organization-about.col-6
+      .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
+        a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
+      h2.organization-name.v-push-2(co2r-bind="artifact.organization.name")
+      .organization-description(co2r-bind="artifact.organization.description")
+      .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
+        p(co2r-bind="appText.artifact_business_card_contact_lead_in")
+        .contact-methods.row.h-gutters-05
+          a.contact-method(class="contact-method-{{contact_method.contact_type}}", href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
+            i(class="icon-{{contact_method.contact_type | to_icon_name}}")
+    .organization-feed(ng-bind-html="artifact.twitter_feed_code")
 
 
 
@@ -45,20 +46,18 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
   header.reports-header
     h1(co2r-bind="appText.artifact_report_section_title")
 
-  .timeline-conductor(style="white-space:nowrap;", column-width="column_width", column-count="artifact.reports.length", ui-scrollfix="+0")
+  .timeline-conductor(column-width="column_width", column-count="reports.length", ui-scrollfix="+0")
+
     section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+0")
-      //-
-        .timeline-navigation.clearfix(style="font-size:24px;height:30px;")
-          a.pull-left(style="margin-top:2px;"): i.icon-arrow-left.align-middle(  ng-show="can_move_timeline('+1')", style="margin-left:20px;",  ng-click="move_timeline('+1')")
-          a.pull-right(style="margin-top:2px;"): i.icon-arrow-right.align-middle(ng-show="can_move_timeline('-1')", style="margin-right:20px;", ng-click="move_timeline('-1')")
-    //-
+      .timeline-navigation
+        button.c-btn.timeline-navigation-left.pin-left(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-arrow-left.align-middle
+        button.c-btn.timeline-navigation-right.pin-right(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-arrow-right.align-middle
       .timeline-slider-window
         .row
           h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
     section.report-section.report-section-co2-per-unit
       .report-header-basic
         div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:(artifact.unit_quantity+' '+artifact.unit_verbose)")
-    //-
       .timeline-slider-window
         .chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
         .row.text-align-center(style="border-top:1px solid lightgrey")
@@ -107,7 +106,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
           i.icon-download(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
-.social-bar.social-bar-artifact(scroll-fix-bottom="{until:'.app-footer'}")
-  .social-bar-inner.row.aligns-middle
-    strong Tell your friends about {{artifact.name}}!
-    .social-bar-buttons.co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
+//-
+  .social-bar.social-bar-artifact(scroll-fix-bottom="{until:'.app-footer'}")
+    .social-bar-inner.row.aligns-middle
+      strong Tell your friends about {{artifact.name}}!
+      .social-bar-buttons.co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
