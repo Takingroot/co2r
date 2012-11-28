@@ -1,7 +1,9 @@
 // This utility class prevents css margin collapsing
 // Evolved upon discussion http://stackoverflow.com/questions/1828804/how-do-i-uncollapse-a-margin
-.stop-collapse:before
-  content "."
-  display block
-  overflow hidden
-  square(0)
+.stop-collapse
+  &:after
+  &:before
+    content "."
+    display block
+    overflow hidden
+    square(0)

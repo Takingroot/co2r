@@ -9,12 +9,14 @@
     .introduction-copy.span-6.stop-collapse
       h1(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
-  section.action-steps.row
-    .action-step(class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
-      h1
-        i(class="icon-{{step.icon}}")
-        span(ng-bind-html="appText[step.title]")
-      p(ng-bind-html="appText[step.body]")
+  section.action-steps-container
+    .action-steps.row.h-gutters-2.align-center
+      a.action-step.span-6(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+        h1.action-step-title
+          i(class="icon-{{step.icon}}")
+          = ' '
+          span(ng-bind-html="appText[step.title]")
+        p(ng-bind-html="appText[step.body]")
 
 
 
