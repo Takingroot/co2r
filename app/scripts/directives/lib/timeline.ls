@@ -6,11 +6,12 @@ co2r.directives.directive \timelineSliderWindow, ->
   scope:      on
   template: '
     <div>
-      <div class="timeline-slider" ng-transclude></div>
+      <div class="timeline-slider" style="display:table;" ng-transclude></div>
     </div>
   '
-  link: (scope, el, attrs, timeline)->
-    timeline.register-slider el.children \.timeline-slider
+  link: (scope, el, attrs, conductor)->
+    #console.log 'register a slider', el
+    conductor.register-slider el.children \.timeline-slider
 
 
 
@@ -41,10 +42,11 @@ co2r.directives.directive \timelineConductor, ($window)->
       column-count := scope.$eval attrs.column-count
       column-width := scope.$eval attrs.column-width
 
-      el.find(\.timeline-slider).width(column-count*column-width)
-
       scope.move-timeline column-count
       fit-timeline-toward-first!
+
+    scope.$watch \slider, (new-slider)->
+      refresh-timeline-position!
 
     $($window).resize ->
       # we need to apply because window resizing could potentially change whether or not we need to show navigation arrows
@@ -97,6 +99,7 @@ co2r.directives.directive \timelineConductor, ($window)->
       base-xpos   = if slider-fits-within-conductor! then 0 else index-to-xpos(c-index)
       offset-xpos = if not settings.center-timeline  then 0 else calc-timeline-centering-offset!
       final-xpos  = base-xpos + offset-xpos
+      #console.log scope.slider, base-xpos, offset-xpos, final-xpos
       scope.slider.css \margin-left, final-xpos
 
     # move the timeline as far back toward first column as possible
