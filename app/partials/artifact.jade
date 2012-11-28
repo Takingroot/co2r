@@ -92,7 +92,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
     section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
       .report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
       .timeline-slider-window
-        .row(style="white-space:normal;")
+        .row
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
             section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
               .row.aligns-middle
