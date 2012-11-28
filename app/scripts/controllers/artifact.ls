@@ -32,10 +32,17 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, $locatio
 
       # data collected across artifacts for comparison in charts
       # --------------------------------------------------------------------------------------------------
+      /*
+      $scope.data2 = {}
+      _.each (_.pluck $scope.reports, \year), (year)->
+        $scope.data2[year] =
+          co2-sources:  _.filter (_.map $scope.reports, \carbon_sources_list), -> it.length
+      */
+
       $scope.data =
-        co2_sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
-        co2_per_thing_made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> -1*it)
-        total_co2_vs_offset:
+        co2-sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
+        co2-per-thing-made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> -1*it)
+        total-co2-vs-offset:
           total_co2:  _.pluck $scope.reports, \total_tons_produced
           offset_co2: _.pluck $scope.reports, \total_offset_tons
           trees-planted: _.pluck $scope.reports, \trees_planted
@@ -43,7 +50,7 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, $locatio
 
       # data for co2 source categories associated with colors
       # --------------------------------------------------------------------------------------------------
-      names = _.uniq _.flatten _.map $scope.data.co2_sources, -> _.pluck it, \name
+      names = _.uniq _.flatten _.map $scope.data.co2-sources, -> _.pluck it, \name
       # colors.length MUST be longer than names.length
       # colors based on https://files.podio.com/23920019
       # first set of colors are less saturated

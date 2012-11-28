@@ -59,31 +59,35 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
       .report-header-basic
         div(co2r-bind="appText.artifact_co2_per_thing_made | interpolate:(artifact.unit_quantity+' '+artifact.unit_verbose)")
       .timeline-slider-window
-        .chart-co2-per-unit(column-width="column_width", data="data.co2_per_thing_made")
+        .chart-co2-per-unit(column-width="column_width", data="data.co2PerThingMade")
         .row.text-align-center(style="border-top:1px solid lightgrey")
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
             h4: span.co2-contrasted(amount="{{report.co2_per_unit}}")
+
 
     section.report-section.report-section-total-vs-offset
       .report-header-basic
         div(co2r-bind="appText.artifact_total_vs_offset")
       .timeline-slider-window
-        .chart-total-co2-vs-offset(column-width="column_width", data="data.total_co2_vs_offset")
+        .chart-total-co2-vs-offset(column-width="column_width", data="data.totalCo2VsOffset")
         .row(style="border-top:1px solid lightgrey")
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
             .bar-labels.row.text-aligns-center.aligns-middle
               h4.bar-label.total-co2-label: span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
               h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
-    section.report-section.report-section-co2-sources(ui-if="data.co2_sources.length")
+
+
+    section.report-section.report-section-co2-sources(ui-if="data.co2Sources.length")
       header.report-header.align-center
         h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
         ul.legend-items.row.text-align-center
           li.legend-item(style="border-color:{{color}};", ng-repeat="(co2SourceName, color) in nameColors")
             span.legend-item-name(ng-bind="co2SourceName")
-      .timeline-slider-window
-        .row
-          .timeline-item(style="width:{{column_width}}px", ng-repeat="co2_sources in data.co2_sources")
-            .chart-co2-sources(column-width="column_width", data="co2_sources")
+      .timeline-slider-window: .row
+        .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+          .chart-co2-sources(column-width="column_width", data="report.carbon_sources_list", ui-if="report.carbon_sources_list.length")
+          .missing-chart.missing-chart-co2-sources.text-align-center(ui-if="!report.carbon_sources_list.length") No data
+
 
     section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
       .report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
