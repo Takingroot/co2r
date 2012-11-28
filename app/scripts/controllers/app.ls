@@ -40,7 +40,6 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
   # i18n text
   co2r-api.get "locale/#{$scope.locale-id}"
   .success (res-data)->
-    $scope.app-text = res-data.locale
 
     # We have to wait for appText before rendering navigation
     # because the tooltip won't work with nav-tooltip-config otherwise
@@ -80,7 +79,6 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
         classes: 'nav-item'
 
       function render-tooltip-content(nav-item)
-        console.log $scope.app-text
         "
           <h1 class='tooltip-content-title'>#{$scope.app-text[nav-item.label]}</h1>
           <div class='tooltip-content-body'>#{nav-item.tooltip-content}</div>
