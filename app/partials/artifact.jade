@@ -81,6 +81,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
               h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
 
 
+
     section.report-section.report-section-co2-sources(ui-if="data.co2Sources.length")
       header.report-header.align-center
         h3.report-title.text-align-center(co2r-bind="appText.artifact_co2_sources")
@@ -90,7 +91,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
       .timeline-slider-window: .row
         .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
           .chart-co2-sources(column-width="column_width", data="report.carbon_sources_list", ui-if="report.carbon_sources_list.length")
-          .missing-chart.missing-chart-co2-sources.text-align-center(ui-if="!report.carbon_sources_list.length") No data
+          .no-data.text-align-center(ui-if="!report.carbon_sources_list.length") No data
+
 
 
     section.report-section.report-section-other-eco-actions(ui-if="hasOtherActions")
@@ -98,6 +100,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
       .timeline-slider-window
         .row
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+            .no-data.text-align-center(ui-if="!report.other_actions.length") No data
             section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
               .row.aligns-middle
                 i(class="icon-{{actionCategory.name.icon_code | slugify}}")
@@ -105,6 +108,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
                 h5(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
                 ul
                   li(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
+
+
 
     section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
       button.btn.btn-inverse.v-push-4
