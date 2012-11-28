@@ -1,8 +1,35 @@
-.register-table-of-contents
+
+
+// .register-info-container
+//------------------------------------------
+
+.register-info-container
+  border-top 1px solid ngrey-subtle
+
+.register-info-aside
+  width 40%
   background-color nwhite
+  border-right 1px solid ngrey-subtle
 
-.register-your-product
+register-content-boxes-padding = 4
+.register-info-aside
+.register-info-body
+  padding-top gd(register-content-boxes-padding)
+  padding-bottom gd(register-content-boxes-padding*2)
+.register-info-aside
+  padding-right gd(register-content-boxes-padding)
+.register-info-body
+  padding-left gd(register-content-boxes-padding)
 
+
+
+
+
+
+// .register-info-container
+//------------------------------------------
+
+body.register-your-product
   .introduction
     margin-top -12px
     h1
@@ -12,12 +39,8 @@
   .header-inner
     width 500px
 
-  .register-your-product
-
+  body.register-your-product
     .introduction
       margin-bottom gd(1)
-
     form
       margin-left 0!important
-
-

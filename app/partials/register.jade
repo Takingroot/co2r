@@ -25,22 +25,14 @@ header
               label.add-on(for="phone"): i.icon-phone
               input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
           button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
-  br
-  br
-  br
 
 
-.row.row-couple-heights
-  aside.row.register-table-of-contents(style="width:40%;")
-    .align-right(style="margin-right:40px;margin-top:40px;margin-bottom:60px;")
+section.register-info-container.row.row-couple-heights.v-push-3
+  aside.register-info-aside.row
+    .align-right.span-4
       div(co2r-bind="appText.register_artifact_left_column")
-    br
-    br
-    br
-    br
-    br
-  .faqs.span-8.v-gutters-3
-    div(co2r-bind="appText.register_artifact_right_body")
+  .register-info-body
+    div.span-8.v-gutters-3(co2r-bind="appText.register_artifact_right_body")
 
 
 

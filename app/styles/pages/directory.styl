@@ -1,32 +1,33 @@
 .hash-overlay
   background-overlay url('/images/white-hash-20.png')
 
+body.directory
+  .moodshot
+    background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
+    background-size cover
+    height gd(22)
 
-.home-introduction
-  &.closed
-    height 56px
-    overflow hidden
-
-.introduction-toggler
-  font-size 30px
-  padding .55em
-
-body.directory .moodshot
-  background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
-  background-size cover
-  height gd(22)
-
-.directory
   .app-footer
     margin-top gd(4)
+
+  .home-introduction
+    &.closed
+      height 56px
+      overflow hidden
+
+  .introduction
+    background-color nblue
+    min-height gd(26)
+    background-image url('/images/white-hash-20.png')
+
+  .introduction-toggler
+    font-size 30px
+    padding .55em
+
 
 card-width   = gd(14)
 gutter-width = gd(1)
 
-.introduction
-  background-color nblue
-  min-height gd(26)
-  background-image url('/images/white-hash-20.png')
 
 .action-steps
   background-color lighten(ngrey, 5)
