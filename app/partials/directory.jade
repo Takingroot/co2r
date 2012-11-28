@@ -1,3 +1,5 @@
+
+
 .home-introduction.group(ng-class="{open:introductionState(), closed:!introductionState()}")
 
   button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()", tooltip="{title:'Restore preferences', placement:'right'}")
@@ -7,21 +9,24 @@
     .introduction-copy.span-6.stop-collapse
       h1(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
-  section.action-steps
+  section.action-steps.row
+    .action-step(class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+      h1
+        i(class="icon-{{step.icon}}")
+        span(ng-bind-html="appText[step.title]")
+      p(ng-bind-html="appText[step.body]")
+
 
 
 
 .artifact-directory.v-push-5
-
   form.form-search.span.group
     .hang-left: .hang-inner
       label.add-on(for="search-artifacts"): span.icon-search
     input.span(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
-
   .artifact-cards.span.gutters-1.row
-
     a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
       .artifact-card-header.group
         .poster

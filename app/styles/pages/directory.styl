@@ -1,14 +1,14 @@
-.hash-overlay
-  background-overlay url('/images/white-hash-20.png')
+
 
 body.directory
+
+  .app-footer
+    margin-top gd(4)
+
   .moodshot
     background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
     background-size cover
     height gd(22)
-
-  .app-footer
-    margin-top gd(4)
 
   .home-introduction
     &.closed
@@ -24,15 +24,15 @@ body.directory
     font-size 30px
     padding .55em
 
+  .action-steps
+    background-color lighten(ngrey, 5)
+    min-height gd(13)
+    background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
 
-card-width   = gd(14)
-gutter-width = gd(1)
 
 
-.action-steps
-  background-color lighten(ngrey, 5)
-  min-height gd(13)
-  background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
+// Search input for Directory listing
+//--------------------------------------------------
 
 .form-search
   margin-top gd(2)
@@ -65,63 +65,17 @@ gutter-width = gd(1)
     border none
 
 
-.artifact-directory
-  .ui-match
-    highlight-color = fade-out(nlight, 0.65)
-    background highlight-color
-    box-shadow 0 0 0 3px highlight-color
-    color ndark
 
-
-
-
-.artifact-cards
-  .inner
-    margin-left (gutter-width/2)
-
-.artifact-card
-  width card-width
-  .poster
-    background-overlay url('/images/white-hash-30.png')
-  .poster img
-    square card-width
-
-.artifact-card-meta-ribbon
-  z-index 20
-  margin-bottom 1px
-  .artifact-category
-    background-color ngrey
-    min-height gd(3)
-    width gd(3)
-  .co2-badge
-    padding gd(.25) gd(.5)
-    background-color nlight
-    color fade-out(ndark-text,0.15)
-    line-height 24px
-  .co2-keyword
-    font-size 1.2rem
-
-
-
-.artifact-card-body
-  background-color nyellow
-  background-image url('/images/white-hash-30.png')
-  min-height gd(5)
-  .organization-name
-    padding-top .65em
-    padding-left .85em
-    padding-bottom .75em
-    font-weight normal
-    font-size 1.6rem
-    line-height 1.25em
-    margin-top 0
-    color ndark-text-on-color
-
+// Directory listing (with responsiveness)
+//--------------------------------------------------
 
 .artifact-directory
   margin-left auto
   margin-right auto
   margin-bottom 120px
+.artifact-cards
+  .inner
+    margin-left (gutter-width/2)
 
 //@media screen and (min-width: 0)
 .artifact-directory
