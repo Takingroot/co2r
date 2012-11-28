@@ -6,7 +6,7 @@ co2r.directives.directive \timelineSliderWindow, ->
   scope:      on
   template: '
     <div>
-      <div class="timeline-slider" style="display:table;" ng-transclude></div>
+      <div class="timeline-slider align-center" style="position:relative;" ng-transclude></div>
     </div>
   '
   link: (scope, el, attrs, conductor)->
@@ -36,7 +36,7 @@ co2r.directives.directive \timelineConductor, ($window)->
 
     # privately (for now) configurable settings
     settings =
-      center-timeline: yes
+      center-slider-on-current-column: yes
 
     init = ->
       column-count := scope.$eval attrs.column-count
@@ -51,7 +51,6 @@ co2r.directives.directive \timelineConductor, ($window)->
     $($window).resize ->
       # we need to apply because window resizing could potentially change whether or not we need to show navigation arrows
       scope.$apply!
-      #fit-timeline-toward-first!
       refresh-timeline-position!
 
 
@@ -62,9 +61,6 @@ co2r.directives.directive \timelineConductor, ($window)->
       c-index   := new-index
       refresh-timeline-position!
 
-      #console.log "checking if can move timeline in direction:", direction
-      #console.log 'go backward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
-      #console.log 'go forward', ' | x before move is: ', current_timeline_x(), ' vs after: ', new_x
 
 
     /*
@@ -97,10 +93,10 @@ co2r.directives.directive \timelineConductor, ($window)->
 
     function refresh-timeline-position
       base-xpos   = if slider-fits-within-conductor! then 0 else index-to-xpos(c-index)
-      offset-xpos = if not settings.center-timeline  then 0 else calc-timeline-centering-offset!
+      offset-xpos = if not settings.center-slider-on-current-column  then 0 else calc-timeline-centering-offset!
       final-xpos  = base-xpos + offset-xpos
       #console.log scope.slider, base-xpos, offset-xpos, final-xpos
-      scope.slider.css \margin-left, final-xpos
+      scope.slider.css \left, final-xpos
 
     # move the timeline as far back toward first column as possible
     # without making last column move beyond right
@@ -108,10 +104,8 @@ co2r.directives.directive \timelineConductor, ($window)->
     function calc-timeline-centering-offset
       conductor-width = conductor.width!
       slider-width    = calc-slider-width!
-      # center on whole slider OR column
-      # depending on if the whole slider is visible, or not
-      centering-offset = if slider-width < conductor-width then slider-width else column-width
-      (conductor-width - centering-offset) / 2
+      if slider-width < conductor-width then return 0
+      (conductor-width - column-width) / 2
 
 
     function fit-timeline-toward-first
@@ -147,7 +141,7 @@ co2r.directives.directive \timelineConductor, ($window)->
     function count-empty-columns
       # how many items can visibly fit in the conductor at once
       # take into account that centering on current column alters the available empty columns
-      sub-divide-conductor = if settings.center-timeline then 2 else 1
+      sub-divide-conductor = if settings.center-slider-on-current-column then 2 else 1
       visible-columns = Math.floor((conductor.width! / sub-divide-conductor) / column-width)
 
       # how many ore items could fit on the screen?

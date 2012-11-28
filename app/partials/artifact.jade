@@ -46,10 +46,10 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
 
   .timeline-conductor.group(column-width="column_width", column-count="reports.length")
 
-    section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+48")
+    section.timeline-header.dark-theme.span.scrollfix-fixed(ui-scrollfix="+150")
       .timeline-navigation
-        button.c-btn.timeline-navigation-left.pin-left(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-arrow-left.align-middle
-        button.c-btn.timeline-navigation-right.pin-right(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-arrow-right.align-middle
+        button.c-btn.timeline-navigation-left.pin-left(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-chevron-left.align-middle
+        button.c-btn.timeline-navigation-right.pin-right(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
       .timeline-slider-window
         .row
           h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
