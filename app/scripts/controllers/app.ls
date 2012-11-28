@@ -45,18 +45,23 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
 
     * label: "directory"
       url: "/directory"
+      icon: \th
 
     * label: "register_your_product"
       url: "/register-your-product"
+      icon: \edit
 
     * label: "other_things_you_can_do"
       url: "/participate"
+      icon: \heart
 
     * label: "our_mission"
       url: "/mission"
+      icon: \leaf
 
     * label: "faq"
       url: "/faq"
+      icon: \info-sign
 
   $scope.is-current-view = (test-url)->
     #console.log test-url, $location.path!, test-url is $location.path!

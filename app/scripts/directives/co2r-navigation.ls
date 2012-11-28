@@ -4,7 +4,9 @@ nl-template =   """
     class="nav-item {{navItem.label | slugify}}"
     tooltip="{title:'Discover products that offset their carbon footprint.', placement:'bottom', classes: 'nav-item'}"
     ng-repeat="navItem in items">
-      <a class="nav-link" href="{{navItem.url}}">{{textFunction({item:navItem.label})}}</a>
+      <a class="nav-link" href="{{navItem.url}}">
+        <i class="icon-{{navItem.icon}}"></i> {{textFunction({item:navItem.label})}}
+      </a>
     </li>
   </ul>
   """
