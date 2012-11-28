@@ -116,8 +116,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         span(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
-//-
-  .social-bar.social-bar-artifact(scroll-fix-bottom="{until:'.app-footer'}")
-    .social-bar-inner.row.aligns-middle
-      strong Tell your friends about {{artifact.name}}!
-      .social-bar-buttons.co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
+.social-bar.social-bar-artifact(scroll-fix-bottom="{until:'.app-footer'}")
+  .social-bar-inner.row.aligns-middle
+    strong Tell your friends about {{artifact.name}}!
+    .social-bar-buttons.co2r-addthis-toolbox.row.aligns-middle.h-gutters-05
