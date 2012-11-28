@@ -110,9 +110,10 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
 
 
     section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
-      button.btn.btn-inverse.v-push-4
-        a(href="{{latestReport.annual_report_url}}"): h3
-          i.icon-download(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
+      a.c-btn.v-push-4(href="{{latestReport.annual_report_url}}"): h3
+        i.icon-download
+        = ' '
+        span(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
 //-
