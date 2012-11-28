@@ -27,10 +27,10 @@ co2r.directives
       scope.popover-config = {}
       scope.amount-unit    = \kg
 
-      attrs.$observe \amountUnit, (amount-unit-string)->
-        amount-unit = scope.$eval amount-unit-string
-        if amount-unit
-          scope.amount-unit = amount-unit
+      attrs.$observe \unit, (unit-string)->
+        unit = scope.$eval unit-string
+        if unit
+          scope.amount-unit = unit
 
       attrs.$observe \amount, (amount-string)->
         amount = scope.$eval amount-string
