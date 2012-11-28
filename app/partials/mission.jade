@@ -1,9 +1,13 @@
+
+
 section.page-introduction
   .moodshot
   section.introduction
     .introduction-copy.span-6.stop-collapse
-      h1.ty-section-title(co2r-bind="appText.introduction_title")
+      h1.text-section-title(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
+
+
 
 section.limay.row
   .limay-map-container
@@ -15,11 +19,13 @@ section.limay.row
       ui-event="{'map-click': 'test($event)'}",
       ui-options="mapOptions")
   .limay-text
-    h1.ty-section-title.group
+    h1.text-section-title.group
       .community-title(co2r-bind="appText.about_community_title")
     .community-text(co2r-bind="appText.about_community_text")
 
+
+
 article.essay-chapter(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
   header.chapter-header
-    h3.chapter-title.ty-section-title(co2r-bind="appText['about_topic_'+num+'_title']")
+    h3.chapter-title.text-section-title(co2r-bind="appText['about_topic_'+num+'_title']")
   .chapter-text.v-push-1(co2r-bind="appText['about_topic_'+num+'_text']")
