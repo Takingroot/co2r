@@ -1,0 +1,118 @@
+
+
+.app-navbar
+  margin-top gd(6)
+  margin-right gd(2)
+
+  .nav-list
+    margin-bottom 0
+    //undo bootstrap
+    padding 0
+
+  .nav-item + .nav-item
+    border-left 1px solid ndark-subtle
+
+  // sometimes we need to meld the nav item
+  // dividers into the highlight
+  .nav-item.current-view
+  .nav-item.current-view + .nav-item
+  //.nav-item:hover
+  //.nav-item:hover + .nav-item
+    border-left-color ndark
+
+  .nav-item
+    min-width 146px
+    text-align center
+    .nav-link
+      color ndark-text
+      font-size 1.1rem
+      text-transform capitalize
+    // Important: Source order
+    // - the following selectors are in order
+    //   the lower ones override the upper ones
+    &:hover .nav-link
+      background-color fade-out(ndark, 0.98)
+      color darken(ndark-text, 20)
+    &:active .nav-link
+      background-color fade-out(ndark, 0.9)
+      color darken(ndark-text, 20)
+    &.current-view .nav-link
+      cursor default
+      background-color ndark
+      color nlight-text
+
+  .nav-link
+    padding 0.7em 1em
+
+    // undo bootstrap
+    margin 0!important
+    text-shadow none
+    &:hover
+      background none
+    // undo end
+  .nav-link-icon
+    font-size 1.5em
+    margin-right 0.25em
+    // vertical center because font-awesome fails by a few a pixels
+    margin-top 0.05em
+    margin-bottom -0.05em
+
+
+
+
+.tooltip.nav-item
+  .tooltip-arrow
+    border-bottom-color ndark
+  .tooltip-inner
+    stop-collapse()
+    border-radius 0
+    font-size 0.8rem
+    line-height 1.5
+    min-height gd(3)
+    background-color ndark
+    // undo bootstrap
+    padding 0
+  // put padding on content containers
+  // so that we can allow width/padding
+  // to be on the same container
+  .tooltip-content-title
+    // h-tag provides vertical space
+    padding-left 1em
+    padding-right 1em
+  .tooltip-content-body
+    padding 1em
+    // this width is a max-width on the body content
+    // but if the title content is wider
+    // the tooltip can still adapt for that
+    width 146px
+    // centering for when content title is wider than body
+    margin-left auto
+    margin-right auto
+
+  .tooltip-content-title
+    display none
+
+
+
+@media screen and (max-width: 1200px)
+  .app-navbar
+
+    .nav-item
+      min-width 0
+    .nav-link
+      padding-left 1.5em
+      padding-right 1.5em
+    .nav-link-icon
+      font-size 2rem
+      margin-right 0
+    .nav-link-text
+      display none
+
+  .tooltip.nav-item
+    .tooltip-content-body
+      width 180px
+      padding-top 0
+    .tooltip-content-title
+      display block
+      font-size 1.5rem
+

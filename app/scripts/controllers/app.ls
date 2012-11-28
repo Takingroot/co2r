@@ -25,11 +25,9 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
     $scope.app-vars <<< res.data
 
 
+    $scope.is-current-view = (test-url)->
+      test-url is $location.path!
 
-  # i18n text
-  co2r-api.get "locale/#{$scope.locale-id}"
-  .success (res-data)->
-    $scope.app-text = res-data.locale
 
   # this is to aid in the language switcher functionality
   $scope.other-language = ->
@@ -39,33 +37,54 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
     preferences-storage.set \languageCode, $scope.otherLanguage!
     window.location.reload!
 
+  # i18n text
+  co2r-api.get "locale/#{$scope.locale-id}"
+  .success (res-data)->
+    $scope.app-text = res-data.locale
 
-  # header/footer navigation
-  $scope.nav-items =
+    # We have to wait for appText before rendering navigation
+    # because the tooltip won't work with nav-tooltip-config otherwise
 
-    * label: "directory"
-      url: "/directory"
-      icon: \th
+    # header/footer navigation
+    $scope.nav-items =
 
-    * label: "register_your_product"
-      url: "/register-your-product"
-      icon: \edit
+      * label: "directory"
+        url: "/directory"
+        icon: \th
+        tooltip-content: "Discover products that offset their carbon footprint."
 
-    * label: "other_things_you_can_do"
-      url: "/participate"
-      icon: \heart
+      * label: "register_your_product"
+        url: "/register-your-product"
+        icon: \edit
+        tooltip-content: "Do you have a product or service that you’d like to offset? Get started."
 
-    * label: "our_mission"
-      url: "/mission"
-      icon: \leaf
+      * label: "other_things_you_can_do"
+        url: "/participate"
+        icon: \heart
+        tooltip-content: "Other ways you can help. Spread the word, sponsor us, and more."
 
-    * label: "faq"
-      url: "/faq"
-      icon: \info-sign
+      * label: "our_mission"
+        url: "/mission"
+        icon: \leaf
+        tooltip-content: "We want to create a cleaner and fairer world for the future."
 
-  $scope.is-current-view = (test-url)->
-    #console.log test-url, $location.path!, test-url is $location.path!
-    test-url is $location.path!
+      * label: "faq"
+        url: "/faq"
+        icon: \info-sign
+        tooltip-content: "How is CO2 measured? What is an offset? Who profits? and more."
+
+    $scope.nav-tooltip-config = (navItem)->
+      return
+        title: render-tooltip-content(navItem)
+        placement:'bottom'
+        classes: 'nav-item'
+
+      function render-tooltip-content(nav-item)
+        console.log $scope.app-text
+        "
+          <h1 class='tooltip-content-title'>#{$scope.app-text[nav-item.label]}</h1>
+          <div class='tooltip-content-body'>#{nav-item.tooltip-content}</div>
+        "
 
   $scope.addthis-share-config =
     #todo translation

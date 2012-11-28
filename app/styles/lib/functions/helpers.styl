@@ -40,3 +40,11 @@ overlay(z-index-value=10)
     bottom 0
     content ""
     z-index z-index-value
+
+stop-collapse()
+  &:after
+  &:before
+    content "."
+    display block
+    overflow hidden
+    square(0)
