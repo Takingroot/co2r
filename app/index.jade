@@ -56,16 +56,17 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
               h4.aligns-middle
                 i.icon-sign-blank
                 span(co2r-bind="appText.footer_sponsor_name")
-            p(co2r-bind="appText.footer_sponsor_description")
+            p.text-small(co2r-bind="appText.footer_sponsor_description")
           .company.span-3
             a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
               img.co2r-logo(src="/images/logo-white.png")
               span(co2r-bind="appText.footer_taking_root")
-            p(co2r-bind="appText.footer_taking_root_description")
-            .row.h-gutters-05(style="font-size:1.5em;")
-              a.icon-envelope(href="mailto:info@takingroot.org", ui-jq="popover", title="test", data-content="moo")
-              a.icon-twitter(href="https://twitter.com/takingroot")
-              a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
+            p.text-small(co2r-bind="appText.footer_taking_root_description")
+            //-
+              .row.h-gutters-05(style="font-size:1.5em;")
+                a.icon-envelope(href="mailto:info@takingroot.org", ui-jq="popover", title="test", data-content="moo")
+                a.icon-twitter(href="https://twitter.com/takingroot")
+                a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
         p.muted(co2r-bind="appText.footer_colofon")
 
