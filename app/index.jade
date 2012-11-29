@@ -38,7 +38,9 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
     #app-content(ng-view="ng-view")
 
 
+
     footer.app-footer.group
+      .stripe.span.pin-top
 
       .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
         .social-bar-inner.row.aligns-middle
@@ -63,12 +65,5 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
               a.icon-twitter(href="https://twitter.com/takingroot")
               a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
 
-        br
-        br
-        br
-        br
-        br
-        br
-        br
         p.muted(co2r-bind="appText.footer_colofon")
-      .stripe.span.pin-top
+
