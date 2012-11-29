@@ -1,3 +1,5 @@
+
+
 .row.row-couple-heights
 
   aside.faq-toc-container
@@ -10,5 +12,5 @@
     .faqs.span-8.v-gutters-3
       article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
-          h1(co2r-bind="faq.question")
-        .answer(co2r-bind="faq.answer")
+          h1.text-heading2(co2r-bind="faq.question")
+        .answer.v-push-1(co2r-bind="faq.answer")
