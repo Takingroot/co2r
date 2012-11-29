@@ -5,12 +5,6 @@ co2r.controllers.controller \participate, ($scope)->
     \recruit-company
     \spread-word
 
-  $scope.addthis-share-config =
-    #todo translation
-    title: "CO2R, a catalog of carbon responsible products: http://co2r.com"
-    url: "http://co2r.com"
-    description: \test-description
-
   $scope.$watch \appText.other_things_you_can_do, (nv)->
     $scope.$root.page-title = nv
 
