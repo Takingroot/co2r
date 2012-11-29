@@ -7,18 +7,35 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
     $scope.artifact       = res.data.artifact
     $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
 
+
+
     # Variable for default twitter message
     # --------------------------------------------------------------------------------------------------
     # Since we can only update addthis.toolbox once (!) we need to make sure any variables are available as 
     # one config so that when $watch is triggered it receives the completed config
+
     $scope.addthis-share-config =
       title: "#{$scope.artifact.organization.name} offsets their co2. See their emissions report at: #{$location.abs-url!}"
       description: \test-description
 
 
 
+    # organization twitter timeline
+    # --------------------------------------------------------------------------------------------------
+
+    twitter-user-name = _($scope.artifact.organization.contact_infos)
+    .select(-> it.name.to-lower-case! is \twitter).0?.link
+    if twitter-user-name
+      twitter-api.get-user-timeline(screen_name:twitter-user-name, count:4)
+      .success (data, status, headers, config)->
+        $scope.organization-tweets = data
+        console.log data
+
+
+
     # report data
     # --------------------------------------------------------------------------------------------------
+
     if $scope.reports.length
 
       $scope.artifact.offset-since       = $scope.reports.0.year
@@ -30,14 +47,10 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
       # for the browser title bar
       $scope.$root.page-title = $scope.artifact.name
 
+
+
       # data collected across artifacts for comparison in charts
       # --------------------------------------------------------------------------------------------------
-      /*
-      $scope.data2 = {}
-      _.each (_.pluck $scope.reports, \year), (year)->
-        $scope.data2[year] =
-          co2-sources:  _.filter (_.map $scope.reports, \carbon_sources_list), -> it.length
-      */
 
       $scope.data =
         co2-sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
@@ -48,8 +61,10 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
           trees-planted: _.pluck $scope.reports, \trees_planted
 
 
+
       # data for co2 source categories associated with colors
       # --------------------------------------------------------------------------------------------------
+
       names = _.uniq _.flatten _.map $scope.data.co2-sources, -> _.pluck it, \name
       # colors.length MUST be longer than names.length
       # colors based on https://files.podio.com/23920019
@@ -59,24 +74,15 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
       name-colors = {}
       _.each names, (name, i)-> name-colors[name] = colors[i]
 
-      #console.log colors2, name-colors
       $scope.name-colors = name-colors
+
 
 
       # discover if the artifact *ever* did any other eco actions
       # --------------------------------------------------------------------------------------------------
       # with this information we can know if we need to render the other-eco-actions section
+
       $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
 
-
-
-    twitter-user-name = _($scope.artifact.organization.contact_infos)
-    .select(-> it.name.to-lower-case! is \twitter).0?.link
-
-    if twitter-user-name
-      twitter-api.get-user-timeline(screen_name:twitter-user-name, count:4)
-      .success (data, status, headers, config)->
-        $scope.organization-tweets = data
-        console.log data
 
     $scope.$on-ready!
