@@ -28,7 +28,7 @@
   form.form-search.span.group
     .hang-left: .hang-inner
       label.add-on(for="search-artifacts"): span.icon-search
-    input.span(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
+    input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
   .artifact-cards.span.gutters-1.row
@@ -44,4 +44,4 @@
               br
               span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artifact-card-body
-        h1.organization-name(co2r-bind="artifact.name | highlight:searchForArtifactName")
+        h1.organization-name.text-heading3(co2r-bind="artifact.name | highlight:searchForArtifactName")

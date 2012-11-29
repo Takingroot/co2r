@@ -7,7 +7,7 @@
 
 section.about
   header.stop-collapse
-    h1(co2r-bind="artifact.name")
+    h1.text-heading1(co2r-bind="artifact.name")
     h4(co2r-bind="appText.artifact_offset_since | interpolate:artifact.offsetSince")
   .row.v-push-1
     .description.col-6
@@ -27,7 +27,7 @@ section.organization.row.h-gutters-4
   .organization-about.col-6
     .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
       a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
-    h2.organization-name.v-push-2(co2r-bind="artifact.organization.name")
+    h2.organization-name.text-heading3.v-push-2(co2r-bind="artifact.organization.name")
     .organization-description(co2r-bind="artifact.organization.description")
     .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
       p(co2r-bind="appText.artifact_business_card_contact_lead_in")
@@ -46,7 +46,7 @@ section.organization.row.h-gutters-4
 
 section.reports.v-push-4.span.a-image(ui-if="reports.length")
   header.reports-header
-    h1(co2r-bind="appText.artifact_report_section_title")
+    h1.text-heading1(co2r-bind="appText.artifact_report_section_title")
 
   .timeline-conductor.group(column-width="column_width", column-count="reports.length")
 
@@ -56,7 +56,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         button.c-btn.timeline-navigation-right.pin-right(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
       .timeline-slider-window
         .row
-          h1.unspaced.year-title.text-align-center.timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports") {{report.year}}
+          .timeline-item.text-align-center(style="width:{{column_width}}px", ng-repeat="report in reports")
+            h3.year-title {{report.year}}
 
 
 
@@ -67,7 +68,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         .chart-co2-per-unit(column-width="column_width", data="data.co2PerThingMade")
         .row.chart-labels.text-align-center
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-            h4: span.co2-contrasted(amount="{{report.co2_per_unit}}")
+            h4
+              span.co2-contrasted(amount="{{report.co2_per_unit}}")
 
 
 
@@ -79,8 +81,9 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         .row.chart-labels
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
             .bar-labels.row.text-aligns-center.aligns-middle
-              h4.bar-label.total-co2-label: span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
-              h4.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
+              h4.unspaced.bar-label.total-co2-label
+                span.co2-contrasted(amount="{{report.total_tons_produced}}", unit="'t'")
+              h4.unspaced.bar-label.trees-planted-label(title="{{appText.trees_planted}}", co2r-bind="report.trees_planted")
 
 
 
@@ -101,15 +104,15 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
       .report-header-basic: div(ng-bind="appText.artifact_other_eco_actions")
       .timeline-slider-window
         .row
-          .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
+          .timeline-item.v-gutters-3(style="width:{{column_width}}px", ng-repeat="report in reports")
             .no-data.text-align-center(ui-if="!report.other_actions.length") No data
-            section(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
-              .row.aligns-middle
-                i(class="icon-{{actionCategory.name.icon_code | slugify}}")
-                = ' '
-                h5(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
-                ul
-                  li(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
+
+            section.actions-category(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
+              .actions-category-header
+                .actions-category-icon.text-heading3.unspaced(class="icon-{{actionCategory.name.icon_code | slugify}}")
+                h4.actions-category-title(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
+              ul.actions.v-push-1.v-gutters-05
+                li.action(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
 
 
 

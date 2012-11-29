@@ -1,59 +1,60 @@
+
+
 .report-section
+  stop-collapse()
   &:not(:last-child)
     border-bottom 1px solid lightgrey
 
 //.report-title
 
-
 .report-header
   margin-top gd(3)
   margin-bottom gd(2)
 
-.bar-amount-label
-  fill white
+//.bar-amount-label
+//fill white
 
 .graph-bar
   stroke textColorDark
   fill textColorDark
 
-.trees-planted-bar
-  stroke green
-  fill green
+.bar-labels
+  margin-left 43px
+  margin-right 43px
+.bar-label
+  width 50%
+  white-space nowrap
 
 
-.offset-co2-bar
-  opacity 0.5
+
+
+
+
+.report-section-total-vs-offset
+  .trees-planted-bar
+    stroke green
+    fill green
+
+  .bar-label
+    padding 0.5em 0
+  .total-co2-label
+    padding-right 6px
+  .trees-planted-label
+    padding-left 6px
+    &:after
+      content ''
+      vertical-align top
+      display inline-block
+      height 1.25em
+      width 1.25em
+      margin-top -0.125em
+      background url('/images/icons/young-tree.png') center no-repeat
+      background-size auto 100%
+
+
 
 .report-section-co2-sources
   padding-bottom gd(2)
-
-.pie-label
-  fill black
-
-.report-section-total-vs-offset
-  .bar-labels
-    margin-left 43px
-    margin-right 43px
-  .bar-label
-    width 50%
-    font-size 1.25rem
-
-.total-co2-label
-  padding-right 6px
-.trees-planted-label
-  padding-left 6px
-  &:after
-    content ""
-    vertical-align top
-    display inline-block
-    height 1.25em
-    width 1.25em
-    margin-top -0.125em
-    background url('/images/icons/young-tree.png') center no-repeat
-    background-size auto 100%
-
-.report-section-co2-sources
-
   .pie-label
     font-weight bold
     opacity 0.85
@@ -69,3 +70,14 @@
     border-bottom-style solid
     padding 0 1em .25em 1em
     margin-bottom 1em
+
+
+
+.report-section-other-eco-actions
+  .timeline-item
+    padding-right gridUnits(1.25)
+    ul
+      margin-left 0
+
+  .actions-category-title
+    margin-top 0

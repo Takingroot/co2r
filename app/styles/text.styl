@@ -10,19 +10,34 @@ h1, h2, h3, h4, h5, h6
   &:first-child
     margin-top 0
 
-.text-heading1
+
+
+.text-heading1, h1
   font-size 4rem
 
-.text-heading2
+.text-heading2, h2
 .lead
   font-size 2.333rem
   line-height baseTextLineHeight
   font-weight 400
 
-.text-heading3
-  font-size 1.75rem
+.text-heading3, h3
+  // !important to override BS input font sizing...
+  font-size 1.75rem!important
   line-height baseTextLineHeight
+
+.text-heading4, h4
+  font-size 1.25rem
+  line-height baseTextLineHeight
+
 
 
 .text-color-inverse
   color textColorInverse
+
+// this needs to be defined after heading
+// classes to override them
+.unspaced
+  margin-top 0
+  margin-bottom 0
+  line-height 1
