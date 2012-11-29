@@ -60,3 +60,7 @@ co2r.filters
         en: \Anglais
         fr: \Francais
     language-names[language-code][language-code]
+
+.filter \castToDate, ->
+  (date-string)->
+    new Date date-string

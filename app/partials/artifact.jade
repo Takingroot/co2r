@@ -15,15 +15,15 @@ section.about
       small: a.aligns-middle(href="/mission")
         i.icon-pushpin
         span(co2r-bind="appText.learn_more_about_co2r")
-
     .col-4
-
       .emissions-badge
         h4.unspaced
           span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
           span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
 
-section.organization.row
+
+
+section.organization.row.h-gutters-4
   .organization-about.col-6
     .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
       a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
@@ -34,10 +34,12 @@ section.organization.row
       .contact-methods.row.h-gutters-05
         a.contact-method(class="contact-method-{{contact_method.contact_type}}", href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
           i(class="icon-{{contact_method.contact_type | to_icon_name}}")
-  .organization-feed(ng-bind-html="artifact.twitter_feed_code")
-
-
-
+  .organization-twitter-timeline
+    .tweet-items.v-gutters-1
+      .tweet-item.span-5(ng-repeat="tweet in organizationTweets")
+        .tweet-meta
+          span.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
+        p.tweet-body(ng-bind-html="tweet.text")
 
 
 

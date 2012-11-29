@@ -1,4 +1,4 @@
-co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, $location)->
+co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $location, $http)->
   $scope.$prepare-for-ready!
 
   co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}
@@ -68,5 +68,15 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, $locatio
       # with this information we can know if we need to render the other-eco-actions section
       $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
 
+
+
+    twitter-user-name = _($scope.artifact.organization.contact_infos)
+    .select(-> it.name.to-lower-case! is \twitter).0?.link
+
+    if twitter-user-name
+      twitter-api.get-user-timeline(screen_name:twitter-user-name, count:4)
+      .success (data, status, headers, config)->
+        $scope.organization-tweets = data
+        console.log data
 
     $scope.$on-ready!
