@@ -32,7 +32,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
               i.nav-link-icon(class="icon-{{navItem.icon}}")
               span.nav-link-text {{appText[navItem.label]}}
 
-      a.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
+      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
 
 
 
