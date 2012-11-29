@@ -7,7 +7,6 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
       script
         window.brunch = window.brunch || {}
         window.brunch['auto-reload'] = {enabled: true}
-
     link(rel="stylesheet", href="/stylesheets/app.css")
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
@@ -15,16 +14,16 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
     script(src="/javascripts/app.js")
     title(ng-bind="appTitle + getPageTitle()")
 
+
+
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-
-
-
     header.app-header.row
       a.app-brand-container.span-5.row.transparent-link(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
         .app-brand-text
           h1.app-title(co2r-bind="appText.co2r")
+
       .app-navbar.align-right
         ul.nav.nav-list.align-right.row.aligns-middle
           li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
@@ -35,11 +34,14 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
 
       a.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
 
+
+
     #app-content(ng-view="ng-view")
 
 
 
     footer.app-footer.group
+      //- .stripe div just for decoration
       .stripe.span.pin-top
 
       .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
