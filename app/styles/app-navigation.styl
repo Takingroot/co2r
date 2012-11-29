@@ -10,7 +10,7 @@
     padding 0
 
   .nav-item + .nav-item
-    border-left 1px solid ndark-subtle
+    border-left 1px solid ndarkMuted
 
   // sometimes we need to meld the nav item
   // dividers into the highlight
@@ -24,7 +24,7 @@
     min-width 146px
     text-align center
     .nav-link
-      color ndark-text
+      color ndarkText
       font-size 1.1rem
       text-transform capitalize
     // Important: Source order
@@ -32,14 +32,14 @@
     //   the lower ones override the upper ones
     &:hover .nav-link
       background-color fade-out(ndark, 0.98)
-      color darken(ndark-text, 20)
+      color darken(ndarkText, 20)
     &:active .nav-link
       background-color fade-out(ndark, 0.9)
-      color darken(ndark-text, 20)
+      color darken(ndarkText, 20)
     &.current-view .nav-link
       cursor default
       background-color ndark
-      color nlight-text
+      color nlightText
 
   .nav-link
     padding 0.7em 1em

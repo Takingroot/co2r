@@ -3,21 +3,15 @@
 // Colors
 //------------------------------------------
 
-//dark    = hsl(0   , 0   , 18%)
-dark      = hsl(231 , 4%  , 22%)
-light     = hsl(195 , 10% , 86%)
-grey      = hsl(0   , 0   , 90%)
-pane-blue = hsl(207 , 44% , 92%)
-
 nwhite       = hsla(80.00     , 100.00% , 99.41%  , 1)
 ndark        = hsla(0         , 0%      , 27%     , 1)
-ndark-subtle = hsla(0         , 0%      , 27%     , 0.1)
+ndarkMuted   = hsla(0         , 0%      , 27%     , 0.1)
 nlight       = hsla(90        , 25%     , 98.43%  , 1)
-nlight-text  = hsla(27        , 5%      , 89%     , 1)
-ndark-text   = hsla(40        , 1%      , 39%     , 1)
-ndark-text-on-color = hsla(40 , 1%      , 39%     , 0.9)
+nlightText   = hsla(27        , 5%      , 89%     , 1)
+ndarkText    = hsla(40        , 1%      , 39%     , 1)
+ndarkTextOnColor = hsla(40 , 1%      , 39%     , 0.9)
 ngrey        = hsla(25        , 3%      , 89%     , 1)
-ngrey-subtle = hsla(90.00     , 8.33%   , 95.29%  , 1)
+ngreyMuted   = hsla(90.00     , 8.33%   , 95.29%  , 1)
 nyellow      = hsla(46        , 100%    , 66%     , 1)
 nred         = hsla(26.18     , 96.23%  , 58.43%  , 1)
 nblue        = hsla(194.40    , 93.98%  , 73.92%  , 1)
@@ -28,9 +22,11 @@ ngreen2      = hsla(81.57     , 62.24%  , 71.96%  , 1)
 
 // Grid
 //------------------------------------------
-// TODO use these variables
-base-text-size     = 16px
-bsae-text-leading  = 30px
+
+baseTextSize     = 16px
+// i.e. for 16px 30px line-height
+bsaeTextLeading  = 1.875
+
 
 
 
@@ -39,5 +35,5 @@ bsae-text-leading  = 30px
 
 // page-variables are here because we need
 // them in multiple files
-card-width   = gd(14)
-gutter-width = gd(1)
+cardWidth        = gd(14)
+cardsGutterWidth = gd(1)
