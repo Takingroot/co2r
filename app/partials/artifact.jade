@@ -39,7 +39,7 @@ section.organization.row.h-gutters-4
       .tweet-item.span-5(ng-repeat="tweet in organizationTweets")
         .tweet-meta
           span.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
-        p.tweet-body(ng-bind-html="tweet.text")
+        p.tweet-body(ng-bind-html="tweet.text | linky")
 
 
 
