@@ -1,5 +1,12 @@
 
 
+p
+  margin-bottom gridUnit
+  &:first-child
+    margin-top 0
+  &:last-child
+    margin-bottom 0
+
 h1, h2, h3, h4, h5, h6
   font-weight normal
   line-height 1
@@ -24,7 +31,8 @@ h1, h2, h3, h4, h5, h6
 
 .text-heading3, h3
   // !important to override BS input font sizing...
-  font-size 1.75rem!important
+  //font-size 1.75rem!important
+  font-size 1.75rem
   line-height baseTextLineHeight
 
 .text-heading4, h4
