@@ -10,7 +10,7 @@
     padding 0
 
   .nav-item + .nav-item
-    border-left 1px solid ndarkMuted
+    border-left 1px solid darkMuted
 
   // sometimes we need to meld the nav item
   // dividers into the highlight
@@ -18,28 +18,28 @@
   .nav-item.current-view + .nav-item
   //.nav-item:hover
   //.nav-item:hover + .nav-item
-    border-left-color ndark
+    border-left-color dark
 
   .nav-item
     min-width 146px
     text-align center
     .nav-link
-      color ndarkText
+      color textColorDark
       font-size 1.1rem
       text-transform capitalize
     // Important: Source order
     // - the following selectors are in order
     //   the lower ones override the upper ones
     &:hover .nav-link
-      background-color fade-out(ndark, 0.98)
-      color darken(ndarkText, 20)
+      background-color fade-out(dark, 0.98)
+      color darken(textColorDark, 20)
     &:active .nav-link
-      background-color fade-out(ndark, 0.9)
-      color darken(ndarkText, 20)
+      background-color fade-out(dark, 0.9)
+      color darken(textColorDark, 20)
     &.current-view .nav-link
       cursor default
-      background-color ndark
-      color nlightText
+      background-color dark
+      color textColorLight
 
   .nav-link
     padding 0.7em 1em
@@ -62,14 +62,14 @@
 
 .tooltip.nav-item
   .tooltip-arrow
-    border-bottom-color ndark
+    border-bottom-color dark
   .tooltip-inner
     stop-collapse()
     border-radius 0
     font-size 0.8rem
     line-height 1.5
     min-height gd(3)
-    background-color ndark
+    background-color dark
     // undo bootstrap
     padding 0
   // put padding on content containers

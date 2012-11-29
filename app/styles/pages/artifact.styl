@@ -4,14 +4,14 @@ carousel-height = gd(20)
 
 body.artifact
 
-  .app-footer
-    margin-top gd(10)
+  .reports
+    padding-bottom gd(10)
 
   .carousel
     overflow hidden
     height carousel-height
     // some default styling, visible before images load
-    background-color ndark
+    background-color dark
     // undo bootstrap
     margin-bottom 0
 
@@ -36,7 +36,7 @@ body.artifact
     display inline-block
     // z-index so that caption is on top of hash texture
     z-index 20
-    color nlight
+    color grayLight
     background-color hsla(60.00, 1.08%, 18.24%, 0.9)
     padding .9em 1.25em
 
@@ -58,13 +58,13 @@ body.artifact
 
   section.about
     background-image url('/images/white-hash-20.png')
-    background-color nyellow
+    background-color yellow
 
   section.organization
     // color vars because of font-awesome selection limitations
     background-color-value     = hsl(90.00, 7.69%, 94.90%)
-    contact-method-color       = fade-out(ndark, 0.75)
-    contact-method-color-hover = ndark
+    contact-method-color       = fade-out(dark, 0.75)
+    contact-method-color-hover = dark
 
     background-color background-color-value
 

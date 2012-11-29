@@ -3,35 +3,72 @@
 // Colors
 //------------------------------------------
 
-nwhite       = hsla(80.00     , 100.00% , 99.41%  , 1)
-ndark        = hsla(0         , 0%      , 27%     , 1)
-ndarkMuted   = hsla(0         , 0%      , 27%     , 0.1)
-nlight       = hsla(90        , 25%     , 98.43%  , 1)
-nlightText   = hsla(27        , 5%      , 89%     , 1)
-ndarkText    = hsla(40        , 1%      , 39%     , 1)
-ndarkTextOnColor = hsla(40 , 1%      , 39%     , 0.9)
-ngrey        = hsla(25        , 3%      , 89%     , 1)
-ngreyMuted   = hsla(90.00     , 8.33%   , 95.29%  , 1)
-nyellow      = hsla(46        , 100%    , 66%     , 1)
-nred         = hsla(26.18     , 96.23%  , 58.43%  , 1)
-nblue        = hsla(194.40    , 93.98%  , 73.92%  , 1)
-ngreen       = hsla(73.04     , 56.10%  , 67.84%  , 1)
-ngreen2      = hsla(81.57     , 62.24%  , 71.96%  , 1)
+// Hueless
+
+grayLightest = hsla(80.00     , 100.00% , 99.41%  , 1)
+grayLight    = hsla(90        , 25%     , 98.43%  , 1)
+grayMuted    = hsla(90.00     , 8.33%   , 95.29%  , 1)
+gray         = hsla(25        , 3%      , 89%     , 1)
+darkMuted    = hsla(0         , 0%      , 27%     , 0.1)
+dark         = hsla(0         , 0%      , 27%     , 1)
+
+// hue
+
+yellow      = hsla(46        , 100%    , 66%     , 1)
+red         = hsla(26.18     , 96.23%  , 58.43%  , 1)
+blue        = hsla(194.40    , 93.98%  , 73.92%  , 1)
+green       = hsla(73.04     , 56.10%  , 67.84%  , 1)
+green2      = hsla(81.57     , 62.24%  , 71.96%  , 1)
+
+
+
+// Text Colors
+//------------------------------------------
+
+textColorLight       = hsla(27 , 5% , 89% , 1)
+textColorDark        = hsla(40 , 1% , 39% , 1)
+// text color used when text is on top of another color
+// TODO this is basically broken?
+textColorDarkOnColor = hsla(40 , 1% , 39% , 0.9)
+
+// links
+
+linkColor        = blue
+linkColorHover   = darken(blue, 10)
+
+
+
+// Typography
+//------------------------------------------
+
+sansFontFamily  = 'Helvetica Neue', Helvetica, Arial, sans-serif
+serifFontFamily = Georgia, 'Times New Roman', Times, serif
+monoFontFamily  = Monaco, Menlo, Consolas, 'Courier New', monospace
+
+
+
+// Scaffolding
+//------------------------------------------
+
+baseBgColor   = grayLight
+baseTextColor = textColorDark
+baseTextFont  = sansFontFamily
 
 
 
 // Grid
 //------------------------------------------
 
-baseTextSize     = 16px
-// i.e. for 16px 30px line-height
-bsaeTextLeading  = 1.875
+baseTextSize        = 16px
+// for 16px, 30px line-height
+bsaeTextLineHeight  = 1.875
 
 
 
-
-// Page Directory
+// Pages
 //------------------------------------------
+
+// Directory
 
 // page-variables are here because we need
 // them in multiple files

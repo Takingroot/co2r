@@ -7,28 +7,28 @@
   .poster img
     square cardWidth
   .ui-match
-    highlight-color = fade-out(nlight, 0.65)
+    highlight-color = fade-out(grayLight, 0.65)
     background highlight-color
     box-shadow 0 0 0 3px highlight-color
-    color ndark
+    color dark
 
 .artifact-card-meta-ribbon
   z-index 20
   margin-bottom 1px
   .artifact-category
-    background-color ngrey
+    background-color gray
     min-height gd(3)
     width gd(3)
   .co2-badge
     padding gd(.25) gd(.5)
-    background-color nlight
-    color fade-out(ndarkText,0.15)
+    background-color grayLight
+    color fade-out(textColorDark,0.15)
     line-height 24px
   .co2-keyword
     font-size 1.2rem
 
 .artifact-card-body
-  background-color nyellow
+  background-color yellow
   background-image url('/images/white-hash-30.png')
   min-height gd(5)
   .organization-name
@@ -39,4 +39,4 @@
     font-size 1.6rem
     line-height 1.25em
     margin-top 0
-    color ndarkTextOnColor
+    color textColorDarkOnColor
