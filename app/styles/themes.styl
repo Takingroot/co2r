@@ -1,0 +1,28 @@
+
+.color-theme
+
+  a, a:link
+    hlColor = fade-out(white, 0.9)
+    background-color hlColor
+    box-shadow 0 0 0 0.33em hlColor
+    color inherit
+    border-bottom 1px dashed baseTextColor
+    &:hover
+      hlColorHover = fade-in(hlColor, 0.3)
+      background-color hlColorHover
+      box-shadow 0 0 0 0.33em hlColorHover
+      color baseTextColor
+
+  .text-color-inverse
+    a, a:link
+      border-color textColorInverse
+      &:hover
+        border-color baseTextColor
+
+
+
+.blue-theme
+  background-color blue
+
+.yellow-theme
+  background-color yellow
