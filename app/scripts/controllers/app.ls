@@ -81,7 +81,7 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
 
       function render-tooltip-content(nav-item)
         "
-          <h1 class='tooltip-content-title'>#{$scope.app-text[nav-item.label]}</h1>
+          <h1 class='text-heading4 tooltip-content-title'>#{$scope.app-text[nav-item.label]}</h1>
           <div class='tooltip-content-body'>#{nav-item.tooltip-content}</div>
         "
 
