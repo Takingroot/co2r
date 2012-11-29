@@ -1,8 +1,23 @@
 
 
 .co2r-definition
-  border-bottom 1px dashed hsl(0,0,75)
+  hlColor = fade-out(grayLight, 0.9)
+  //border-bottom 1px dashed baseTextColor
+  background-color hlColor
+  box-shadow 0 0 0 0.33em hlColor
   color inherit
+  &:after
+    // info icon
+    content "\f05a"
+    font-family FontAwesome
+    font-size 0.75em
+    margin-left 0.1em
   &:hover
-    background-color hsl(0,0,98)
-    outline 3px solid hsl(0,0,98)
+    hlColorHover = fade-in(hlColor, 0.75)
+    background-color hlColorHover
+    box-shadow 0 0 0 0.33em hlColorHover
+    color baseTextColor
+
+.co2r-definition.text-color-inverse
+.text-color-inverse .co2r-definition
+  border-color grayLight
