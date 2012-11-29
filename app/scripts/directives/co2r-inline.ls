@@ -47,14 +47,21 @@ co2r.directives
 
 
 
-.directive \co2, ->
-  restrict: \E
-  replace: yes
+.directive \keyword, ->
+  replace: on
   template: '
-    <span class="co2-keyword">
-      CO<sub>2</sub>
-    </span>'
-
+    <span style="display:inline-block"
+          class="keyword keyword-{{keyword}}"
+          ng-bind-html="keywordFormated"
+    >
+    </span>
+  '
+  link: (scope, el, attrs)->
+    attrs.$observe \keyword, (keyword)->
+      scope.keyword = keyword
+      scope.keyword-formated = switch keyword
+        | \co2  => 'CO<sub>2</sub>'
+        | \co2r => 'CO<sub>2</sub>R'
 
 
 
@@ -66,7 +73,6 @@ co2r.directives
     scope.popoverConfig = {}
     scope.$watch \app-vars.defined_terms, (new-defined-terms)->
       scope.popover-config = _.find new-defined-terms, -> it.term_name is el.text!
-
 
 
 

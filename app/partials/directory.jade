@@ -4,19 +4,22 @@
 
   button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()", tooltip="{title:'Restore preferences', placement:'right'}")
     span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
+
   .moodshot.hash-overlay
+
   section.introduction
-    .introduction-copy.span-6.stop-collapse
-      h1(co2r-bind="appText.introduction_title")
+    .introduction-copy.span-12.stop-collapse
+      h1.text-heading1.text-color-inverse(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
+
   section.action-steps-container
     .action-steps.row.h-gutters-2.align-center
-      a.action-step.span-6(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
-        h1.action-step-title
+      a.action-step.span-5.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+        h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
-          span(ng-bind-html="appText[step.title]")
-        p(ng-bind-html="appText[step.body]")
+          span(co2r-bind="appText[step.title]")
+        p(co2r-bind="appText[step.body]")
 
 
 
