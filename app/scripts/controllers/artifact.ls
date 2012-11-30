@@ -23,10 +23,8 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
     # organization twitter timeline
     # --------------------------------------------------------------------------------------------------
 
-    twitter-user-name = _($scope.artifact.organization.contact_infos)
-    .select(-> it.name.to-lower-case! is \twitter).0?.link
-    if twitter-user-name
-      twitter-api.get-user-timeline(screen_name:twitter-user-name, count:4)
+    if $scope.artifact.available_twitter_handle
+      twitter-api.get-user-timeline(screen_name:$scope.artifact.available_twitter_handle, count:4)
       .success (data, status, headers, config)->
         $scope.organization-tweets = data
 
