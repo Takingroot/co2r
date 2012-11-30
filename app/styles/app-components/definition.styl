@@ -1,9 +1,7 @@
 
 
 .co2r-definition
-  hlColor = fade-out(grayLight, 0.9)
-  background-color hlColor
-  box-shadow 0 0 0 0.33em hlColor
+  highlight(fade-out(grayLight, 0.9))
   color inherit
   // undo default link styling
   border-bottom none!important
@@ -14,7 +12,5 @@
     font-size 0.75em
     margin-left 0.1em
   &:hover
-    hlColorHover = fade-in(hlColor, 0.75)
-    background-color hlColorHover
-    box-shadow 0 0 0 0.33em hlColorHover
+    highlight(fade-in(grayLight, 0.75))
     color baseTextColor

@@ -28,7 +28,9 @@ uncascade(property, value, undo_value)
   & > *
     add-property(property, undo_value)
 
-
+highlight(hlColor=yellow, bleedSize=0.33em)
+  background-color hlColor
+  box-shadow 0 0 0 bleedSize hlColor
 
 overlay(z-index-value=10)
   position relative
