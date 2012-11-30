@@ -20,7 +20,8 @@ section.about.padding-l.color-theme.yellow-theme
       .emissions-badge.padding-m
         h4.unspaced
           span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
-          span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
+          //-span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
+          span.co2-contrasted(amount="{{reports[reports.length - 1].co2_per_unit}}")
 
 
 

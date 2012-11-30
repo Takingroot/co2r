@@ -2,7 +2,7 @@
 
 .home-introduction.group(ng-class="{open:introductionState(), closed:!introductionState()}")
 
-  button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()", tooltip="{title:'Restore preferences', placement:'right'}")
+  button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()")
     span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
 
   .moodshot.hash-overlay

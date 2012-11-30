@@ -27,7 +27,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
       .app-navbar.align-right
         ul.nav.nav-list.align-right.row.aligns-middle
           li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
-          tooltip="navTooltipConfig(navItem)", ng-repeat="navItem in navItems")
+          tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
             a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
               i.nav-link-icon(class="icon-{{navItem.icon}}")
               span.nav-link-text {{appText[navItem.label]}}

@@ -5,3 +5,10 @@ background-overlay()
   overlay()
   &:before
     background-image arguments
+
+tooltip-background-color(bgColor)
+  .tooltip-inner
+    background-color bgColor
+  for pos in (top right bottom left)
+    &.{pos} .tooltip-arrow
+      border-{pos}-color bgColor

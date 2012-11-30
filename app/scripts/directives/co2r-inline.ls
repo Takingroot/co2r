@@ -2,10 +2,10 @@ co2r.directives
 
 
 
-# scope: amountUnit | amount | popoverConfig
+# scope: amountUnit | amount | tooltipConfig
 .directive \co2Contrasted, ($compile)->
 
-  popover-template-string = '
+  tooltip-template-string = '
     <ul class="unstyled">
       <li class="{{co2_comparison.type | slugify}}" ng-repeat="co2_comparison in appVars.co2_artifact_comparisons">
         {{co2_comparison.phrase}} {{(amount / co2_comparison.co2_amount).floor(2)}} {{co2_comparison.co2_amount_unit}}
@@ -18,13 +18,13 @@ co2r.directives
     replace:    on
     scope:      on
     template: """
-      <span class="co2-keyword" popover="{{popoverConfig}}">
+      <span tooltip="tooltipConfig">
         {{amount | unit:amountUnit}}
       </span>
     """
     link: (scope, el, attrs)->
       scope.amount         = 0
-      scope.popover-config = {}
+      scope.tooltip-config = {}
       scope.amount-unit    = \kg
 
       attrs.$observe \unit, (unit-string)->
@@ -36,11 +36,11 @@ co2r.directives
         amount = scope.$eval amount-string
         if amount
           scope.amount = amount
-          scope.popover-config =
+          scope.tooltip-config =
             trigger: \hover
-            contentToCompile: popover-template-string
-            # Not using title
-            #title:
+            titleToCompile: tooltip-template-string
+            placement: \top
+            classes: 'co2-contrasted-tooltip'
 
 
 

@@ -73,17 +73,14 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
         icon: \info-sign
         tooltip-content: "How is CO2 measured? What is an offset? Who profits? and more."
 
-    $scope.nav-tooltip-config = (navItem)->
-      return
-        title: render-tooltip-content(navItem)
-        placement:'bottom'
-        classes: 'nav-item'
+    _.each $scope.nav-items, ->
+      it.tooltip-config = {placement:\bottom, classes:'nav-item', titleToCompile:render-tooltip-content(it)}
 
-      function render-tooltip-content(nav-item)
-        "
-          <h1 class='text-heading4 tooltip-content-title'>#{$scope.app-text[nav-item.label]}</h1>
-          <div class='text-small tooltip-content-body'>#{nav-item.tooltip-content}</div>
-        "
+    function render-tooltip-content(nav-item)
+      "
+        <h1 class='text-heading4 tooltip-content-title'>{{appText.#{nav-item.label}}}</h1>
+        <div class='text-small tooltip-content-body'>#{nav-item.tooltip-content}</div>
+      "
 
   $scope.addthis-share-config =
     #todo translation

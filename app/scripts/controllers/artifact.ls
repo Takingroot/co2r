@@ -6,6 +6,7 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
 
     $scope.artifact       = res.data.artifact
     $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
+    $scope.latestCo2PerUnit = $scope.reports[*-1].co2_per_unit
 
 
 
