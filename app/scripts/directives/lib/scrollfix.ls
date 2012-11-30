@@ -27,10 +27,18 @@ co2r.directives
 
 
 
-    # We need to update until-el's position on numerous occasions
+    #
+    # We need to update proxy-el's position on numerous occasions
+    #
 
     # first time
-    refresh-scrolled-to-state!
+    # Big, unstable, hack
+    # 2 second timeout so that even on page load this
+    # directive will correctly position elements
+    #
+    # There must be a better way to get this working
+    # on page load?
+    $timeout refresh-scrolled-to-state, 2000
 
     # page change
     scope.$root.$on \$routeChangeSuccess, ->
