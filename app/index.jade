@@ -18,7 +18,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
     header.app-header.row
-      a.app-brand-container.span-5.row.transparent-link(href="/")
+      a.app-brand-container.span-4.row.transparent-link(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
         .app-brand-text
@@ -45,22 +45,24 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
       .stripe.span.pin-top
 
       .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
-        .social-bar-inner.row.aligns-middle
+        .social-bar-inner.row.aligns-middle.padding-s
           div(co2r-bind="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
 
-      .app-footer-content.row.group.span
+      .app-footer-content.row.group.span.color-theme.green-theme.padding-l.clearfix
         .row.h-gutters-3.align-right
-          .sponsors.span-4
-            a(href="{{ appText.sponsor_link }}", target="_blank")
+          .sponsors.span-2
+            a.block(href="{{ appText.sponsor_link }}", target="_blank")
               h4.aligns-middle
                 i.icon-sign-blank
+                = ' '
                 span(co2r-bind="appText.footer_sponsor_name")
             p.text-small(co2r-bind="appText.footer_sponsor_description")
-          .company.span-3
-            a(href="http://takingroot.org", target="_blank"): h4.aligns-middle
-              img.co2r-logo(src="/images/logo-white.png")
-              span(co2r-bind="appText.footer_taking_root")
+          .company.span-2
+            a.block(href="http://takingroot.org", target="_blank")
+              h4.aligns-middle
+                img.co2r-logo(src="/images/logo-white.png")
+                span(co2r-bind="appText.footer_taking_root")
             p.text-small(co2r-bind="appText.footer_taking_root_description")
             //-
               .row.h-gutters-05(style="font-size:1.5em;")

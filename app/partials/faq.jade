@@ -3,13 +3,13 @@
 .row.row-couple-heights
 
   aside.faq-toc-container
-    .faq-toc.scrollfix-fixed.span-4(ui-scrollfix="62")
+    .faq-toc.scrollfix-fixed.span-2.stop-collapse(ui-scrollfix="+0")
       ul.nav.nav-pills.nav-stacked.align-right
         li(ng-repeat="faq in faqs")
           a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
 
   div
-    .faqs.span-8.v-gutters-3
+    .faqs.span-6.v-gutters-3.padding-l
       article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
           h1.text-heading2(co2r-bind="faq.question")

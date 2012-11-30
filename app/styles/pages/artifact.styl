@@ -1,6 +1,5 @@
 
 
-carousel-height = gd(20)
 
 body.artifact
 
@@ -9,7 +8,6 @@ body.artifact
 
   .carousel
     overflow hidden
-    height carousel-height
     // some default styling, visible before images load
     background-color dark
     // undo bootstrap
@@ -17,7 +15,7 @@ body.artifact
 
     .item
       background-overlay url('/images/white-hash-20.png')
-      height carousel-height
+      height 100%
       overflow hidden
       // display: undo bootstrap
       display block
@@ -32,7 +30,7 @@ body.artifact
 
   .carousel-caption
     left auto
-    max-width gd(20)
+    max-width gd(16)
     display inline-block
     // z-index so that caption is on top of hash texture
     z-index 20
@@ -43,37 +41,22 @@ body.artifact
     // undo bootstrap
     line-height 1.5
 
-  section.organization
-    padding-left 6rem
-    padding-right 6rem
-    .organization-twitter-timeline
-      padding-top 1rem
-      padding-bottom 1rem
-    .organization-about
-      padding-top 5rem
-      padding-bottom 5rem
-  section.about
-  section.reports .reports-header
-    padding 5rem 6rem
-
   section.about
     background-image url('/images/white-hash-20.png')
-    background-color yellow
 
   section.organization
     // color vars because of font-awesome selection limitations
     background-color-value     = hsl(90.00, 7.69%, 94.90%)
     contact-method-color       = fade-out(dark, 0.75)
     contact-method-color-hover = dark
-
     background-color background-color-value
 
     .contact-methods
-      margin-top gd(1.5)
+      margin-top gd(1/4)
 
     .contact-method
-      square(gd(2))
-      line-height gd(2)
+      square(40px)
+      line-height 40px
       text-align center
       i
         // undo fontawesome

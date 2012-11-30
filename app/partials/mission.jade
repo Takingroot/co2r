@@ -1,9 +1,9 @@
 
 
 section.page-introduction
-  .moodshot
-  section.introduction
-    .introduction-copy.span-12.stop-collapse
+  .moodshot.hash-overlay
+  section.introduction.padding-l.blue-theme.color-theme
+    .introduction-copy.span-8.stop-collapse
       h1.text-color-inverse(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
 
@@ -18,14 +18,14 @@ section.limay.row
       ui-map='treeplantingMap',
       ui-event="{'map-click': 'test($event)'}",
       ui-options="mapOptions")
-  .limay-text
+  .limay-text.padding-l
     h1.text-heading1.group
       .community-title(co2r-bind="appText.about_community_title")
     .community-text(co2r-bind="appText.about_community_text")
 
 
 
-article.essay-chapter(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
+article.essay-chapter.padding-xl(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
   header.chapter-header
     h3.chapter-title.text-heading1(co2r-bind="appText['about_topic_'+num+'_title']")
   .chapter-text.v-push-1(co2r-bind="appText['about_topic_'+num+'_text']")

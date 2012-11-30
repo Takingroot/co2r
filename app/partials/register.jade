@@ -1,7 +1,7 @@
 header
   .header-inner.row.align-center.v-push-3
 
-    .introduction.span-6
+    .introduction.span-4
       h1.aligns-middle
         i.icon-file
         = ' '
@@ -28,11 +28,11 @@ header
 
 
 section.register-info-container.row.row-couple-heights.v-push-3
-  aside.register-info-aside.row
-    .align-right.span-4
+  aside.register-info-aside.row.padding-l
+    .align-right.span-3
       div(co2r-bind="appText.register_artifact_left_column")
-  .register-info-body
-    div.span-8.v-gutters-3(co2r-bind="appText.register_artifact_right_body")
+  .register-info-body.padding-l
+    div.span-5.v-gutters-3(co2r-bind="appText.register_artifact_right_body")
 
 
 

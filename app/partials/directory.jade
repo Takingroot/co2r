@@ -8,13 +8,13 @@
   .moodshot.hash-overlay
 
   section.introduction.color-theme.blue-theme
-    .introduction-copy.span-12.stop-collapse
+    .introduction-copy.span-8.stop-collapse
       h1.text-heading1.text-color-inverse(co2r-bind="appText.introduction_title")
       .introduction-text(co2r-bind="appText.introduction_text")
 
   section.action-steps-container
     .action-steps.row.h-gutters-2.align-center
-      a.action-step.span-5.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+      a.action-step.span-3.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
         h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
