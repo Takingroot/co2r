@@ -55,22 +55,18 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
       * label: "register_your_product"
         url: "/register-your-product"
         icon: \edit
-        tooltip-content: ""
 
       * label: "participate"
         url: "/participate"
         icon: \heart
-        tooltip-content: ""
 
       * label: "our_mission"
         url: "/mission"
         icon: \leaf
-        tooltip-content: ""
 
       * label: "faq"
         url: "/faq"
         icon: \info-sign
-        tooltip-content: ""
 
     _.each $scope.nav-items, ->
       it.tooltip-config = {placement:\bottom, classes:'nav-item', titleToCompile:render-tooltip-content(it)}
