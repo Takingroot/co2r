@@ -1,0 +1,14 @@
+
+
+
+// grid units
+gd(n=1)
+  gridUnit * n
+
+
+
+cols(n=1)
+  columnSize = gd(n*gridUnitsPerColumn)
+  // -1 because there is no gutter for the first/a single column
+  gutterSize = gd(n - 1)
+  columnSize + gutterSize

@@ -1,4 +1,9 @@
+
+
+
 @import "../functions/helpers"
+
+
 
 //
 //  Layout
@@ -49,27 +54,27 @@
 //  .v-gutters
 //  ------------------------------------------------------------------
 
-generate_gutter_classes(grid_units)
+generateGutterClasses(n)
 
-  grid_units_class_name = decimal_to_class_name(grid_units)
+  className = decimalToClassName(n)
 
-  .gutters-{grid_units_class_name} > *
-  .v-gutters-{grid_units_class_name} > *
-    margin-bottom gd(grid_units)
+  .gutters-{className} > *
+  .v-gutters-{className} > *
+    margin-bottom gd(n)
 
-  .gutters-{grid_units_class_name} > *
-  .h-gutters-{grid_units_class_name} > *:not(:last-child)
-    margin-right gd(grid_units)
+  .gutters-{className} > *
+  .h-gutters-{className} > *:not(:last-child)
+    margin-right gd(n)
 
-  .v-push-{grid_units_class_name}
-    margin-top gd(grid_units)
+  .v-push-{className}
+    margin-top gd(n)
 
-  .h-push-{grid_units_class_name}
-    margin-left cols(grid_units)!important
+  .h-push-{className}
+    margin-left cols(n)!important
 
 
-generate_gutter_classes(i) for i in 0.25 0.5 0.75
-generate_gutter_classes(i) for i in 1..5
+generateGutterClasses(i) for i in 0.25 0.5 0.75
+generateGutterClasses(i) for i in 1..5
 
 
 .frame > [class*="col-"] + [class*="col-"]
@@ -91,6 +96,7 @@ for n in 1..14
   .span-{n}
   .col-{n}
     width cols(n)
+
 
 
 //

@@ -1,19 +1,7 @@
-font_size = 20px
-grid_units_per_column = 3
 
-gd(grid_units)
-  font_size * grid_units
 
-cols(n)
 
-  columns_size = gd(n*grid_units_per_column)
-
-  // -1 because there is no gutter for the first/a single column
-  gutters_size = gd(n - 1)
-
-  columns_size + gutters_size
-
-decimal_to_class_name(num)
+decimalToClassName(num)
   if num is 0.25
     "025"
   else if num is 0.5
@@ -23,16 +11,22 @@ decimal_to_class_name(num)
   else
     num
 
+
+
 uncascade(property, value, undo_value)
   add-property(property, value)
   & > *
     add-property(property, undo_value)
 
+
+
 highlight(hlColor=yellow, bleedSize=0.33em)
   background-color hlColor
   box-shadow 0 0 0 bleedSize hlColor
 
-overlay(z-index-value=10)
+
+
+overlay(zIndex=10)
   position relative
   &:before
     position absolute
@@ -41,8 +35,12 @@ overlay(z-index-value=10)
     right 0
     bottom 0
     content ""
-    z-index z-index-value
+    z-index zIndex
 
+
+
+// This utility prevents css margin collapsing
+// Evolved upon discussion http://stackoverflow.com/questions/1828804/how-do-i-uncollapse-a-margin
 stop-collapse()
   &:after
   &:before

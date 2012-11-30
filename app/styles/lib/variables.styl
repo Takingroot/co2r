@@ -1,5 +1,6 @@
 
 
+
 // Colors
 //------------------------------------------
 
@@ -30,6 +31,7 @@ textColorDark        = hsla(40 , 1% , 39% , 1)
 // text color used when text is on top of another color
 // TODO this is basically broken?
 textColorDarkOnColor = hsla(40 , 1% , 39% , 0.9)
+textColorInverse     = grayLightest
 
 // links
 
@@ -63,20 +65,4 @@ baseTextSize        = 16px
 // for 16px, 30px line-height
 baseTextLineHeight  = 1.875
 gridUnit            = baseTextLineHeight*baseTextSize
-
-gridUnits(n=1)
-  gridUnit * n
-
-textColorInverse = grayLightest
-
-
-
-// Pages
-//------------------------------------------
-
-// Directory
-
-// page-variables are here because we need
-// them in multiple files
-cardWidth        = gd(14)
-cardsGutterWidth = gd(1)
+gridUnitsPerColumn  = 3
