@@ -44,7 +44,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
       //- .stripe div just for decoration
       .stripe.span.pin-top
 
-      .social-bar.social-bar-app(scroll-fix-bottom="{until:'.app-footer'}")
+      .social-bar.social-bar-app(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
         .social-bar-inner.row.aligns-middle.padding-s
           div(co2r-bind="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05

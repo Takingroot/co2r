@@ -1,17 +1,31 @@
 co2r.directives
 
-.directive \scrollFixBottom, ($timeout)->
-  (scope, el, attrs)->
-    config = scope.$eval attrs.scroll-fix-bottom
 
-    until-el  = $ config.until
+
+.directive \scrollfix, ($timeout, $window)->
+  link: (scope, el, attrs)->
+    scrollfix = scope.$eval attrs.scrollfix
+    scrollfix.window-anchor ?= \top
+    scrollfix.padding ?= 0
+    # todo make part of the config object
+    scrollfix-direction = \from
+
+    if scrollfix.until?
+      proxy-el = $ scrollfix.until
+      scrollfix-direction = \until
+    else if scrollfix.from?
+      proxy-el = $ scrollfix.from
+      scrollfix-direction = \from
+    else
+      throw 'scrollfix without from or until is undefined'
 
     classes =
-      can-scrollfix: "can-scrollfix can-scrollfix-bottom"
+      can-scrollfix: "can-scrollfix can-scrollfix-#{scrollfix.window-anchor}"
       is-scrollfixed: \is-scrollfixed
 
-
     el.add-class classes.can-scrollfix
+
+
 
     # We need to update until-el's position on numerous occasions
 
@@ -28,9 +42,28 @@ co2r.directives
 
 
     function refresh-scrolled-to-state
-      bumper-y = until-el.offset!top
-      window-y  = $(window).height! + $(window).scrollTop!
+      scrollfix-state = calc-scrollfix-state $($window), proxy-el
+      #console.log 'scrollfix-state', scrollfix-state
+      el.toggleClass classes.is-scrollfixed, scrollfix-state
 
-      to-state = window-y <= bumper-y
+    # return the element's scrollfix state
+    # when window-crosses-proxy
+    function calc-scrollfix-state(window-el, proxy-el)
+      window-y = window-el.scrollTop! - scrollfix.padding
+      if scrollfix.window-anchor is \bottom
+        window-y += window-el.height!
 
-      el.toggleClass classes.is-scrollfixed, to-state
+
+      proxy-y  = proxy-el.offset!top
+
+      is-window-above-proxy = window-y <= proxy-y
+      #console.log 'is-window-above-proxy', is-window-above-proxy, 'window-y', window-y, 'proxy-y', proxy-y
+
+      if is-window-above-proxy
+        switch scrollfix-direction
+          | \from  => off
+          | \until => on
+      else # window is moving upward
+        switch scrollfix-direction
+          | \from  => on
+          | \until => off
