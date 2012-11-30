@@ -57,7 +57,7 @@ co2r.directives.directive \timelineConductor, ($window)->
 
     scope.move-timeline = (to-column)->
       new-index = keep-index-within-column-range  column-to-index  to-column
-      console.log 'move to index:', new-index
+      #console.log 'move to index:', new-index
       c-index   := new-index
       refresh-timeline-position!
 
@@ -122,14 +122,14 @@ co2r.directives.directive \timelineConductor, ($window)->
     function calc-slider-width-beyond-screen-right(against-a-c-index-of=c-index)
       items-right-width                = count-items-right(against-a-c-index-of) * column-width
       slider-width-beyond-screen-right = items-right-width - conductor.width!
-      console.log 'against-a-c-index-of:', against-a-c-index-of, '| calc-slider-width-beyond-screen-right', slider-width-beyond-screen-right, ' | items-right-width', items-right-width, ' | conductor.width', conductor.width!
+      #console.log 'against-a-c-index-of:', against-a-c-index-of, '| calc-slider-width-beyond-screen-right', slider-width-beyond-screen-right, ' | items-right-width', items-right-width, ' | conductor.width', conductor.width!
       slider-width-beyond-screen-right
 
     function visible-empty-space
       empty-space = -1 * calc-slider-width-beyond-screen-right!
       # negative space don't make sense, "empty space" is 0 or more
       empty-space = 0 if empty-space < 0
-      console.log 'empty-space:', empty-space
+      #console.log 'empty-space:', empty-space
       empty-space
 
 

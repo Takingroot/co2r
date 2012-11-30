@@ -6,7 +6,6 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
 
     $scope.artifact       = res.data.artifact
     $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
-    $scope.latestCo2PerUnit = $scope.reports[*-1].co2_per_unit
 
 
 
@@ -30,7 +29,6 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
       twitter-api.get-user-timeline(screen_name:twitter-user-name, count:4)
       .success (data, status, headers, config)->
         $scope.organization-tweets = data
-        console.log data
 
 
 
