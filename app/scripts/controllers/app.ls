@@ -51,27 +51,26 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
       * label: "directory"
         url: "/directory"
         icon: \th
-        tooltip-content: "Discover products that offset their carbon footprint."
 
       * label: "register_your_product"
         url: "/register-your-product"
         icon: \edit
-        tooltip-content: "Do you have a product or service that you’d like to offset? Get started."
+        tooltip-content: ""
 
-      * label: "other_things_you_can_do"
+      * label: "participate"
         url: "/participate"
         icon: \heart
-        tooltip-content: "Other ways you can help. Spread the word, sponsor us, and more."
+        tooltip-content: ""
 
       * label: "our_mission"
         url: "/mission"
         icon: \leaf
-        tooltip-content: "We want to create a cleaner and fairer world for the future."
+        tooltip-content: ""
 
       * label: "faq"
         url: "/faq"
         icon: \info-sign
-        tooltip-content: "How is CO2 measured? What is an offset? Who profits? and more."
+        tooltip-content: ""
 
     _.each $scope.nav-items, ->
       it.tooltip-config = {placement:\bottom, classes:'nav-item', titleToCompile:render-tooltip-content(it)}
@@ -79,7 +78,7 @@ window.app-controller = ($scope, partial-path, co2r-api, preferences-storage, $f
     function render-tooltip-content(nav-item)
       "
         <h1 class='text-heading4 tooltip-content-title'>{{appText.#{nav-item.label}}}</h1>
-        <div class='text-small tooltip-content-body'>#{nav-item.tooltip-content}</div>
+        <div class='text-small tooltip-content-body'>{{appText.#{nav-item.label}_nav_text_description}}</div>
       "
 
   $scope.addthis-share-config =

@@ -29,7 +29,11 @@ exports.config =
 
   plugins:
     stylus: (stylus)->
-      stylus.import 'app/styles/lib/variables'
-      stylus.import 'app/styles/lib/functions'
+
+      stylus.import 'vendor/kuhrt/css/base'
+      stylus.import 'vendor/kuhrt/css/grid'
+
+
       stylus.import 'app/styles/app-lib/variables'
       stylus.import 'app/styles/app-lib/functions'
+
