@@ -8,16 +8,12 @@ section.page-introduction
       .introduction-text(co2r-bind="appText.introduction_text")
 
 
-
 section.limay.row
   .limay-map-container
     .limay-map-tip.row.row-couple-heights.padding-s
       h2.map-tip-icon.icon-info-sign.unspaced
       .map-tip-content(co2r-bind="appText.mission_map_help_tip")
-    .limay-map(id="map_canvas",
-      ui-map='treeplantingMap',
-      ui-event="{'map-click': 'test($event)'}",
-      ui-options="mapOptions")
+    .limay-map#map_canvas(ui-map='treeplantingMap', ui-options="mapOptions")
   .limay-text.padding-l
     h1.text-heading1.group
       .community-title(co2r-bind="appText.about_community_title")

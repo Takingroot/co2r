@@ -1,7 +1,7 @@
 
 
 !!! 5
-html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb#")
+html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
   head
     //-
       script
@@ -12,12 +12,12 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
     script(src="/javascripts/vendor.js")
     script(src="/javascripts/app.js")
-    title(ng-bind="appTitle + getPageTitle()")
+    title(ng-bind="getPageTitle()")
 
 
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-    header.app-header.row
+    header.app-header.row(ng-controller="header")
       a.app-brand-container.span-4.row.transparent-link(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
@@ -41,7 +41,7 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
 
 
 
-    footer.app-footer.group
+    footer.app-footer.group(ng-controller="footer")
       //- .stripe div just for decoration
       .stripe.span.pin-top
 
@@ -51,25 +51,21 @@ html(ng-app="co2r", ng-controller="appController", xmlns:fb="http://ogp.me/ns/fb
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
 
       .app-footer-content.row.group.span.color-theme.green-theme.padding-l.clearfix
-        .row.h-gutters-3.align-right
-          .sponsors.span-2
-            a.block(href="{{ appText.sponsor_link }}", target="_blank")
-              h4.aligns-middle
-                i.icon-sign-blank
-                = ' '
-                span(co2r-bind="appText.footer_sponsor_name")
-            p.text-small(co2r-bind="appText.footer_sponsor_description")
-          .company.span-2
-            a.block(href="http://takingroot.org", target="_blank")
-              h4.aligns-middle
-                img.co2r-logo(src="/images/logo-white.png")
-                span(co2r-bind="appText.footer_taking_root")
-            p.text-small(co2r-bind="appText.footer_taking_root_description")
-            //-
-              .row.h-gutters-05(style="font-size:1.5em;")
-                a.icon-envelope(href="mailto:info@takingroot.org", ui-jq="popover", title="test", data-content="moo")
-                a.icon-twitter(href="https://twitter.com/takingroot")
-                a.icon-facebook(href="http://www.facebook.com/TakingRoot?ref=ts")
+        div.app-epilogue
+          .owner.span-2
+            a.logo-container(href="{{takingRoot.website_url}}", target="_blank")
+              img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
+            p.text-small(co2r-bind="takingRoot.partnership_description")
 
-        p.muted(co2r-bind="appText.footer_colofon")
+          .v-push-3
+            p.muted(co2r-bind="appText.footer_colofon")
 
+        section.partners-container
+          header.partners-header
+            h1.text-heading3(ng-bind="appText.footer_partners_title")
+          .partners.row.h-gutters-1.v-push-1
+            .partner(ng-repeat="partner in partners")
+              a.logo-container.row.aligns-middle(href="{{partner.website_url}}", target="_blank")
+                .v-span
+                img.logo(ng-src="{{partner.logo_url}}")
+              p.text-small(co2r-bind="partner.partnership_description")

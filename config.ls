@@ -34,6 +34,6 @@ exports.config =
       stylus.import 'vendor/kuhrt/css/grid'
 
 
-      stylus.import 'app/styles/app-lib/variables'
-      stylus.import 'app/styles/app-lib/functions'
+      stylus.import 'app/styles/lib/variables'
+      stylus.import 'app/styles/lib/functions'
 

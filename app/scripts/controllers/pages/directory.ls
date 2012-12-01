@@ -11,10 +11,12 @@ co2r.controllers.controller \directory, ($scope, co2r-api, preferences-storage)-
       body:  \directory_action_body_one
       icon:  \leaf
       link:  "/mission"
+
     * title: \directory_action_title_two
       body:  \directory_action_body_two
       icon:  \edit
       link:  "/register-your-product"
+
     * title: \directory_action_title_three
       body:  \directory_action_body_three
       icon:  \heart
