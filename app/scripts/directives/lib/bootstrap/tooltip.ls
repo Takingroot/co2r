@@ -21,7 +21,7 @@ co2r.directives
         # not the most effecient technique? if one option changes every single
         # option is considered changed (recalculated)
         for opt of newOpts
-          if opt isnt \title or not element.data(\tooltip).getOptions!html
+          if opt isnt \title or not new-opts.html
             opt-value = new-opts[opt]
           else
             optValue = safe-compile source:new-opts[opt], wrapper-class:"tooltip-#opt", scope:scope
