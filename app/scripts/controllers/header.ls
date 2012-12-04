@@ -45,7 +45,7 @@ co2r.controllers.controller \header, ($scope, $location, $filter, preferences-st
     nav-item.tooltip-config =
       placement: \bottom
       classes:  'nav-item'
-      titleToCompile: render-tooltip-content nav-item
+      title: render-tooltip-content nav-item
 
   function render-tooltip-content(nav-item)
     "

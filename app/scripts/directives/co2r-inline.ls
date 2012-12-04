@@ -38,7 +38,7 @@ co2r.directives
           scope.amount = amount
           scope.tooltip-config =
             trigger: \hover
-            titleToCompile: tooltip-template-string
+            title: tooltip-template-string
             placement: \top
             classes: 'co2-contrasted-tooltip'
 
@@ -70,8 +70,8 @@ co2r.directives
   transclude: on
   template: '<a class="co2r-definition" popover="popoverConfig" ng-transclude></a>'
   link: (scope, el, attrs)->
-    scope.popoverConfig = {}
     scope.$watch \appVars.defined_terms, (new-defined-terms)->
+      # defined term objects have a title: and content: property, which satisfies the popover object structure
       scope.popover-config = _.find new-defined-terms, -> it.term_name is el.text!
 
 
