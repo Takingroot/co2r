@@ -86,7 +86,7 @@ co2r.directives
       if content?
         if content[0] is '<' and content[*-1] is '>'
           el.html $compile(content)(scope)
-        else if not (_.str.include content, '<' or _.str.include content, '>')
+        else if $(content).length is 0
           el.text content
         else
           if (el.prop \tagName) is \SPAN
