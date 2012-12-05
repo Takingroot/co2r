@@ -1,6 +1,6 @@
 co2r.directives
 
-.directive \popover, (safe-compile)->
+.directive \popover, ($compile)->
   (scope, element, attrs)->
 
 
@@ -9,7 +9,7 @@ co2r.directives
     #  init
     #
     element.popover!
-    prepPopoverDestruction!
+    prep-popover-destruction!
 
 
 
@@ -20,12 +20,15 @@ co2r.directives
       if newOpts
         # not the most effecient technique? if one option changes every single
         # option is considered changed (recalculated)
-        for opt of newOpts
-          if (opt isnt \title and opt isnt \content) or not new-opts.html
+        for opt of new-opts
+          #  1. we don't need to compile non-content stuff
+          #  2. if html option is off, we don't need to compile content
+          #  3. if the content is plaintext we don't need to compile it
+          if (opt isnt \title and opt isnt \content) or (not new-opts.html) or (not $(new-opts[opt]).length)
             opt-value = new-opts[opt]
           else
-            optValue = safe-compile source:new-opts[opt], wrapper-class:"popover-#opt", scope:scope
-          element.data('popover').options[opt] = optValue
+            opt-value = $compile(new-opts[opt])(scope)
+          element.data('popover').options[opt] = opt-value
         element.popover \setContent
     # compare equality, not reference, thus allowing us to watch an object, array, etc.
     , true
@@ -40,7 +43,7 @@ co2r.directives
     #
     #  This function handles the above case
     #
-    function prepPopoverDestruction
+    function prep-popover-destruction
       # save a popover reference for teardown, element
       # isn't available after $destroy evidently?
       popoverObject = element.data \popover

@@ -44,6 +44,7 @@ co2r.controllers.controller \header, ($scope, $location, $filter, preferences-st
   _.each $scope.nav-items, (nav-item)->
     nav-item.tooltip-config =
       placement: \bottom
+      html: yes
       classes:  'nav-item'
       title: render-tooltip-content nav-item
 

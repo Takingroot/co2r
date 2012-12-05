@@ -39,6 +39,7 @@ co2r.directives
           scope.tooltip-config =
             trigger: \hover
             title: tooltip-template-string
+            html:  yes
             placement: \top
             classes: 'co2-contrasted-tooltip'
 
