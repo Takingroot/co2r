@@ -18,7 +18,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
     header.app-header.row(ng-controller="header")
-      a.app-brand-container.span-4.row.transparent-link.row-not-responsive(href="/")
+      a.app-brand-container.span-4.hbox.transparent-link.row-not-responsive(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
         .app-brand-text
@@ -45,7 +45,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
       //- .stripe div just for decoration
       .stripe.span.pin-top
 
-      .social-bar.social-bar-app(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
+      .social-bar.social-bar-app.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
         .social-bar-inner.row.aligns-middle.padding-s
           div(co2r-bind="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05

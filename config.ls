@@ -31,6 +31,7 @@ exports.config =
     stylus: (stylus)->
 
       stylus.import 'vendor/kuhrt/css/base'
+      stylus.import 'vendor/kuhrt/css/layout'
       stylus.import 'vendor/kuhrt/css/grid'
 
 

@@ -1,0 +1,22 @@
+
+
+
+//
+// device measurements
+//
+// phones in portrait/landscape orientation
+minWidthPhone  = 480px
+maxWidthPhone  = 767px
+// tablets in portrait/landscape orientation
+minWidthTablet = 768px
+maxWidthTablet = 979px
+
+
+
+//
+//  css media query strings
+//
+mediaPortraitPhone  = s("(max-width: %s)", minWidthPhone)
+mediaLandscapePhone  = s("(max-width: %s)", maxWidthPhone)
+// this could also apply to small desktops
+mediaTablet = s("(min-width: %s) and (max-width: %s)", minWidthTablet, maxWidthTablet)
