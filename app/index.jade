@@ -17,8 +17,8 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
 
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-    header.app-header.row(ng-controller="header")
-      a.app-brand-container.span-4.hbox.transparent-link.row-not-responsive(href="/")
+    header.app-header(ng-controller="header")
+      a.app-brand-container.span-4.hbox.transparent-link.block(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
         .app-brand-text
@@ -26,14 +26,14 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
           p.text-small.span-2(co2r-bind="appText.branding_subtext")
 
       .app-navbar
-        ul.nav.nav-list.align-right.row.aligns-middle.row-not-responsive
+        ul.nav.nav-list.hbox
           li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
           tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
             a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
               i.nav-link-icon(class="icon-{{navItem.icon}}")
               span.nav-link-text {{appText[navItem.label]}}
 
-      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-top.pin-right(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
+      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-top.pin-left(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
 
 
 

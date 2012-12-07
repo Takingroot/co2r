@@ -1,0 +1,12 @@
+vertical-shift(amount)
+  margin-top amount
+  margin-bottom amount * -1
+
+inline-block-container(wrap=false)
+  & > *
+    display inline-block
+    vertical-align top
+
+block-container()
+  & > *
+    display block

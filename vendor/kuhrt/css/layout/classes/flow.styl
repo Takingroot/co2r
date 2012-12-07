@@ -4,18 +4,16 @@
 //  Horizontal Layout
 //  ------------------------------------------------------------------
 
-.hbox > *
-  display inline-block
-  vertical-align top
-
-
+.hbox
+  inline-block-container()
 
 //  by default an hbox ensures its content is horizontal
 //  no matter what
 //
 .hbox:not(.wrap)
   white-space nowrap
-  // no need to restore whitespace on nested `.hbox`s
-  // each .hbox handles its own white-space
-  > *:not(.hbox)
+
+// no need to restore whitespace on nested `.hbox`s
+// each .hbox handles its own white-space
+.hbox:not(.wrap) > *:not(.hbox)
     white-space normal
