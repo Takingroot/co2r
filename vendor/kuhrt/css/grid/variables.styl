@@ -4,20 +4,17 @@
 //
 // device measurements
 //
-// phones in portrait/landscape orientation
 // http://rachelmccollin.co.uk/blog/iphone5-does-it-break-your-responsive-design/
-tabletWidth         = 1023px
-phoneLandscapeWidth = 759px
 phonePortraitWidth  = 479
+phoneLandscapeWidth = 759px
+desktopWidth        = 1024
+desktopWideWidth    = 1324
 
 phonePortrait   = s("(max-width: %s)", phonePortraitWidth)
 phoneLandscape  = s("(max-width: %s)", widthLandscapeTablet)
-
-tablet          = s("(max-width: %s)", tabletWidth)
-tabletOrWider   = s("(min-width: %s)", tabletWidth)
-
-desktop         = s("(min-width: %s)", tabletWidth + 1)
-desktopWide     = s("(min-width: %s)", tabletWidth + 1 + 300)
+tablet          = s("(max-width: %s)", desktopWidth - 1)
+desktop         = s("(min-width: %s)", desktopWidth)
+desktopWide     = s("(min-width: %s)", desktopWideWidth)
 
 
 //portraitWidthPhone  = 320px
