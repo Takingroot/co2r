@@ -1,5 +1,6 @@
 
 
+
 .app-footer
   .stripe
     height gd(1)
@@ -8,6 +9,7 @@
     z-index 10
 
   .app-footer-content
+    padding gd(3) gd(1)
     background-image url('/images/white-hash-20.png')
 
   .logo-container
@@ -19,16 +21,23 @@
   .logo-taking-root
     height 100%
 
+  .partners-container
+    margin-top gd(3)
   .partners
     .logo
       height 50%
       max-width 100%
-  .partner
-    width cols(2.5)
 
 
-.app-epilogue
-  padding-top gd(3)
-  border-right 1px solid darkMuted
-  padding-right gd(1)
-  margin-right gd(2)
+
+@media phone-landscape-or-wider
+  .partners-container
+    padding-left gd(1)
+    margin-top 0
+    padding-right 0
+  .app-footer-content
+    padding-right 0
+  .app-epilogue
+    padding-top gd(2.7)
+    padding-right gd(1)
+    border-right 1px solid darkMuted

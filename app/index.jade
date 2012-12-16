@@ -19,7 +19,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
 
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-    header.app-header(ng-controller="header")
+    header.app-header.row(ng-controller="header")
       a.app-brand-container.span-4.hbox.transparent-link.block(href="/")
         .app-logo
           img(src="/images/co2r-logo.png")
@@ -52,9 +52,9 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
           div(co2r-bind="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
 
-      .app-footer-content.row.group.span.color-theme.green-theme.padding-l.clearfix
-        div.app-epilogue
-          .owner.span-2
+      .app-footer-content.group.span.color-theme.green-theme.row.row-cells
+        .app-epilogue.span-2
+          .owner
             a.logo-container(href="{{takingRoot.website_url}}", target="_blank")
               img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
             p.text-small(co2r-bind="takingRoot.partnership_description")
@@ -65,9 +65,9 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
         section.partners-container
           header.partners-header
             h1.text-heading3(ng-bind="appText.footer_partners_title")
-          .partners.row.h-gutters-1.v-push-1
-            .partner(ng-repeat="partner in partners")
-              a.logo-container.row.aligns-middle(href="{{partner.website_url}}", target="_blank")
+          .partners.row.wrap.h-gutters-1.v-push-1
+            .partner.span-2(ng-repeat="partner in partners")
+              a.logo-container.hbox(href="{{partner.website_url}}", target="_blank")
                 .v-span
                 img.logo(ng-src="{{partner.logo_url}}")
               p.text-small(co2r-bind="partner.partnership_description")

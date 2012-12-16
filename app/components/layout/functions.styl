@@ -2,10 +2,28 @@ vertical-shift(amount)
   margin-top amount
   margin-bottom amount * -1
 
-inline-block-container(wrap=false)
+// IBC = inline-block-container
+//
+inline-block-container(considerWrap=false, wrapSelector='wrap')
   & > *
     display inline-block
     vertical-align top
+
+  if considerWrap
+    //
+    //  By default IBC enforces horizontal content which means
+    //  disabling wrapping, but this can be disabled with the correct selector
+    //
+    //  !important ensures that nesting IBC's doesn't break
+    //  The main problem could be that an outer IBC makes child
+    //  white-space normal, overriding the child's IBC's setting of white-space nowrap
+    &:not({wrapSelector})
+      white-space nowrap!important
+    //
+    //  We don't want the wrapping rule to cascade
+    //  so we unset it on the child
+    &:not({wrapSelector}) > *
+      white-space normal
 
 block-container()
   & > *

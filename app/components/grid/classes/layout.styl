@@ -27,14 +27,12 @@
 
 
 
-
 .row
-  > *
-    display inline-block
-    vertical-align top
+  inline-block-container(considerWrap:true, wrapSelector:'.wrap')
   > .align-right
     float right
   // if we want equal column heights then each child
+  &.row-cells
   &.row-couple-heights
     display table
     // xxx does 100% cause problems?
