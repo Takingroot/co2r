@@ -1,0 +1,35 @@
+
+
+
+//  device measurements
+//
+//  http://rachelmccollin.co.uk/blog/iphone5-does-it-break-your-responsive-design/
+//
+phoneWidthPortrait   = 320px
+// iPhone 4 was 480, iPhone5 is 568
+phoneWidthLandscape  = 568px
+tabletWidthLandscape = 800px
+desktopWidth         = 1024px
+desktopWidthWide     = 1324px
+
+
+
+//  media queries
+//
+phone-portrait-or-wider     = s('(min-width: %s)', phoneWidthPortrait)
+phone-portrait-or-narrower  = s('(max-width: %s)', phoneWidthLandscape - 1px)
+phone-portrait              = s('%s and %s', phone-portrait-or-wider, phone-portrait-or-narrower)
+
+phone-landscape-or-wider    = s('(min-width: %s)', phoneWidthLandscape)
+phone-landscape-or-narrower = s('(max-width: %s)', tabletWidthLandscape - 1px)
+phone-landscape             = s('%s and %s', phone-landscape-or-wider, phone-landscape-or-narrower)
+
+tablet-or-wider             = s('(min-width: %s)', tabletWidthLandscape)
+tablet-or-narrower          = s('(max-width: %s)', desktopWidth - 1px)
+tablet                      = s('%s and %s', tablet-or-wider, tablet-or-narrower)
+
+desktop-or-wider            = s('(min-width: %s)', desktopWidth)
+desktop-or-narrower         = s('(max-width: %s)', desktopWidth - 1px)
+desktop                     = s('%s and %s', desktop-or-wider, desktop-or-narrower)
+
+desktop-large-or-wider      = s("(min-width: %s)", desktopWidthWide)

@@ -19,9 +19,10 @@
 .group
   position relative
 
+// make an element's width match its content width
 .jar
-  @extends .table
-  @extends .group
+  display table
+  position relative
 
 
 
@@ -29,7 +30,8 @@
 
 .row
   > *
-    @extends .inline-block
+    display inline-block
+    vertical-align top
   > .align-right
     float right
   // if we want equal column heights then each child
@@ -39,7 +41,9 @@
     width 100%
     > *
       // ...must be a cell
-      @extends .table-cell
+      display table-cell
+      vertical-align top
+
 
 
 //

@@ -1,7 +1,8 @@
 
 
 
-// undo bootstrap
+//  undo bootstrap
+//
 .tooltip.nav-item
   .tooltip-inner
     padding 0
@@ -81,22 +82,30 @@
     margin-right auto
 
 
-//  @media default
+
 //  nav icons horizontal
+//
+//  @media default
+
+
 
 //  nav icons stacked
-@media (min-width: 560px) and (max-width: 1324px)
+//
+@media (min-width: 568px) and (max-width: 1324px)
   .app-navbar
     .nav-item
       border none!important
       text-align left
-@media (min-width: 560px)
+@media phone-landscape-or-wider
   .app-header
     inline-block-container()
   .app-navbar .nav
     block-container()
 
+
+
 //  nav icons + text stacked
+//
 @media (min-width: 700px)
   .app-navbar
     .nav-link-text
@@ -117,8 +126,11 @@
     .tooltip-content-body
       width 146px
 
+
+
 //  nav icons + text horizontal
-@media desktopWide
+//
+@media desktop-large-or-wider
   .app-navbar
     margin-top gd(5)
     margin-right gd(1)

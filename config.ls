@@ -22,17 +22,19 @@ exports.config =
           'scripts/co2r.ls'
     stylesheets:
       join-to:
-        'stylesheets/app.css': /^(app|vendor)/
+        'components/components.css': /^app\/components/
+        'stylesheets/vendor.css'   : /^vendor/
+        'stylesheets/app.css'      : /^app\/(?!components)/
 
     templates:
       join-to: 'javascripts/.not-needed-templates.js'
 
   plugins:
     stylus: (stylus)->
-
-      stylus.import 'vendor/kuhrt/css/base'
-      stylus.import 'vendor/kuhrt/css/layout'
-      stylus.import 'vendor/kuhrt/css/grid'
+      components-path = 'app/components'
+      stylus.import components-path + '/base'
+      stylus.import components-path + '/layout'
+      stylus.import components-path + '/grid'
 
 
       stylus.import 'app/styles/lib/variables'
