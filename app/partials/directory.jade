@@ -2,15 +2,15 @@
 
 .home-introduction.group(ng-class="{open:introductionState(), closed:!introductionState()}")
 
-  button.introduction-toggler.c-btn.pin-right(style="z-index:100;", ng-click="toggleIntroduction()")
+  button.introduction-toggler.c-btn.pin-r(style="z-index:100;", ng-click="toggleIntroduction()")
     span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
 
   .moodshot.hash-overlay
 
   section.introduction.color-theme.blue-theme
     .introduction-copy.span-8.stop-collapse
-      h1.text-heading1.text-color-inverse(co2r-bind="appText.introduction_title")
-      .introduction-text(co2r-bind="appText.introduction_text")
+      h1.text-heading1.text-color-inverse(ng-bind-html="appText.introduction_title")
+      .introduction-text(bind-compile="appText.introduction_text")
 
   section.action-steps-container
     .action-steps.row.h-gutters-2.align-center
@@ -18,8 +18,8 @@
         h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
-          span(co2r-bind="appText[step.title]")
-        p.text-small(co2r-bind="appText[step.body]")
+          span(ng-bind-html="appText[step.title]")
+        p.text-small(bind-compile="appText[step.body]")
 
 
 
@@ -36,7 +36,7 @@
       .artifact-card-header.group
         .poster
           img(ng-src="{{artifact.thumbnail_url}}")
-        .artifact-card-meta-ribbon.pin-bottom.row.row-couple-heights
+        .artifact-card-meta-ribbon.pin-b.row.row-couple-heights
           .artifact-category
           div
             .co2-badge.jar
@@ -44,4 +44,4 @@
               br
               span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artifact-card-body
-        h1.organization-name.text-heading3(co2r-bind="artifact.name | highlight:searchForArtifactName")
+        h1.organization-name.text-heading3(ng-bind-html="artifact.name | highlight:searchForArtifactName")

@@ -30,7 +30,8 @@ co2r.filters
       dict[keyword] ? keyword
 
 .filter \slugify, ->
-    -> _.str.slugify it
+    ->
+      _.str.slugify it
 
 # return string prefixed with mailto if email flag is true
 .filter \prefixMailto, ->

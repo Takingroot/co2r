@@ -5,13 +5,14 @@ exports.config =
     public: '.public'
 
   modules:
-    wrapper: off
+    wrapper: (path, data)-> "(function(){#data})();"
     definition: off
 
   files:
     javascripts:
       join-to:
-        'javascripts/app.js': /^app/
+        'javascripts/app.js': /^app\/scripts/
+        'components/components.js': /(^app\/components)(?!.*-spec)/
         'javascripts/vendor.js': /^vendor/
       order:
         before:
@@ -22,9 +23,9 @@ exports.config =
           'scripts/co2r.ls'
     stylesheets:
       join-to:
-        'components/components.css': /^app\/components/
-        'stylesheets/vendor.css'   : /^vendor/
-        'stylesheets/app.css'      : /^app\/(?!components)/
+        'components/app-components.css': /^app\/components/
+        'stylesheets/vendor.css'       : /^vendor/
+        'stylesheets/app.css'          : /^app\/(?!components)/
 
     templates:
       join-to: 'javascripts/.not-needed-templates.js'

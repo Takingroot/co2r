@@ -5,8 +5,8 @@ header
       h1.aligns-middle
         i.icon-file
         = ' '
-        span(co2r-bind="appText.register_your_product")
-      p(co2r-bind="appText.register_introduction")
+        span(bind-compile="appText.register_your_product")
+      p(bind-compile="appText.register_introduction")
 
     form.vintage-box-models.h-push-1(ng-submit="sendForm()", name="artifactRegistrationForm")
       .row.h-gutters-1
@@ -30,9 +30,9 @@ header
 section.register-info-container.row.row-couple-heights.v-push-3
   aside.register-info-aside.row.padding-l
     .align-right.span-3
-      div(co2r-bind="appText.register_artifact_left_column")
+      div(bind-compile="appText.register_artifact_left_column")
   .register-info-body.padding-l
-    div.span-5.v-gutters-3(co2r-bind="appText.register_artifact_right_body")
+    div.span-5.v-gutters-3(bind-compile="appText.register_artifact_right_body")
 
 
 

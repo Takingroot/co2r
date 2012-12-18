@@ -1,7 +1,7 @@
 section.can-do.row.row-couple-heights(ng-repeat="canDo in otherThingsYouCanDo")
   .involvement-type.padding-l
     .span-3.align-right
-      h2(co2r-bind="appText['can_do_'+canDo.replace('-','_')+'_title']")
-      .description(co2r-bind="appText['can_do_'+canDo.replace('-','_')+'_description']")
+      h2(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_title']")
+      .description(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_description']")
   .padding-l
     ng-include(src="partialPath('can-do-'+canDo)")

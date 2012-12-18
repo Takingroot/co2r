@@ -74,27 +74,3 @@ co2r.directives
     scope.$watch \appVars.defined_terms, (new-defined-terms)->
       # defined term objects have a title: and content: property, which satisfies the popover object structure
       scope.popover-config = _.find new-defined-terms, -> it.term_name is el.text!
-
-
-
-.directive \co2rBind, ($compile)->
-  (scope, el, attrs)->
-    # content might have html or angular directives
-    scope.$watch attrs.co2r-bind, (content)->
-      # if content is undefined then maybe there is an error
-      # in the content within co2r-bind?
-      if content?
-        if content[0] is '<' and content[*-1] is '>'
-          el.html $compile(content)(scope)
-        else if $(content).length is 0
-          el.text content
-        else
-          if (el.prop \tagName) is \SPAN
-            wrapper = $ "<span></span>"
-          else
-            wrapper = $ "<div></div>"
-          # We have to wrap because leading/trailing text in html strings is trimmed...
-          # quote: When passing HTML to jQuery(), please also note that text nodes are not treated as DOM elements. With the exception of a few methods (such as .content()), they are generally otherwise ignored or removed. E.g:
-          # http://api.jquery.com/jQuery/
-          wrapped-content = wrapper.html content
-          el.html $compile(wrapped-content)(scope)

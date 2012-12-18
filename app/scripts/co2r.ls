@@ -6,6 +6,7 @@ window.co2r =
   app:         angular.module \co2r, [
                 \ngSanitize
                 \ui
+                \bindCompile
                 \Scope.onReady
                 \co2r.services
                 \co2r.filters

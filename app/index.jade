@@ -7,12 +7,15 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
       script
         window.brunch = window.brunch || {}
         window.brunch['auto-reload'] = {enabled: true}
+    link(rel="stylesheet", href="/components/build.css")
     link(rel="stylesheet", href="/stylesheets/vendor.css")
-    link(rel="stylesheet", href="/components/components.css")
+    link(rel="stylesheet", href="/components/app-components.css")
     link(rel="stylesheet", href="/stylesheets/app.css")
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
+    script(src="/components/build.js")
     script(src="/javascripts/vendor.js")
+    script(src="/components/components.js")
     script(src="/javascripts/app.js")
     title(ng-bind="getPageTitle()")
 
@@ -24,8 +27,8 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
         .app-logo
           img(src="/images/co2r-logo.png")
         .app-brand-text
-          h1.text-heading4.app-title(co2r-bind="appText.co2r")
-          p.text-small.span-2(co2r-bind="appText.branding_subtext")
+          h1.text-heading4.app-title(bind-compile="appText.co2r")
+          p.text-small.span-2(bind-compile="appText.branding_subtext")
 
       .app-navbar
         ul.nav.nav-list.hbox
@@ -35,7 +38,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
               i.nav-link-icon(class="icon-{{navItem.icon}}")
               span.nav-link-text {{appText[navItem.label]}}
 
-      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-top.pin-left(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
+      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-tl(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
 
 
 
@@ -45,22 +48,22 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
 
     footer.app-footer.group(ng-controller="footer")
       //- .stripe div just for decoration
-      .stripe.span.pin-top
+      .stripe.span.pin-t
 
       .social-bar.social-bar-app.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
-        .social-bar-inner.row.aligns-middle.padding-s
-          div(co2r-bind="appText.social_bar_text")
-          .social-bar-buttons.co2r-addthis-toolbox.row.h-gutters-05
+        .social-bar-inner.hbox.aligns-middle.padding-s
+          div(bind-compile="appText.social_bar_text")
+          .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
 
       .app-footer-content.group.span.color-theme.green-theme.row.row-cells
         .app-epilogue.span-2
           .owner
             a.logo-container(href="{{takingRoot.website_url}}", target="_blank")
               img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
-            p.text-small(co2r-bind="takingRoot.partnership_description")
+            p.text-small(bind-compile="takingRoot.partnership_description")
 
           .v-push-3
-            p.muted(co2r-bind="appText.footer_colofon")
+            p.muted(ng-bind-html="appText.footer_colofon")
 
         section.partners-container
           header.partners-header
@@ -70,4 +73,4 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
               a.logo-container.hbox(href="{{partner.website_url}}", target="_blank")
                 .v-span
                 img.logo(ng-src="{{partner.logo_url}}")
-              p.text-small(co2r-bind="partner.partnership_description")
+              p.text-small(ng-bind-html="partner.partnership_description")
