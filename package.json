@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "brunch build"
+    "postinstall": "./node_modules/.bin/brunch build"
   },
   "repository": {
     "type": "git",
