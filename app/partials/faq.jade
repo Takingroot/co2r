@@ -3,7 +3,7 @@
 .row.row-couple-heights
 
   aside.faq-toc-container
-    .faq-toc.scrollfix-fixed.span-2.stop-collapse(ui-scrollfix="+0")
+    .faq-toc.scrollfix-fixed.span-2(ui-scrollfix="+0")
       ul.nav.nav-pills.nav-stacked.align-right
         li(ng-repeat="faq in faqs")
           a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)

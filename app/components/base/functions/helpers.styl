@@ -36,15 +36,3 @@ overlay(zIndex=10)
     bottom 0
     content ""
     z-index zIndex
-
-
-
-// This utility prevents css margin collapsing
-// Evolved upon discussion http://stackoverflow.com/questions/1828804/how-do-i-uncollapse-a-margin
-stop-collapse()
-  &:after
-  &:before
-    content "."
-    display block
-    overflow hidden
-    square(0)
