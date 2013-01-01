@@ -8,8 +8,8 @@
   .moodshot.hash-overlay
 
   section.introduction.color-theme.blue-theme
-    .row
-      .introduction-copy
+    .row.vpadding-m
+      .introduction-copy.cols12
         h1.text-heading1.text-color-inverse(ng-bind-html="appText.introduction_title")
         .introduction-text(bind-compile="appText.introduction_text")
 
@@ -25,7 +25,7 @@
 
 
 
-.artifact-directory.v-push-5
+.artifact-directory
   form.form-search.span.group
     .hang-left: .hang-inner
       label.add-on(for="search-artifacts"): span.icon-search
