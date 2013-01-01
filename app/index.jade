@@ -31,13 +31,12 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
             h1.text-heading4.app-title(bind-compile="appText.co2r")
             p.text-small(bind-compile="appText.branding_subtext")
 
-        ul.app-navbar.cols4
+        div.app-navbar.cols4
           //-tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
-          li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
+          div.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
           ng-repeat="navItem in navItems")
             a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
               i.nav-link-icon(class="icon-{{navItem.icon}}")
-              = ' '
               span.nav-link-text {{appText[navItem.label]}}
 
       a.text-small.language-switcher.c-btn.c-btn-subtle.pin-tl(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
