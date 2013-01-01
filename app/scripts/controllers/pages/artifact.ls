@@ -4,14 +4,16 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
   co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}
   .then (res)->
 
-    $scope.artifact       = res.data.artifact
-    $scope.reports        = _.sortBy $scope.artifact.footprints, (.year)
+    artifact = res.data.artifact
+
+    $scope.artifact       = artifact
+    $scope.reports        = _.sortBy artifact.footprints, (.year)
 
 
 
     # Variable for default twitter message
     # --------------------------------------------------------------------------------------------------
-    # Since we can only update addthis.toolbox once (!) we need to make sure any variables are available as 
+    # Since we can only update addthis.toolbox once (!) we need to make sure any variables are available as
     # one config so that when $watch is triggered it receives the completed config
 
     $scope.addthis-share-config =
@@ -23,9 +25,10 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
     # organization twitter timeline
     # --------------------------------------------------------------------------------------------------
 
-    if $scope.artifact.available_twitter_handle
-      twitter-api.get-user-timeline(screen_name:$scope.artifact.available_twitter_handle, count:4)
+    if artifact.organization.available_twitter_handle
+      twitter-api.get-user-timeline(screen_name:artifact.organization.available_twitter_handle, count:4)
       .success (data, status, headers, config)->
+        console.log data
         $scope.organization-tweets = data
 
 
