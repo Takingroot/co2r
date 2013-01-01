@@ -11,18 +11,21 @@
 //  we cannot use :not, :last-child, etc. selectors here
 //  or else we destroy upstream class opportunities for padding, and/or width
 //
+
 for n in 1..12
   .cols{n}
     width fluid-columns(columnsCount:n)
-    padding-right (columnsGutterWidth / 2)
-    padding-left  (columnsGutterWidth / 2)
+    &:not(:first-child)
+      padding-left  (columnsGutterWidth / 2)
+    &:not(:last-child)
+      padding-right (columnsGutterWidth / 2)
 
 
 
 
 
-
-.row-span
+//  Children are horizontal
+//
 .row
   inline-block-container(considerWrap:true, wrapSelector:'.wrap')
 
@@ -32,9 +35,7 @@ for n in 1..12
   .row:not([class*="cols"])
     width auto
 
-
-
-//  if we want equal column heights then each child...
+//  Children heights are linked
 //
 .row-cells
   display table
@@ -47,7 +48,6 @@ for n in 1..12
 
 
 
-
 //  Responsive Grid
 //  ---------------
 
@@ -56,8 +56,11 @@ for n in 1..12
 //    http://www.456bereastreet.com/archive/201101/media_queries_viewport_width_scrollbars_and_webkit_browsers/
 //    the breakpoint for Webkit/FF is not the same, and a width would cause an hscroll in FF
 
+
+
+
+
 @media mq-screen-xs
-  .row-span
   .row-cells
     display block
     & > *
