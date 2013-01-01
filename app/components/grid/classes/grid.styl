@@ -15,10 +15,6 @@
 for n in 1..12
   .cols{n}
     width fluid-columns(columnsCount:n)
-    &:not(:first-child)
-      padding-left  (columnsGutterWidth / 2)
-    &:not(:last-child)
-      padding-right (columnsGutterWidth / 2)
 
 
 
@@ -59,7 +55,6 @@ for n in 1..12
 
 
 
-
 @media mq-screen-xs
   .row-cells
     display block
@@ -69,16 +64,14 @@ for n in 1..12
   .row
     width auto
     // no gutters when full-width for every column
-    padding-left  columnsGutterWidth
-    padding-right columnsGutterWidth
+    padding-left  grid-gutter-width
+    padding-right grid-gutter-width
     .row
       padding-left 0
       padding-right 0
   [class*=" cols"], [class^="cols"]
     width 100%
     display block
-    // !important because it needs to override the .colN:not(...) padding-right rule
-    //padding-right 0
 
 
 
@@ -88,6 +81,16 @@ for n in 1..12
     margin-right auto
     margin-left auto
 
+@media mq-screen-s-up
+  [class*=" cols"], [class^="cols"]
+    &:not(:first-child)
+      padding-left  (grid-gutter-width / 2)
+    &:not(:last-child)
+      padding-right (grid-gutter-width / 2)
+
+  for n in 1..12
+    .grid-push{n}
+      margin-left fluid-columns(columnsCount:n)
 
 
 @media mq-screen-m
@@ -95,3 +98,4 @@ for n in 1..12
     max-width screen-w-m
     margin-right auto
     margin-left auto
+

@@ -20,8 +20,9 @@ screen-w-m   = 1024px
 mq-screen-xs    = s('only screen and (min-width: %s) and (max-width: %s)', 0px, screen-w-s - 1px)
 mq-screen-xs-up = s('only screen and (min-width: %s)', screen-w-xs)
 
-mq-screen-s     = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
-mq-screen-s-up  = s('only screen and (min-width: %s)', screen-w-s)
+mq-screen-s-down = s('only screen and (max-width: %s)', screen-w-m - 1px)
+mq-screen-s      = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
+mq-screen-s-up   = s('only screen and (min-width: %s)', screen-w-s)
 
 mq-screen-m     = s('only screen and (min-width: %s)', screen-w-m)
 mq-screen-m-up  = mq-screen-m
