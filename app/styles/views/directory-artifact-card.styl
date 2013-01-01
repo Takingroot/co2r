@@ -1,0 +1,39 @@
+
+
+.artifact-card
+  width cardWidth
+  .poster
+    background-overlay url('/images/white-hash-30.png')
+  .poster img
+    square cardWidth
+  .ui-match
+    highlight(fade-out(grayLight, 0.65))
+    color dark
+
+.artifact-card-meta-ribbon
+  z-index 20
+  margin-bottom 1px
+  .artifact-category
+    background-color gray
+    min-height gd(2.1)
+    width gd(2.1)
+  .co2-badge
+    padding gd(.25) gd(.5)
+    background-color grayLight
+    color fade-out(textColorDark,0.15)
+    line-height 24px
+  .co2-contrasted
+    font-size 1.2rem
+
+.artifact-card-body
+  background-color yellow
+  background-image url('/images/white-hash-30.png')
+  min-height gd(3.5)
+  .organization-name
+    padding-top .65em
+    padding-left .85em
+    padding-bottom .75em
+    font-weight normal
+    line-height 1.25em
+    margin-top 0
+    color textColorDarkOnColor

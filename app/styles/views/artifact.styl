@@ -1,0 +1,83 @@
+
+
+
+body.artifact
+
+  .reports
+    padding-bottom gd(10)
+
+  .carousel
+    overflow hidden
+    // some default styling, visible before images load
+    background-color dark
+    // undo bootstrap
+    margin-bottom 0
+
+    .item
+      background-overlay url('/images/white-hash-20.png')
+      height 100%
+      overflow hidden
+      // display: undo bootstrap
+      display block
+      position absolute
+      top 0
+      img
+        width 100%
+      transition opacity 1s
+      opacity 0
+      &.active
+        opacity 1
+
+  .carousel-caption
+    left auto
+    max-width gd(16)
+    display inline-block
+    // z-index so that caption is on top of hash texture
+    z-index 20
+    color grayLight
+    background-color hsla(60.00, 1.08%, 18.24%, 0.9)
+    padding .9em 1.25em
+
+    // undo bootstrap
+    line-height 1.5
+
+  section.about
+    background-image url('/images/white-hash-20.png')
+
+  section.organization
+    // color vars because of font-awesome selection limitations
+    background-color-value     = hsl(90.00, 7.69%, 94.90%)
+    contact-method-color       = fade-out(dark, 0.75)
+    contact-method-color-hover = dark
+    background-color background-color-value
+
+    .contact-methods
+      margin-top gd(1/4)
+
+    .contact-method
+      square(40px)
+      line-height 40px
+      text-align center
+      i
+        // undo fontawesome
+        width auto
+
+        font-size 3.25rem
+        color contact-method-color
+        &:hover
+          color contact-method-color-hover
+
+    // due to font-awesome not having an icon-email-sign etc.
+    .contact-method-website
+    .contact-method-email
+    .contact-method-other
+      background-color contact-method-color
+      padding-top 1px
+      border-radius 4px
+      &:hover
+        background-color contact-method-color-hover
+      i
+        font-size 1.5rem
+        color background-color-value
+        &:hover
+          color background-color-value

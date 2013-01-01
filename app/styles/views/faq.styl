@@ -1,0 +1,37 @@
+
+
+
+.faq-toc-container
+  background-color grayLightest
+  padding-top 2rem
+  padding-bottom 2rem
+@media mq-screen-s-up
+  .faq-toc-container
+    border-right 1px solid darkMuted
+    .nav
+      margin-top 1.8rem
+
+
+
+
+.faq-toc
+  &.ui-scrollfix
+    position static
+  li a:hover
+  li.active a
+  li.active a:hover
+    background-color transparent
+    color inherit
+  li a
+    color lighten(textColorDark, 10)
+@media mq-screen-s-up
+  .faq-toc
+    &.ui-scrollfix
+      position fixed
+      width 33.333333%
+      top 0px
+      .nav
+        margin-top 0
+    li.active a
+      background-color blue
+      color dark
