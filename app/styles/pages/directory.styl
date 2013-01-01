@@ -15,7 +15,7 @@ body.directory
       overflow hidden
 
   .introduction
-    padding gd(2) gd(2.5)
+    padding gd(2) 0
     background-image url('/images/white-hash-20.png')
 
   .introduction-toggler
@@ -28,8 +28,6 @@ body.directory
     padding-top gd(2)
     padding-bottom @padding-top
 
-  .action-step-title
-    height gd(4)
 
 
 
@@ -74,6 +72,8 @@ body.directory
 //--------------------------------------------------
 
 .artifact-directory
+  // overflow so that artifact-cards container width doesn't cause hscroll
+  overflow-x hidden
   margin-left auto
   margin-right auto
   margin-bottom 120px

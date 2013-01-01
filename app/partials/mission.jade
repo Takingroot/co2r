@@ -3,18 +3,19 @@
 section.page-introduction
   .moodshot.hash-overlay
   section.introduction.padding-l.blue-theme.color-theme
-    .introduction-copy.span-8
-      h1.text-color-inverse(bind-compile="appText.introduction_title")
-      .introduction-text(bind-compile="appText.introduction_text")
+    .row
+      .introduction-copy
+        h1.text-color-inverse(bind-compile="appText.introduction_title")
+        .introduction-text(bind-compile="appText.introduction_text")
 
 
-section.limay.row
-  .limay-map-container
-    .limay-map-tip.row.row-couple-heights.padding-s
+section.limay.row-cells
+  .limay-map-container.cols5
+    .limay-map-tip.row-cells.padding-xs
       h2.map-tip-icon.icon-info-sign.unspaced
       .map-tip-content(bind-compile="appText.mission_map_help_tip")
-    .limay-map#map_canvas
-  .limay-text.padding-l
+    .limay-map.span#map_canvas
+  .limay-text.padding-l.cols7
     h1.text-heading1.group
       .community-title(bind-compile="appText.about_community_title")
     .community-text(bind-compile="appText.about_community_text")

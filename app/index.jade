@@ -15,28 +15,31 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
     script(src="/components/build.js")
     script(src="/javascripts/vendor.js")
-    script(src="/components/components.js")
+    script(src="/components/app-components.js")
     script(src="/javascripts/app.js")
     title(ng-bind="getPageTitle()")
 
 
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-    header.app-header.row(ng-controller="header")
-      a.app-brand-container.span-4.hbox.transparent-link.block(href="/")
-        .app-logo
-          img(src="/images/co2r-logo.png")
-        .app-brand-text
-          h1.text-heading4.app-title(bind-compile="appText.co2r")
-          p.text-small.span-2(bind-compile="appText.branding_subtext")
+    header.app-header(ng-controller="header")
+      .row
+        a.app-brand-container.cols6.transparent-link.row(href="/")
+          .app-logo.cols5
+            img(src="/images/co2r-logo.png")
+          .app-brand-text.cols7
+            h1.text-heading4.app-title(bind-compile="appText.co2r")
+            p.text-small(bind-compile="appText.branding_subtext")
 
-      .app-navbar
-        ul.nav.nav-list.hbox
-          li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
-          tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
-            a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
-              i.nav-link-icon(class="icon-{{navItem.icon}}")
-              span.nav-link-text {{appText[navItem.label]}}
+        .app-navbar.cols6
+          ul.nav.nav-list
+            //-tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
+            li.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
+            ng-repeat="navItem in navItems")
+              a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
+                i.nav-link-icon(class="icon-{{navItem.icon}}")
+                = ' '
+                span.nav-link-text {{appText[navItem.label]}}
 
       a.text-small.language-switcher.c-btn.c-btn-subtle.pin-tl(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
 
@@ -51,26 +54,28 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
       .stripe.span.pin-t
 
       .social-bar.social-bar-app.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
-        .social-bar-inner.hbox.aligns-middle.padding-s
+        .social-bar-inner.hbox.aligns-middle.padding-xs
           div(bind-compile="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
 
-      .app-footer-content.group.span.color-theme.green-theme.row.row-cells
-        .app-epilogue.span-2
-          .owner
-            a.logo-container(href="{{takingRoot.website_url}}", target="_blank")
-              img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
-            p.text-small(bind-compile="takingRoot.partnership_description")
-
-          .v-push-3
-            p.muted(ng-bind-html="appText.footer_colofon")
-
-        section.partners-container
-          header.partners-header
-            h1.text-heading3(ng-bind="appText.footer_partners_title")
-          .partners.row.wrap.h-gutters-1.v-push-1
-            .partner.span-2(ng-repeat="partner in partners")
-              a.logo-container.hbox(href="{{partner.website_url}}", target="_blank")
+      .app-footer-content.group.color-theme.green-theme
+        .row
+          .app-epilogue.cols3
+            .owner
+              a.logo-container.hbox.block(href="{{takingRoot.website_url}}", target="_blank")
                 .v-span
-                img.logo(ng-src="{{partner.logo_url}}")
-              p.text-small(ng-bind-html="partner.partnership_description")
+                img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
+              p.text-small(bind-compile="takingRoot.partnership_description")
+
+            .v-push-3
+              p.muted(ng-bind-html="appText.footer_colofon")
+
+          section.partners-container.cols9
+            header.partners-header
+              h1.text-heading3(ng-bind="appText.footer_partners_title")
+            .partners.row.v-push-1
+              .partner.cols3(ng-repeat="partner in partners")
+                a.logo-container.hbox.block(href="{{partner.website_url}}", target="_blank")
+                  .v-span
+                  img.logo(ng-src="{{partner.logo_url}}")
+                p.text-small(ng-bind-html="partner.partnership_description")

@@ -27,26 +27,9 @@
 
 
 
-.row
-  inline-block-container(considerWrap:true, wrapSelector:'.wrap')
-  > .align-right
-    float right
-  // if we want equal column heights then each child
-  &.row-cells
-  &.row-couple-heights
-    display table
-    // xxx does 100% cause problems?
-    width 100%
-    > *
-      // ...must be a cell
-      display table-cell
-      vertical-align top
 
 
 
-//
-//  Fluid
-//  ------------------------------------------------------------------
 
 //
 //  .v-gutters
@@ -92,10 +75,7 @@ generateGutterClasses(i) for i in 1..5
   height 100%
 .span
   width 100%
-for n in 1..14
-  .span-{n}
-  .col-{n}
-    width cols(n)
+
 
 
 

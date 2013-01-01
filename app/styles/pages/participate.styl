@@ -1,23 +1,20 @@
 
 
 
-body.participate
-  .involvement-type
-    border-right 1px solid darkMuted
-    background-color grayLightest
-    width 40%
+body.participate .involvement-type
+  border-right 1px solid darkMuted
+  background-color grayLightest
 
+@media mq-screen-s-up
+  body.participate .involvement-type-inner
+    max-width 400px
+    float right
+
+
+body.participate
   .involvement-form
     button
-      height gd(3)
+      height 3rem
 
   section.can-do
     border-bottom 1px solid darkMuted
-
-
-
-@media screen and (max-width: 1600px)
-  body.participate
-    form button
-      display block
-      margin-left 0!important

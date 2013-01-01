@@ -2,6 +2,8 @@
 
 
 .app-footer
+  .v-span
+    vertical-align middle
   .stripe
     height gd(1)
     top gd(-1/2)
@@ -9,31 +11,35 @@
     z-index 10
 
   .app-footer-content
-    padding gd(3) gd(1)
+    padding-top 5rem
+    padding-bottom 5rem
     background-image url('/images/white-hash-20.png')
 
   .logo-container
     margin-bottom gd(1)
     text-align center
-    display block
     height gd(6)
     border-bottom-color transparent!important
   .logo-taking-root
-    height 100%
+    max-height 90%
+    max-width 90%
+    vertical-align middle
 
+  .partners
+    .logo
+      max-height 50%
+      max-width 90%
+      vertical-align middle
+
+
+
+@media mq-screen-xs
   .partners-container
     margin-top gd(3)
-  .partners
-    .v-span
-      vertical-align middle
-    .logo
-      height 50%
-      max-width 100%
-      vertical-align middle
+  .partner:not(:last-child)
+    margin-bottom 3rem
 
-
-
-@media phone-landscape-or-wider
+@media mq-screen-s-up
   .partners-container
     padding-left gd(1)
     margin-top 0

@@ -1,0 +1,94 @@
+
+
+
+//  Notes
+//
+//- Source-order matters for CSS class priority
+//  .cols must be defined before media queries
+//  so that those queries can override padding-right
+//
+//- keep specificity low
+//  we cannot use :not, :last-child, etc. selectors here
+//  or else we destroy upstream class opportunities for padding, and/or width
+//
+for n in 1..12
+  .cols{n}
+    width fluid-columns(columnsCount:n)
+    padding-right (columnsGutterWidth / 2)
+    padding-left  (columnsGutterWidth / 2)
+
+
+
+
+
+
+.row-span
+.row
+  inline-block-container(considerWrap:true, wrapSelector:'.wrap')
+
+  //  Nested rows
+  //  - nested rows should not receive width specifications
+  //  - if has colsN class then don't do anything, width will be set by colsN
+  .row:not([class*="cols"])
+    width auto
+
+
+
+//  if we want equal column heights then each child...
+//
+.row-cells
+  display table
+  // xxx does 100% cause problems? Mainly, can it be easily overridden?
+  width 100%
+  & > *
+    // ...must be a cell
+    display table-cell
+    vertical-align top
+
+
+
+
+//  Responsive Grid
+//  ---------------
+
+//  Notes
+//  - use max-width instead of width because we cannot rely on the width 100%
+//    http://www.456bereastreet.com/archive/201101/media_queries_viewport_width_scrollbars_and_webkit_browsers/
+//    the breakpoint for Webkit/FF is not the same, and a width would cause an hscroll in FF
+
+@media mq-screen-xs
+  .row-span
+  .row-cells
+    display block
+    & > *
+      display block
+
+  .row
+    width auto
+    // no gutters when full-width for every column
+    padding-left  columnsGutterWidth
+    padding-right columnsGutterWidth
+    .row
+      padding-left 0
+      padding-right 0
+  [class*=" cols"], [class^="cols"]
+    width 100%
+    display block
+    // !important because it needs to override the .colN:not(...) padding-right rule
+    //padding-right 0
+
+
+
+@media mq-screen-s
+  .row:not([class*="cols"])
+    max-width screen-w-s
+    margin-right auto
+    margin-left auto
+
+
+
+@media mq-screen-m
+  .row:not([class*="cols"])
+    max-width screen-w-m
+    margin-right auto
+    margin-left auto

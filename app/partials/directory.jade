@@ -8,13 +8,14 @@
   .moodshot.hash-overlay
 
   section.introduction.color-theme.blue-theme
-    .introduction-copy.span-8
-      h1.text-heading1.text-color-inverse(ng-bind-html="appText.introduction_title")
-      .introduction-text(bind-compile="appText.introduction_text")
+    .row
+      .introduction-copy
+        h1.text-heading1.text-color-inverse(ng-bind-html="appText.introduction_title")
+        .introduction-text(bind-compile="appText.introduction_text")
 
   section.action-steps-container
-    .action-steps.row.h-gutters-2.align-center
-      a.action-step.span-3.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+    .action-steps.row
+      a.action-step.cols4.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
         h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
@@ -31,12 +32,12 @@
     input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
-  .artifact-cards.span.gutters-1.row.wrap
+  .artifact-cards.span.gutters-1.hbox.wrap
     a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
       .artifact-card-header.group
         .poster
           img(ng-src="{{artifact.thumbnail_url}}")
-        .artifact-card-meta-ribbon.pin-b.row.row-couple-heights
+        .artifact-card-meta-ribbon.pin-b.row-cells
           .artifact-category
           div
             .co2-badge.jar

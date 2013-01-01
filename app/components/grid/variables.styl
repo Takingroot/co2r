@@ -13,6 +13,19 @@ desktopWidth         = 1024px
 desktopWidthWide     = 1324px
 
 
+screen-w-xs  = 320px
+screen-w-s   = 768px
+screen-w-m   = 1024px
+
+mq-screen-xs    = s('only screen and (min-width: %s) and (max-width: %s)', 0px, screen-w-s - 1px)
+mq-screen-xs-up = s('only screen and (min-width: %s)', screen-w-xs)
+
+mq-screen-s     = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
+mq-screen-s-up  = s('only screen and (min-width: %s)', screen-w-s)
+
+mq-screen-m     = s('only screen and (min-width: %s)', screen-w-m)
+mq-screen-m-up  = mq-screen-m
+
 
 //  media queries
 //
@@ -33,3 +46,12 @@ desktop-or-narrower         = s('(max-width: %s)', desktopWidth - 1px)
 desktop                     = s('%s and %s', desktop-or-wider, desktop-or-narrower)
 
 desktop-large-or-wider      = s("(min-width: %s)", desktopWidthWide)
+
+
+
+//  Grid Variables
+//
+columnsCountTotal  = 12
+columnsGutterWidth = 2rem
+grid-gutter-width  = columnsGutterWidth
+grid-gutter-size   = columnsGutterWidth

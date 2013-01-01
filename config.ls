@@ -12,7 +12,7 @@ exports.config =
     javascripts:
       join-to:
         'javascripts/app.js': /^app\/scripts/
-        'components/components.js': /(^app\/components)(?!.*-spec)/
+        'components/app-components.js': /(^app\/components)(?!.*-spec)/
         'javascripts/vendor.js': /^vendor/
       order:
         before:
@@ -32,7 +32,10 @@ exports.config =
 
   plugins:
     stylus: (stylus)->
+
+      stylus.use require 'padding-classes-stylus'
       components-path = 'app/components'
+
       stylus.import components-path + '/base'
       stylus.import components-path + '/layout'
       stylus.import components-path + '/grid'

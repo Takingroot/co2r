@@ -1,7 +1,6 @@
 form.involvement-form(name="form", ng-controller="formFeedbackController", , ng-submit="sendForm()")
-  .row.aligns-bottom
-    textarea.col-3(rows=8, placeholder="{{ appText.feedback_message_prompt }}", ng-model="feedback.message", required)
-    button.btn.btn-inverse.col-3.h-push-1(ng-bind="appText.shoot", ng-disabled="!form.$valid")
+  textarea.span(rows=8, placeholder="{{ appText.feedback_message_prompt }}", ng-model="feedback.message", required)
+  button.btn.btn-inverse.span(ng-bind="appText.shoot", ng-disabled="!form.$valid")
 
 .message-to-user-after-send.modal(style="display:none;")
   .modal-header

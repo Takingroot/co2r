@@ -1,15 +1,15 @@
 header
-  .header-inner.row.align-center.v-push-3
+  .header-inner.row.v-push-3
 
-    .introduction.span-4
+    .introduction.cols5
       h1.aligns-middle
         i.icon-file
         = ' '
         span(bind-compile="appText.register_your_product")
       p(bind-compile="appText.register_introduction")
 
-    form.vintage-box-models.h-push-1(ng-submit="sendForm()", name="artifactRegistrationForm")
-      .row.h-gutters-1
+    form.vintage-box-models.cols7(ng-submit="sendForm()", name="artifactRegistrationForm")
+      .h-gutters-1.hbox
         textarea(rows="6", placeholder="{{appText.your_message}}", ng-model="org.message", required)
         div
           .control-group
@@ -27,12 +27,12 @@ header
           button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
 
 
-section.register-info-container.row.row-couple-heights.v-push-3
-  aside.register-info-aside.row.padding-l
-    .align-right.span-3
+section.register-info-container.row-cells.v-push-3
+  aside.register-info-aside.padding-l.cols5
+    .align-right
       div(bind-compile="appText.register_artifact_left_column")
-  .register-info-body.padding-l
-    div.span-5.v-gutters-3(bind-compile="appText.register_artifact_right_body")
+  .register-info-body.padding-l.cols7
+    div.v-gutters-3(bind-compile="appText.register_artifact_right_body")
 
 
 
