@@ -27,10 +27,10 @@
 
 .artifact-directory
   form.form-search.span.group
-    .hang-left: .hang-inner
+    .input-prepend.span
       label.add-on(for="search-artifacts"): span.icon-search
-    input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
-      placeholder="{{appText.directory_filter_input_prompt}}")
+      input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
+        placeholder="{{appText.directory_filter_input_prompt}}")
 
   .artifact-cards.span.gutters-1.hbox.wrap
     a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
