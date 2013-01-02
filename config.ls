@@ -33,8 +33,8 @@ exports.config =
   plugins:
     stylus: (stylus)->
 
-      stylus.use require 'better-clockhand-stylus'
       stylus.use require 'padding-classes-stylus'
+      stylus.use require 'better-clockhand-stylus'
       components-path = 'app/components'
 
       stylus.import 'better-clockhand'

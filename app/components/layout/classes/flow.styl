@@ -9,3 +9,12 @@
 //
 .hbox
   inline-block-container(considerWrap:true, wrapSelector:'.wrap')
+  // horizontal
+  // TODO no-cascade
+  &.-\-align-w   { text-align:left;   }
+  &.-\-align-hm  { text-align:center; }
+  &.-\-align-e   { text-align:right;  }
+  // vertical
+  &.-\-align-n  > * { vertical-align:top;    }
+  &.-\-align-vm > * { vertical-align:middle; }
+  &.-\-align-s  > * { vertical-align:bottom; }

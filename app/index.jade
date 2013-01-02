@@ -35,7 +35,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
           //-tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
           div.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
           ng-repeat="navItem in navItems")
-            a.nav-link.transparent-link.aligns-middle(href="{{navItem.url}}")
+            a.nav-link.transparent-link(href="{{navItem.url}}")
               i.nav-link-icon(class="icon-{{navItem.icon}}")
               span.nav-link-text {{appText[navItem.label]}}
 
@@ -52,7 +52,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
       .stripe.span.pin-t
 
       .social-bar.social-bar-app.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
-        .social-bar-inner.hbox.aligns-middle.padding-s
+        .social-bar-inner.hbox.--align-vm.padding-s
           div(bind-compile="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
 
