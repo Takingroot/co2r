@@ -17,36 +17,16 @@ screen-w-xs  = 320px
 screen-w-s   = 768px
 screen-w-m   = 1024px
 
-mq-screen-xs    = s('only screen and (min-width: %s) and (max-width: %s)', 0px, screen-w-s - 1px)
-mq-screen-xs-up = s('only screen and (min-width: %s)', screen-w-xs)
+mq-screen-xs     = s('only screen and (min-width: %s) and (max-width: %s)', 0px, screen-w-s - 1px)
+mq-screen-xs-up  = s('only screen and (min-width: %s)', screen-w-xs)
 
 mq-screen-s-down = s('only screen and (max-width: %s)', screen-w-m - 1px)
 mq-screen-s      = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
 mq-screen-s-up   = s('only screen and (min-width: %s)', screen-w-s)
 
-mq-screen-m     = s('only screen and (min-width: %s)', screen-w-m)
-mq-screen-m-up  = mq-screen-m
+mq-screen-m      = s('only screen and (min-width: %s)', screen-w-m)
+mq-screen-m-up   = mq-screen-m
 
-
-//  media queries
-//
-phone-portrait-or-wider     = s('(min-width: %s)', phoneWidthPortrait)
-phone-portrait-or-narrower  = s('(max-width: %s)', phoneWidthLandscape - 1px)
-phone-portrait              = s('%s and %s', phone-portrait-or-wider, phone-portrait-or-narrower)
-
-phone-landscape-or-wider    = s('(min-width: %s)', phoneWidthLandscape)
-phone-landscape-or-narrower = s('(max-width: %s)', tabletWidthLandscape - 1px)
-phone-landscape             = s('%s and %s', phone-landscape-or-wider, phone-landscape-or-narrower)
-
-tablet-or-wider             = s('(min-width: %s)', tabletWidthLandscape)
-tablet-or-narrower          = s('(max-width: %s)', desktopWidth - 1px)
-tablet                      = s('%s and %s', tablet-or-wider, tablet-or-narrower)
-
-desktop-or-wider            = s('(min-width: %s)', desktopWidth)
-desktop-or-narrower         = s('(max-width: %s)', desktopWidth - 1px)
-desktop                     = s('%s and %s', desktop-or-wider, desktop-or-narrower)
-
-desktop-large-or-wider      = s("(min-width: %s)", desktopWidthWide)
 
 
 

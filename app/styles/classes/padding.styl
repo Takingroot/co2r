@@ -1,0 +1,33 @@
+
+
+
+generate-padding-classes(size-name, size-value)
+  .padding-{size-name}  { padding: size-value   }
+  .hpadding-{size-name} { padding: _ size-value }
+  .vpadding-{size-name} { padding: size-value _ }
+
+
+
+padding-size-l = 3rem
+padding-size-m = 2rem
+padding-size-s = 1rem
+
+generate-padding-classes('m', padding-size-m)
+generate-padding-classes('s', padding-size-s)
+
+@media mq-screen-xs
+  generate-padding-classes('l', padding-size-l)
+
+
+
+padding-size-l = 4rem
+
+@media mq-screen-s
+  generate-padding-classes('l', padding-size-l)
+
+
+
+padding-size-l = 5rem
+
+@media mq-screen-m-up
+  generate-padding-classes('l', padding-size-l)
