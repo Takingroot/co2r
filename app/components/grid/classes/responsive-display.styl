@@ -24,7 +24,7 @@
 //
 //  Tablets & small desktops only
 //
-@media tablet-or-narrower
+@media mq-screen-s-down
   // Hide everything else
   .hidden-desktop    { display: inherit !important }
   .visible-desktop   { display: none !important }
@@ -38,7 +38,7 @@
 //
 //  Phones only
 //
-@media phone-landscape-or-narrower
+@media mq-screen-xs
   // Hide everything else
   .hidden-desktop    { display: inherit !important }
   .visible-desktop   { display: none !important }
@@ -46,3 +46,4 @@
   .visible-phone     { display: inherit !important } // Use inherit to restore previous behavior
   // Hide
   .hidden-phone      { display: none !important }
+
