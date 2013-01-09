@@ -377,6 +377,29 @@ require.register("jasonkuhrt-scroll-over/index.js", function(exports, require, m
 }).call(this);
 
 });
+require.register("yields-slug/index.js", function(exports, require, module){
+
+/**
+ * Generate a slug from the given `str`.
+ *
+ * example:
+ *
+ *        generate('foo bar');
+ *        // > foo-bar
+ *
+ * @param {String} str
+ * @param {String} repl defaulted to `-`
+ * @return {String}
+ */
+
+module.exports = function (str, repl) {
+  return str.toLowerCase()
+    .replace(/[^a-z0-9]/g, ' ')
+    .replace(/^ +| +$/g, '')
+    .replace(/ +/g, repl || '-')
+};
+
+});
 require.register("components/index.js", function(exports, require, module){
 
 
@@ -392,6 +415,8 @@ require.alias("jasonkuhrt-scroll-over/index.js", "components/deps/scroll-over/in
 require.alias("timoxley-throttle/index.js", "jasonkuhrt-scroll-over/deps/throttle/index.js");
 
 require.alias("avetisk-defaults/index.js", "jasonkuhrt-scroll-over/deps/defaults/index.js");
+
+require.alias("yields-slug/index.js", "components/deps/slug/index.js");
 
 if (typeof exports == "object") {
   module.exports = require("components");

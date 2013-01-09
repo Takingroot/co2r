@@ -30,8 +30,7 @@ co2r.filters
       dict[keyword] ? keyword
 
 .filter \slugify, ->
-    ->
-      _.str.slugify it
+    -> component('slug') it
 
 # return string prefixed with mailto if email flag is true
 .filter \prefixMailto, ->
@@ -48,8 +47,9 @@ co2r.filters
 
 .filter \altLanguage, ->
   ->
-    | it is \en => \fr
-    | it is \fr => \en
+    switch it
+    when \en then \fr
+    when \fr then \en
 
 .filter \languageName, ->
   (language-code)->
