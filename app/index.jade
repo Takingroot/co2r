@@ -51,7 +51,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
       //- .stripe div just for decoration
       .stripe.span.pin-t
 
-      .social-bar.social-bar-app.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
+      .social-bar.social-bar-app.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
         .social-bar-inner.hbox.--align-vm.padding-s
           div(bind-compile="appText.social_bar_text")
           .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05

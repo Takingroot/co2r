@@ -54,7 +54,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
   .timeline-conductor.group(column-width="column_width", column-count="reports.length")
 
     section.timeline-header
-      .timeline-header-inner.dark-theme.span(scrollfix="{from:'.timeline-header'}")
+      //-{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}
+      .timeline-header-inner.dark-theme.span(scrollfix="{begin:{element:'.timeline-header'}}")
         .timeline-navigation
           button.c-btn.timeline-navigation-left.pin-l(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-chevron-left.align-middle
           button.c-btn.timeline-navigation-right.pin-r(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
@@ -127,7 +128,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         span(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
-.social-bar.social-bar-artifact.hidden-phone(scrollfix="{until:'.app-footer', windowAnchor:'bottom', padding:-16}")
+
+.social-bar.social-bar-artifact.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
   .social-bar-inner.hbox.wrap.--align-vm.padding-s
     span(bind-compile="appText.social_bar_artifact_text | interpolate:artifact.name")
     //-span Tell your friends about {{artifact.name}}!

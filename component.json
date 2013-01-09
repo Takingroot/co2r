@@ -3,7 +3,7 @@
   "dependencies": {
     "jasonkuhrt/pin": "*",
     "timoxley/font-awesome": "*",
-    "timoxley/scroll-position": "*"
+    "jasonkuhrt/scroll-over": "*"
   },
   "scripts": [
     "index.js"

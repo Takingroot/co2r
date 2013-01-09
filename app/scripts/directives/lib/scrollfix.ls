@@ -3,75 +3,107 @@ co2r.directives
 
 
 .directive \scrollfix, ($timeout, $window)->
-  link: (scope, el, attrs)->
-    scrollfix = scope.$eval attrs.scrollfix
-    scrollfix.window-anchor ?= \top
-    scrollfix.padding ?= 0
-    # todo make part of the config object
-    scrollfix-direction = \from
+  scope: on
+  link: (scope, element, attrs)->
 
-    if scrollfix.until?
-      proxy-el = $ scrollfix.until
-      scrollfix-direction = \until
-    else if scrollfix.from?
-      proxy-el = $ scrollfix.from
-      scrollfix-direction = \from
+    # TODO
+    # - classes for window anchor?
+    # - ability to use a calculation instead of an element for bumper-end
+
+    #scroll-position = component \scroll-position
+    scroll-over = component \scroll-over
+    config = scope.$eval attrs.scrollfix
+
+    # CSS hooks
+    css-classes =
+      can-scrollfix: \can-scrollfix
+      is-scrollfix : \is-scrollfix
+      # can-scrollfix-begin-window-anchor-top
+      # can-scrollfix-begin-window-anchor-bottom
+      # can-scrollfix-end-window-anchor-top
+      # can-scrollfix-end-window-anchor-bottom
+
+    # create css hooks
+    element.add-class css-classes.can-scrollfix
+
+    # create bumper objects
+    bumper-begin = generate-bumper config.begin
+    bumper-end   = generate-bumper config.end
+
+
+    # bind scroll events to nodes
+
+    if bumper-begin.element
+      generate-bumper-events bumper-begin, \begin
     else
-      throw 'scrollfix without from or until is undefined'
+      # assume begin is 0
+      toggle-scrollfix on
 
-    classes =
-      can-scrollfix: "can-scrollfix can-scrollfix-#{scrollfix.window-anchor}"
-      is-scrollfixed: \is-scrollfixed
-
-    el.add-class classes.can-scrollfix
-
+    if bumper-end.element
+      generate-bumper-events bumper-end, \end
+    else
+      # do nothing, after begin, never stop
 
 
+
+    #  @param  point    'begin' || 'end'
     #
-    # We need to update proxy-el's position on numerous occasions
+    function generate-bumper-events(bumper, point)
+      is-begin = point is \begin
+      console.log bumper
+      scroll-over bumper.element[0], {window-point:bumper.window-anchor}, (direction)->
+        if direction is \inward
+          console.log point, \scrollIn, element
+          toggle-scrollfix (if is-begin then on  else off)
+        else if direction is \outward
+          console.log point, \scrollOut
+          toggle-scrollfix (if is-begin then off else on)
+
+      /*
+      bumper-y = scroll-position bumper.element, {offset:100} #bumper.offset
+      bumper-y.on \scrollIn , (e)->
+        console.log point, e, \scrollIn
+        toggle-scrollfix (if is-begin then on  else off)
+      bumper-y.on \scrollOut, (e)->
+        console.log point, e, \scrollOut
+        toggle-scrollfix (if is-begin then off else on)
+      */
+
+
+
+    #  @param  to-state    <Boolean>
     #
+    function toggle-scrollfix(to-state)
+      element.toggle-class css-classes.is-scrollfix, to-state
 
-    # first time
-    # Big, unstable, hack
-    # 2 second timeout so that even on page load this
-    # directive will correctly position elements
+
+
+    #  @param  config
     #
-    # There must be a better way to get this working
-    # on page load?
-    $timeout refresh-scrolled-to-state, 2000
-
-    # page change
-    scope.$root.$on \$routeChangeSuccess, ->
-      # delay execution until program is idle
-      $timeout refresh-scrolled-to-state, 0
-
-    $(window).scroll refresh-scrolled-to-state
-    $(window).resize refresh-scrolled-to-state
-
-
-    function refresh-scrolled-to-state
-      scrollfix-state = calc-scrollfix-state $($window), proxy-el
-      #console.log 'scrollfix-state', scrollfix-state
-      el.toggleClass classes.is-scrollfixed, scrollfix-state
-
-    # return the element's scrollfix state
-    # when window-crosses-proxy
-    function calc-scrollfix-state(window-el, proxy-el)
-      window-y = window-el.scrollTop! - scrollfix.padding
-      if scrollfix.window-anchor is \bottom
-        window-y += window-el.height!
+    #    {
+    #      [begin: <CSSSelector> || <Bumper>]
+    #      [end  : <CSSSelector> || <Bumper>]
+    #    }
+    #
+    #    @Bumper  {element:<CSSSelector>, [offset:#], [window-anchor:'top' || 'botom']}
+    #
+    function generate-bumper(config)
+      if typeof config is \object
+        #console.log calc-window-anchor(config.window-anchor)
+        # assume config.end.element is selector, convert to node, assign to bumper-end
+        element: $(config.element)
+        window-anchor: config.window-anchor or \start
+      else
+        # config is selector, or default
+        element: if config then $(config) or null
+        window-anchor: \start
 
 
-      proxy-y  = proxy-el.offset!top
-
-      is-window-above-proxy = window-y <= proxy-y
-      #console.log 'is-window-above-proxy', is-window-above-proxy, 'window-y', window-y, 'proxy-y', proxy-y
-
-      if is-window-above-proxy
-        switch scrollfix-direction
-          | \from  => off
-          | \until => on
-      else # window is moving upward
-        switch scrollfix-direction
-          | \from  => on
-          | \until => off
+    #  @param  anchor-point    'bottom' || 'top' || undefined
+    #
+    function calc-window-anchor(anchor-point)
+      #console.log anchor-point
+      switch anchor-point
+      when \bottom then $(window).height!
+      when \center then $(window).height / 2
+      else 0 # top || anything else

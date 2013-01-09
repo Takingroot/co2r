@@ -3,7 +3,7 @@
 .row-cells
 
   aside.faq-toc-container.cols4
-    .faq-toc(ui-scrollfix="+0")
+    .faq-toc(scrollfix="{begin:{element:'.faq-toc-container'}}")
       ul.nav.nav-pills.nav-stacked
         li(ng-repeat="faq in faqs")
           a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
