@@ -50,13 +50,13 @@ co2r.directives
     #
     function generate-bumper-events(bumper, point)
       is-begin = point is \begin
-      console.log bumper
+      #console.log bumper
       scroll-over bumper.element[0], {window-point:bumper.window-anchor}, (direction)->
         if direction is \inward
-          console.log point, \scrollIn, element
+          #console.log point, \scrollIn, element
           toggle-scrollfix (if is-begin then on  else off)
         else if direction is \outward
-          console.log point, \scrollOut
+          #console.log point, \scrollOut
           toggle-scrollfix (if is-begin then off else on)
 
       /*
