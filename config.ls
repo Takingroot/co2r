@@ -1,6 +1,9 @@
 # http://brunch.readthedocs.org/en/latest/config.html
 exports.config =
 
+  server:
+    port: 9898
+
   paths:
     public: '.public'
 
@@ -44,5 +47,5 @@ exports.config =
 
 
       stylus.import 'app/styles/lib/variables'
+      stylus.import 'app/styles/variables'
       stylus.import 'app/styles/lib/functions'
-

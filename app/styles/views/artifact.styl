@@ -55,14 +55,15 @@ body.artifact
       margin-top gd(1/4)
 
     .contact-method
-      square(40px)
-      line-height 40px
+      square(38px)
+      line-height 38px
       text-align center
       i
         // undo fontawesome
         width auto
 
-        font-size 3.25rem
+        font-size 2.75rem
+        line-height 0.9
         color contact-method-color
         &:hover
           color contact-method-color-hover
@@ -71,12 +72,14 @@ body.artifact
     .contact-method-website
     .contact-method-email
     .contact-method-other
+      font-size 3.25rem
       background-color contact-method-color
-      padding-top 1px
-      border-radius 4px
+      padding-top 9px
+      border-radius 5px
       &:hover
         background-color contact-method-color-hover
       i
+        vertical-align top
         font-size 1.5rem
         color background-color-value
         &:hover

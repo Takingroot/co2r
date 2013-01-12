@@ -206,7 +206,6 @@ require.relative = function(parent) {
   return localRequire;
 };
 
-
 require.register("timoxley-throttle/index.js", function(exports, require, module){
 /**
  * Module exports
@@ -409,7 +408,6 @@ module.exports = function requireForwarder(name) {
 };
 
 });
-
 
 require.alias("jasonkuhrt-scroll-over/index.js", "components/deps/scroll-over/index.js");
 require.alias("timoxley-throttle/index.js", "jasonkuhrt-scroll-over/deps/throttle/index.js");
