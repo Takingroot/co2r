@@ -41,6 +41,7 @@ exports.config =
       components-path = 'app/components'
 
       stylus.import 'better-clockhand'
+      stylus.import components-path + '/scale.styl'
       stylus.import components-path + '/base'
       stylus.import components-path + '/layout'
       stylus.import components-path + '/grid'

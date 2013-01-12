@@ -37,12 +37,18 @@ section.organization.h-gutters-4.hidden-phone
         .contact-methods.hbox.h-gutters-05
           a.contact-method(class="contact-method-{{contact_method.contact_type}}", href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
             i(class="icon-{{contact_method.contact_type | to_icon_name}}")
-    .organization-twitter-timeline.padding-m.cols7
-      .tweet-items.v-gutters-1
-        .tweet-item.span-4(ng-repeat="tweet in organizationTweets")
-          .tweet-meta
-            span.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
-          p.tweet-body(ng-bind-html="tweet.text | linky")
+    .cols7
+      .organization-twitter-timeline.twitter-timeline
+        header
+          h4
+            i.icon-twitter-sign
+            span.title(ng-bind="artifact.organization.name")
+        .tweet-items
+          .tweet-item.span-4(ng-repeat="tweet in organizationTweets")
+            .tweet-item-inner
+              .tweet-meta
+                span.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
+              p.tweet-body(ng-bind-html="tweet.text | linky")
 
 
 
