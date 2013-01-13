@@ -1,25 +1,37 @@
-//  device measurements
 //
+//  Media Queries
+//  --------------------------------------------------
+//
+//  References:
 //  http://rachelmccollin.co.uk/blog/iphone5-does-it-break-your-responsive-design/
-//
-phoneWidthPortrait   = 320px
-// iPhone 4 was 480, iPhone5 is 568
-phoneWidthLandscape  = 568px
-tabletWidthLandscape = 800px
-desktopWidth         = 1024px
-desktopWidthWide     = 1324px
 
+
+
+//  Screen widths
+//  -------------------------
 
 screen-w-xs  = 320px
 screen-w-s   = 768px
-screen-w-m   = 1024px
+screen-w-m   = 980px
+screen-w-l   = 1200px
 
-mq-screen-xs     = s('only screen and (min-width: %s) and (max-width: %s)', 0px, screen-w-s - 1px)
-mq-screen-xs-up  = s('only screen and (min-width: %s)', screen-w-xs)
 
-mq-screen-s-down = s('only screen and (max-width: %s)', screen-w-m - 1px)
-mq-screen-s      = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
-mq-screen-s-up   = s('only screen and (min-width: %s)', screen-w-s)
 
-mq-screen-m      = s('only screen and (min-width: %s)', screen-w-m)
-mq-screen-m-up   = mq-screen-m
+// Media Queries
+// -------------------------
+
+screen-xs-down = s('only screen and (max-width: %s)', screen-w-s - 1px)
+screen-xs      = screen-xs-down
+screen-xs-up   = s('only screen and (min-width: %s)', screen-w-xs)
+
+screen-s-down  = s('only screen and (max-width: %s)', screen-w-m - 1px)
+screen-s       = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-s, screen-w-m - 1px)
+screen-s-up    = s('only screen and (min-width: %s)', screen-w-s)
+
+screen-m-down  = s('only screen and (max-width: %s)', screen-w-m - 1px)
+screen-m       = s('only screen and (min-width: %s) and (max-width: %s)', screen-w-m, screen-w-l - 1px)
+screen-m-up    = s('only screen and (min-width: %s)', screen-w-m)
+
+screen-l-down  = s('only screen and (max-width: %s)', screen-w-l - 1px)
+screen-l-up    = s('only screen and (min-width: %s)', screen-w-l)
+screen-l       = screen-l-up

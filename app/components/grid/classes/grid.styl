@@ -55,7 +55,7 @@ for n in 1..12
 
 
 
-@media mq-screen-xs
+@media screen-xs
   .row-cells
     display block
     & > *
@@ -75,13 +75,13 @@ for n in 1..12
 
 
 
-@media mq-screen-s
+@media screen-s
   .row:not([class*="cols"])
     max-width screen-w-s
     margin-right auto
     margin-left auto
 
-@media mq-screen-s-up
+@media screen-s-up
   [class*=" cols"], [class^="cols"]
     &:not(:first-child)
       padding-left  (grid-gutter-width / 2)
@@ -93,7 +93,7 @@ for n in 1..12
       margin-left fluid-columns(columnsCount:n)
 
 
-@media mq-screen-m
+@media screen-m
   .row:not([class*="cols"])
     max-width screen-w-m
     margin-right auto
