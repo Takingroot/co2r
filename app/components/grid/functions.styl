@@ -3,18 +3,18 @@
 
 // grid units
 gd(n=1)
-  gridUnit * n
+  grid-unit * n
 
 
 cols(n=1)
-  columnSize = gd(n*gridUnitsPerColumn)
+  columnSize = gd(n*grid-column-unit-count)
   // -1 because there is no gutter for the first/a single column
   gutterSize = gd(n - 1)
   columnSize + gutterSize
 
 
 fluid-columns(columnsCount=1)
-  spanWidth = unit((columnsCount / columnsCountTotal) * 100, '%')
+  spanWidth = unit((columnsCount / grid-row-column-count) * 100, '%')
 
   //  return
   //

@@ -64,8 +64,8 @@ for n in 1..12
   .row
     width auto
     // no gutters when full-width for every column
-    padding-left  grid-gutter-width
-    padding-right grid-gutter-width
+    padding-left  grid-column-gutter-width
+    padding-right grid-column-gutter-width
     .row
       padding-left 0
       padding-right 0
@@ -84,9 +84,9 @@ for n in 1..12
 @media screen-s-up
   [class*=" cols"], [class^="cols"]
     &:not(:first-child)
-      padding-left  (grid-gutter-width / 2)
+      padding-left  (grid-column-gutter-width / 2)
     &:not(:last-child)
-      padding-right (grid-gutter-width / 2)
+      padding-right (grid-column-gutter-width / 2)
 
   for n in 1..12
     .grid-push{n}
