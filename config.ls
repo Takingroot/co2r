@@ -43,6 +43,8 @@ exports.config =
       stylus.import 'better-clockhand'
       stylus.import components-path + '/scale.styl'
       stylus.import components-path + '/calc-line-height-ratio.styl'
+      stylus.import components-path + '/percentage.styl'
+      stylus.import components-path + '/block-align.styl'
       stylus.import components-path + '/base'
       stylus.import components-path + '/layout'
       stylus.import components-path + '/grid'

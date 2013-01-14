@@ -5,7 +5,8 @@
   &:not(:last-child)
     border-bottom 1px solid lightgrey
 
-//.report-title
+.report-title
+  block-align center
 
 .report-header
   margin-top gd(3)
@@ -55,6 +56,10 @@
 
 .report-section-co2-sources
   padding-bottom gd(2)
+
+  .report-header
+    block-align center
+
   .pie-label
     font-weight bold
     opacity 0.85

@@ -1,0 +1,37 @@
+
+
+
+//
+//  Row-cells
+//  --------------------------------------------------
+//
+//  Description:
+//  Children heights are linked
+
+
+
+.row-cells
+  display table
+  block-align center
+  & > *
+    display table-cell
+    vertical-align top
+
+@media screen-xs
+  .row-cells
+    max-width 400px
+    display block
+    & > *
+      display block
+
+@media screen-s
+  .row-cells
+    max-width screen-w-s
+
+@media screen-m
+  .row-cells
+    max-width screen-w-m
+
+@media screen-l
+  .row-cells
+    max-width screen-w-l

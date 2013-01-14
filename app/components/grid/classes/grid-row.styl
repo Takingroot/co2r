@@ -1,0 +1,50 @@
+
+
+
+//
+//  Row
+//  --------------------------------------------------
+//
+//  Notes:
+//  use max-width instead of width because we cannot rely on the width 100%
+//  http://www.456bereastreet.com/archive/201101/media_queries_viewport_width_scrollbars_and_webkit_browsers/
+//  the breakpoint for Webkit/FF is not the same, and a width would cause an hscroll in FF
+
+
+
+.row
+  block-align center
+  & > *
+    display inline-block
+    vertical-align top
+
+  //  Nested rows
+  //  - nested rows should not receive width specifications
+  //  - if has colsN class then don't do anything, width will be set by colsN
+  .row:not([class*="cols"])
+    width auto
+
+
+
+@media screen-xs
+  .row
+    max-width 400px
+    // no gutters when full-width for every column
+    padding-left  grid-column-gutter-width
+    padding-right grid-column-gutter-width
+    white-space normal
+    .row
+      padding-left 0
+      padding-right 0
+
+@media screen-s
+  .row:not([class*="cols"])
+    max-width screen-w-s
+
+@media screen-m
+  .row:not([class*="cols"])
+    max-width screen-w-m
+
+@media screen-l
+  .row:not([class*="cols"])
+    max-width screen-w-l

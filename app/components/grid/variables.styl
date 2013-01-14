@@ -1,15 +1,115 @@
+
+
+
 //
 //  Grid Variables
 //  --------------------------------------------------
+//
+//  References:
+//  1. Grid Systems in Graphic Design
+//     http://www.amazon.com/Systems-Graphic-Systeme-Visuele-Gestaltung/dp/3721201450/ref=sr_1_2?s=books&ie=UTF8&qid=1358098114&sr=1-2&keywords=grid
+//
+//  Exports:
+//  vr  grid-unit
+//  vr  grid-column
+//  vr  grid-row
+//  fn  (grid-columns|gc)
+//  fn  (grid-units|gd)
 
 
-text-size-base           = 16px
 
-text-line-height-base    = calc-line-height-ratio(text-size-base, 30px)
+//  Define a body-copy font-size
 
-grid-unit                = unit(text-line-height-base, 'rem')
+text-size-base = 14px
 
-grid-column-unit-count   = 3
+//  Define the multipler used to calculate actual
+//  line-height. This number * text-size-base equals
+//  the line-height.
+
+//  Note this calculation is made during run-time
+//  by CSS (therefore the actual calculation CSS
+//  makes is root-element property line-height
+//  multiplied by root element property font-size).
+//  Also note a compile-time version of this
+//  calculation is made to define our grid-unit
+//  size (...see next definition).
+
+text-line-height-base = 1.875
+
+
+
+//  Grid Unit
+//  ---------
+
+//  Use text-line-height-base as our grid unit
+
+//  Whereas text-line-height-base is only useable
+//  for sizing the CSS line-height property,
+//  grid-unit is applicable for any CSS property
+//  (margin, border-radius, etc.)
+
+//  The CSS unit behind grid-unit is a rem so that
+//  grid-unit continues to an accurate size
+//  following changes to the root CSS font-size.
+//  A use-case is respnsive design wherein
+//  the root font-size is adjusted at key break-poitns.
+
+grid-unit = unit(text-line-height-base, 'rem')
+
+// Define a function for calculating grid-units
+
+grid-units(n=1)
+  grid-unit * n
+
+gd = grid-units
+
+
+
+//  Grid Column
+//  -----------
+
+//  A grid-unit is the smallest unit in a grid
+//  system. A larger unit, grid-column, is more
+//  useful for some tasks.
+
+//  While the width of space separating one grid-column
+//  from another should most likely always be
+//  one grid-unit, that rule is made flexible
+//  here by defining a gutter variable in additon
+//  to the grid-unit variable
+
 grid-column-gutter-width = grid-unit
 
-grid-row-column-count    = 12
+//  Define how many grid-units constitute a
+//  grid-column
+
+grid-column-unit-count   = 3
+
+//  Calculate grid-column size
+
+grid-column = grid-units(grid-column-unit-count)
+
+//  Define a function for calculating grid-columns
+
+grid-columns(n=1)
+  (grid-column * n) + (grid-column-gutter-width * (n - 1))
+
+gc = grid-columns
+
+
+
+//  Grid Row
+//  --------
+
+//  A grid-row is the widest unit in a grid system.
+//  Like grid-column, it is sometimes more useful
+//  than thinking in terms of a grid-unit.
+
+//  Define how many grid-columns constitute a
+//  grid-row
+
+grid-row-column-count = 12
+
+//  Calculate grid-row size
+
+grid-row = grid-columns(grid-row-column-count)

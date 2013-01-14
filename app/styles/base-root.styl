@@ -1,3 +1,6 @@
+
+
+
 //
 //  Base Structure
 //  --------------------------------------------------
@@ -11,9 +14,15 @@ body
 html
   padding 0
   margin 0
-  font-size text-size-base
-  line-height text-line-height-base
-  color baseTextColor
-  font-family baseTextFont
+
 body
-  background-color baseBgColor
+  background-color   baseBgColor
+  font-size          text-size-base
+  line-height        text-line-height-base
+  color              baseTextColor
+  font-family        baseTextFont
+
+@media screen-l-up
+  body
+    // TODO extract magic number
+    font-size 16px

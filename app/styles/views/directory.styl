@@ -11,21 +11,28 @@ body.directory
 
   .home-introduction
     &.closed
-      height 56px
+      height l
       overflow hidden
 
   .introduction
     background-image url('/images/white-hash-20.png')
 
   .introduction-toggler
-    font-size 30px
-    padding .55em
+    font-size s
+    padding .15em
+    height l
+    width l
 
   .action-steps-container
     background-color lighten(gray, 5)
     background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
     padding-top gd(2)
     padding-bottom @padding-top
+
+  .action-step:hover
+    p
+      color textColorDark
+
 
 
 
@@ -59,7 +66,7 @@ body.directory
   .add-on
     display inline-block
     text-align center
-    padding-top 19px
+    padding-top 0.5rem
     height input-height
     width input-height
     font-size 2.5rem

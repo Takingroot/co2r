@@ -4,6 +4,9 @@
 .app-header
   border-bottom 1px solid darkMuted
 
+.app-logo img
+  max-height 130px
+
 .app-navbar
   .nav-link
     padding 0.5rem 1rem
@@ -23,8 +26,6 @@
 
 
 @media screen-xs
-  .app-logo img
-    max-width 180px
   .app-brand-container
     border-bottom 1px solid gray
     text-align center
@@ -39,11 +40,12 @@
     padding 2rem!important
 
 @media screen-s-up
+  .app-logo
+    text-align right
   .app-brand-container
     padding-right grid-column-gutter-width !important
     // adjust
     padding-top    3rem
-    padding-bottom 3rem
     //  new
   .app-navbar
     border-left 1px solid gray

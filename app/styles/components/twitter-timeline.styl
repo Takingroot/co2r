@@ -9,8 +9,6 @@
 
 
 .twitter-timeline
-  border-left 1px solid white
-  border-right 1px solid white
   header
     padding xs m
     background-color white
@@ -19,16 +17,18 @@
     i
       margin-right s
       font-size l
+      color blue
       vertical-align middle
 
 .tweet-items {}
 
-.tweet-item:not(:last-child)
-  border-bottom 1px solid white
+.tweet-item
+  margin-top 2px
 
 .tweet-item-inner
   padding m
   padding-top (m * 0.6)
+  background-color white
 
 .tweet-body
   padding-top (m * 0.4)

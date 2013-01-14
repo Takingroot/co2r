@@ -1,0 +1,30 @@
+//
+//  Grid Columns
+//  --------------------------------------------------
+
+//  Notes
+//
+//- Source-order matters for CSS class priority
+//  .cols must be defined before media queries
+//  so that those queries can override padding-right
+//
+//- keep specificity low
+//  we cannot use :not, :last-child, etc. selectors here
+//  or else we destroy upstream class opportunities for padding, and/or width
+//
+
+for n in 1..grid-row-column-count
+  .cols{n}
+    width fluid-columns(count:n)
+
+@media screen-xs
+  [class*=" cols"], [class^="cols"]
+    width 100%
+    display block
+
+@media screen-s-up
+  [class*=" cols"], [class^="cols"]
+    &:not(:first-child)
+      padding-left  (grid-column-gutter-width / 2)
+    &:not(:last-child)
+      padding-right (grid-column-gutter-width / 2)
