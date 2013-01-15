@@ -25,12 +25,12 @@ section.about.color-theme.yellow-theme
 
 
 
-section.organization.h-gutters-4.hidden-phone
-  .row
-    .organization-about.cols5.vpadding-l
-      .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;")
+section.organization.hidden-phone
+  .row.vpadding-s
+    .organization-about.cols5
+      .organization-avatar(style="width:100px;height:100px;margin-bottom:10px;", ng-show="artifact.organization.image_url")
         a(href="{{ artifact.organization.website_url }}"): img(ng-src="{{artifact.organization.image_url}}")
-      h2.organization-name.text-heading3.v-push-2(bind-compile="artifact.organization.name")
+      h2.organization-name.text-heading3(bind-compile="artifact.organization.name")
       .organization-description(bind-compile="artifact.organization.description")
       .organization-contact.v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
         p(bind-compile="appText.artifact_business_card_contact_lead_in")
