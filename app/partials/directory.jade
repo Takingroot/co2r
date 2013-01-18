@@ -10,7 +10,7 @@
   section.introduction.color-theme.blue-theme
     .row.vpadding-m
       .introduction-copy.cols12
-        h1.text-heading1.text-color-inverse(ng-bind-html="appText.introduction_title")
+        h1.text-heading1.text-color-inverse(bind-compile="appText.introduction_title")
         .introduction-text(bind-compile="appText.introduction_text")
 
   section.action-steps-container
@@ -19,7 +19,7 @@
         h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
-          span(ng-bind-html="appText[step.title]")
+          span(bind-compile="appText[step.title]")
         p.text-small(bind-compile="appText[step.body]")
 
 
@@ -45,4 +45,4 @@
               br
               span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artifact-card-body
-        h1.organization-name.text-heading3(ng-bind-html="artifact.name | highlight:searchForArtifactName")
+        h1.organization-name.text-heading3(bind-html="artifact.name | highlight:searchForArtifactName")
