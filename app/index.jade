@@ -32,8 +32,9 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
             p.text-small(bind-compile="appText.branding_subtext")
 
         div.app-navbar.cols4
-          //-tooltip="navItem.tooltipConfig", ng-repeat="navItem in navItems")
-          div.nav-item(ng-class="{'current-view':isCurrentView(navItem.url)}", class="{{navItem.label | slugify}}",
+          div.nav-item(
+          ng-class="{'current-view':isCurrentView(navItem.url)}",
+          class="{{navItem.label | slugify}}",
           ng-repeat="navItem in navItems")
             a.nav-link.transparent-link(href="{{navItem.url}}")
               i.nav-link-icon(class="icon-{{navItem.icon}}")

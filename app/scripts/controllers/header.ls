@@ -40,16 +40,3 @@ co2r.controllers.controller \header, ($scope, $location, $filter, preferences-st
     * label: "faq"
       url: "/faq"
       icon: \info-sign
-
-  _.each $scope.nav-items, (nav-item)->
-    nav-item.tooltip-config =
-      placement: \bottom
-      html: yes
-      classes:  'nav-item'
-      title: render-tooltip-content nav-item
-
-  function render-tooltip-content(nav-item)
-    "
-      <h1 class='text-heading4 tooltip-content-title'>{{appText.#{nav-item.label}}}</h1>
-      <div class='text-small tooltip-content-body'>{{appText.#{nav-item.label}_nav_text_description}}</div>
-    "
