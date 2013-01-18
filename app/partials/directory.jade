@@ -37,12 +37,10 @@
       .artifact-card-header.group
         .poster
           img(ng-src="{{artifact.thumbnail_url}}")
-        .artifact-card-meta-ribbon.pin-b.row-cells
-          .artifact-category
-          div
-            .co2-badge.jar
-              span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
-              br
-              span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
+        .artifact-card-meta-ribbon.pin-b
+          .co2-badge.jar
+            span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
+            br
+            span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artifact-card-body
         h1.organization-name.text-heading3(bind-html="artifact.name | highlight:searchForArtifactName")
