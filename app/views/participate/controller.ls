@@ -1,9 +1,9 @@
-co2r.controllers.controller \participate, ($scope, partial-path)->
+co2r.controllers.controller \participate, ($scope, template-partial)->
 
   $scope.$watch \appText.participate, (new-val)->
     $scope.$root.page-title = new-val
 
-  $scope.partial-path = partial-path
+  $scope.template-partial = template-partial
 
   $scope.other-things-you-can-do =
     \feedback

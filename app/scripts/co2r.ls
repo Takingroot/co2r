@@ -1,3 +1,6 @@
+
+
+
 window.co2r =
   services:    angular.module \co2r.services, []
   filters:     angular.module \co2r.filters, []
@@ -14,13 +17,15 @@ window.co2r =
                 \co2r.directives
                 ]
 
-co2r.app.config ($route-provider, partialPath, $location-provider)->
+
+
+co2r.app.config ($route-provider, template-view, $location-provider)->
   $location-provider.html5-mode on
 
-  $route-provider.when '/',                                  {redirect-to: '/directory'}
-  $route-provider.when '/directory',                         {template-url: partial-path(\directory),      controller: \directory}
-  $route-provider.when '/mission',                           {template-url: partial-path(\mission),        controller: \mission}
-  $route-provider.when '/faq',                               {template-url: partial-path(\faq),            controller: \faq, reload-on-search: no}
-  $route-provider.when '/register-your-product',             {template-url: partial-path(\register),       controller: \register}
-  $route-provider.when '/participate',                       {template-url: partial-path(\participate),    controller: \participate}
-  $route-provider.when '/:artifact',                         {template-url: partial-path(\artifact),       controller: \artifact}
+  $route-provider.when '/',                        {redirect-to: '/directory'}
+  $route-provider.when '/directory',               {template-url: template-view(\directory),   controller: \directory}
+  $route-provider.when '/mission',                 {template-url: template-view(\mission),     controller: \mission}
+  $route-provider.when '/faq',                     {template-url: template-view(\faq),         controller: \faq, reload-on-search: no}
+  $route-provider.when '/register-your-product',   {template-url: template-view(\register),    controller: \register}
+  $route-provider.when '/participate',             {template-url: template-view(\participate), controller: \participate}
+  $route-provider.when '/:artifact',               {template-url: template-view(\artifact),    controller: \artifact}

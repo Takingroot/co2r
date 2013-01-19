@@ -4,4 +4,4 @@ section.can-do.row-cells(ng-repeat="canDo in otherThingsYouCanDo")
       h2(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_title']")
       .description(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_description']")
   .padding-l
-    ng-include(src="partialPath('can-do-'+canDo)")
+    ng-include(src="templatePartial('can-do-'+canDo)")

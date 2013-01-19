@@ -14,9 +14,9 @@ exports.config =
   files:
     javascripts:
       join-to:
-        'javascripts/app.js': /^app\/scripts/
-        'components/app-components.js': /(^app\/components)(?!.*-spec)/
         'javascripts/vendor.js': /^vendor/
+        'components/app-components.js': /(^app\/components)(?!.*-spec)/
+        'javascripts/app.js': /(^app\/scripts)|(^app\/views)/
       order:
         before:
           'vendor/jquery.js'
@@ -26,14 +26,23 @@ exports.config =
           'scripts/co2r.ls'
     stylesheets:
       join-to:
-        'components/app-components.css': /^app\/components/
         'stylesheets/vendor.css'       : /^vendor/
+        'components/app-components.css': /^app\/components/
         'stylesheets/app.css'          : /^app\/(?!components)/
 
     templates:
-      join-to: 'javascripts/.not-needed-templates.js'
+      join-to:
+        'javascripts/.not-needed-templates.js': /.+\.jade$/
+
+
 
   plugins:
+    static_jade:
+      path:
+        /^app\/partials/
+        /^app\/views/
+
+
     stylus: (stylus)->
 
       stylus.use require 'padding-classes-stylus'
