@@ -1,18 +1,18 @@
-co2r.controllers.controller \participate, ($scope, template-partial)->
+
+
+
+co2r.controllers.controller \participate, ($scope)->
 
   $scope.$watch \appText.participate, (new-val)->
     $scope.$root.page-title = new-val
 
-  $scope.template-partial = template-partial
-
-  $scope.other-things-you-can-do =
-    \feedback
-    \sponsor-co2r
-    \recruit-company
-    \spread-word
 
   $scope.$watch \appText.other_things_you_can_do, (nv)->
     $scope.$root.page-title = nv
+
+
+
+
 
 
 window.form-feedback-controller = ($scope, $http, co2r-api)->
@@ -31,4 +31,3 @@ window.form-feedback-controller = ($scope, $http, co2r-api)->
       $('.message-to-user-after-send').modal!
     .failure (res)->
       #console.log \failure!
-

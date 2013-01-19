@@ -1,4 +1,0 @@
-ul.unstyled
-  li(class="{{co2_comparison.type | slugify}}", ng-repeat="co2_comparison in appVars.co2_artifact_comparisons")
-    | {{co2_comparison.phrase}}
-    |  {{(amount / co2_comparison.co2_amount).floor(2)}} {{co2_comparison.co2_amount_unit}}

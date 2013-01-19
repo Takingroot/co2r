@@ -1,7 +1,62 @@
-section.can-do.row-cells(ng-repeat="canDo in otherThingsYouCanDo")
+
+
+//-  Feedback
+
+section.can-do.row-cells
   .involvement-type.padding-l.cols5
     .involvement-type-inner
-      h2(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_title']")
-      .description(bind-compile="appText['can_do_'+canDo.replace('-','_')+'_description']")
+      h2(bind-compile="appText['can_do_feedback_title']")
+      .description(bind-compile="appText['can_do_feedback_description']")
   .padding-l
-    ng-include(src="templatePartial('can-do-'+canDo)")
+
+    form.involvement-form(name="form", ng-controller="formFeedbackController", , ng-submit="sendForm()")
+      textarea.span(rows=8, placeholder="{{ appText.feedback_message_prompt }}", ng-model="feedback.message", required)
+      button.btn.btn-inverse.span(ng-bind="appText.shoot", ng-disabled="!form.$valid")
+
+    .message-to-user-after-send.modal(style="display:none;")
+      .modal-header
+        button.close(data-dismiss="modal") &times;
+        h1 Thank you!
+      .modal-body
+        p Your message will be carefully reviewed us.
+
+
+
+//-  Sponsor Co2r
+
+section.can-do.row-cells
+  .involvement-type.padding-l.cols5
+    .involvement-type-inner
+      h2(bind-compile="appText['can_do_sponsor_co2r_title']")
+      .description(bind-compile="appText['can_do_sponsor_co2r_description']")
+  .padding-l
+
+    form.involvement-form
+      textarea.span(rows=8, placeholder="Your message:")
+      button.btn.btn-inverse.span Sponsor us
+
+
+
+//-  Recruit Company
+
+section.can-do.row-cells
+  .involvement-type.padding-l.cols5
+    .involvement-type-inner
+      h2(bind-compile="appText['can_do_recruit_company_title']")
+      .description(bind-compile="appText['can_do_recruit_company_description']")
+  .padding-l
+
+    form.involvement-form
+      textarea.span(rows=8, placeholder="Your message:")
+      button.btn.btn-inverse.span Recruit company
+
+
+
+//-  Spread the word
+
+section.can-do.row-cells
+  .involvement-type.padding-l.cols5
+    .involvement-type-inner
+      h2(bind-compile="appText['can_do_spread_word_title']")
+      .description(bind-compile="appText['can_do_spread_word_description']")
+  .padding-l
