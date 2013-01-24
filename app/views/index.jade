@@ -3,20 +3,20 @@
 !!! 5
 html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
   head
-    script
-      window.brunch = window.brunch || {}
-      window.brunch['auto-reload'] = {enabled: true}
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
     link(rel="stylesheet", href="/components/build.css")
-    link(rel="stylesheet", href="/stylesheets/vendor.css")
-    link(rel="stylesheet", href="/components/app-components.css")
-    link(rel="stylesheet", href="/stylesheets/app.css")
+    link(rel="stylesheet", href="/styles/vendor.css")
+    link(rel="stylesheet", href="/styles/app.css")
+
     script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACK0sp5adiQxeaADP87y6y_tX16aBVXQU&sensor=false")
     script(src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-507eafc6229c934d")
+
     script(src="/components/build.js")
     script(src="/javascripts/vendor.js")
-    script(src="/components/app-components.js")
+    script(src="/javascripts/appjs.js")
     script(src="/javascripts/app.js")
+
     title(ng-bind="getPageTitle()")
 
 

@@ -5,4 +5,4 @@
 # it's a pure function so we don't need a factory version
 
 co2r.services.constant \templateView, (view-name)->
-  "/views/#view-name/template.html"
+  "/views/#view-name.html"
