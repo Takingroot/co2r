@@ -12,7 +12,7 @@
     "better-clockhand-stylus": "git://github.com/jasonkuhrt/better-clockhand-stylus.git",
     "jade": "~0.28.1",
     "grunt": "~0.4.0rc6",
-    "grunt-contrib-copy": "git://github.com/gruntjs/grunt-contrib-copy.git",
+    "grunt-contrib-copy": "git://github.com/jasonkuhrt/grunt-contrib-copy.git#patch-1",
     "grunt-contrib-stylus": "git://github.com/jasonkuhrt/grunt-contrib-stylus.git#patch-1",
     "grunt-contrib-concat": "~0.1.2rc6",
     "grunt-contrib-jade": "~0.3.1",
