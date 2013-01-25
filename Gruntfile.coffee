@@ -3,9 +3,7 @@
 
 ###
 TODO
-  get deployment npm postinstall hook setup
   remove appjs
-  less breakable copy: assets: options: desFilter
   clarify component(1) integration and build steps
 ###
 
