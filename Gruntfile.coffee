@@ -138,7 +138,7 @@ module.exports = (grunt)->
 
   grunt.registerMultiTask 'livescript', 'Compile livescript to js', ->
     path = require('path')
-    ls   = require('livescript')
+    ls   = require('LiveScript')
 
     grunt.util.async.forEachSeries this.files, (f,n)->
       destFile = path.normalize f.dest
