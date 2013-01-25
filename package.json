@@ -15,11 +15,11 @@
     "grunt-contrib-copy": "git://github.com/gruntjs/grunt-contrib-copy.git",
     "grunt-contrib-stylus": "git://github.com/jasonkuhrt/grunt-contrib-stylus.git#patch-1",
     "grunt-contrib-concat": "~0.1.2rc6",
-    "grunt-livescript": "~0.4.2",
     "grunt-contrib-jade": "~0.3.1",
     "grunt-open": "~0.1.0",
     "grunt-contrib-watch": "~0.2.0rc7",
-    "grunt-cli": "~0.1.6"
+    "grunt-cli": "~0.1.6",
+    "LiveScript": "~1.1.1"
   },
   "devDependencies": {},
   "scripts": {

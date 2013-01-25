@@ -24,7 +24,5 @@ local-verbose-demo:
 	npm install
 	node .launch-production-server
 
-local-demo:
-	node .launch-production-server
 
 .PHONY: components
