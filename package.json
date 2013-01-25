@@ -18,11 +18,12 @@
     "grunt-livescript": "~0.4.2",
     "grunt-contrib-jade": "~0.3.1",
     "grunt-open": "~0.1.0",
-    "grunt-contrib-watch": "~0.2.0rc7"
+    "grunt-contrib-watch": "~0.2.0rc7",
+    "grunt-cli": "~0.1.6"
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "./node_modules/.bin/brunch build"
+    "postinstall": "./node_modules/.bin/grunt build"
   },
   "repository": {
     "type": "git",
