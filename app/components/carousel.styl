@@ -1,0 +1,44 @@
+
+
+
+.carousel.slide
+  overflow hidden
+
+.carousel
+  overflow hidden
+  // some default styling, visible before images load
+  background-color dark
+  // undo bootstrap
+  margin-bottom 0
+
+  .item
+    background-overlay url('/images/white-hash-20.png')
+    height 100%
+    overflow hidden
+    // display: undo bootstrap
+    display block
+    position absolute
+    top 0
+    img
+      width 100%
+    transition opacity 1s
+    opacity 0
+    &.active
+      opacity 1
+
+.carousel-caption
+  left auto
+  max-width gd(16)
+  display inline-block
+  // z-index so that caption is on top of hash texture
+  z-index 20
+  color grayLight
+  background-color hsla(60.00, 1.08%, 18.24%, 0.9)
+  padding .9em 1.25em
+
+  // undo bootstrap
+  line-height 1.5
+
+@media screen-xs
+  .carousel-caption
+    display none
