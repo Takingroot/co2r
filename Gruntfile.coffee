@@ -78,9 +78,9 @@ module.exports = (grunt)->
         '.public/styles/app.css': ['app/components/index.styl', 'app/views/**/*.styl']
       options:
         paths: ['app/components']
-        use: [require('better-clockhand-stylus')]
+        use: [require('shorthand-edge-omissions-stylus')]
         import: [
-          'better-clockhand'
+          'shorthand-edge-omissions'
           'prelude'
           'media'
           'colors'
