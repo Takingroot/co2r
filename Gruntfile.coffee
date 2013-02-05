@@ -66,7 +66,7 @@ module.exports = (grunt)->
 
     livescript: compile:
       files:
-        '.public/javascripts/app.js': ['app/**/*.ls']
+        '.public/javascripts/app.js': ['app/scripts/co2r.ls', 'app/**/*.ls']
 
     jade: compile:
       files:
