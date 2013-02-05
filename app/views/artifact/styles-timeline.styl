@@ -1,10 +1,22 @@
+
+
+
+//  Timeline Header (navigation, column labels (years))
+//  ---------------------------------------------------
+
 .timeline-header
   user-select none
-  height 52px
   .can-scrollfix
     z-index 10
   .is-scrollfix
     top 0
+  .timeline-item
+    height 52px
+  .year-title
+    //  vertically center the labels (years)
+    padding-top 0.45em
+
+//  Navigation
 
 .timeline-navigation
   button
@@ -23,6 +35,8 @@
 
 
 
+//  Timeline Structure
+//  ------------------
 
 .timeline-conductor
   white-space nowrap

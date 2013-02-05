@@ -31,7 +31,7 @@ co2r.filters
 
 .filter \slugify, ->
     ->
-      component('slug') it if it
+      component('slug') it if typeof it is \string
 
 # return string prefixed with mailto if email flag is true
 .filter \prefixMailto, ->

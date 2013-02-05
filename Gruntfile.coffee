@@ -84,6 +84,7 @@ module.exports = (grunt)->
           'prelude'
           'media'
           'colors'
+          'layout/functions'
           'grid/lib'
           'scale'
         ]

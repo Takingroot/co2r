@@ -5,6 +5,7 @@ co2r.directives.directive "chartCo2Sources", ->
   replace:  on
   template: "<svg style='display:block;' class='pie-chart'></svg>"
   link: (scope, el, attrs)->
+    console.log '??'
     scope.$whenReady ->
       vis_data   = scope.$eval attrs.data
 
