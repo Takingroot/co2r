@@ -1,9 +1,9 @@
 
 
-.home-introduction.group(ng-class="{open:introductionState(), closed:!introductionState()}")
+.home-introduction.group(ng-class="{open:directory.introductionState(), closed:!directory.introductionState()}")
 
-  button.introduction-toggler.c-btn.pin-r(style="z-index:100;", ng-click="toggleIntroduction()")
-    span(ng-class="{'icon-chevron-up':introductionState(), 'icon-chevron-down':!introductionState()}")
+  button.introduction-toggler.c-btn.pin-r(style="z-index:100;", ng-click="directory.toggleIntroduction()")
+    span(ng-class="{'icon-chevron-up':directory.introductionState(), 'icon-chevron-down':!directory.introductionState()}")
 
   .moodshot.hash-overlay
 
@@ -17,7 +17,7 @@
 
   section.action-steps-container
     .action-steps.row
-      a.action-step.cols4.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in actionSteps")
+      a.action-step.cols4.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in directory.actionSteps")
         h1.text-heading3.action-step-title
           i(class="icon-{{step.icon}}")
           = ' '
@@ -35,7 +35,7 @@
         placeholder="{{appText.directory_filter_input_prompt}}")
 
   .artifact-cards.span.gutters-1.hbox.wrap
-    a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in artifacts | filter:searchForArtifactName")
+    a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in directory.artifacts | filter:searchForArtifactName")
       .artifact-card-header.group
         .poster
           img(ng-src="{{artifact.thumbnail_url}}")
