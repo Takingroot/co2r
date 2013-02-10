@@ -1,5 +1,6 @@
 
 
+
 !!! 5
 html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
   head
@@ -22,59 +23,7 @@ html(ng-app="co2r", ng-controller="app", xmlns:fb="http://ogp.me/ns/fb#")
 
 
   body(ng-class="appCssClasses", data-spy="scroll", data-target=".faq-toc")
-    header.app-header(ng-controller="header")
-      .row
-        a.app-brand-container.cols6.grid-push1.transparent-link.row(href="/")
-          .app-logo.cols4
-            img(src="/images/co2r-logo.png")
-          .app-brand-text.cols8
-            h1.text-heading4.app-title(bind-compile="appText.co2r")
-            p.text-small(bind-compile="appText.branding_subtext")
 
-        div.app-navbar.cols4
-          div.nav-item(
-          ng-class="{'current-view':isCurrentView(navItem.url)}",
-          class="{{navItem.label | slugify}}",
-          ng-repeat="navItem in navItems")
-            a.nav-link.transparent-link(href="{{navItem.url}}")
-              i.nav-link-icon(class="icon-{{navItem.icon}}")
-              span.nav-link-text {{appText[navItem.label]}}
-
-      a.text-small.language-switcher.c-btn.c-btn-subtle.pin-tl(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
-
-
-
+    include app-header/template
     #app-content.app-content(ng-view="ng-view")
-
-
-
-    footer.app-footer.group(ng-controller="footer")
-      //- .stripe div just for decoration
-      .stripe.span.pin-t
-
-      .social-bar.social-bar-app.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
-        .social-bar-inner.hbox.--align-vm.padding-s
-          div(bind-compile="appText.social_bar_text")
-          .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
-
-      .app-footer-content.group.color-theme.green-theme
-        .row
-          .app-epilogue.cols4
-            .owner
-              a.logo-container.hbox.block(href="{{takingRoot.website_url}}", target="_blank")
-                .v-span
-                img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
-              p.text-small(bind-compile="takingRoot.partnership_description")
-
-            .v-push-3
-              p.muted(ng-bind-html="appText.footer_colofon")
-
-          section.partners-container.cols8
-            header.partners-header
-              h1.text-heading3(ng-bind="appText.footer_partners_title")
-            .partners.row.v-push-1
-              .partner.cols4(ng-repeat="partner in partners")
-                a.logo-container.hbox.block(href="{{partner.website_url}}", target="_blank")
-                  .v-span
-                  img.logo(ng-src="{{partner.logo_url}}")
-                p.text-small(ng-bind-html="partner.partnership_description")
+    include app-footer/template
