@@ -1,4 +1,4 @@
-co2r.directives
+co2r
 
 
 

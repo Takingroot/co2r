@@ -1,4 +1,4 @@
-co2r.directives.directive(\limayMap, [\$parse, ($parse)->
+co2r.directive(\limayMap, [\$parse, ($parse)->
   restrict: \C
   link: (scope, element, attrs)->
 

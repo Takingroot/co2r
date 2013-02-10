@@ -3,7 +3,7 @@
 # To use this directive the host scope must have a identifier called
 # addthisShareConfig pointing to an object
 #
-co2r.directives
+co2r
 
 .directive \co2rAddthisToolbox, ($location)->
   restrict: \C

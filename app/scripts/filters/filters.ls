@@ -1,4 +1,4 @@
-co2r.filters
+co2r
 
 .filter \unit, ->
     (amount, requested-unit-type)->

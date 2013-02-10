@@ -1,4 +1,4 @@
-co2r.directives.directive \timelineSliderWindow, ->
+co2r.directive \timelineSliderWindow, ->
   restrict:   \C
   require:    \^timelineConductor
   transclude: on
@@ -15,7 +15,7 @@ co2r.directives.directive \timelineSliderWindow, ->
 
 
 
-co2r.directives.directive \timelineConductor, ($window)->
+co2r.directive \timelineConductor, ($window)->
   restrict:   \C
   scope:      on
   controller: ($scope, $element)->

@@ -1,25 +1,16 @@
 
 
-
-window.co2r =
-  services:    angular.module \co2r.services, []
-  filters:     angular.module \co2r.filters, []
-  directives:  angular.module \co2r.directives, []
-  controllers: angular.module \co2r.controllers , []
-  app:         angular.module \co2r, [
-                \ngSanitize
-                \ui
-                \bindCompile
-                \Scope.onReady
-                \co2r.services
-                \co2r.filters
-                \co2r.controllers
-                \co2r.directives
-                ]
+window.co2r = angular.module(\co2r, [
+  \ngSanitize
+  \ui
+  \bindCompile
+  \Scope.onReady
+])
 
 
 
-co2r.app.config ($route-provider, template-view, $location-provider)->
+co2r.config ($route-provider, template-view, $location-provider)->
+
   $location-provider.html5-mode on
 
   $route-provider.when '/',

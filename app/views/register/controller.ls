@@ -1,4 +1,4 @@
-co2r.controllers.controller \register, ($scope, co2r-api)->
+co2r.controller \register, ($scope, co2r-api)->
 
   $scope.$watch \appText.register_your_product, (new-val)->
     $scope.$root.page-title = new-val

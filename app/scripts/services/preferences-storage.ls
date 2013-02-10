@@ -1,4 +1,4 @@
-co2r.services.factory \preferencesStorage, ->
+co2r.factory \preferencesStorage, ->
   class Preferences-storage
     (@defaults={})->
 

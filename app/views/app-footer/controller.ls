@@ -1,4 +1,4 @@
-co2r.controllers.controller \footer, ($scope, co2r-api)->
+co2r.controller \footer, ($scope, co2r-api)->
 
   $scope.addthis-share-config =
     #TODO translation

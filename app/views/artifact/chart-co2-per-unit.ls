@@ -1,4 +1,4 @@
-co2r.directives.directive \chartCo2PerUnit, ($filter)->
+co2r.directive \chartCo2PerUnit, ($filter)->
   restrict: \C
   replace:  on
   template: "<svg style='display:block' class='bar-chart'></svg>"

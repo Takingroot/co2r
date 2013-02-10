@@ -1,4 +1,4 @@
-co2r.controllers.controller \header, ($scope, $location, $filter, preferences-storage, $window)->
+co2r.controller \header, ($scope, $location, $filter, preferences-storage, $window)->
 
   #
   # this is to aid in the language switcher functionality

@@ -34,4 +34,4 @@ function directory-controller(artifactsRes, $scope, preferencesStorage)
 
 
 
-co2r.controllers.controller \directory, [\artifactsRes, \$scope, \preferencesStorage, directory-controller]
+co2r.controller \directory, [\artifactsRes, \$scope, \preferencesStorage, directory-controller]

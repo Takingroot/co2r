@@ -1,4 +1,4 @@
-co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $location, $http)->
+co2r.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $location, $http)->
   $scope.$prepare-for-ready!
 
   co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}

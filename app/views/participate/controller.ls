@@ -1,7 +1,7 @@
 
 
 
-co2r.controllers.controller \participate, ($scope)->
+co2r.controller \participate, ($scope)->
 
   $scope.$watch \appText.participate, (new-val)->
     $scope.$root.page-title = new-val
@@ -14,7 +14,7 @@ co2r.controllers.controller \participate, ($scope)->
 
 
 
-co2r.controllers.controller \formFeedbackController, ($scope, $http, co2r-api)->
+co2r.controller \formFeedbackController, ($scope, $http, co2r-api)->
   $scope.default-form-values = {}
 
   $scope.send-form = ->

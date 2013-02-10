@@ -12,4 +12,4 @@ function faq-controller(faqRes, $scope)
 
 
 
-co2r.controllers.controller \faq, [\faqRes, \$scope, faq-controller]
+co2r.controller \faq, [\faqRes, \$scope, faq-controller]

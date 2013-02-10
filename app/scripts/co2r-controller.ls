@@ -1,4 +1,4 @@
-co2r.controllers.controller \app, ($scope, co2r-api, preferences-storage, $filter, route-css-classes)->
+co2r.controller \app, ($scope, co2r-api, preferences-storage, $filter, route-css-classes)->
 
   $scope.locale-id     = preferences-storage.get-and-maybe-set \languageCode, \en
 

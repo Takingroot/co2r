@@ -1,6 +1,6 @@
 
 
-co2r.services.factory \twitterApi, ($http)->
+co2r.factory \twitterApi, ($http)->
 
   /*
    *  required param-options
