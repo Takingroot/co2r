@@ -13,10 +13,7 @@ section.about.color-theme.yellow-theme
         h4(bind-compile="appText.artifact_offset_since | interpolate:artifact.offsetSince")
       .description
         .story(bind-compile="artifact.description")
-        small: a(href="/mission")
-          i.icon-pushpin
-          = ' '
-          span(bind-compile="appText.learn_more_about_co2r")
+        include ../partial-learn-more
     .cols5
       .emissions-badge.padding-m
         h4.unspaced

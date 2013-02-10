@@ -110,7 +110,7 @@ module.exports = (grunt)->
 
     compile = (pathFile)->
       try
-        (jade.compile (grunt.file.read pathFile))() # No locals
+        (jade.compile (grunt.file.read pathFile), {filename: pathFile})() # No locals
       catch e
         grunt.log.error e
         grunt.fail.warn 'Jade failed to compile.'
