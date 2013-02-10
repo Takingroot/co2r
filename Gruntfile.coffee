@@ -70,8 +70,8 @@ module.exports = (grunt)->
 
     jade: compile:
       files:
-        '.public/index.html': ['app/views/index.jade']
-        '.public/views/'    : [ 'app/views/**/*.jade', '!app/views/index.jade' ]
+        '.public/index.html': ['app/views/app/index.jade']
+        '.public/views/'    : [ 'app/views/**/*.jade', '!app/views/app/index.jade' ]
 
     stylus: compile:
       files:
