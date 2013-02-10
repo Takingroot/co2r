@@ -80,7 +80,6 @@ co2r.controllers.controller \artifact, ($scope, $routeParams, co2r-api, twitter-
       # discover if the artifact *ever* did any other eco actions
       # --------------------------------------------------------------------------------------------------
       # with this information we can know if we need to render the other-eco-actions section
-
       $scope.has-other-actions = (_.filter (_.pluck $scope.reports, \other_actions), -> it.length).length > 0
 
 

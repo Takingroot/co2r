@@ -50,24 +50,12 @@ co2r.directives
     #
     function generate-bumper-events(bumper, point)
       is-begin = point is \begin
-      #console.log bumper
       scroll-over bumper.element[0], {window-point:bumper.window-anchor}, (direction)->
         if direction is \inward
-          #console.log point, \scrollIn, element
           toggle-scrollfix (if is-begin then on  else off)
         else if direction is \outward
-          #console.log point, \scrollOut
           toggle-scrollfix (if is-begin then off else on)
 
-      /*
-      bumper-y = scroll-position bumper.element, {offset:100} #bumper.offset
-      bumper-y.on \scrollIn , (e)->
-        console.log point, e, \scrollIn
-        toggle-scrollfix (if is-begin then on  else off)
-      bumper-y.on \scrollOut, (e)->
-        console.log point, e, \scrollOut
-        toggle-scrollfix (if is-begin then off else on)
-      */
 
 
 
@@ -89,10 +77,10 @@ co2r.directives
     #
     function generate-bumper(config)
       if typeof config is \object
-        #console.log calc-window-anchor(config.window-anchor)
+        config = _.defaults config, {window-anchor: \start}
         # assume config.end.element is selector, convert to node, assign to bumper-end
         element: $(config.element)
-        window-anchor: config.window-anchor or \start
+        window-anchor: config.window-anchor
       else
         # config is selector, or default
         element: if config then $(config) or null
@@ -102,7 +90,6 @@ co2r.directives
     #  @param  anchor-point    'bottom' || 'top' || undefined
     #
     function calc-window-anchor(anchor-point)
-      #console.log anchor-point
       switch anchor-point
       when \bottom then $(window).height!
       when \center then $(window).height / 2
