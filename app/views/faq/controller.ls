@@ -1,8 +1,15 @@
-co2r.controllers.controller \faq, ($scope, co2r-api)->
+
+
+
+function faq-controller(faqRes, $scope)
 
   $scope.$watch \appText.faq, (new-val)->
     $scope.$root.page-title = new-val
 
-  co2r-api.get \faqs, {cache: on}
-  .then (res)->
-     $scope.faqs = res.data.faqs
+  faqs = faqRes.data.faqs
+
+  window.faqsCtrl = $scope.faqs = faqs
+
+
+
+co2r.controllers.controller \faq, [\faqRes, \$scope, faq-controller]

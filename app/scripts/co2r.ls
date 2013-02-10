@@ -40,6 +40,9 @@ co2r.app.config ($route-provider, template-view, $location-provider)->
     template-url: template-view(\faq)
     controller: \faq
     reload-on-search: no
+    resolve:
+      faqRes: (co2r-api)->
+        co2r-api.get \faqs, { cache:on }
 
   $route-provider.when '/register-your-product',
     template-url: template-view(\register)
