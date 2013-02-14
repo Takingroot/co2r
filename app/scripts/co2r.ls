@@ -43,6 +43,13 @@ co2r.config ($route-provider, template-view, $location-provider)->
     template-url: template-view(\participate)
     controller: \participate
 
+  $route-provider.when '/docs',
+    template-url: template-view(\docs)
+    controller: \docs
+
+
+  # Every other route is assumed to be an artifact
+
   $route-provider.when '/:artifact',
     template-url: template-view(\artifact)
     controller: \artifact
