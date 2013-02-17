@@ -1,0 +1,18 @@
+{
+  "name": "scroll-over",
+  "repo": "jasonkuhrt/scroll-over",
+  "description": "Invoke a function when an element is scrolled over",
+  "version": "0.0.1",
+  "keywords": [
+    "scroll"
+  ],
+  "dependencies": {
+    "timoxley/throttle": "*",
+    "avetisk/defaults": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}

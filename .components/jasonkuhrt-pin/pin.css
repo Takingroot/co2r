@@ -1,0 +1,26 @@
+
+
+
+/*
+ *  Pin
+ *  Absolute positioning aid
+ *  ------------------------------------------------------------------
+*/
+
+[class^="pin-"], [class*=" pin-"] { position:absolute; }
+
+
+/*  Selectors ordered by clock-hand
+ *
+ *  There are two API flavours for you to choose from
+ *  - compass terminology (ne AKA north-east, ...)
+ *  - relative directions (tl AKA top-left, ...)
+*/
+.pin-ne, .pin-tl { top:0;left:0;     }
+.pin-n,  .pin-t  { top:0;            }
+.pin-nw, .pin-tr { top:0;right:0;    }
+.pin-w,  .pin-r  { right:0;          }
+.pin-sw, .pin-br { bottom:0;right:0; }
+.pin-s,  .pin-b  { bottom:0;         }
+.pin-se, .pin-bl { bottom:0;left:0;  }
+.pin-e,  .pin-l  { left:0;           }

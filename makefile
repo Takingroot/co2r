@@ -2,9 +2,9 @@ all:
 	grunt
 
 components:
-	component install
-	component build -s component -o ./app/assets/components/ -p '/components'
-	brunch build
+	component install --out ./.components/
+	component build --standalone ./.component --out ./app/assets/components/ --prefix '/components'
+	grunt build
 
 build:
 	grunt build
