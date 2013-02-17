@@ -10,8 +10,7 @@ co2r
     # - classes for window anchor?
     # - ability to use a calculation instead of an element for bumper-end
 
-    #scroll-position = component \scroll-position
-    scroll-over = component \scroll-over
+    scroll-over = require \scroll-over
     config = scope.$eval attrs.scrollfix
 
     # CSS hooks

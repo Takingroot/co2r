@@ -5,6 +5,13 @@
     "jasonkuhrt/scroll-over": "*",
     "yields/slug": "*"
   },
+  "local": [
+    "angular-escape"
+  ],
+  "paths": [
+    "../components/",
+    ".components/"
+  ],
   "scripts": [
     "index.js"
   ]

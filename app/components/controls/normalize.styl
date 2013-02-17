@@ -1,0 +1,15 @@
+
+
+
+// http://stackoverflow.com/questions/2874813/why-textarea-and-textfield-not-taking-font-family-and-font-size-from-body
+// http://stackoverflow.com/questions/6080413/why-doesnt-input-inherit-the-font-from-body
+textarea, button ,select, input
+  font-size inherit
+
+
+
+// button line-height inerhited from body is
+// overriden by useragent default of 20px (chrome)
+// so we explicitly inherit, again, here
+button
+  line-height inherit

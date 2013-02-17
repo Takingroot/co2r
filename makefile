@@ -3,7 +3,7 @@ all:
 
 components:
 	component install --out ./.components/
-	component build --standalone ./.component --out ./app/assets/components/ --prefix '/components'
+	component build --standalone require --out ./app/assets/components/ --prefix '/components'
 	grunt build
 	rm -fr ./.components
 

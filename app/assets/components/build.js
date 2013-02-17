@@ -70,6 +70,7 @@ require.aliases = {};
  */
 
 require.resolve = function(path) {
+  if (path.charAt(0) === '/') path = path.slice(1);
   var index = path + '/index.js';
 
   var paths = [
@@ -182,17 +183,18 @@ require.relative = function(parent) {
    */
 
   localRequire.resolve = function(path) {
+    var c = path.charAt(0);
+    if ('/' == c) return path.slice(1);
+    if ('.' == c) return require.normalize(p, path);
+
     // resolve deps by returning
     // the dep in the nearest "deps"
     // directory
-    if ('.' != path.charAt(0)) {
-      var segs = parent.split('/');
-      var i = lastIndexOf(segs, 'deps') + 1;
-      if (!i) i = 0;
-      path = segs.slice(0, i + 1).join('/') + '/deps/' + path;
-      return path;
-    }
-    return require.normalize(p, path);
+    var segs = parent.split('/');
+    var i = lastIndexOf(segs, 'deps') + 1;
+    if (!i) i = 0;
+    path = segs.slice(0, i + 1).join('/') + '/deps/' + path;
+    return path;
   };
 
   /**
@@ -387,16 +389,53 @@ require.register("yields-slug/index.js", function(exports, require, module){
  *        // > foo-bar
  *
  * @param {String} str
- * @param {String} repl defaulted to `-`
+ * @param {Object} options
+ * @config {String|RegExp} [replace] characters to replace, defaulted to `/[^a-z0-9]/g`
+ * @config {String} [separator] separator to insert, defaulted to `-`
  * @return {String}
  */
 
-module.exports = function (str, repl) {
+module.exports = function (str, options) {
+  options || (options = {});
   return str.toLowerCase()
-    .replace(/[^a-z0-9]/g, ' ')
+    .replace(options.replace || /[^a-z0-9]/g, ' ')
     .replace(/^ +| +$/g, '')
-    .replace(/ +/g, repl || '-')
+    .replace(/ +/g, options.separator || '-')
 };
+
+});
+require.register("angular-escape/index.js", function(exports, require, module){
+
+
+
+module.exports = 'escape';
+
+angular.module('escape', [])
+
+.directive('escape', [function() { return {
+
+  priority: 1000,
+  terminal: true,
+  compile: function(telm) {
+    telm.html(jQuery('<div/>').text(telm.html()).html());
+  }
+
+};}])
+
+
+
+.directive('codeblock', [function() { return {
+
+    restrict: 'E',
+    priority: 1000,
+    terminal: true,
+    compile: function(telm) {
+      telm.replaceWith(jQuery('<pre/>').text(telm.html()).wrap('<div/>').parent().html());
+    }
+
+
+};}]);
+
 
 });
 require.register("components/index.js", function(exports, require, module){
@@ -416,10 +455,12 @@ require.alias("avetisk-defaults/index.js", "jasonkuhrt-scroll-over/deps/defaults
 
 require.alias("yields-slug/index.js", "components/deps/slug/index.js");
 
+require.alias("angular-escape/index.js", "components/deps/angular-escape/index.js");
+
 if (typeof exports == "object") {
   module.exports = require("components");
 } else if (typeof define == "function" && define.amd) {
-  define(require("components"));
+  define(function(){ return require("components"); });
 } else {
-  window["component"] = require("components");
+  window["require"] = require("components");
 }})();

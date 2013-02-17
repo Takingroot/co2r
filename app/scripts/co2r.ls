@@ -5,6 +5,7 @@ window.co2r = angular.module(\co2r, [
   \ui
   \bindCompile
   \Scope.onReady
+  require \angular-escape
 ])
 
 

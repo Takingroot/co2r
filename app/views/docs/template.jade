@@ -1,10 +1,10 @@
 
 
 
-section.docs-section.typography
+section.docs-section
   h1 Typography
 
-  pre.codeblock.
+  codeblock.
     .text-heading1
     .text-heading2
     .text-heading3
@@ -24,18 +24,37 @@ section.docs-section.typography
 
 
 
-section.docs-section.controls
-  h1 Controls
+section.docs-section
+  h1 Inputs
+
+  .control-group
+    input(type='text', placeholder="Enter something")
+
+  .control-group
+    .input-prepend
+      label: i.icon-lightbulb
+      input(type='text', placeholder="What is your idea?")
+
+  .control-group
+    .input-prepend
+      input(type='text', placeholder="Photo title")
+      label: i.icon-camera
+
+  .control-group
+    textarea Foo
+
+section.docs-section
+  h1 Buttons
 
   section.docs-component
-    pre.codeblock.
+    codeblock.
       button|a.btn
 
     button.btn button.btn
     a.btn(href="#") a.btn
 
   section.docs-component
-    pre.codeblock.
+    codeblock.
       button|a.btn.btn--subtle
 
     button.btn.btn--subtle button.btn--subtle

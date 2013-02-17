@@ -24,7 +24,8 @@ header
             .input-prepend
               label.add-on(for="phone"): i.icon-phone
               input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
-          button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
+          .control-group
+            button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
 
 
 section.register-info-container.row-cells.v-push-3
