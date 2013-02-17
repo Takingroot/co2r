@@ -5,6 +5,10 @@ components:
 	component install --out ./.components/
 	component build --standalone ./.component --out ./app/assets/components/ --prefix '/components'
 	grunt build
+	rm -fr ./.components
+
+components-clean:
+	rm -fr ./.components
 
 build:
 	grunt build
