@@ -1,0 +1,60 @@
+
+/* ==========================================================================
+   Helpers: Horizontal Beam
+   ========================================================================== */
+
+/**
+ * Description:
+ * This tool is like a pseudo {display: flex}
+ *
+ * A container that spans available width
+ * and renders children as table cells so that
+ * they appear horizontal.
+ *
+ * The "beam" is the whole row. Each child is a "part"
+ * of the beam. Parts can be given a width, and
+ * sibling parts will simply fill the remaining
+ * available width
+ *
+ * @api:
+ * .flex
+ * .flex-inline
+ * .flex-part-static
+ * .flex--responsive
+ */
+
+
+.flex {
+  display: table;
+  width: 100%;
+  & > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+.flex-inline {
+  display: inline-table;
+  & > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+
+.flex--responsive {
+  & > * {
+    @media @screen-xs {
+      display: block;
+    }
+  }
+}
+
+
+/**
+ * Make a single beam part be-as-wide-as its contents
+ */
+.flex-part-static{
+  width: 1px;
+}
+
