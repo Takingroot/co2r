@@ -8,7 +8,7 @@
         li(ng-repeat="faq in faqs")
           a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
 
-  .cols5.padding-l
+  .cols5.padding-l.faq-content-container
     .faqs.v-gutters-3
       article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question

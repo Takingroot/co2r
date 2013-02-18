@@ -28,12 +28,13 @@ header
             button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
 
 
-section.register-info-container.row-cells.v-push-3
-  aside.register-info-aside.padding-l.cols5
-    .align-right
-      div(bind-compile="appText.register_artifact_left_column")
-  .register-info-body.padding-l.cols7
-    div.v-gutters-3(bind-compile="appText.register_artifact_right_body")
+section.register-info-container
+  .row-cells
+    aside.register-info-aside.padding-l.cols5
+      .align-right
+        div(bind-compile="appText.register_artifact_left_column")
+    .register-info-body.padding-l.cols7
+      div.v-gutters-3(bind-compile="appText.register_artifact_right_body")
 
 
 
