@@ -1,8 +1,4 @@
 
-body.faq .app-content
-  background-image url('/images/bg.png')
-  background-size 100% 100%
-
 .faq-toc-container
   background-color grayLightest
   padding-top 2rem
@@ -17,16 +13,29 @@ body.faq .app-content
 .faq-content-container
   background-color color-bg-base
 
-.faq-toc
-  li a:hover
-  li.active a
-  li.active a:hover
+.faq-toc-item
+    a
+      color lighten(textColorDark, 10)
+    &.active
+      pointer-events none
+      a:hover
+        background-color hsl(194.66, 97.04%, 73.53%)
+        color inherit
+@media screen-xs
+  .faq-toc-item.active a
     background-color transparent
     color inherit
-  li a
-    color lighten(textColorDark, 10)
+
+
+
+
 
 @media screen-s-up
+
+  body.faq .app-content
+    background-image url('/images/bg.png')
+    background-size 100% 100%
+
   .faq-toc
     &.is-scrollfix
       position fixed

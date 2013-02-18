@@ -1,9 +1,5 @@
 
 
-body.participate .app-content
-  background-image url('/images/bg.png')
-  background-size 100% 100%
-
 body.participate .involvement-type
   border-right 1px solid darkMuted
   background-color grayLightest
@@ -23,3 +19,8 @@ body.participate
     border-bottom 1px solid darkMuted
     &:last-child .involvement-type
       padding-bottom 12rem
+
+@media screen-s-up
+  body.participate .app-content
+    background-image url('/images/bg.png')
+    background-size 100% 100%
