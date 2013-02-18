@@ -417,7 +417,7 @@ angular.module('escape', [])
   priority: 1000,
   terminal: true,
   compile: function(telm) {
-    telm.html(jQuery('<div/>').text(telm.html()).html());
+    telm.html(jQuery('<div/>').text(telm.html()).html().replace(/=""|=''/,''));
   }
 
 };}])
@@ -430,7 +430,7 @@ angular.module('escape', [])
     priority: 1000,
     terminal: true,
     compile: function(telm) {
-      telm.replaceWith(jQuery('<pre/>').text(telm.html()).wrap('<div/>').parent().html());
+      telm.replaceWith(jQuery('<pre/>').text(telm.html()).wrap('<div/>').parent().html().replace(/=""|=''/,''));
     }
 
 

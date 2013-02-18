@@ -4,31 +4,108 @@
 section.docs-section
   h1 Typography
 
-  codeblock.
-    .text-heading1
-    .text-heading2
-    .text-heading3
-    .text-heading4
-    .text-body
-    .text-small
+  .docs-component
+    codeblock.
+      .text-heading1
+      .text-heading2
+      .text-heading3
+      .text-heading4
+      .text-body
+      .text-small
 
-  .text-heading1 .text-heading1
-  .text-heading2 .text-heading2
-  .text-heading3 .text-heading3
-  .text-heading4 .text-heading4
-  h5 h5
-  h6 h6
+    .text-heading1 Being CO2 Responsible
+    .text-heading2 Being CO2 Responsible means taking concrete steps
+    .text-heading3 Being CO2 Responsible means taking concrete steps to both reduce one's
+    .text-heading4 Being CO2 Responsible means taking concrete steps to both reduce one's environmental impact
+    .text-body Being CO2 Responsible means taking concrete steps to both reduce one's environmental impact
+    .text-small Being CO2 Responsible means taking concrete steps to both reduce one's environmental impact
 
-  a link
-  a(href="#") link
+  .docs-component
+    h3 Themes
+
+    codeblock.
+      .color-theme
+      .blue-theme
+      .green-theme
+      .yellow-theme
+
+    div(style="max-width:40rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
+
+
+    .color-theme.blue-theme(style="max-width:40rem;padding:2rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
+
+    .color-theme.green-theme(style="max-width:40rem;padding:2rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
+
+    .color-theme.yellow-theme(style="max-width:40rem;padding:2rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
+
+    .color-theme.dark-theme(style="max-width:40rem;padding:2rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
 
 
 
 section.docs-section
   h1 Inputs
 
+  codeblock.
+    <input type="text">
+    <textarea></textarea>
+
   .control-group
     input(type='text', placeholder="Enter something")
+
+  .control-group
+    textarea(placeholder="Give us your feedback")
+
+  h3 Demos
 
   .control-group
     .input-prepend
@@ -40,8 +117,7 @@ section.docs-section
       input(type='text', placeholder="Photo title")
       label: i.icon-camera
 
-  .control-group
-    textarea(placeholder="Give us your feedback")
+
 
 section.docs-section
   h1 Buttons
@@ -59,3 +135,31 @@ section.docs-section
 
     button.btn.btn--subtle Submit
     a.btn.btn--subtle(href="#") Submit
+
+
+
+section.docs-section
+    h1 Directives
+
+  .docs-component
+    h3
+      span(keyword="co2")
+      |  amount comparisons
+    codeblock
+      span.co2-contrasted(amount="4")
+    span.co2-contrasted(amount="4")
+
+  .docs-component
+    h3 keywords
+    codeblock
+      span(keyword="co2")
+    span(keyword="co2")
+
+  .docs-component
+    h3 Defined terms (todo)
+
+    codeblock.
+      <span co2r-definition>carbon</span>
+      <span co2r-definition="carbon"></span>
+    div(co2r-definition) carbon
+    div TODO: div(co2r-definition="carbon")
