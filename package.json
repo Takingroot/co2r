@@ -2,6 +2,7 @@
   "name": "co2r",
   "description": "A platform to showcase Taking Root's clients",
   "version": "0.0.0",
+  "private": true,
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"

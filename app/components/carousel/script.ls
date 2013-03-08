@@ -1,4 +1,4 @@
-co2r
+angular.module \carousel, []
 
 .directive \carousel, ->
   restrict:   \C
