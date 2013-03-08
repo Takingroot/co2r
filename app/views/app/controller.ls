@@ -1,6 +1,6 @@
 co2r.controller \app, ($scope, co2r-api, preferences-storage, $filter, route-css-classes)->
 
-  $scope.locale-id     = preferences-storage.get-and-maybe-set \languageCode, \en
+  $scope.locale-id     = preferences-storage.get-and-maybe-set \languageCode, \fr
 
   # update app location css classes
   $scope.$root.$on \$routeChangeSuccess, ->
@@ -20,9 +20,9 @@ co2r.controller \app, ($scope, co2r-api, preferences-storage, $filter, route-css
 
   #
   #  admin-controlled app-vars
-  #  (variables that footrpint charting, term defintions, etc.)
+  #  (variables that affect footrpint charting, term defintions, etc.)
 
-  co2r-api.get(\app).then (res)->
+  co2r-api.get(\app).success (res)->
     $scope.app-vars = res.data
 
 
