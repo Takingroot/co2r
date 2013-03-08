@@ -78,9 +78,13 @@ module.exports = (grunt)->
         '.public/styles/app.css': ['app/components/index.styl', 'app/views/**/*.styl']
       options:
         paths: ['app/components']
-        use: [require('shorthand-edge-omissions-stylus')]
+        use: [
+          require('shorthand-edge-omissions-stylus')
+          require('position-shorthand-stylus')
+        ]
         import: [
           'shorthand-edge-omissions'
+          'position-shorthand'
           'prelude'
           'media'
           'colors'

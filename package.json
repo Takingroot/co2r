@@ -11,6 +11,7 @@
     "express": "~3.0.0rc5",
     "padding-classes-stylus": "git://github.com/jasonkuhrt/padding-classes-stylus.git",
     "shorthand-edge-omissions-stylus": "git://github.com/jasonkuhrt/shorthand-edge-omissions-stylus.git",
+    "position-shorthand-stylus": "git://github.com/jasonkuhrt/position-clockhand-stylus.git",
     "jade": "~0.28.1",
     "grunt": "~0.4.0rc6",
     "grunt-contrib-copy": "git://github.com/jasonkuhrt/grunt-contrib-copy.git#patch-1",
