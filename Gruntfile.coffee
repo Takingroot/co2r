@@ -80,11 +80,11 @@ module.exports = (grunt)->
         paths: ['app/components']
         use: [
           require('shorthand-edge-omissions-stylus')
-          require('position-shorthand-stylus')
+          require('shorthand-position-stylus')
         ]
         import: [
           'shorthand-edge-omissions'
-          'position-shorthand'
+          'shorthand-position'
           'prelude'
           'media'
           'colors'
