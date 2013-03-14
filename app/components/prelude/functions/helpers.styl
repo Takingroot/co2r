@@ -36,3 +36,12 @@ overlay(zIndex=10)
     bottom 0
     content ""
     z-index zIndex
+
+block-align(alignTo)
+  if alignTo is center
+    margin _ auto
+  if alignTo is left
+    margin-right auto
+  if alignTo is right
+    margin-left auto
+

@@ -5,35 +5,54 @@
 
 
 
-.artifact-card
-  width cardWidth
-  .poster
-    background-overlay url('/images/white-hash-30.png')
-  .poster img
-    square cardWidth
-  .ui-match
-    highlight(fade-out(grayLight, 0.65))
-    color dark
 
-.artifact-card-meta-ribbon
+.artcard
+  width cardWidth
+  overflow hidden
+  border-radius 2px
+  img
+    width 100%
+  .ui-match
+    highlight(fade-out(grayLight, 0.65), 0.2em)
+    border-radius 0.1em
+    color dark
+  &:hover .artcard__body
+    background-color darken(yellow, 5)
+  &:active
+    background-color yellow
+    .artcard__header
+    .artcard__body
+      opacity 0.25
+
+.artcard__poster
+  background-overlay url('/images/white-hash-20.png')
+
+.artcard__meta-ribbon
   z-index 20
   margin-bottom 1px
   border-left 0.3333333rem solid gray
   .co2-badge
-    padding gd(.25) gd(.5)
+    border-right-radius 2px
+    padding gd(0.05) gd(0.5) gd(0.075) gd(0.5)
     background-color grayLight
     color fade-out(textColorDark,0.15)
     line-height 24px
+    // prevent badge from spanning whole card because that looks weird
+    margin-right gd(1.5)
   .co2-contrasted
     font-size 1.2rem
+  .co2-what
+    text-overflow ellipsis
+    max-width gd(4.5)
 
-.artifact-card-body
+.artcard__body
   background-color yellow
   background-image url('/images/white-hash-30.png')
-  min-height 7rem
+  min-height gd(2.75)
   .organization-name
-    padding .65em _ .75em .85em
+    padding .65em .85em .75em .85em
     font-weight normal
     line-height 1.25em
     margin-top 0
-    color textColorDarkOnColor
+    //color textColorDarkOnColor
+    color darken(yellow, 35)

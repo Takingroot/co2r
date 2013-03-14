@@ -1,7 +1,8 @@
 
 
 
-.social-bar
+.sb
+  font-size 0.9rem
   position absolute
   z-index 100
   width 100%
@@ -9,11 +10,15 @@
     position fixed
     bottom -31px!important
     bottom 0
-    .social-bar-inner
+    .sb__inner
       background-color dark
       color textColorLight
+.sb__text
+  // fix vertical centering
+  margin-bottom -0.1em
 
-.social-bar-inner
+.sb__inner
+  padding gd(0.2) gd(0.5)
   transition background-color 0.125s
   position absolute
   bottom gd(1/2) + 1px
@@ -29,7 +34,7 @@
    */
   padding-right 0
 
-.social-bar-buttons
+.sb__buttons
   margin-left gd(1)
   line-height 0
   .addthis_button_facebook_like iframe
@@ -41,5 +46,5 @@
 // ------------------------
 
 body.artifact
-  .social-bar-app
+  .sb-global
     display none!important

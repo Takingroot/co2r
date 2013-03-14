@@ -132,8 +132,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
 
 
 
-.social-bar.social-bar-artifact.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
-  .social-bar-inner.hbox.wrap.--align-vm.padding-s
-    span(bind-compile="appText.social_bar_artifact_text | interpolate:artifact.name")
-    //-span Tell your friends about {{artifact.name}}!
-    .social-bar-buttons.co2r-addthis-toolbox.hbox.align-vm.h-gutters-05
+.sb.social-bar-artifact.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
+  .sb__inner.hbox.wrap.--align-vm.padding-s
+    span.sb__text(bind-compile="appText.social_bar_artifact_text | interpolate:artifact.name")
+    .sb__buttons.co2r-addthis-toolbox.hbox.align-vm.h-gutters-05

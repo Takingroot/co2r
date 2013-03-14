@@ -28,20 +28,20 @@
 
 
 .artifact-directory
-  form.form-search.flex(style="max-width:5000px;")
+  form.form-search.flex
     label(for="search-artifacts"): span.icon-search
     input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
-  .artifact-cards.span.gutters-1.hbox.wrap
-    a.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in directory.artifacts | filter:searchForArtifactName")
-      .artifact-card-header.group
-        .poster
+  .artcards.artifact-cards.span.hbox.wrap
+    a.artcard.artifact-card(href="{{artifact.slug}}", ng-repeat="artifact in directory.artifacts | filter:searchForArtifactName")
+      .artcard__header.artifact-card-header.group
+        .artcard__poster
           img.block(ng-src="{{artifact.thumbnail_url}}")
-        .artifact-card-meta-ribbon.pin-b
+        .artcard__meta-ribbon.artifact-card-meta-ribbon.pin-b
           .co2-badge.jar
-            span(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
+            span.co2-what(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
             br
             span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
-      .artifact-card-body
-        h1.organization-name.text-heading3(ng-bind="artifact.name | highlight:searchForArtifactName")
+      .artcard__body.artifact-card-body
+        h1.organization-name.text-heading4(ng-bind-html="artifact.name | highlight:searchForArtifactName")

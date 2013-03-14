@@ -3,5 +3,15 @@
 
 //  Directory
 
-cardWidth        = gd(10)
-cardsGutterWidth = gd(1)
+cardWidth        = gd(7)
+cardsGutterWidth = gd(0.5)
+
+
+directoryGrid(cardsPerRow, cardW, gutterW)
+  rowWidth = (cardsPerRow * cardW) + ((cardsPerRow - 1) * gutterW)
+  .artifact-directory
+    width rowWidth
+  .artcard
+    margin-bottom gutterW
+    &:not(:nth-child({cardsPerRow}n))
+      margin-right gutterW

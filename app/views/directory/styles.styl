@@ -24,8 +24,7 @@ body.directory
   .introduction-toggler
     font-size s
     padding .15em
-    height l
-    width l
+    size l
 
   .action-steps-container
     background-color lighten(gray, 5)
@@ -43,8 +42,8 @@ body.directory
 
 
 
-// Search input for Directory listing
-//--------------------------------------------------
+//  Search input for Directory listing
+//  --------------------------------------------------
 
 .form-search
   margin-top gd(2)
@@ -58,6 +57,12 @@ body.directory
     height input-height
     color textColorDark
     font-size 1.25rem
+    &::-webkit-input-placeholder
+      color #CCC
+    &::-ms-input-placeholder
+      color #CCC
+    &::-moz-placeholder
+      color #CCC
 
     &:focus
       box-shadow none
@@ -77,45 +82,27 @@ body.directory
 
 
 
-// Directory listing (with responsiveness)
-//--------------------------------------------------
+//  Directory listing (with responsiveness)
+//  --------------------------------------------------
 
 .artifact-directory
-  // overflow so that artifact-cards container width doesn't cause hscroll
-  overflow-x hidden
-  margin-left auto
-  margin-right auto
-  margin-bottom 120px
-.artifact-cards
-  .inner
-    margin-left (cardsGutterWidth / 2)
+  block-align center
+  margin-bottom gd(5)
 
-//@media screen and (min-width: 0)
-.artifact-directory
-  width cardWidth
-.artifact-cards
-  width cardWidth + cardsGutterWidth
+@media screen and (max-width:459px)
+  directoryGrid(1, cardWidth, cardsGutterWidth)
 
-@media screen and (min-width: 700px)
-  .artifact-directory
-    width cardWidth * 2   +   cardsGutterWidth
-  .artifact-cards
-    width cardWidth * 2   +   cardsGutterWidth * 2
+@media screen and (min-width: 460px) and (max-width:699px)
+  directoryGrid(2, cardWidth, cardsGutterWidth)
 
-@media screen and (min-width: 1000px)
-  .artifact-directory
-    width cardWidth * 3   +   cardsGutterWidth * 2
-  .artifact-cards
-    width cardWidth * 3   +   cardsGutterWidth * 3
+@media screen and (min-width: 700px) and (max-width:999px)
+  directoryGrid(3, cardWidth, cardsGutterWidth)
 
-@media screen and (min-width: 1400px)
-  .artifact-directory
-    width cardWidth * 4   +   cardsGutterWidth * 3
-  .artifact-cards
-    width cardWidth * 4   +   cardsGutterWidth * 4
+@media screen and (min-width: 1000px) and (max-width:1299px)
+  directoryGrid(4, cardWidth, cardsGutterWidth)
+
+@media screen and (min-width: 1300px) and (max-width:1799px)
+  directoryGrid(5, cardWidth, cardsGutterWidth)
 
 @media screen and (min-width: 1800px)
-  .artifact-directory
-    width cardWidth * 5   +   cardsGutterWidth * 4
-  .artifact-cards
-    width cardWidth * 5   +   cardsGutterWidth * 5
+  directoryGrid(6, cardWidth, cardsGutterWidth)

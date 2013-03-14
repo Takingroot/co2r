@@ -5,10 +5,10 @@ footer.app-footer.group(ng-controller="footer")
   //- .stripe div just for decoration
   .stripe.span.pin-t
 
-  .social-bar.social-bar-app.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
-    .social-bar-inner.hbox.--align-vm.padding-s
-      div(bind-compile="appText.social_bar_text")
-      .social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
+  .sb.social-bar.sb-global.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
+    .sb__inner.social-bar-inner.hbox.--align-vm
+      .sb__text(bind-compile="appText.social_bar_text")
+      .sb__buttons.social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
 
   .app-footer-content.group.color-theme.green-theme
     .row
