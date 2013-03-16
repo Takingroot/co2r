@@ -9,17 +9,17 @@ body.artifact
   section.about
     background-image url('/images/white-hash-20.png')
 
-  section.organization
+  section.org
     // color vars because of font-awesome selection limitations
     background-color-value     = hsl(90.00, 7.69%, 94.90%)
     contact-method-color       = fade-out(dark, 0.75)
     contact-method-color-hover = dark
     background-color background-color-value
 
-    .contact-methods
+    .org__contact-methods
       margin-top gd(1/4)
 
-    .contact-method
+    .org__contact-method
       square(38px)
       line-height 38px
       text-align center
@@ -49,3 +49,12 @@ body.artifact
         color background-color-value
         &:hover
           color background-color-value
+
+
+
+.org__logo
+  size 100px
+  display block
+  img
+    height 100%
+    display block
