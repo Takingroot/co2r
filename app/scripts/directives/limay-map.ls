@@ -6,6 +6,7 @@ co2r.directive(\limayMap, [\$parse, ($parse)->
     google-map-options  =
       center: new google.maps.LatLng 13.1667, -86.6167
       zoom:   15
+      scrollwheel: false
       map-type-id: google.maps.MapTypeId.ROADMAP
 
     google-map = new google.maps.Map element[0], google-map-options

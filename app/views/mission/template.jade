@@ -22,7 +22,8 @@ section.limay.row-cells
 
 
 
-article.essay-chapter.padding-l(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
-  header.chapter-header
-    h3.chapter-title.text-heading1(bind-compile="appText['about_topic_'+num+'_title']")
-  .chapter-text.v-push-1(bind-compile="appText['about_topic_'+num+'_text']")
+article.essay-chapter.vpadding-l(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
+  .grid-bounds
+    header.chapter-header
+      h3.chapter-title.text-heading1(bind-compile="appText['about_topic_'+num+'_title']")
+    .chapter-text.v-push-1(bind-compile="appText['about_topic_'+num+'_text']")
