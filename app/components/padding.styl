@@ -8,12 +8,14 @@ generate-padding-classes(size-name, size-value)
 
 
 
-padding-size-l = 3rem
-padding-size-m = 2rem
-padding-size-s = 1rem
+padding-size-l  = 3rem
+padding-size-m  = 2rem
+padding-size-s  = 1rem
+padding-size-xs = 0.5rem
 
-generate-padding-classes('m', padding-size-m)
-generate-padding-classes('s', padding-size-s)
+generate-padding-classes('m',  padding-size-m)
+generate-padding-classes('s',  padding-size-s)
+generate-padding-classes('xs', padding-size-xs)
 
 @media screen-xs
   generate-padding-classes('l', padding-size-l)

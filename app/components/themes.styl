@@ -1,3 +1,10 @@
+theme-selection-color(var-bg-color, var-text-color=white)
+  & *::-moz-selection
+    background-color var-bg-color
+    color var-text-color if var-text-color
+  & *::selection
+    background-color var-bg-color
+    color var-text-color if var-text-color
 
 
 
@@ -5,7 +12,9 @@
   a, a:link
     highlight(fade-out(white, 0.9))
     color inherit
-    border-bottom 1px dashed baseTextColor
+    border-bottom-width 1px
+    border-bottom-style dashed
+
     &:hover
       highlight(fade-out(white, 0.7))
       color baseTextColor
@@ -16,16 +25,37 @@
       &:hover
         border-color baseTextColor
 
-
+body
+  theme-selection-color(saturate(lighten(green, 8), 30), false)
+  a
+    border-bottom-color linkColor
 
 .blue-theme
   background-color blue
+  theme-selection-color(darken(blue, 35))
+  a
+    border-bottom-color darken(blue, 35)
+
+
 
 .yellow-theme
   background-color yellow
+  theme-selection-color(yellowAccent)
+  a
+    border-bottom-color yellowAccent
+.all-yellow-theme
+  @extends .yellow-theme
+  color yellowAccent
+
+
 
 .green-theme
   background-color green2
+  theme-selection-color(darken(green, 35))
+  a
+    border-bottom-color darken(green, 35)
+
+
 
 .dark-theme
   color grayLight

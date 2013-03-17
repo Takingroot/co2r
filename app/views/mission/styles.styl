@@ -23,20 +23,33 @@ body.mission
   background-color grayMuted
   border-bottom 1px solid grayMuted
 
-.limay-map-container
+.limay__map-container
   padding 0
 
-.limay-map
+.limay__map
   min-height 20rem
 
-.limay-map-tip
-  background url('/images/white-hash-20.png') yellow
-.map-tip-content
-  padding-left 2rem
+.limay__map-tip
+  background-image url('/images/white-hash-20.png')
+  font-size 0.8rem
+
+.map-tip__icon
+  margin-top 0.15em
+  font-size 1rem
+.map-tip__body
+  padding-left 1.5rem
 
 @media screen-s-up
-  .limay-map
-    min-height 34rem
+  .limay__map
+    min-height 36rem
+  .limay__text
+  .limay__map-container
+    display inline-block
+    vertical-align top
+
+.limay__text__body
+  max-width 30rem
+
 
 // Essay Sections
 // --------------------------------------------------

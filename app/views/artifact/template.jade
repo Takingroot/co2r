@@ -2,7 +2,7 @@
 
 .gallery.group(ui-if="artifact.images.length")
   .carousel.moodshot
-    .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
+    .carousel-item.span.text-s(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
 
 
 section.about.color-theme.yellow-theme
