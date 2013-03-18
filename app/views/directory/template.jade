@@ -43,5 +43,5 @@
             span.co2-what(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
             br
             span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
-      .artcard__body.artifact-card-body
+      .artcard__body.yellow-theme
         h1.organization-name.text-heading4(ng-bind-html="artifact.name | highlight:searchForArtifactName")

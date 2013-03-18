@@ -6,11 +6,11 @@ section.docs-section
 
   .docs-component
     codeblock.
-      .text-heading1
-      .text-heading2
-      .text-heading3
-      .text-heading4
-      .text-m
+      .text-heading1, h1
+      .text-heading2, h2
+      .text-heading3, h3
+      .text-heading4, h4
+      .text-m (default)
       .text-s
       .text-xs
 
@@ -44,6 +44,18 @@ section.docs-section
         li list item 2
         li list item 3
 
+
+    .color-theme.dark-theme(style="max-width:40rem;padding:2rem;")
+      p
+        | The Limay Community Carbon Project is developed by
+        = ' '
+        a(href="#") Taking Root
+        | , a non-profit organization, based in Montreal (Canada).
+
+      ul
+        li list item 1
+        li list item 2
+        li list item 3
 
     .color-theme.blue-theme(style="max-width:40rem;padding:2rem;")
       p
@@ -81,19 +93,7 @@ section.docs-section
         li list item 2
         li list item 3
 
-    .color-theme.dark-theme(style="max-width:40rem;padding:2rem;")
-      p
-        | The Limay Community Carbon Project is developed by
-        = ' '
-        a(href="#") Taking Root
-        | , a non-profit organization, based in Montreal (Canada).
-
-      ul
-        li list item 1
-        li list item 2
-        li list item 3
-
-    .color-theme.all-yellow-theme(style="max-width:40rem;padding:2rem;")
+    .color-theme.all-yellow-theme(style="max-width:40rem;padding:2rem;margin-top:1px;")
       p
         | The Limay Community Carbon Project is developed by
         = ' '
