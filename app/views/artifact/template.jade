@@ -7,18 +7,28 @@
 
 section.about.color-theme.yellow-theme
   .row.vpadding-l
-    .cols7
+    .cols6
       header
         h1.text-heading1(bind-compile="artifact.name")
-        h4(bind-compile="appText.artifact_offset_since | interpolate:artifact.offsetSince")
       .description
+        a.mission-cta(href="/mission")
+          span.text-s.cta__text(bind-compile="appText.learn_more_about_co2r")
+          i.icon-circle-arrow-right.cta__icon
         .story(bind-compile="artifact.description")
-        include ../partial-learn-more
-    .cols5
-      .emissions-badge.padding-m
+    .cols5.grid-push1
+      img.co2-infographic(src="/images/co2-infographic-@x2.png")
+      .big-emissions-badge.padding-m
         h4.unspaced
           span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
           span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
+      table.stats-table.text-s
+        tbody
+          tr
+            td(bind-compile="appText.artifact_offset_since")
+            td(ng-bind="artifact.offsetSince")
+          tr
+            td Organization
+            td(ng-bind="artifact.organization.name")
 
 
 

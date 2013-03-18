@@ -44,3 +44,9 @@ baseTextColor = textColorDark
 color-text-base = textColorDark
 baseBgColor   = grayLight
 color-bg-base = grayLight
+
+
+calcDarkAccentColor(var-base-color)
+  desaturate(darken(var-base-color, 42), 20)
+calcBurnColor(var-bar-color)
+  saturate(darken(var-bar-color, 15), 10)
