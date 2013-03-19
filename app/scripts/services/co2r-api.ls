@@ -1,7 +1,7 @@
 # wrap the $http service into a co2r api DSL
 co2r.service \co2rApi, ($http, preferences-storage)->
 
-  api-url  = "http://co2r-data-staging.herokuapp.com/api/"
+  api-url  = "http://data.co2r.com/api/"
 
   return
     post: (resource-url, custom-req-config)->
