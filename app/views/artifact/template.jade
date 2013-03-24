@@ -70,12 +70,12 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
     section.timeline-header
       .timeline-header-inner.dark-theme.span(scrollfix="{begin:{element:'.timeline-header'}}")
         .timeline-navigation
-          button.c-btn.timeline-navigation-left.pin-l(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-chevron-left.align-middle
-          button.c-btn.timeline-navigation-right.pin-r(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
+          button.c-btn.timeline-navigation__button.pin-l(ng-show="canMoveTimeline('-1')", ng-click="moveTimeline('-1')"): i.icon-chevron-left.align-middle
+          button.c-btn.timeline-navigation__button.pin-r(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
         .timeline-slider-window
           .hbox
-            .timeline-item.text-align-center(style="width:{{column_width}}px", ng-repeat="report in reports")
-              h3.year-title {{report.year}}
+            .timeline-item.vpadding-s.text-align-center(style="width:{{column_width}}px", ng-repeat="report in reports")
+              h4(ng-bind="report.year")
 
 
 

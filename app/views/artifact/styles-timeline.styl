@@ -10,28 +10,13 @@
     z-index 10
   .is-scrollfix
     top 0
-  .timeline-item
-    height 52px
-  .year-title
-    //  vertically center the labels (years)
-    padding-top 0.45em
 
 //  Navigation
 
-.timeline-navigation
-  button
-    width 52px
-    height 52px
-
-.timeline-navigation-right
-.timeline-navigation-left
+.timeline-navigation__button
+  size 52px
   z-index 20
 
-.timeline-navigation-right
-  border-left 1px solid black
-
-.timeline-navigation-left
-  border-right 1px solid black
 
 
 
@@ -43,9 +28,6 @@
   & > *
     white-space normal
 
-  //&.ui-scrollfix
-  //padding-top 72px
-
 .timeline-slider-window
   overflow hidden
 
@@ -54,9 +36,9 @@
 
 .timeline-item
   white-space normal
-  border-left 1px dashed grayMuted
+  //border-left 1px dashed grayMuted
   &:last-child
-    border-right 1px dashed grayMuted
+    //border-right 1px dashed grayMuted
 
 .chart-labels
   border-top 1px solid darkMuted

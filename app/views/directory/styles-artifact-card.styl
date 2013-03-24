@@ -18,11 +18,15 @@
     color dark
   &:hover .artcard__body
     background-color darken(yellow, 5)
-  &:active
-    background-color yellow
-    .artcard__header
-    .artcard__body
-      opacity 0.25
+
+// The :active effect is nice for mouse-click, but annoying
+// for touch-devices
+@media screen-s-up
+  .artcard:active
+      background-color yellow
+      .artcard__header
+      .artcard__body
+        opacity 0.25
 
 .artcard__poster
   background-overlay url('/images/white-hash-20.png')
