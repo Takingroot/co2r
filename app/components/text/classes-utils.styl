@@ -9,3 +9,12 @@
 
 .text-color-inverse
   color textColorInverse
+
+.text-context
+  p, small
+    &:not(:last-child)
+      margin-bottom 1.875em
+
+  h1, h2, h3, h4, h5, h6
+    &:not(:last-child)
+      margin-bottom (1.875em / 1.5)

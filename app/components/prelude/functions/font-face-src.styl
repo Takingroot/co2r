@@ -1,0 +1,5 @@
+font-face-src(var-name, var-base-path='/fonts/')
+  var-path = unquote(var-base-path) + unquote(var-name)
+  var-url  = "url('"+var-path+".%s')"
+  src var-url % eot
+  src var-url % unquote('eot#iefix') format('embedded-opentype'), var-url % woff format('woff'), var-url % ttf format('truetype')
