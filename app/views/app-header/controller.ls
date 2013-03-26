@@ -29,9 +29,9 @@ co2r.controller \header, ($scope, $location, $filter, preferences-storage, $wind
       url: "/register-your-product"
       icon: \edit
 
-    * label: "participate"
-      url: "/participate"
-      icon: \heart
+    #* label: "participate"
+      #url: "/participate"
+      #icon: \heart
 
     * label: "our_mission"
       url: "/mission"
