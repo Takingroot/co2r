@@ -23,7 +23,7 @@ co2r.controller \app, ($scope, co2r-api, preferences-storage, $filter, route-css
   #  (variables that affect footrpint charting, term defintions, etc.)
 
   co2r-api.get(\app).success (res)->
-    $scope.app-vars = res.data
+    $scope.app-vars = res
 
 
   #
