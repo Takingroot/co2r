@@ -7,7 +7,7 @@ footer.app-footer.group(ng-controller="footer")
 
   .sb.social-bar.sb-global.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
     .sb__inner.social-bar-inner.hbox.--align-vm
-      .sb__text(bind-compile="appText.social_bar_text")
+      p.sb__text.s(bind-compile="appText.social_bar_text")
       .sb__buttons.social-bar-buttons.co2r-addthis-toolbox.hbox.h-gutters-05
 
   .app-footer-content.group.color-theme.green-theme
@@ -17,17 +17,21 @@ footer.app-footer.group(ng-controller="footer")
           a.logo-container.hbox.block(href="{{takingRoot.website_url}}", target="_blank")
             .v-span
             img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
-          p.text-small(bind-compile="takingRoot.partnership_description")
+          p(bind-compile="takingRoot.partnership_description")
 
-        .v-push-3
-          p.text-xs(ng-bind-html="appText.footer_colofon")
+        .v-push-3.hidden-phone
+          p.s(ng-bind-html="appText.footer_colofon")
 
       section.partners-container.cols8
         header.partners-header
-          h1.text-heading3(ng-bind="appText.footer_partners_title")
+          h1.l(ng-bind="appText.footer_partners_title")
         .partners.row.v-push-1
           .partner.cols4(ng-repeat="partner in partners")
             a.logo-container.hbox.block(href="{{partner.website_url}}", target="_blank")
               .v-span
               img.logo(ng-src="{{partner.logo_url}}")
-            p.text-small(ng-bind-html="partner.partnership_description")
+            .text-context
+              p(ng-bind-html="partner.partnership_description")
+
+      .v-push-3.visible-phone
+        p.s(ng-bind-html="appText.footer_colofon")

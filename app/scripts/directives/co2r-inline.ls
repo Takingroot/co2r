@@ -18,9 +18,9 @@ co2r
     replace:    on
     scope:      on
     template: """
-      <span tooltip="tooltipConfig">
+      <strong tooltip="tooltipConfig">
         {{amount | unit:amountUnit}}
-      </span>
+      </strong>
     """
     link: (scope, el, attrs)->
       scope.amount         = 0

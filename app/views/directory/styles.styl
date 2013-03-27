@@ -21,6 +21,9 @@ body.directory
   .introduction
     background-image url('/images/white-hash-20.png')
 
+  .intro__title
+    margin-bottom 0.5em
+
   .introduction-toggler
     font-size s
     padding .15em
@@ -29,12 +32,18 @@ body.directory
   .action-steps-container
     background-color lighten(gray, 5)
     background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
-    padding-top gd(2)
-    padding-bottom @padding-top
-
-  .action-step:hover
-    p
-      color textColorDark
+    padding gd(2) _
+  .action-step:not(:first-child)
+    margin-top gd(1)
+  .action-step
+    i
+      margin-left -1.4em
+      margin-right 0.25em
+      font-size 2em
+      vertical-align middle
+      color darken(blue, 30)
+    &:last-child
+      display none
 
 
 

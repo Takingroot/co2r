@@ -1,30 +1,27 @@
-
-
 section.page-introduction
   .moodshot.hash-overlay
-  section.introduction.blue-theme.color-theme
-    .grid-bounds.vpadding-l.hpadding-m
-      .introduction-copy
+  section.introduction.blue-theme.color-theme.vpadding-l
+    .grid-bounds
+      article.introduction-copy.text-container
         h1.text-color-inverse(bind-compile="appText.introduction_title")
         .introduction-text(bind-compile="appText.introduction_text")
 
 
 section.limay
-  .limay__map-container.cols5
+  article.limay__text.vpadding-l.grid-bounds
+    h1(bind-compile="appText.about_community_title")
+    .limay__text__body(bind-compile="appText.about_community_text")
+  .limay__map-container
     .limay__map-tip.all-yellow-theme
-      .grid-bounds-screen-xs.padding-xs
-        .map-tip__icon.icon-info-sign.unspaced.float-left
+      .grid-bounds.vpadding-xs
+        .map-tip__icon.icon-info-sign.float-left
         .map-tip__body.text-small(bind-compile="appText.mission_map_help_tip")
     .limay__map.span#map_canvas
-  .limay__text.padding-m.cols7.grid-bounds
-    h1.text-heading1.group
-      .limay__text__head(bind-compile="appText.about_community_title")
-    .limay__text__body(bind-compile="appText.about_community_text")
 
 
 
-article.essay-chapter.vpadding-l(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
-  .grid-bounds.padding-m
+article.essay-chapter.vpadding-l.text-context(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
+  .grid-bounds.vpadding-m
     header.chapter-header
       h3.chapter-title.text-heading1(bind-compile="appText['about_topic_'+num+'_title']")
     .chapter-text.v-push-1(bind-compile="appText['about_topic_'+num+'_text']")

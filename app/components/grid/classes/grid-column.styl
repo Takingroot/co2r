@@ -24,6 +24,8 @@ for n in 1..grid-row-column-count
   [class*=" cols"], [class^="cols"]
     width 100%
     display block
+    & + [class*=" cols"], & + [class^="cols"]
+      margin-top gd(1)
 
 @media screen-s-up
   [class*=" cols"], [class^="cols"]

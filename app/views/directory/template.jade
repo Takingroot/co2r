@@ -5,24 +5,29 @@
   button.introduction-toggler.c-btn.pin-r(style="z-index:100;", ng-click="directory.toggleIntroduction()")
     span(ng-class="{'icon-chevron-up':directory.introductionState(), 'icon-chevron-down':!directory.introductionState()}")
 
-  .moodshot.hash-overlay
+  .group
+    .moodshot.hash-overlay
+    .pin-se.span
+      .intro__title.row
+        h1.cols5.text-color-inverse(bind-compile="appText.introduction_title")
 
   section.introduction.color-theme.blue-theme
-    .row.vpadding-m
-      .introduction-copy.cols12
-        h1.text-heading1.text-color-inverse(bind-compile="appText.introduction_title")
+    .row-cells.vpadding-m
+      article.introduction-copy.cols5
         .introduction-text(bind-compile="appText.introduction_text")
         br
         include ../partial-learn-more
 
-  section.action-steps-container
-    .action-steps.row
-      a.action-step.cols4.transparent-link(href="{{step.link}}", class="action-step{{$index+1}}", ng-repeat="step in directory.actionSteps")
-        h1.text-heading3.action-step-title
-          i(class="icon-{{step.icon}}")
-          = ' '
-          span(bind-compile="appText[step.title]")
-        p.text-small(bind-compile="appText[step.body]")
+      div.cols1
+      section.cols5.align-middle
+        .action-steps.text-context
+          .action-step(class="action-step{{$index+1}}", ng-repeat="step in directory.actionSteps")
+            a(href="{{step.link}}")
+              h1.l.text-color-inverse
+                i(class="icon-{{step.icon}}")
+                | 
+                span(bind-compile="appText[step.title]")
+            p(bind-compile="appText[step.body]")
 
 
 
@@ -30,7 +35,7 @@
 .artifact-directory
   form.form-search.flex
     label(for="search-artifacts"): span.icon-search
-    input.span.text-heading3(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
+    input.span.l(id="search-artifacts", type="text", ng-model="searchForArtifactName", autofocus,
       placeholder="{{appText.directory_filter_input_prompt}}")
 
   .artcards.artifact-cards.span.hbox.wrap
@@ -40,8 +45,8 @@
           img.block(ng-src="{{artifact.thumbnail_url}}")
         .artcard__meta-ribbon.artifact-card-meta-ribbon.pin-b
           .co2-badge.jar
-            span.co2-what(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
+            small.co2-what(ng-bind="artifact.unit_quantity +' '+ artifact.unit_verbose")
             br
-            span.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
+            strong.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artcard__body.yellow-theme
-        h1.organization-name.text-heading4(ng-bind-html="artifact.name | highlight:searchForArtifactName")
+        h1.organization-name.m(ng-bind-html="artifact.name | highlight:searchForArtifactName")

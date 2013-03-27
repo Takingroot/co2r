@@ -7,12 +7,12 @@
 
 section.about.color-theme.yellow-theme
   .row.vpadding-l
-    .cols6
+    article.cols6
       header
-        h1.text-heading1(bind-compile="artifact.name")
+        h1(bind-compile="artifact.name")
       .description
         a.mission-cta(href="/mission")
-          span.text-s.cta__text(bind-compile="appText.learn_more_about_co2r")
+          span.s.cta__text(bind-compile="appText.learn_more_about_co2r")
           i.icon-circle-arrow-right.cta__icon
         .story(bind-compile="artifact.description")
     .cols5.grid-push1
@@ -21,7 +21,7 @@ section.about.color-theme.yellow-theme
         h4.unspaced
           span(ng-bind="artifact.unit_quantity + ' ' + artifact.unit_verbose + ' = '")
           span.co2-contrasted(amount="{{latestReport.co2_per_unit}}")
-      table.stats-table.text-s
+      table.stats-table
         tbody
           tr
             td(bind-compile="appText.artifact_offset_since")
@@ -33,12 +33,14 @@ section.about.color-theme.yellow-theme
 
 
 section.org.hidden-phone
-  .row.vpadding-s
+  .row.vpadding-m
     .cols5
-      a.org__logo(href="{{ artifact.organization.website_url }}", ng-show="artifact.organization.logo_mark_url")
-        img(ng-src="{{artifact.organization.logo_mark_url}}")
-      h2.text-heading3(bind-compile="artifact.organization.name")
-      div(bind-compile="artifact.organization.description")
+      article
+        p
+          a.org__logo(href="{{ artifact.organization.website_url }}", ng-show="artifact.organization.logo_mark_url")
+            img(ng-src="{{artifact.organization.logo_mark_url}}")
+        h1.l(bind-compile="artifact.organization.name")
+        div(bind-compile="artifact.organization.description")
       .v-push-2(ui-if="artifact.organization.contact_infos.length > 0")
         p(bind-compile="appText.artifact_business_card_contact_lead_in")
         .org__contact-methods.hbox.h-gutters-05
@@ -51,10 +53,10 @@ section.org.hidden-phone
             i.icon-twitter-sign
             span.title(ng-bind="artifact.organization.name")
         .tweet-items
-          .tweet-item.span-4(ng-repeat="tweet in organizationTweets")
+          article.tweet-item.span-4(ng-repeat="tweet in organizationTweets")
             .tweet-item-inner
-              .tweet-meta
-                span.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
+              .s.tweet-meta
+                time.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
               p.tweet-body(ng-bind-html="tweet.text | linky")
 
 
@@ -63,7 +65,7 @@ section.org.hidden-phone
 section.reports.v-push-4.span.a-image(ui-if="reports.length")
 
   header.reports-header.row
-    h1.text-heading1(bind-compile="appText.artifact_report_section_title")
+    h1(bind-compile="appText.artifact_report_section_title")
 
   .timeline-conductor.group(column-width="column_width", column-count="reports.length")
 
@@ -74,8 +76,8 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
           button.c-btn.timeline-navigation__button.pin-r(ng-show="canMoveTimeline('+1')", ng-click="moveTimeline('+1')"): i.icon-chevron-right.align-middle
         .timeline-slider-window
           .hbox
-            .timeline-item.vpadding-s.text-align-center(style="width:{{column_width}}px", ng-repeat="report in reports")
-              h4(ng-bind="report.year")
+            .timeline-item.vpadding-xs.text-align-center(style="width:{{column_width}}px", ng-repeat="report in reports")
+              span(ng-bind="report.year")
 
 
 
@@ -86,8 +88,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         .chart-co2-per-unit(column-width="column_width", data="data.co2PerThingMade")
         .hbox.chart-labels.text-align-center
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
-            h4
-              span.co2-contrasted(amount="{{report.co2_per_unit}}")
+            .co2-contrasted(amount="{{report.co2_per_unit}}")
 
 
 
@@ -99,15 +100,15 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
         .hbox.chart-labels
           .timeline-item(style="width:{{column_width}}px", ng-repeat="report in reports")
             .bar-labels.hbox.text-aligns-center
-              h4.unspaced.bar-label.total-co2-label
+              .unspaced.bar-label.total-co2-label
                 span.co2-contrasted.nowrap(amount="{{report.total_tons_produced}}", unit="'t'")
-              h4.unspaced.bar-label.trees-planted-label(title="{{appText.trees_planted}}", bind-compile="report.trees_planted")
+              .unspaced.bar-label.trees-planted-label(title="{{appText.trees_planted}}", bind-compile="report.trees_planted")
 
 
 
     section.report-section.report-section-co2-sources(ui-if="data.co2Sources.length")
       header.report-header.align-center
-        h3.report-title.text-align-center(bind-compile="appText.artifact_co2_sources")
+        h3.l.report-title.text-align-center(bind-compile="appText.artifact_co2_sources")
         ul.legend-items.hbox.wrap.text-align-center
           li.legend-item(style="border-color:{{color}};", ng-repeat="(co2SourceName, color) in nameColors")
             span.legend-item-name(ng-bind="co2SourceName")
@@ -125,24 +126,24 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
           .timeline-item.v-gutters-3(style="width:{{column_width}}px", ng-repeat="report in reports")
             .no-data.text-align-center(ui-if="!report.other_actions.length", ng-bind-html="appText.artifact_no_data")
 
-            section.actions-category(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
+            section.actions-category.align-left(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
               .actions-category-header
-                .actions-category-icon.text-heading3.unspaced(class="icon-{{actionCategory.name.icon_code | slugify}}")
-                h4.actions-category-title(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
+                .actions-category-icon.l.unspaced(class="icon-{{actionCategory.name.icon_code | slugify}}")
+                h2.l.actions-category-title(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
               ul.actions.v-push-1.v-gutters-05
                 li.action(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
 
 
 
     section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
-      a.btn.text-heading3.v-push-4(href="{{latestReport.annual_report_url}}")
+      a.btn.l.v-push-4(href="{{latestReport.annual_report_url}}")
         i.icon-file-alt
-        = ' '
+        | 
         span(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 
 
 .sb.social-bar-artifact.hidden-phone(scrollfix="{end:{element:'.app-footer', windowAnchor:'end', offset:-16}}")
   .sb__inner.hbox.wrap.--align-vm.padding-s
-    span.sb__text(bind-compile="appText.social_bar_artifact_text | interpolate:artifact.name")
+    p.s.sb__text(bind-compile="appText.social_bar_artifact_text | interpolate:artifact.name")
     .sb__buttons.co2r-addthis-toolbox.hbox.align-vm.h-gutters-05

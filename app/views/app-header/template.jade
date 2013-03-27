@@ -1,14 +1,11 @@
-
-
-
 header.app-header(ng-controller="header")
   .row-cells
     a.app-brand-container.cols6.transparent-link.row.align-middle(href="/")
       div
         img(src="/images/co2r-logo.png")
       .cols6
-        h1.text-heading4.app-title(bind-compile="appText.co2r")
-        p.text-small(bind-compile="appText.branding_subtext")
+        h1.app-title(bind-compile="appText.co2r", style="font-size:1.5rem;")
+        p.s(bind-compile="appText.branding_subtext")
 
     .align-middle
       .app-navbar.cols6
@@ -20,4 +17,4 @@ header.app-header(ng-controller="header")
             i.nav-link-icon(class="icon-{{navItem.icon}}")
             span.nav-link-text {{appText[navItem.label]}}
 
-  a.text-small.language-switcher.c-btn.c-btn-subtle.pin-tr(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")
+  a.s.language-switcher.c-btn.c-btn-subtle.pin-tr(ng-click="useOtherLanguage()", ng-bind="otherLanguage() | languageName")

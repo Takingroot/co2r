@@ -1,10 +1,10 @@
 header
   .header-inner.row.v-push-3
 
-    .introduction.cols5
+    .introduction.cols5.text-context
       h1
         i.icon-file
-        = ' '
+        | 
         span(bind-compile="appText.register_your_product")
       p(bind-compile="appText.register_introduction")
 
@@ -30,10 +30,10 @@ header
 
 section.register-info-container
   .row-cells
-    aside.register-info-aside.padding-l.cols5
+    aside.register-info-aside.padding-l.cols5.text-context
       .align-right
         div(bind-compile="appText.register_artifact_left_column")
-    .register-info-body.padding-l.cols7
+    article.register-info-body.padding-l.cols7
       div(bind-compile="appText.register_artifact_right_body")
 
 

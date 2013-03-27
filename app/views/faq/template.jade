@@ -12,5 +12,5 @@
     .faqs.v-gutters-3
       article(id="{{faq.question | slugify}}", ng-repeat="faq in faqs", spyscrollable)
         header.question
-          h1.text-heading2(bind-compile="faq.question")
+          h1.l(bind-compile="faq.question")
         .answer.v-push-1(bind-compile="faq.answer")

@@ -6,6 +6,7 @@ body.mission
 
   .introduction
     background-image url('/images/white-hash-20.png')
+    padding-top 1em
 
   .moodshot
     background-image  url('/images/mission-moodshot.jpg')
@@ -39,16 +40,12 @@ body.mission
 .map-tip__body
   padding-left 1.5rem
 
+.limay__text
+  padding-bottom 1em
+
 @media screen-s-up
   .limay__map
-    min-height 36rem
-  .limay__text
-  .limay__map-container
-    display inline-block
-    vertical-align top
-
-.limay__text__body
-  max-width 30rem
+    height gd(18)
 
 
 // Essay Sections
@@ -57,9 +54,10 @@ body.mission
 .chapter-title
   width 400px
 
+.limay__text,
 .chapter-text
-  column-width 400px
-  column-gap 60px
+  column-width 20rem
+  column-gap gd(1.5)
 
 .essay-chapter-2
   background-image url('/images/white-hash-100.png')
