@@ -12,7 +12,8 @@ TODO
 module.exports = (grunt)->
 
   grunt.registerTask 'default', ['dev']
-  grunt.registerTask 'dev'    , ['build', 'boot', 'watch']
+  grunt.registerTask 'devBoot', ['build', 'boot', 'watch']
+  grunt.registerTask 'dev'    , ['build', 'connect', 'watch']
   grunt.registerTask 'build'  , ['stylus', 'jade', 'livescript', 'concat', 'copy']
   grunt.registerTask 'boot'   , ['connect', 'open:dev']
   grunt.registerTask 'connect', 'Boot a server', ->
