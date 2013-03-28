@@ -6,9 +6,6 @@
 
 body.directory
 
-  .app-footer
-    margin-top gd(4)
-
   .moodshot
     background url('https://co2r-development.s3.amazonaws.com/heroshots/heroshot-home.jpg') no-repeat center
     background-size cover
@@ -29,22 +26,25 @@ body.directory
     padding .15em
     size l
 
-  .action-steps-container
-    background-color lighten(gray, 5)
-    background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
-    padding gd(2) _
-  .action-step:not(:first-child)
-    margin-top gd(1)
-  .action-step
-    i
-      margin-left -1.4em
-      margin-right 0.25em
-      font-size 2em
-      vertical-align middle
-      color darken(blue, 30)
-    &:last-child
-      display none
+.action-steps-container
+  background-color lighten(gray, 5)
+  background-image url('/images/white-hash-30.png'), url('/images/white-hash-30.png')
+  padding gd(2) _
+.action-step:not(:first-child)
+  margin-top gd(1)
+.action-step
+  i
+    margin-right 0.25em
+    font-size 1.5em
+    vertical-align middle
+    color darken(blue, 30)
+  &:last-child
+    display none
 
+@media screen-s-up
+  .action-step i
+    margin-left -1.4em
+    font-size 2em
 
 
 
@@ -55,8 +55,7 @@ body.directory
 //  --------------------------------------------------
 
 .form-search
-  margin-top gd(2)
-  margin-bottom gd(2)
+  margin gd(1) _
   input-height = 3.7rem
   input
     background-color transparent
@@ -98,19 +97,35 @@ body.directory
   block-align center
   margin-bottom gd(5)
 
-@media screen and (max-width:459px)
-  directoryGrid(1, cardWidth, cardsGutterWidth)
+@media screen and (max-width:389px)
+  .artifact-directory
+    margin-bottom gd(0.5)
 
-@media screen and (min-width: 460px) and (max-width:699px)
+  .form-search
+      padding _ 1px
+      margin 1px _
+
+  .artcard
+    border-radius 0
+    margin-bottom 2px
+    width 50%
+    &:nth-child(odd)
+      padding-left 1px
+      padding-right 1px
+    &:nth-child(even)
+      padding-left 1px
+      padding-right 1px
+
+@media screen and (min-width: 390px) and (max-width:699px)
   directoryGrid(2, cardWidth, cardsGutterWidth)
 
 @media screen and (min-width: 700px) and (max-width:999px)
   directoryGrid(3, cardWidth, cardsGutterWidth)
 
-@media screen and (min-width: 1000px) and (max-width:1299px)
+@media screen and (min-width: 1000px) and (max-width:1199px)
   directoryGrid(4, cardWidth, cardsGutterWidth)
 
-@media screen and (min-width: 1300px) and (max-width:1799px)
+@media screen and (min-width: 1200px) and (max-width:1799px)
   directoryGrid(5, cardWidth, cardsGutterWidth)
 
 @media screen and (min-width: 1800px)

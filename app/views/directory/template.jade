@@ -47,4 +47,5 @@
             br
             strong.co2-contrasted(amount="{{artifact.footprints[0].co2_per_unit}}")
       .artcard__body.yellow-theme
-        h1.organization-name.m(ng-bind-html="artifact.name | highlight:searchForArtifactName")
+        .artcard__body-inner.align-middle(style="display:table-cell")
+          h1.organization-name.m(ng-bind-html="artifact.name | highlight:searchForArtifactName")

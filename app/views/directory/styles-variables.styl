@@ -14,4 +14,6 @@ directoryGrid(cardsPerRow, cardW, gutterW)
   .artcard
     margin-bottom gutterW
     &:not(:nth-child({cardsPerRow}n))
-      margin-right gutterW
+      // - num fixes bug in FF where the minute size difference
+      // causes the last item to wrap onto next line
+      margin-right (gutterW - 0.001)

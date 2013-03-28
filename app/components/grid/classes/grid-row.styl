@@ -14,28 +14,25 @@
 
 .row
   block-align center
+  padding _ grid-column-gutter-width
   & > *
     display inline-block
     vertical-align top
-
   //  Nested rows
   //  - nested rows should not receive width specifications
   //  - if has colsN class then don't do anything, width will be set by colsN
-  .row:not([class*="cols"])
-    width auto
+  //  - should not receive padding
+  .row
+    padding _ 0
+    &:not([class*="cols"])
+      width auto
 
 
 
 @media screen-xs
   .row
     max-width 400px
-    // no gutters when full-width for every column
-    padding-left  grid-column-gutter-width
-    padding-right grid-column-gutter-width
     white-space normal
-    .row
-      padding-left 0
-      padding-right 0
 
 @media screen-s
   .row:not([class*="cols"])
