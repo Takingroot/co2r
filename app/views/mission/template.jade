@@ -8,7 +8,7 @@ section.page-introduction
 
 
 section.limay
-  article.limay__text.vpadding-l.grid-bounds
+  article.limay__text.vpadding-m.grid-bounds
     h1(bind-compile="appText.about_community_title")
     .limay__text__body(bind-compile="appText.about_community_text")
   .limay__map-container
@@ -20,8 +20,8 @@ section.limay
 
 
 
-article.essay-chapter.vpadding-l.text-context(class="essay-chapter-{{num}}", ng-repeat="num in [1,2,3]")
-  .grid-bounds.vpadding-m
-    header.chapter-header
-      h3.chapter-title.text-heading1(bind-compile="appText['about_topic_'+num+'_title']")
-    .chapter-text.v-push-1(bind-compile="appText['about_topic_'+num+'_text']")
+.chapters
+  article.chapter.vpadding-m.text-context(ng-repeat="num in [1,2,3]")
+    .grid-bounds
+      h3.chapter__title.text-heading1(bind-compile="appText['about_topic_'+num+'_title']")
+      .chapter__text.v-push-1(bind-compile="appText['about_topic_'+num+'_text']")
