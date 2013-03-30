@@ -12,7 +12,11 @@
   max-width 30rem
 
 .text-context, article
-  p, img
+  ul
+    list-style disc
+  li:not(:last-child)
+    margin-bottom (1.875em / 2)
+  p, img, ul
     &:not(:last-child)
       margin-bottom 1.875em
 

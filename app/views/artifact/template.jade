@@ -64,7 +64,7 @@ section.org.hidden-phone
 
 section.reports.v-push-4.span.a-image(ui-if="reports.length")
 
-  header.reports-header.row
+  header.reports-header.row.align-center
     h1(bind-compile="appText.artifact_report_section_title")
 
   .timeline-conductor.group(column-width="column_width", column-count="reports.length")
@@ -126,11 +126,12 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
           .timeline-item.v-gutters-3(style="width:{{column_width}}px", ng-repeat="report in reports")
             .no-data.text-align-center(ui-if="!report.other_actions.length", ng-bind-html="appText.artifact_no_data")
 
-            section.actions-category.align-left(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
+            section.text-context.actions-category.align-left(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
               .actions-category-header
-                .actions-category-icon.l.unspaced(class="icon-{{actionCategory.name.icon_code | slugify}}")
-                h2.l.actions-category-title(style="text-transform:capitalize;", ng-bind="actionCategory.name.name")
-              ul.actions.v-push-1.v-gutters-05
+                .actions-category-icon.l(class="icon-{{actionCategory.name.icon_code | slugify}}")
+                | 
+                strong.actions-category-title(ng-bind="actionCategory.name.name")
+              ul.actions.v-push-1
                 li.action(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
 
 

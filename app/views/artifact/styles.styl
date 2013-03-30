@@ -56,7 +56,7 @@ body.artifact
       margin-top gd(1/4)
 
     .org__contact-method
-      square(38px)
+      size 2.4rem
       line-height 38px
       text-align center
       i
@@ -70,12 +70,16 @@ body.artifact
           color contact-method-color-hover
 
     // due to font-awesome not having an icon-email-sign etc.
+    .contact-method-other
+    .contact-method-website
+      padding-top 0.2em
+    .contact-method-email
+      padding-top 0.15em
     .contact-method-website
     .contact-method-email
     .contact-method-other
       font-size 3.25rem
       background-color contact-method-color
-      padding-top 9px
       border-radius 5px
       &:hover
         background-color contact-method-color-hover
@@ -94,3 +98,11 @@ body.artifact
   img
     height 100%
     display block
+
+.report-section-other-eco-actions
+  .actions-category-title
+    margin-left gd(1/4)
+  .actions
+    margin-left gd(1) !important
+  .timeline-item
+    padding-right gd(2)
