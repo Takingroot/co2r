@@ -8,32 +8,34 @@ header
         span(bind-compile="appText.register_your_product")
       p(bind-compile="appText.register_introduction")
 
-    form.register__form.vintage-box-models.cols7(ng-submit="sendForm()", name="artifactRegistrationForm")
-      .h-gutters-1.hbox
-        textarea(rows="9", placeholder="{{appText.your_message}}", ng-model="org.message", required)
-        div
+    form.register__form.cols7.grid-push1(ng-submit="sendForm()", name="artifactRegistrationForm")
+      .row
+        .cols6
+          textarea.span(rows="9", placeholder="{{appText.your_message}}", ng-model="org.message", required)
+        div.cols6
           .control-group
-            .input-prepend
+            .input-prepend.span
               label.add-on(for="name"): i.icon-user
-              input#name(type="text", placeholder="{{appText.name_or_organization}}", ng-model="org.name", required)
+              input#name.span(type="text", placeholder="{{appText.name_or_organization}}", ng-model="org.name", required)
           .control-group
-            .input-prepend
+            .input-prepend.span
               label.add-on(for="email"): i.icon-envelope
-              input#email(type="email", placeholder="{{appText.email}}", ng-model="org.email", required)
+              input#email.span(type="email", placeholder="{{appText.email}}", ng-model="org.email", required)
           .control-group
-            .input-prepend
+            .input-prepend.span
               label.add-on(for="phone"): i.icon-phone
-              input#phone(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
+              input#phone.span(type="text", placeholder="{{appText.phone}}", ng-model="org.phone", required)
           .control-group
             button.btn.span(style="box-sizing:border-box;", ng-bind="appText.inquire", ng-disabled="!artifactRegistrationForm.$valid")
 
 
 section.register__info-container
-  .row-cells
-    aside.register__info-aside-container.cols4.text-context
-      .register__info-aside(bind-compile="appText.register_artifact_left_column")
-    article.register__info-body-container.cols6
-      .register__info-body.text-container(bind-compile="appText.register_artifact_right_body")
+  .grid-bounds-desktop
+    .register__info-container-inner
+      aside.register__info-aside-container.text-context
+        .register__info-aside(bind-compile="appText.register_artifact_left_column")
+      article.register__info-body-container
+        .register__info-body.text-container(bind-compile="appText.register_artifact_right_body")
 
 
 

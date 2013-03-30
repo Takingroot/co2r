@@ -1,51 +1,63 @@
+var-padding-from-footer = gd(6)
 
-
+.register__info-body-container
+  padding-bottom var-padding-from-footer
 
 .register__info-container
   border-top 1px solid grayMuted
 
-.register__info-aside-container
-  background-color grayLightest
-  border-right 1px solid grayMuted
 
-.register__info-aside-container
-.register__info-body-container
-  padding-bottom gd(6)
 
-.register__info-body-container
-  background-color color-bg-base
-  padding-left gd(2)
 
-.register__info-aside
-  padding l gd(2.75) _ _
-.register__info-body
-  padding l _ _ l
 
 
 .register__form
-  margin-top gd(2.25)
-  padding-left gd(1.15) !important
-  textarea
-    width gd(10)
-  input
-    width gd(10)
+  margin-top gd(0.75)
 
 .register__header
   padding-top gd(3) !important
 
-body.register-your-product
-  .introduction
-    margin-top -12px
-    h1
-      margin-top 0
+@media screen-xs
+  .register__info-aside
+  .register__info-body
+    padding _ grid-column-gutter-width
+
+  .register__info-aside-container
+    background-color grayLightest
+    border-bottom 1px solid grayMuted
+    padding gd(1.5) _
+  .register__info-aside
+    max-width 400px
+    block-align center
+
+  .register__info-body-container
+    max-width 400px
+    block-align center
+    padding-top gd(1.5)
 
 @media screen-s-up
   .register__info-container
     background-image url('/images/bg.png')
     background-size 100% 100%
+  .register__info-container-inner
+    display table
+  .register__info-aside-container
+  .register__info-body-container
+    display table-cell
 
+  .register__info-aside
+    padding l gd(1.5) _ _
+    width grid-columns(3)
 
-@media screen and (max-width: 1100px)
-  body.register-your-product
-    .introduction
-      margin-bottom gd(1)
+  .register__info-body
+    padding m _ _ l
+
+  .register__info-body-container
+    background-color color-bg-base
+
+  .register__info-aside-container
+    background-color grayLightest
+    border-right 1px solid grayMuted
+
+  .register__info-aside-container
+    padding-bottom var-padding-from-footer

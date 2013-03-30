@@ -4,6 +4,11 @@
   block-align center
   padding-left  grid-column-gutter-width
   padding-right grid-column-gutter-width
+@media screen-s-up
+  .grid-bounds-desktop
+    block-align center
+    padding-left  grid-column-gutter-width
+    padding-right grid-column-gutter-width
 
 @media screen-xs
   .grid-bounds-screen-xs
@@ -11,14 +16,17 @@
     max-width 400px
 
 @media screen-s
+  .grid-bounds-desktop
   .grid-bounds
     max-width screen-w-s
 
 @media screen-m
+  .grid-bounds-desktop
   .grid-bounds
     max-width screen-w-m
 
 @media screen-l
+  .grid-bounds-desktop
   .grid-bounds
     max-width screen-w-l
 
