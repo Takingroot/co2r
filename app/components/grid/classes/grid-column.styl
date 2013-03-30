@@ -21,11 +21,19 @@ for n in 1..grid-row-column-count
     width fluid-columns(count:n)
 
 @media screen-xs
-  [class*=" cols"], [class^="cols"]
-    width 100%
-    display block
-    & + [class*=" cols"], & + [class^="cols"]
-      margin-top gd(1)
+  .row.grid--no-stack, .row-cells.grid--no-stack
+    & > [class*=" cols"], & > [class^="cols"]
+      &:not(:first-child)
+        padding-left  (grid-column-gutter-width / 2)
+      &:not(:last-child)
+        padding-right (grid-column-gutter-width / 2)
+
+  .row:not(.grid--no-stack), .row-cells:not(.grid--no-stack)
+    & > [class*=" cols"], & > [class^="cols"]
+      width 100%
+      display block
+      & + [class*=" cols"], & + [class^="cols"]
+        margin-top gd(1)
 
 @media screen-s-up
   [class*=" cols"], [class^="cols"]

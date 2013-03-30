@@ -12,7 +12,7 @@ footer.app-footer.group(ng-controller="footer")
 
   .app-footer-content.group.color-theme.green-theme
     .row
-      .app-epilogue.cols4
+      .app-epilogue.cols5
         .owner
           a.logo-container.hbox.block(href="{{takingRoot.website_url}}", target="_blank")
             .v-span
@@ -22,16 +22,16 @@ footer.app-footer.group(ng-controller="footer")
         .v-push-3.hidden-phone
           p.s(ng-bind-html="appText.footer_colofon")
 
-      section.partners-container.cols8
-        header.partners-header
+      section.partners-container.cols6.grid-push1
+        header
           h1.l(ng-bind="appText.footer_partners_title")
-        .partners.row.v-push-1
-          .partner.cols4(ng-repeat="partner in partners")
+        .partners.row.v-push-1.grid--no-stack
+          .partner.cols6(ng-repeat="partner in partners")
             a.logo-container.hbox.block(href="{{partner.website_url}}", target="_blank")
               .v-span
               img.logo(ng-src="{{partner.logo_url}}")
             .text-context
-              p(ng-bind-html="partner.partnership_description")
+              p.s(ng-bind-html="partner.partnership_description")
 
       .v-push-3.visible-phone
         p.s(ng-bind-html="appText.footer_colofon")

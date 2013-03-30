@@ -32,7 +32,12 @@
   .app-brand-container
     border-bottom 1px solid gray
     text-align center
+  .app-brand__slogan
+    max-width 18rem
+    block-align center
   .app-navbar
+    // undo grid system
+    margin-top 0 !important
     .nav-item
       width 100%
 
@@ -42,8 +47,8 @@
 
 @media screen-s-up
   .app-brand-container
-    border-right 1px solid gray
     img
       width gd(4)
   .app-navbar
     padding-left 0!important
+    border-left 1px solid gray
