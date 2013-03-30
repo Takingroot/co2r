@@ -1,31 +1,37 @@
 
 
 
-// .register-info-container
-//------------------------------------------
-
-.register-info-container
+.register__info-container
   border-top 1px solid grayMuted
 
-.register-info-aside
-  //width 40%
+.register__info-aside-container
   background-color grayLightest
   border-right 1px solid grayMuted
 
-.register-info-aside
-.register-info-body
+.register__info-aside-container
+.register__info-body-container
   padding-bottom gd(6)
 
-.register-info-body
+.register__info-body-container
   background-color color-bg-base
+  padding-left gd(2)
+
+.register__info-aside
+  padding l gd(2.75) _ _
+.register__info-body
+  padding l _ _ l
 
 
+.register__form
+  margin-top gd(2.25)
+  padding-left gd(1.15) !important
+  textarea
+    width gd(10)
+  input
+    width gd(10)
 
-
-
-
-// .register-info-container
-//------------------------------------------
+.register__header
+  padding-top gd(3) !important
 
 body.register-your-product
   .introduction
@@ -34,19 +40,12 @@ body.register-your-product
       margin-top 0
 
 @media screen-s-up
-  .register-info-container
+  .register__info-container
     background-image url('/images/bg.png')
     background-size 100% 100%
 
 
 @media screen and (max-width: 1100px)
-   /*
-  .header-inner
-    width 500px
-   */
-
   body.register-your-product
     .introduction
       margin-bottom gd(1)
-    form
-      margin-left 0!important

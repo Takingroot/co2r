@@ -18,9 +18,18 @@
     display table-cell
     vertical-align top
 
+// using width not max-width
+// might introduce FF bug
+// that is worked around
+// in .row, but .row-cells
+// does not work well with
+// max-width because it does
+// not span to the max possible width
+// but instead wraps its content
+
 @media screen-xs
   .row-cells
-    max-width 400px
+    width 400px
     display block
     & > *
       display block
@@ -29,12 +38,12 @@
 
 @media screen-s
   .row-cells
-    max-width screen-w-s
+    width screen-w-s
 
 @media screen-m
   .row-cells
-    max-width screen-w-m
+    width screen-w-m
 
 @media screen-l
   .row-cells
-    max-width screen-w-l
+    width screen-w-l
