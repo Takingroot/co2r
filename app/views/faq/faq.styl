@@ -1,13 +1,15 @@
 
+.faqs
+  padding-left l !important
+  padding-top m
+
 .faq-toc-container
   background-color grayLightest
   padding-top 2rem
   padding-bottom 2rem
-@media screen-s-up
-  .faq-toc-container
-    border-right 1px solid darkMuted
-    .nav
-      margin-top 1.8rem
+  border-right 1px solid darkMuted
+  .nav
+    margin-top 1.8rem
 
 
 .faq-content-container
@@ -17,25 +19,27 @@
     a
       color lighten(textColorDark, 10)
       border-radius 0 !important
+      margin 0 !important
+      line-height 1.5 !important
     &.active
       pointer-events none
       a:hover
         background-color hsl(194.66, 97.04%, 73.53%)
         color inherit
-@media screen-xs
-  .faq-toc-item.active a
-    background-color transparent
-    color inherit
+
 
 
 
 
 
 @media screen-s-up
-
   body.faq .app-content
     background-image url('/images/bg.png')
     background-size 100% 100%
+
+  .faq-toc-container
+    // undo grid system
+    padding-right 0 !important
 
   .faq-toc
     &.is-scrollfix
@@ -46,3 +50,15 @@
     li.active a
       background-color blue
       color dark
+
+@media screen-s
+  .faq-toc.is-scrollfix
+    width 24.6rem
+
+@media screen-m
+  .faq-toc.is-scrollfix
+    width 31.8rem
+
+@media screen-l
+  .faq-toc.is-scrollfix
+    width 36.4rem
