@@ -5,7 +5,8 @@
   button.introduction-toggler.c-btn.pin-r(style="z-index:100;", ng-click="directory.toggleIntroduction()")
     span(ng-class="{'icon-chevron-up':directory.introductionState(), 'icon-chevron-down':!directory.introductionState()}")
 
-  .moodshot.hash-overlay
+  .moodshot
+    img.span(ng-src="http://data.co2r.com/static/{{appText.heroshot_home}}")
 
   section.introduction.color-theme.blue-theme
     .row-cells.vpadding-m
