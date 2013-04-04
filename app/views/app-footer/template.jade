@@ -19,7 +19,7 @@ footer.app-footer.group(ng-controller="footer")
             img.logo.logo-taking-root(ng-src="{{takingRoot.logo_url}}")
           p(bind-compile="takingRoot.partnership_description")
 
-        .v-push-3.hidden-phone
+        .v-push-3.hidden-phone.text-context
           p.s(ng-bind-html="appText.footer_colofon")
 
       section.partners-container.cols6.grid-push1
@@ -33,5 +33,5 @@ footer.app-footer.group(ng-controller="footer")
             .text-context
               p.s(ng-bind-html="partner.partnership_description")
 
-      .v-push-3.visible-phone
+      .v-push-3.visible-phone.text-context
         p.s(ng-bind-html="appText.footer_colofon")

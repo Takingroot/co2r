@@ -21,7 +21,7 @@
       section.cols5.align-middle
         .action-steps.text-context
           .action-step(class="action-step{{$index+1}}", ng-repeat="step in directory.actionSteps")
-            a(href="{{step.link}}")
+            a.link-heading(href="{{step.link}}")
               h1.l.text-color-inverse
                 i(class="icon-{{step.icon}}")
                 | 
