@@ -2,7 +2,7 @@
 
 .gallery.group(ui-if="artifact.images.length")
   .carousel.moodshot
-    .carousel-item.span.text-s(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
+    .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
 
 
 section.about.color-theme.yellow-theme
@@ -11,10 +11,10 @@ section.about.color-theme.yellow-theme
       header
         h1(bind-compile="artifact.name")
       .description
-        a.mission-cta(href="/mission")
-          span.s.cta__text(bind-compile="appText.learn_more_about_co2r")
-          i.icon-circle-arrow-right.cta__icon
         .story(bind-compile="artifact.description")
+        a.mission-cta(href="/mission")
+          span.cta__text(bind-compile="appText.learn_more_about_co2r")
+          i.icon-circle-arrow-right.cta__icon
     .cols5.grid-push1
       img.co2-infographic(src="/images/co2-infographic-@x2.png")
       .big-emissions-badge.padding-m
