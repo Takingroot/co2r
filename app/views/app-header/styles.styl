@@ -30,16 +30,17 @@
 
 @media screen-xs
   .app-brand-container
-    border-bottom 1px solid gray
     text-align center
-  .app-brand__slogan
-    max-width 18rem
-    block-align center
   .app-navbar
     // undo grid system
     margin-top 0 !important
     .nav-item
-      width 100%
+      width 50%
+      display inline-block
+      position relative
+      border-top 1px solid gray
+      &:nth-child(even)
+        border-left 1px solid gray
 
 @media screen-s-down
   .app-header > .row
