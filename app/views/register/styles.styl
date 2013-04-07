@@ -27,7 +27,6 @@ var-padding-from-footer = gd(6)
     border-bottom 1px solid grayMuted
     padding gd(1.5) _
   .register__info-aside
-    max-width 400px
     block-align center
 
   .register__info-body-container
@@ -47,10 +46,9 @@ var-padding-from-footer = gd(6)
 
   .register__info-aside
     padding l gd(1.5) _ _
-    width grid-columns(3)
 
   .register__info-body
-    padding m _ _ l
+    padding m _ _ xl
 
   .register__info-body-container
     background-color color-bg-base
@@ -61,3 +59,13 @@ var-padding-from-footer = gd(6)
 
   .register__info-aside-container
     padding-bottom var-padding-from-footer
+
+@media screen-xs
+  .register__info-aside
+    max-width 400px
+@media screen-s-up
+  .register__info-aside
+    width grid-columns(3)
+@media screen-m-up
+  .register__info-aside
+    width grid-columns(4)
