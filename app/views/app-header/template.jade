@@ -3,9 +3,9 @@ header.app-header(ng-controller="header")
     a.app-brand-container.cols6.transparent-link.row.align-middle.vpadding-m(href="/")
       .align-middle
         img(src="/images/co2r-logo.png")
-      .cols6.align-middle
+      .cols6.align-middle.hidden-phone
         h1(bind-compile="appText.co2r", style="font-size:1.5rem;")
-        p.app-brand__slogan.s.hidden-phone(bind-compile="appText.branding_subtext")
+        p.app-brand__slogan.s(bind-compile="appText.branding_subtext")
 
     .app-navbar.align-middle.cols3
         .nav-item(
