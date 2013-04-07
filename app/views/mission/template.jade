@@ -2,10 +2,13 @@ section.page-introduction
   .moodshot
     img.span(ng-src="http://data.co2r.com/static/{{appText.heroshot_mission}}")
   section.introduction.blue-theme.color-theme.vpadding-l
-    .grid-bounds
-      article.introduction-copy.text-container
+    .row.grid-bounds.align-children-middle
+      article.cols5.introduction-copy
         h1.text-color-inverse(bind-compile="appText.introduction_title")
         .introduction-text(bind-compile="appText.introduction_text")
+      article.cols5.grid-push1
+        img.co2-infographic(src="/images/co2-infographic-black@x2.png")
+        .introduction-text-minor(bind-compile="appText.our_mission_intro")
 
 
 section.limay
