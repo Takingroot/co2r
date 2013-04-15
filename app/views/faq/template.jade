@@ -4,7 +4,7 @@
     .faq-toc(scrollfix="{begin:{element:'.faq-toc-container'}}")
       ul.nav.nav-pills.nav-stacked
         li.faq-toc-item(ng-repeat="faq in faqs")
-          a(ng-href="#\{{faq.question | slugify}}", ng-bind="faq.question", smooth-scroll)
+          a(ng-href="#\{{faq.question | slugify}}", ng-bind-html="faq.question", smooth-scroll)
 
   .cols5.faq-content-container
     .faqs.v-gutters-3
