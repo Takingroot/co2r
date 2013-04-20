@@ -27,7 +27,7 @@ section.about.color-theme.yellow-theme
             td(bind-compile="appText.artifact_offset_since")
             td(ng-bind="artifact.offsetSince")
           tr
-            td Organization
+            td(ng-bind-html="appText.artifact_organization_label")
             td(ng-bind="artifact.organization.name")
 
 
