@@ -26,7 +26,7 @@ co2r.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $locati
     # --------------------------------------------------------------------------------------------------
 
     if artifact.organization.available_twitter_handle
-      twitter-api.get-user-timeline(screen_name:artifact.organization.available_twitter_handle, count:3)
+      twitter-api.get-user-timeline(screen_name:artifact.organization.available_twitter_handle, count:4)
       .success (data, status, headers, config)->
         $scope.organization-tweets = data
 
