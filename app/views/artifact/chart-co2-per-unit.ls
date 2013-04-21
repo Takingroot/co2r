@@ -6,7 +6,7 @@ co2r.directive \chartCo2PerUnit, ($filter)->
     scope.$when-ready ->
       box-width    = scope.$eval attrs.columnWidth
       #data         = _.invoke _.map(scope.$eval(attrs.data), (item)-> item*100), \round, 2decimals
-      data         = scope.$eval(attrs.data)
+      data         = scope.$eval attrs.data
       label-height = 0px
       gutter       = 140px
       bar-width    = box-width - gutter
@@ -15,8 +15,11 @@ co2r.directive \chartCo2PerUnit, ($filter)->
       chart-height = bar-height + label-height
       y            = d3.scale.linear!domain([0, d3.max(data)]).range([0, bar-height])
 
-      chart   = d3.select(el[0]).style(\height, chart-height).style(\width, "#{chart-width}px")
-      .selectAll(\rect).data(data)
+      chart = d3.select(el[0])
+        .style(\height, chart-height)
+        .style(\width, "#{chart-width}px")
+        .selectAll(\rect)
+        .data(data)
 
       chart.enter!append \rect
         .attr \class, \graph-bar

@@ -53,7 +53,7 @@ co2r.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $locati
 
       $scope.data =
         co2-sources:  _.filter (_.pluck $scope.reports, \carbon_sources_list), -> it.length
-        co2-per-thing-made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> -1*it)
+        co2-per-thing-made: _.sortBy(_.pluck($scope.reports, \co2_per_unit), -> it)
         total-co2-vs-offset:
           total_co2:  _.pluck $scope.reports, \total_tons_produced
           offset_co2: _.pluck $scope.reports, \total_offset_tons
