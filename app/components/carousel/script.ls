@@ -1,13 +1,22 @@
 angular.module \carousel, []
 
-.directive \carousel, ->
+
+
+.directive \carousel, ['$timeout', ($timeout)->
   restrict:   \C
-  controller: ($element)->
+  controller: ['$element', ($element)->
+    $timeout ->
+      $element.addClass 'carousel-item-probably-loaded'
+    , 5000
     @slides         = []
     @register-slide = (new-slide)->
       @slides.push new-slide
       # re-invoke carousel to include new slide
       $element.carousel!
+  ]
+]
+
+
 
 .directive \carouselItem, ->
   restrict:   \C
