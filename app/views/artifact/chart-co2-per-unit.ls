@@ -13,7 +13,7 @@ co2r.directive \chartCo2PerUnit, ($filter)->
       bar-height   = 200px
       chart-width  = data.length * box-width
       chart-height = bar-height + label-height
-      y            = d3.scale.linear!domain([0, d3.max(data)]).range([0, bar-height])
+      y            = d3.scale.linear!domain([0, _.max(data)]).range([0, bar-height])
 
       chart = d3.select(el[0])
         .style(\height, chart-height)
