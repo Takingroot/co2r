@@ -25,13 +25,13 @@ section.about.color-theme.yellow-theme
       table.stats-table
         tbody
           tr
-            td Total trees planted
+            td(ng-bind-html="appText.artifact_total_trees_planted")
             td(ng-bind="artifact.total_trees_planted")
           tr
             td(bind-compile="appText.artifact_offset_since")
             td(ng-bind="artifact.offsetSince")
           tr
-            td Location
+            td(ng-bind-html="appText.location")
             td(ng-bind="artifact.location")
           tr
             td(ng-bind-html="appText.artifact_organization_label")
