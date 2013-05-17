@@ -11,6 +11,6 @@ co2r.directive(\limayMap, [\$parse, ($parse)->
 
     google-map = new google.maps.Map element[0], google-map-options
 
-    kml-file-url = "http://thievishfilms.s3.amazonaws.com/lccp-2012-en.kml"
+    kml-file-url = "http://www.takingroot.org/wp-content/uploads/LCCP_2012_en.kml"
     new google.maps.KmlLayer kml-file-url, map: google-map
 ])
