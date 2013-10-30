@@ -1,4 +1,4 @@
-co2r.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $location, $http)->
+co2r.controller \artifact, ($scope, $routeParams, co2r-api, $location, $http)->
   $scope.$prepare-for-ready!
 
   co2r-api.get "artifact/#{$routeParams.artifact}", {cache:on}
@@ -19,16 +19,6 @@ co2r.controller \artifact, ($scope, $routeParams, co2r-api, twitter-api, $locati
     $scope.addthis-share-config =
       title: "#{$scope.artifact.organization.name} offsets their co2. See their emissions report at: #{$location.abs-url!}"
       description: \test-description
-
-
-
-    # organization twitter timeline
-    # --------------------------------------------------------------------------------------------------
-
-    if artifact.organization.available_twitter_handle
-      twitter-api.get-user-timeline(screen_name:artifact.organization.available_twitter_handle, count:4)
-      .success (data, status, headers, config)->
-        $scope.organization-tweets = data
 
 
 

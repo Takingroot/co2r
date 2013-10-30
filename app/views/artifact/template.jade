@@ -54,17 +54,7 @@ section.org.hidden-phone
           a.org__contact-method(class="contact-method-{{contact_method.contact_type}}", href="{{contact_method.full_link | prefixMailto:contact_method.contact_type}}", ng-repeat="contact_method in artifact.organization.contact_infos")
             i(class="icon-{{contact_method.contact_type | to_icon_name}}")
     .cols7
-      .organization-twitter-timeline.twitter-timeline
-        header
-          h4
-            i.icon-twitter-sign
-            span.title(ng-bind="artifact.organization.name")
-        .tweet-items
-          article.tweet-item.span-4(ng-repeat="tweet in organizationTweets")
-            .tweet-item-inner
-              .s.tweet-meta
-                time.tweet-meta-date.muted {{tweet.created_at | castToDate | date:'MMM d'}}
-              p.tweet-body(ng-bind-html="tweet.text | linky")
+      div(ng-bind-html-unsafe="artifact.organization.widget_code")
 
 
 
@@ -136,7 +126,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
             section.text-context.actions-category.align-left(class="action-type-{{actionCategory.name | slugify}}", ng-repeat="actionCategory in report.other_actions")
               .actions-category-header
                 .actions-category-icon.l(class="icon-{{actionCategory.name.icon_code | slugify}}")
-                | 
+                |
                 strong.actions-category-title(ng-bind="actionCategory.name.name")
               ul.actions.v-push-1
                 li.action(ng-repeat="action in actionCategory.description_list"): span(ng-bind="action")
@@ -146,7 +136,7 @@ section.reports.v-push-4.span.a-image(ui-if="reports.length")
     section.report-section.text-align-center(ui-if="latestReport.annual_report_url")
       a.btn.l.v-push-4(href="{{latestReport.annual_report_url}}")
         i.icon-file-alt
-        | 
+        |
         span(ng-bind="appText.artifact_download_report | interpolate:latestReport.year")
 
 

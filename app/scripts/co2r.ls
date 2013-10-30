@@ -1,5 +1,3 @@
-
-
 window.co2r = angular.module(\co2r, [
   \ngSanitize
   \ui
