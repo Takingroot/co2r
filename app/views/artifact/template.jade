@@ -1,9 +1,8 @@
 
 
 .gallery.group(ui-if="artifact.images.length")
-  .carousel.moodshot(style="text-align:center;position:relative;")
-    .carousel-item.span(ng-repeat="image in artifact.images", src="image.image_url", caption="image.caption")
-    i.carousel-spinner.icon-spinner.icon-spin
+  .moodshot(style="text-align:center;position:relative;")
+    img.span(ng-src="{{artifact.images[0].image_url}}", caption="artifact.images[0].caption")
 
 
 section.about.color-theme.yellow-theme
