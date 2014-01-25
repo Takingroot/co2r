@@ -10,7 +10,7 @@ co2r
   replace: on
   template: '
     <div class="addthis_toolbox">
-      <a class="addthis_button_facebook_like">
+      <a class="addthis_button_facebook">
       <a class="addthis_button_tweet">
     </div>
   '
